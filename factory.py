@@ -50,6 +50,10 @@ def _build_module(module_cfg: dict):
     elif module_type == "FixedSizeChunker":
         from core.chunker.fixed_size import FixedSizeChunker
         return FixedSizeChunker(**kwargs)
+    
+    elif module_type == "AttentionSimilarityChunker":
+        from core.chunker.attention_similarity import AttentionSimilarityChunker
+        return AttentionSimilarityChunker(**kwargs)
 
     else:
         raise ValueError(f"Unknown module type: {module_type}")

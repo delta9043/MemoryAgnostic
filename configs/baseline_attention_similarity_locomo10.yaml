@@ -1,0 +1,32 @@
+dataset:
+  name: locomo10
+  path: /data/delta9043/datasets/locomo/locomo10.json
+  sample_idx: 0  # 단일 샘플 전용. 전체 실행은 추후 별도 entrypoint로 분리
+
+pipeline:
+  pre_chunking:
+    # 사용 가능한 Filter:
+    #   - type: NoFilter
+    #   - type: LLMFilter           (미구현)
+    # 사용 가능한 Compressor:
+    #   - type: NoCompressor
+    #   - type: LLMLinguaCompressor (미구현)
+    #   - type: LLMCompressor       (미구현)
+    - type: NoFilter
+    - type: NoCompressor
+
+  # 사용 가능한 Chunker:
+  #   - type: FixedSizeChunker              (window, overlap)
+  #   - type: AttentionSimilarityChunker    (llmlingua_model_path, embedder_model_path, ...)
+  #   - type: LLMChunker                   (미구현)
+  chunker:
+    type: AttentionSimilarityChunker
+    llmlingua_model_path: /data/delta9043/models/llmlingua-2
+    embedder_model_path: /data/delta9043/models/all-MiniLM-L6-v2
+    threshold_start: 0.2
+    threshold_end: 0.5
+    threshold_step: 0.05
+    boundary_match_distance: 3
+    attention_layers: [8, 9, 10, 11]
+    buffer_max_tokens: 512
+    device: cuda

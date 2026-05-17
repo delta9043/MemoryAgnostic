@@ -2,7 +2,7 @@ import argparse
 
 import yaml
 
-from data.loader import load_locomo10
+from data.locomo_loader import load_locomo10
 from data.schema import ProcessedSample
 from factory import build_chunker, build_pre_chunking_modules
 

@@ -9,8 +9,12 @@ class FixedSizeChunker(BaseChunker):
     # overlap: 인접 chunk 간 겹치는 turn 수
 
     def __init__(self, window: int = 5, overlap: int = 0):
-        assert window > 0, "window must be > 0"
-        assert 0 <= overlap < window, "overlap must be >= 0 and < window"
+        # 오류 검증
+        if window <= 0:
+            raise ValueError(f"window must be > 0, got {window}")
+        if not (0 <= overlap < window):
+            raise ValueError(f"overlap must be >= 0 and < window, got overlap={overlap}, window={window}")
+        
         self.window = window
         self.overlap = overlap
 
@@ -32,9 +36,6 @@ class FixedSizeChunker(BaseChunker):
                 turns=chunk_turns,
                 text=text,
                 metadata={
-                    "chunker": "fixed_size",
-                    "window": self.window,
-                    "overlap": self.overlap,
                     "start_turn_id": chunk_turns[0].turn_id,
                     "end_turn_id": chunk_turns[-1].turn_id,
                 },
