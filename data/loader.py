@@ -41,19 +41,44 @@ def _parse_turns(sample_id: str, conversation: dict) -> List[Turn]:
     return turns
 
 
+def _normalize_answer(raw: dict):
+    # LoCoMo10 answer 필드 정규화
+    # - 일반 QA: answer (str)
+    # - adversarial QA: adversarial_answer (str 또는 List[str])
+    # 반환: (answer_str, raw_answer_원본)
+    if "answer" in raw and raw["answer"] is not None:
+        raw_answer = raw["answer"]
+    else:
+        raw_answer = raw.get("adversarial_answer", "")
+
+    if isinstance(raw_answer, list):
+        answer = raw_answer[0] if raw_answer else ""
+    elif isinstance(raw_answer, str):
+        answer = raw_answer
+    else:
+        answer = str(raw_answer)
+    return answer, raw_answer
+
+
 def _parse_qa(sample_id: str, raw_qa_list: list) -> List[QA]:
     # qa 리스트를 QA 리스트로 변환
     # adversarial 타입은 answer 키가 없고 adversarial_answer 키를 사용한다
-    return [
-        QA(
+    qa_list = []
+    for idx, raw in enumerate(raw_qa_list):
+        answer, raw_answer = _normalize_answer(raw)
+        category_num = raw.get("category")
+        qa_list.append(QA(
             qa_id=f"{sample_id}_{idx}",
             question=raw["question"],
-            answer=raw.get("answer") or raw.get("adversarial_answer", ""),
-            category=LOCOMO_CATEGORY.get(raw["category"]) if raw.get("category") is not None else None,
-            metadata={"evidence": raw.get("evidence")},
-        )
-        for idx, raw in enumerate(raw_qa_list)
-    ]
+            answer=answer,
+            category=LOCOMO_CATEGORY.get(category_num) if category_num is not None else None,
+            metadata={
+                "evidence": raw.get("evidence"),
+                "raw_answer": raw_answer,  # list/str 원본 보존 (다답 허용 평가용)
+                "is_adversarial": "adversarial_answer" in raw,
+            },
+        ))
+    return qa_list
 
 
 def load_locomo10(path: str, sample_idx: int = 0) -> RawSample:

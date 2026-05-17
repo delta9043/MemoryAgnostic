@@ -5,7 +5,7 @@
 dataset:
   name: locomo10
   path: /data/delta9043/datasets/locomo/locomo10.json
-  sample_idx: 0                # 단일 샘플 실행 시 사용. null이면 전체 실행
+  sample_idx: 0                # 단일 샘플 인덱스 (정수). 전체 데이터셋 실행은 추후 별도 entrypoint로 분리
 
 pipeline:
   pre_chunking:

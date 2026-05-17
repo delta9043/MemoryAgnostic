@@ -1,21 +1,37 @@
-from typing import List
+from typing import List, Union
 
 from core.chunker.base import BaseChunker
 from core.compressor.base import BaseCompressor
 from core.filter.base import BaseFilter
 
+PreChunkingModule = Union[BaseFilter, BaseCompressor]
 
-def build_pre_chunking_modules(cfg: dict) -> List:
+
+def build_pre_chunking_modules(cfg: dict) -> List[PreChunkingModule]:
     # config의 pre_chunking 리스트를 순서대로 모듈 인스턴스로 변환
+    # 슬롯 타입 검증: Filter/Compressor만 허용
     modules = []
     for module_cfg in cfg["pipeline"]["pre_chunking"]:
-        modules.append(_build_module(module_cfg))
+        module = _build_module(module_cfg)
+        if not isinstance(module, (BaseFilter, BaseCompressor)):
+            raise TypeError(
+                f"pre_chunking 슬롯에는 Filter/Compressor만 들어갈 수 있습니다. "
+                f"받은 타입: {type(module).__name__} (config type={module_cfg.get('type')!r})"
+            )
+        modules.append(module)
     return modules
 
 
 def build_chunker(cfg: dict) -> BaseChunker:
     # config의 chunker 설정을 Chunker 인스턴스로 변환
-    return _build_module(cfg["pipeline"]["chunker"])
+    # 슬롯 타입 검증: BaseChunker만 허용
+    module = _build_module(cfg["pipeline"]["chunker"])
+    if not isinstance(module, BaseChunker):
+        raise TypeError(
+            f"chunker 슬롯에는 BaseChunker 구현체만 들어갈 수 있습니다. "
+            f"받은 타입: {type(module).__name__} (config type={cfg['pipeline']['chunker'].get('type')!r})"
+        )
+    return module
 
 
 def _build_module(module_cfg: dict):

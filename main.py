@@ -13,9 +13,13 @@ def load_config(config_path: str) -> dict:
 
 
 def run(cfg: dict):
-    # 1. 데이터 로드
+    # 1. 데이터 로드 (현재 entrypoint는 단일 샘플 전용. 전체 실행은 추후 별도 entrypoint로 분리)
     dataset_cfg = cfg["dataset"]
-    sample_idx = dataset_cfg.get("sample_idx") or 0
+    sample_idx = dataset_cfg.get("sample_idx", 0)
+    if not isinstance(sample_idx, int):
+        raise ValueError(
+            f"sample_idx must be an integer (full-dataset run not supported here), got {sample_idx!r}"
+        )
     raw = load_locomo10(dataset_cfg["path"], sample_idx=sample_idx)
     print(f"[loader] sample_id: {raw.sample_id}")
     print(f"[loader] num turns: {len(raw.turns)}")
@@ -32,7 +36,10 @@ def run(cfg: dict):
 
     chunks = chunker.chunk(turns)
     print(f"[chunker] num chunks: {len(chunks)}")
-    print(f"[chunker] first chunk text:\n{chunks[0].text}")
+    if chunks:
+        print(f"[chunker] first chunk text:\n{chunks[0].text}")
+    else:
+        print("[chunker] (no chunks produced — pre-chunking이 모든 turn을 제거함)")
     print()
 
     # 3. ProcessedSample 생성
