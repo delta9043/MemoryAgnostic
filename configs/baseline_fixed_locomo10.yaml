@@ -1,0 +1,17 @@
+# 파이프라인 설정
+# pre_chunking: Filter와 Compressor를 순서대로 나열 (순서 변경 가능)
+# chunker: 항상 마지막에 실행
+
+dataset:
+  name: locomo10
+  path: /data/delta9043/datasets/locomo/locomo10.json
+  sample_idx: 0                # 단일 샘플 실행 시 사용. null이면 전체 실행
+
+pipeline:
+  pre_chunking:
+    - type: NoFilter
+    - type: NoCompressor
+  chunker:
+    type: FixedSizeChunker
+    window: 5
+    overlap: 0
