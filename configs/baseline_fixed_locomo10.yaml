@@ -1,11 +1,7 @@
-# 파이프라인 설정
-# pre_chunking: Filter와 Compressor를 순서대로 나열 (순서 변경 가능)
-# chunker: 항상 마지막에 실행
-
 dataset:
   name: locomo10
   path: /data/delta9043/datasets/locomo/locomo10.json
-  sample_idx: 0                # 단일 샘플 인덱스 (정수). 전체 데이터셋 실행은 추후 별도 entrypoint로 분리
+  sample_idx: 0
 
 pipeline:
   pre_chunking:
@@ -15,3 +11,14 @@ pipeline:
     type: FixedSizeChunker
     window: 5
     overlap: 0
+
+memory_backend:
+  type: SimpleMemBackend
+  base_url: "http://localhost:8000/v1"
+  model: "Qwen3-8B"
+  api_key: "EMPTY"
+  db_path: "./lancedb_data"
+  clear_db_on_init: true
+
+evaluation:
+  result_file: "results/baseline_fixed_locomo10.json"

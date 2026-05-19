@@ -34,6 +34,13 @@ def build_chunker(cfg: dict) -> BaseChunker:
     return module
 
 
+def build_memory_backend(cfg: dict):
+    backend_cfg = cfg.get("memory_backend")
+    if backend_cfg is None:
+        return None
+    return _build_module(backend_cfg)
+
+
 def _build_module(module_cfg: dict):
     # type 키를 기준으로 해당 클래스를 import해서 인스턴스 생성
     module_type = module_cfg["type"]
@@ -54,6 +61,10 @@ def _build_module(module_cfg: dict):
     elif module_type == "AttentionSimilarityChunker":
         from core.chunker.attention_similarity import AttentionSimilarityChunker
         return AttentionSimilarityChunker(**kwargs)
+    
+    elif module_type == "SimpleMemBackend":
+        from core.memory.simplemem_backend import SimpleMemBackend
+        return SimpleMemBackend(**kwargs)
 
     else:
         raise ValueError(f"Unknown module type: {module_type}")
