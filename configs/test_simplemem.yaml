@@ -8,17 +8,13 @@ pipeline:
     - type: NoFilter
     - type: NoCompressor
   chunker:
-    type: FixedSizeChunker
-    window: 5
-    overlap: 0
+    type: NoChunker
 
 memory_backend:
   type: SimpleMemBackend
-  base_url: "http://localhost:8000/v1"
-  model: "Qwen3-8B"
-  api_key: "EMPTY"
-  db_path: "./lancedb_data"
+  base_url: http://localhost:8000/v1
+  model: /data/delta9043/models/Qwen3-14B
   clear_db_on_init: true
 
 evaluation:
-  result_file: "results/baseline_fixed_locomo10.json"
+  result_file: results/test_simplemem.json

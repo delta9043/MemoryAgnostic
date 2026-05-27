@@ -5,7 +5,8 @@
 #SBATCH --mem-per-gpu=32G
 #SBATCH -p batch_ce_ugrad
 #SBATCH -t 6-0
-#SBATCH -o logs/slurm-%A.out
+#SBATCH -o /data/delta9043/repos/MemoryAgnostic/logs/slurm-%A.out
+#SBATCH --exclude=moana-r[1-5],moana-u[1-8]
 
 set -e
 
@@ -17,34 +18,25 @@ echo "GPUs available: $CUDA_VISIBLE_DEVICES"
 source /data/delta9043/anaconda3/etc/profile.d/conda.sh
 
 # 설정
-MODEL_PATH="/data/delta9043/models/Qwen3-8B"
-VLLM_PORT=8000
-VLLM_GPU_COUNT=1
+REPO=/data/delta9043/repos/MemoryAgnostic
+MODEL_PATH="/data/delta9043/models/Qwen3-14B"
+VLLM_PORT=$((8000 + SLURM_JOB_ID % 1000))
 VLLM_MAX_MODEL_LEN=8192
-EXPERIMENT_CONFIG="configs/baseline_fixed_locomo10.yaml"
+VLLM_TP_SIZE=2
+EXPERIMENT_CONFIG="configs/test_simplemem.yaml"
+CONDA_ENV="simplemem"
 
-# GPU 분배
-IFS=',' read -ra GPU_ARRAY <<< "$CUDA_VISIBLE_DEVICES"
-if [ ${#GPU_ARRAY[@]} -lt $((VLLM_GPU_COUNT + 1)) ]; then
-    echo "ERROR: Need at least $((VLLM_GPU_COUNT + 1)) GPUs, got ${#GPU_ARRAY[@]}"
-    exit 1
-fi
+mkdir -p ${REPO}/logs ${REPO}/results
 
-VLLM_GPUS=$(IFS=','; echo "${GPU_ARRAY[*]:0:$VLLM_GPU_COUNT}")
-EXP_GPUS=$(IFS=','; echo "${GPU_ARRAY[*]:$VLLM_GPU_COUNT}")
+echo "vLLM Port: $VLLM_PORT"
 
-echo "vLLM GPUs: $VLLM_GPUS"
-echo "Experiment GPUs: $EXP_GPUS"
-
-mkdir -p logs results
-
-# vLLM 서버 시작 (백그라운드)
-echo "Starting vLLM server..."
+# vLLM 서버 시작 (할당된 GPU 전부 사용, util=0.7로 embedding 공간 확보)
+echo "Starting vLLM server (tp=$VLLM_TP_SIZE, util=0.7)..."
 VLLM_MODEL_PATH="$MODEL_PATH" \
 VLLM_PORT="$VLLM_PORT" \
 VLLM_MAX_MODEL_LEN="$VLLM_MAX_MODEL_LEN" \
-CUDA_VISIBLE_DEVICES="$VLLM_GPUS" \
-    bash scripts/start_vllm.sh > logs/vllm-${SLURM_JOB_ID}.out 2>&1 &
+VLLM_TP_SIZE="$VLLM_TP_SIZE" \
+    bash ${REPO}/scripts/start_vllm.sh > ${REPO}/logs/vllm-${SLURM_JOB_ID}.out 2>&1 &
 
 VLLM_PID=$!
 echo "vLLM PID: $VLLM_PID"
@@ -56,12 +48,12 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# 실험 실행
+# 실험 실행 (CUDA_VISIBLE_DEVICES 그대로 → embedding이 남은 공간 사용)
 echo "Starting experiment..."
-EXPERIMENT_CONFIG="$EXPERIMENT_CONFIG" \
+CONDA_ENV="$CONDA_ENV" \
+EXPERIMENT_CONFIG="${REPO}/$EXPERIMENT_CONFIG" \
 VLLM_BASE_URL="http://localhost:$VLLM_PORT/v1" \
-CUDA_VISIBLE_DEVICES="$EXP_GPUS" \
-    bash scripts/run_experiment.sh
+    bash -x ${REPO}/scripts/run_experiment.sh
 
 echo "Experiment finished: $(date)"
 exit 0

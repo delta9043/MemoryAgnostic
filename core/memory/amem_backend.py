@@ -1,0 +1,94 @@
+import sys
+from typing import List, Optional
+
+from core.memory.base import BaseMemoryBackend
+from data.schema import Chunk
+
+# A-Mem repo를 import 가능하도록 sys.path에 추가
+AMEM_PATH = "/data/delta9043/repos/A-mem"
+if AMEM_PATH not in sys.path:
+    sys.path.insert(0, AMEM_PATH)
+
+# A-Mem 내부 모듈 import
+from test_advanced_robust import RobustAdvancedMemAgent  # noqa: E402
+
+
+class AMemBackend(BaseMemoryBackend):
+    """
+    A-Mem(RobustAdvancedMemAgent)을 wrapping하는 MemoryBackend.
+
+    동작 방식:
+    1. build(chunks): 각 chunk의 turn들을 "Speaker X says: ..." 형식으로 add_memory 호출
+    2. query(question, category): agent.answer_question() 호출, prediction 반환
+    3. reset(): agent 인스턴스를 새로 생성하여 메모리 초기화
+
+    LLM은 외부 vLLM 서버(OpenAI 호환 API)에 요청하는 방식으로 호출된다.
+    """
+
+    def __init__(
+        self,
+        base_url: str,
+        model: str,
+        api_key: str = "dummy",
+        retrieve_k: int = 10,
+        temperature_c5: float = 0.5,
+    ):
+        """
+        Args:
+            base_url: vLLM 서버 주소 (예: "http://localhost:8000/v1")
+            model: 사용할 모델 이름 (예: "Qwen/Qwen3-14B")
+            api_key: API 키 (vLLM은 dummy 가능)
+            retrieve_k: 검색할 메모리 수
+            temperature_c5: category 5 질문의 temperature
+        """
+        self.base_url = base_url
+        self.model = model
+        self.api_key = api_key
+        self.retrieve_k = retrieve_k
+        self.temperature_c5 = temperature_c5
+
+        # base_url에서 host/port 파싱
+        # 예: "http://localhost:8000/v1" -> host="http://localhost", port=8000
+        self._host, self._port = self._parse_base_url(base_url)
+
+        self.agent = self._create_agent()
+
+    def _parse_base_url(self, base_url: str):
+        # "http://localhost:8000/v1" → ("http://localhost", 8000)
+        from urllib.parse import urlparse
+        parsed = urlparse(base_url)
+        host = f"{parsed.scheme}://{parsed.hostname}"
+        port = parsed.port if parsed.port else 8000
+        return host, port
+
+    def _create_agent(self) -> RobustAdvancedMemAgent:
+        return RobustAdvancedMemAgent(
+            model=self.model,
+            backend="vllm",  # vLLM OpenAI 호환 API 사용
+            retrieve_k=self.retrieve_k,
+            temperature_c5=self.temperature_c5,
+            sglang_host=self._host,
+            sglang_port=self._port,
+        )
+
+    def build(self, chunks: List[Chunk]) -> None:
+        """chunk의 turn들을 A-Mem에 추가."""
+        for chunk in chunks:
+            for turn in chunk.turns:
+                content = f"Speaker {turn.speaker} says: {turn.content}"
+                self.agent.add_memory(content, time=turn.timestamp)
+
+    def query(self, question: str, category: Optional[str] = None) -> str:
+        """질문에 대한 답변을 반환."""
+        # category가 없으면 기본값 1 사용
+        cat = int(category) if category is not None else 1
+        prediction, _, _ = self.agent.answer_question(
+            question=question,
+            category=cat,
+            answer="",  # 평가 시 정답 불필요
+        )
+        return prediction
+
+    def reset(self) -> None:
+        """메모리 초기화. 다음 샘플 처리 전에 호출."""
+        self.agent = self._create_agent()

@@ -1,4 +1,5 @@
 import sys
+import importlib
 from typing import List, Optional
 
 from core.memory.base import BaseMemoryBackend
@@ -6,12 +7,38 @@ from data.schema import Chunk
 
 # SimpleMem repo를 import 가능하도록 sys.path에 추가
 SIMPLEMEM_PATH = "/data/delta9043/repos/SimpleMem"
-if SIMPLEMEM_PATH not in sys.path:
-    sys.path.insert(0, SIMPLEMEM_PATH)
 
-# SimpleMem 내부 모듈 import (sys.path 추가 후 가능)
-from main import SimpleMemSystem  # noqa: E402
-from models.memory_entry import Dialogue  # noqa: E402
+
+def _load_simplemem():
+    """SimpleMem 모듈을 MemoryAgnostic의 core와 충돌 없이 로드한다.
+
+    문제: MemoryAgnostic/core/ 가 sys.modules["core"]로 먼저 등록된 상태에서
+    SimpleMem/main.py 가 'from core.memory_builder import ...' 를 시도하면
+    MemoryAgnostic의 core를 보게 되어 ModuleNotFoundError 발생.
+
+    해결: sys.path에 SimpleMem을 추가한 뒤, sys.modules에서 'core'로 시작하는
+    항목을 임시로 제거하고 SimpleMem 모듈을 import한 후 복원한다.
+    """
+    if SIMPLEMEM_PATH not in sys.path:
+        sys.path.insert(0, SIMPLEMEM_PATH)
+
+    # MemoryAgnostic의 core.* 를 임시 보관 후 제거
+    saved = {k: v for k, v in sys.modules.items()
+             if k == "core" or k.startswith("core.")}
+    for k in saved:
+        del sys.modules[k]
+
+    try:
+        SimpleMemSystem = importlib.import_module("main").SimpleMemSystem
+        Dialogue = importlib.import_module("models.memory_entry").Dialogue
+    finally:
+        # 항상 MemoryAgnostic의 core.* 복원
+        sys.modules.update(saved)
+
+    return SimpleMemSystem, Dialogue
+
+
+SimpleMemSystem, Dialogue = _load_simplemem()
 
 
 class SimpleMemBackend(BaseMemoryBackend):
@@ -42,7 +69,6 @@ class SimpleMemBackend(BaseMemoryBackend):
             api_key: API 키 (vLLM은 dummy 가능)
             db_path: LanceDB 저장 경로
             table_name: 메모리 테이블 이름. None이면 SimpleMem 기본값 사용.
-            clear_db_on_init: 인스턴스 생성 시 DB를 비울지 여부
         """
         self.base_url = base_url
         self.model = model
@@ -57,15 +83,14 @@ class SimpleMemBackend(BaseMemoryBackend):
         # SimpleMemSystem 인스턴스 생성
         self.system = self._create_system(clear_db=clear_db_on_init)
 
-    def _create_system(self, clear_db: bool) -> SimpleMemSystem:
-        """SimpleMemSystem 인스턴스를 생성한다."""
+    def _create_system(self, clear_db: bool) -> "SimpleMemSystem":
         kwargs = {
             "api_key": self.api_key,
             "model": self.model,
             "base_url": self.base_url,
             "db_path": self.db_path,
             "clear_db": clear_db,
-            "enable_parallel_processing": False,
+            "enable_parallel_processing": True,
         }
         if self.table_name is not None:
             kwargs["table_name"] = self.table_name
@@ -93,7 +118,7 @@ class SimpleMemBackend(BaseMemoryBackend):
         self.system.add_dialogues(dialogues)
         self.system.finalize()
 
-    def query(self, question: str) -> str:
+    def query(self, question: str, category: str = None) -> str:
         """질문에 대한 답변을 반환한다."""
         return self.system.ask(question)
 

@@ -28,10 +28,10 @@ class BaseMemoryBackend(ABC):
         pass
 
     @abstractmethod
-    def query(self, question: str) -> str:
+    def query(self, question: str, category=None) -> str:
         """
         질문에 대한 답변을 반환한다.
-
+s
         Args:
             question: str - 자연어 질문
 

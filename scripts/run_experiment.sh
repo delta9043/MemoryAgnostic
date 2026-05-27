@@ -2,11 +2,15 @@
 set -e
 
 source /data/delta9043/anaconda3/etc/profile.d/conda.sh
-conda activate simplemem
 
+CONDA_ENV="${CONDA_ENV:-simplemem}"
 CONFIG="${EXPERIMENT_CONFIG:?EXPERIMENT_CONFIG must be set}"
 BASE_URL="${VLLM_BASE_URL:-http://localhost:8000/v1}"
+LOG_DIR="${REPO:-/data/delta9043/repos/MemoryAgnostic}/logs"
 
+conda activate "$CONDA_ENV"
+
+echo "[run_experiment] Conda env: $CONDA_ENV"
 echo "[run_experiment] Config: $CONFIG"
 echo "[run_experiment] vLLM URL: $BASE_URL"
 
@@ -25,4 +29,10 @@ for i in $(seq 1 120); do
 done
 
 cd /data/delta9043/repos/MemoryAgnostic
-exec python main.py --config "$CONFIG"
+echo "[run_experiment] Starting python main.py..."
+echo "[run_experiment] Python log: ${LOG_DIR}/exp-${SLURM_JOB_ID}.out"
+
+PYTHONUNBUFFERED=1 python main.py --config "$CONFIG" \
+    > "${LOG_DIR}/output-${SLURM_JOB_ID}.out" 2>&1
+
+echo "[run_experiment] python main.py finished"

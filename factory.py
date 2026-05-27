@@ -57,14 +57,26 @@ def _build_module(module_cfg: dict):
     elif module_type == "FixedSizeChunker":
         from core.chunker.fixed_size import FixedSizeChunker
         return FixedSizeChunker(**kwargs)
-    
+
     elif module_type == "AttentionSimilarityChunker":
         from core.chunker.attention_similarity import AttentionSimilarityChunker
         return AttentionSimilarityChunker(**kwargs)
-    
+
+    elif module_type == "NoChunker":
+        from core.chunker.no_chunker import NoChunker
+        return NoChunker(**kwargs)
+
     elif module_type == "SimpleMemBackend":
         from core.memory.simplemem_backend import SimpleMemBackend
         return SimpleMemBackend(**kwargs)
+
+    elif module_type == "AMemBackend":
+        from core.memory.amem_backend import AMemBackend
+        return AMemBackend(**kwargs)
+
+    elif module_type == "LLMFilter":
+        from core.filter.llm_filter import LLMFilter
+        return LLMFilter(**kwargs)
 
     else:
         raise ValueError(f"Unknown module type: {module_type}")

@@ -107,3 +107,17 @@ def load_locomo10_all(path: str) -> List[RawSample]:
             metadata={"dataset": "locomo10", "source_path": path, "sample_idx": idx},
         ))
     return samples
+
+def load_filtered_json(filtered_path: str, original_path: str, sample_idx: int = 0) -> RawSample:
+    """filtered turns + 원본 qa를 합쳐서 RawSample 반환."""
+    with open(filtered_path, encoding="utf-8") as f:
+        filtered_data = json.load(f)
+    
+    filtered = filtered_data[sample_idx]
+    sample_id = filtered["sample_id"]
+    turns = [Turn(**t) for t in filtered["turns"]]
+    
+    # qa는 원본에서 로드
+    original = load_locomo10(original_path, sample_idx=sample_idx)
+    
+    return RawSample(sample_id=sample_id, turns=turns, qa=original.qa)

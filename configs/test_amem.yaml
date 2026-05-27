@@ -1,0 +1,19 @@
+dataset:
+  name: locomo10
+  path: /data/delta9043/datasets/locomo/locomo10.json
+  sample_idx: 0
+
+pipeline:
+  pre_chunking:
+    - type: NoFilter
+    - type: NoCompressor
+  chunker:
+    type: NoChunker
+
+memory_backend:
+  type: AMemBackend
+  base_url: http://localhost:8000/v1
+  model: /data/delta9043/models/Qwen3-14B
+
+evaluation:
+  result_file: results/test_amem.json
