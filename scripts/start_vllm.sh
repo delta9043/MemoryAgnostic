@@ -24,4 +24,5 @@ exec python -m vllm.entrypoints.openai.api_server \
     --gpu-memory-utilization "$GPU_UTIL" \
     --served-model-name "$MODEL_PATH" \
     --trust-remote-code \
-    --generation-config vllm
+    --generation-config vllm \
+    --override-generation-config '{"enable_thinking": false}'

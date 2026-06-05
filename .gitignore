@@ -1,4 +1,12 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Runtime logs
 logs/
-lancedb_data/
-test/
 *.out
+
+# Database / runtime outputs
+lance_db/
+lancedb_data/
+debug_output/

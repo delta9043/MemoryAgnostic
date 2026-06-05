@@ -5,6 +5,7 @@
 #SBATCH --cpus-per-gpu=8
 #SBATCH --mem-per-gpu=32G
 #SBATCH --time=6-00:00:00
+#SBATCH --exclude=moana-r[1-5],moana-u[1-8]
 #SBATCH --output=/data/delta9043/repos/MemoryAgnostic/logs/slurm-%j.out
 
 echo "=============================="

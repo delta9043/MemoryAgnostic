@@ -1,0 +1,820 @@
+{
+  "sample_id": "conv-30",
+  "pipeline": [
+    "NoFilter",
+    "NoCompressor",
+    "NoChunker"
+  ],
+  "results": [
+    {
+      "idx": 0,
+      "question": "When Jon has lost his job as a banker?",
+      "answer_gt": "19 January, 2023",
+      "answer_pred": "20 January 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 1,
+      "question": "When Gina has lost her job at Door Dash?",
+      "answer_gt": "January, 2023",
+      "answer_pred": "20 January 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 2,
+      "question": "How do Jon and Gina both like to destress?",
+      "answer_gt": "by dancing",
+      "answer_pred": "Jon and Gina both use dance to destress.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 3,
+      "question": "What do Jon and Gina both have in common?",
+      "answer_gt": "They lost their jobs and decided to start their own businesses.",
+      "answer_pred": "Mutual support, shared business ventures, and dance-related interests",
+      "category": "single_hop"
+    },
+    {
+      "idx": 4,
+      "question": "Why did Jon decide to start his dance studio?",
+      "answer_gt": "He lost his job and decided to start his own business to share his passion.",
+      "answer_pred": "Losing his job motivated him to start his dance studio.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 5,
+      "question": "What Jon thinks the ideal dance studio should look like?",
+      "answer_gt": "By the water, with natural light and Marley flooring",
+      "answer_pred": "A space with natural light, Marley flooring, and inclusive for all ages and backgrounds to express themselves through dance.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 6,
+      "question": "When is Jon's group performing at a festival?",
+      "answer_gt": "February, 2023",
+      "answer_pred": "February 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 7,
+      "question": "When did Gina launch an ad campaign for her store?",
+      "answer_gt": "29 January, 2023",
+      "answer_pred": "29 January 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 8,
+      "question": "When was Jon in Paris?",
+      "answer_gt": "28 January 2023",
+      "answer_pred": "28 January 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 9,
+      "question": "Which city have both Jean and John visited?",
+      "answer_gt": "Rome",
+      "answer_pred": "Rome",
+      "category": "single_hop"
+    },
+    {
+      "idx": 10,
+      "question": "When did Gina team up with a local artist for some cool designs?",
+      "answer_gt": "February, 2023",
+      "answer_pred": "08 February 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 11,
+      "question": "When did Gina get her tattoo?",
+      "answer_gt": "A few years ago",
+      "answer_pred": "Several years ago (exact date unspecified)",
+      "category": "temporal"
+    },
+    {
+      "idx": 12,
+      "question": "When did Jon start to go to the gym?",
+      "answer_gt": "March, 2023",
+      "answer_pred": "16 March 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 13,
+      "question": "When did Gina open her online clothing store?",
+      "answer_gt": "16 March, 2023",
+      "answer_pred": "16 March 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 14,
+      "question": "When did Jon start expanding his studio's social media presence?",
+      "answer_gt": "April, 2023",
+      "answer_pred": "3 April 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 15,
+      "question": "When did Jon host a dance competition?",
+      "answer_gt": "May, 2023",
+      "answer_pred": "No specific date provided in the context.",
+      "category": "temporal"
+    },
+    {
+      "idx": 16,
+      "question": "When did Jon go to a fair to get more exposure for his dance studio?",
+      "answer_gt": "24 April, 2023",
+      "answer_pred": "25 April 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 17,
+      "question": "Why did Gina decide to start her own clothing store?",
+      "answer_gt": "She always loved fashion trends and finding unique pieces and she lost her job so decided it was time to start her own business.",
+      "answer_pred": "Gina started her clothing store due to her passion for fashion and dance, and after losing her job, she sought to create a unique business combining her interests.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 18,
+      "question": "Do Jon and Gina start businesses out of what they love?",
+      "answer_gt": "Yes",
+      "answer_pred": "Yes, Jon and Gina start businesses based on their passions.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 19,
+      "question": "When did Gina interview for a design internship?",
+      "answer_gt": "10 May, 2023",
+      "answer_pred": "11 May 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 20,
+      "question": "When did Gina get accepted for the design internship?",
+      "answer_gt": "27 May, 2023",
+      "answer_pred": "27 May 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 21,
+      "question": "When did Jon start reading \"The Lean Startup\"?",
+      "answer_gt": "May, 2023",
+      "answer_pred": "27 May 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 22,
+      "question": "When did Gina develop a video presentation to teach how to style her fashion pieces? ",
+      "answer_gt": "June, 2023",
+      "answer_pred": "13 June 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 23,
+      "question": "How did Gina promote her clothes store?",
+      "answer_gt": "worked with an artist to make unique fashion pieces, made limited-edition sweatshirts, got some new offers and promotions for online store, developed a video presentation showing how to style her pieces",
+      "answer_pred": "Launched an ad campaign on 29 January 2023",
+      "category": "single_hop"
+    },
+    {
+      "idx": 24,
+      "question": "Which events has Jon participated in to promote his business venture?",
+      "answer_gt": "fair, networking events, dance competition",
+      "answer_pred": "Networking events (21 June 2023), a business fair (25 April 2023), and an investor engagement event (21 July 2023).",
+      "category": "single_hop"
+    },
+    {
+      "idx": 25,
+      "question": "What does Jon's dance studio offer?",
+      "answer_gt": "one-on-one metoring and training to dancers,  workshops and classes to local schools and centers",
+      "answer_pred": "Dance classes, workshops, and one-on-one mentoring.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 26,
+      "question": "When did Jon receive mentorship to promote his venture?",
+      "answer_gt": "15 June, 2023",
+      "answer_pred": "15 June 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 27,
+      "question": "Did Jon and Gina both participate in dance competitions?",
+      "answer_gt": "Yes",
+      "answer_pred": "No, only Jon participated in dance competitions.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 28,
+      "question": "When was Jon in Rome?",
+      "answer_gt": "June 2023",
+      "answer_pred": "19 June 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 29,
+      "question": "Which cities has Jon visited?",
+      "answer_gt": "Paris, Rome",
+      "answer_pred": "Jon has visited Paris and Rome.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 30,
+      "question": "When Jon is planning to open his dance studio?",
+      "answer_gt": "20 June, 2023",
+      "answer_pred": "20 June 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 31,
+      "question": "How long did it take for Jon to open his studio?",
+      "answer_gt": "six months",
+      "answer_pred": "5 months",
+      "category": "single_hop"
+    },
+    {
+      "idx": 32,
+      "question": "When did Gina design a limited collection of hoodies?",
+      "answer_gt": "June 2023",
+      "answer_pred": "21 June 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 33,
+      "question": "When did Jon visit networking events for his store?",
+      "answer_gt": "20 June, 2023",
+      "answer_pred": "21 June 2023 and 21 July 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 34,
+      "question": "When did Gina start being recognized by fashion editors?",
+      "answer_gt": "July 2023",
+      "answer_pred": "09 July 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 35,
+      "question": "When did Jon start learning marketing and analytics tools?",
+      "answer_gt": "July, 2023",
+      "answer_pred": "09 July 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 36,
+      "question": "When did Jon and Gina decide to collaborate to create dance content?",
+      "answer_gt": "21 July 2023",
+      "answer_pred": "21 July 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 37,
+      "question": "When did Gina mention Shia Labeouf?",
+      "answer_gt": " 23 July, 2023",
+      "answer_pred": "23 July 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 38,
+      "question": "When did Gina go to a dance class with a group of friends?",
+      "answer_gt": "21 July 2023",
+      "answer_pred": "23 July 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 39,
+      "question": "What is Gina's favorite style of dance?",
+      "answer_gt": "Contemporary",
+      "answer_pred": "Not explicitly mentioned in the context",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 40,
+      "question": "What is Jon's favorite style of dance?",
+      "answer_gt": "Contemporary",
+      "answer_pred": "Contemporary dance",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 41,
+      "question": "What was Gina's favorite dancing memory?",
+      "answer_gt": "Winning first place at a regionals dance competition",
+      "answer_pred": "Winning first place at regionals for 'Finding Freedom' as a teenager",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 42,
+      "question": "What kind of dance piece did Gina's team perform to win first place?",
+      "answer_gt": "\"Finding Freedom\"",
+      "answer_pred": "A contemporary dance piece called 'Finding Freedom'",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 43,
+      "question": "What do the dancers in the photo represent?",
+      "answer_gt": "They are performing at the festival",
+      "answer_pred": "Jon's dance crew that won first place in a 2022 competition",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 44,
+      "question": "What does Gina say about the dancers in the photo?",
+      "answer_gt": "They look graceful",
+      "answer_pred": "There is no information provided about Gina's comments on dancers in a photo.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 45,
+      "question": "What is Jon's attitude towards being part of the dance festival?",
+      "answer_gt": "Glad",
+      "answer_pred": "Jon has a positive and dedicated attitude towards participating in the dance festival.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 46,
+      "question": "What kind of flooring is Jon looking for in his dance studio?",
+      "answer_gt": "Marley flooring",
+      "answer_pred": "Marley flooring",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 47,
+      "question": "What did Gina find for her clothing store on 1 February, 2023?",
+      "answer_gt": "The perfect spot for her store",
+      "answer_pred": "An appropriate location for her clothing store",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 48,
+      "question": "What did Gina design for her store?",
+      "answer_gt": "the space, furniture, and decor",
+      "answer_pred": "Gina designed cozy, inviting store interiors with specific furniture and decor, and created unique clothing items through collaborations.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 49,
+      "question": "What did Gina want her customers to feel in her store?",
+      "answer_gt": "cozy and comfortable",
+      "answer_pred": "Comfortable and inviting",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 50,
+      "question": "What did Jon say about Gina's progress with her store?",
+      "answer_gt": "hard work's paying off",
+      "answer_pred": "Jon affirmed his belief in Gina's store success.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 51,
+      "question": "What made Gina choose the furniture and decor for her store?",
+      "answer_gt": "personal style and customer comfort",
+      "answer_pred": "Aesthetics, comfort, style coherence, and customer comfort.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 52,
+      "question": "What did Jon say about creating a special experience for customers?",
+      "answer_gt": "It's the key to making them feel welcome and coming back",
+      "answer_pred": "Creating memorable customer experiences is essential for business success.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 53,
+      "question": "What did Gina say about creating an experience for her customers?",
+      "answer_gt": "making them want to come back",
+      "answer_pred": "Gina emphasized creating a comfortable, inviting environment and unique shopping experiences through hard work and design.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 54,
+      "question": "How is Gina's store doing?",
+      "answer_gt": "The store is doing great.",
+      "answer_pred": "Gina's store is growing with new promotions and customer engagement, despite challenges.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 55,
+      "question": "What does Gina's tattoo symbolize?",
+      "answer_gt": "Freedom and expressing herself through dance",
+      "answer_pred": "Freedom and self-expression",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 56,
+      "question": "What did Jon and Gina compare their entrepreneurial journeys to?",
+      "answer_gt": "dancing together and supporting each other",
+      "answer_pred": "No explicit comparison mentioned in the context.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 57,
+      "question": "What advice does Gina give to Jon about running a successful business?",
+      "answer_gt": "build relationships with customers, create a strong brand image, stay positive",
+      "answer_pred": "Resilience and focus are key for any entrepreneur; keep going.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 58,
+      "question": "Why did Jon shut down his bank account?",
+      "answer_gt": "for his business",
+      "answer_pred": "To support his business growth.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 59,
+      "question": "Why did Gina combine her clothing business with dance?",
+      "answer_gt": "she is passionate about dance and fashion",
+      "answer_pred": "To merge her passions for dance and fashion, showcase creativity, and offer dance-inspired clothing.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 60,
+      "question": "What does Jon's dance make him?",
+      "answer_gt": "happy",
+      "answer_pred": "An intrinsic part of Jon's identity and life purpose",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 61,
+      "question": "What did Gina receive from a dance contest?",
+      "answer_gt": "a trophy",
+      "answer_pred": "A trophy from winning first place in a regional contemporary dance competition called 'Finding Freedom'.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 62,
+      "question": "How does Gina stay confident in her business?",
+      "answer_gt": "By reminding herself of her successes and progress, having a support system, and focusing on why she started",
+      "answer_pred": "Gina stays confident by recalling past successes, relying on her support network, and focusing on her passion.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 63,
+      "question": "What kind of professional experience did Gina get accepted for on May 23, 2023?",
+      "answer_gt": "fashion internship",
+      "answer_pred": "Fashion internship",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 64,
+      "question": "Where is Gina's fashion internship?",
+      "answer_gt": "fashion department of an international company",
+      "answer_pred": "At an international company (location unspecified)",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 65,
+      "question": "What book is Jon currently reading?",
+      "answer_gt": "The Lean Startup",
+      "answer_pred": "'The Lean Startup'",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 66,
+      "question": "What is Jon offering to the dancers at his dance studio?",
+      "answer_gt": "One-on-one mentoring and training",
+      "answer_pred": "Dance classes, workshops, and one-on-one mentoring.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 67,
+      "question": "How does Jon use the clipboard with a notepad attached to it?",
+      "answer_gt": "To set goals, track achievements, and find areas for improvement",
+      "answer_pred": "The context does not mention Jon using a clipboard with a notepad.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 68,
+      "question": "What does Jon tell Gina he won't do?",
+      "answer_gt": "quit",
+      "answer_pred": "Jon tells Gina he won't quit on his dreams.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 69,
+      "question": "What did Jon take a trip to Rome for?",
+      "answer_gt": "To clear his mind",
+      "answer_pred": "To clear his mind and focus on his business",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 70,
+      "question": "What is Jon working on opening?",
+      "answer_gt": "a dance studio",
+      "answer_pred": "a dance studio",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 71,
+      "question": "How does Gina describe the studio that Jon has opened?",
+      "answer_gt": "amazing",
+      "answer_pred": "Gina describes the studio as amazing and expresses excitement for its launch.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 72,
+      "question": "How does Jon feel about the opening night of his dance studio?",
+      "answer_gt": "excited",
+      "answer_pred": "Jon feels excited and ready for the opening night of his dance studio.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 73,
+      "question": "How does Gina describe the feeling that dance brings?",
+      "answer_gt": "magical",
+      "answer_pred": "Stress relief and mental well-being",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 74,
+      "question": "What does Jon plan to do at the grand opening of his dance studio?",
+      "answer_gt": "savor all the good vibes",
+      "answer_pred": "Jon plans to create memorable experiences at the dance studio grand opening on 20 June 2023.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 75,
+      "question": "What does Gina say to Jon about the grand opening?",
+      "answer_gt": "Let's live it up and make some great memories",
+      "answer_pred": "Gina encourages Jon to enjoy the dance studio grand opening on 20 June 2023.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 76,
+      "question": "What is the general sentiment about the upcoming grand opening?",
+      "answer_gt": "excitement",
+      "answer_pred": "Positive anticipation for the grand opening",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 77,
+      "question": "What did Gina make a limited edition line of?",
+      "answer_gt": "Hoodies",
+      "answer_pred": "Hoodies",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 78,
+      "question": "According to Gina, what makes Jon a perfect mentor and guide?",
+      "answer_gt": "His positivity and determination",
+      "answer_pred": "Jon's mentoring program effectively helps dancers reach their goals.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 79,
+      "question": "What temporary job did Jon take to cover expenses?",
+      "answer_gt": "Not mentioned",
+      "answer_pred": "The context does not specify the temporary job Jon took.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 80,
+      "question": "What plans does Jon have after receiving advice at the networking event?",
+      "answer_gt": "Sprucing up his business plan, tweaking his pitch to investors, and working on an online platform.",
+      "answer_pred": "Refine business plan, improve investor pitch, and develop an online platform for the dance studio.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 81,
+      "question": "What offer does Gina make to Jon regarding social media?",
+      "answer_gt": "Helping with making content and managing his social media accounts.",
+      "answer_pred": "Gina offers to assist with content creation and social media management for Jon's dance studio.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 82,
+      "question": "What is Jon's favorite style of painting?",
+      "answer_gt": "Contemporary",
+      "answer_pred": "Not mentioned in the context",
+      "category": "adversarial"
+    },
+    {
+      "idx": 83,
+      "question": "What was Jon's favorite dancing memory?",
+      "answer_gt": "Winning first place at a regionals dance competition",
+      "answer_pred": "Winning first place in a 2022 local dance competition with his crew",
+      "category": "adversarial"
+    },
+    {
+      "idx": 84,
+      "question": "What kind of dance piece did Jon's team perform to win first place?",
+      "answer_gt": "\"Finding Freedom\"",
+      "answer_pred": "The dance piece is not specified in the context.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 85,
+      "question": "What is Gina's attitude towards participating in the dance festival?",
+      "answer_gt": "Glad",
+      "answer_pred": "Gina is positively engaged and participates in the dance festival.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 86,
+      "question": "What kind of flooring is Gina looking for in her dance studio?",
+      "answer_gt": "Marley flooring",
+      "answer_pred": "Marley flooring",
+      "category": "adversarial"
+    },
+    {
+      "idx": 87,
+      "question": "What did Jon find for his clothing store on 1 February, 2023?",
+      "answer_gt": "The perfect spot for her store",
+      "answer_pred": "No information provided",
+      "category": "adversarial"
+    },
+    {
+      "idx": 88,
+      "question": "What did Jon design for his store?",
+      "answer_gt": "the space, furniture, and decor",
+      "answer_pred": "No information provided about Jon's store design.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 89,
+      "question": "What did Jon want his customers to feel in her store?",
+      "answer_gt": "cozy and comfortable",
+      "answer_pred": "Comfortable, inviting, and memorable experiences",
+      "category": "adversarial"
+    },
+    {
+      "idx": 90,
+      "question": "What made Jon choose the furniture and decor for his store?",
+      "answer_gt": "personal style and customer comfort",
+      "answer_pred": "No information provided about Jon's furniture and decor choices for his store.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 91,
+      "question": "How is Jon's store doing?",
+      "answer_gt": "The store is doing great.",
+      "answer_pred": "Jon's dance studio is facing challenges but he remains determined and actively working on it.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 92,
+      "question": "What does Jon's tattoo symbolize?",
+      "answer_gt": "Freedom and expressing himself through dance",
+      "answer_pred": "No information provided about Jon's tattoo in the context.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 93,
+      "question": "Why did Gina shut down her bank account?",
+      "answer_gt": "for her business",
+      "answer_pred": "Not mentioned in the context",
+      "category": "adversarial"
+    },
+    {
+      "idx": 94,
+      "question": "Why did Jon combine his clothing business with dance?",
+      "answer_gt": "he is passionate about dance and fashion",
+      "answer_pred": "The context does not provide information on Jon combining a clothing business with dance.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 95,
+      "question": "What did Gina receive from a dance contest?",
+      "answer_gt": "a trophy",
+      "answer_pred": "A trophy from a regional dance competition",
+      "category": "adversarial"
+    },
+    {
+      "idx": 96,
+      "question": "What kind of professional experience did Jon get accepted for on May 23, 2023?",
+      "answer_gt": "fashion internship",
+      "answer_pred": "No professional experience acceptance for Jon on May 23, 2023.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 97,
+      "question": "Where is Gina's HR internship?",
+      "answer_gt": "fashion department of an international company",
+      "answer_pred": "Gina's fashion internship is at an international company's fashion department.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 98,
+      "question": "Where is Jon's fashion internship?",
+      "answer_gt": "fashion department of an international company",
+      "answer_pred": "No information provided about Jon's fashion internship.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 99,
+      "question": "What book is Gina currently reading?",
+      "answer_gt": "The Lean Startup",
+      "answer_pred": "There is no information provided about Gina's current reading.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 100,
+      "question": "How does Gina use the clipboard with a notepad attached to it?",
+      "answer_gt": "To set goals, track achievements, and find areas for improvement",
+      "answer_pred": "There is no information provided about Gina using a clipboard with a notepad.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 101,
+      "question": "What did Jon take a trip to Barcelona for?",
+      "answer_gt": "To clear his mind",
+      "answer_pred": "The provided context does not mention Jon's trip to Barcelona.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 102,
+      "question": "What did Jon make a limited edition line of?",
+      "answer_gt": "Hoodies",
+      "answer_pred": "Jon did not make a limited edition line.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 103,
+      "question": "What temporary job did Gina take to cover expenses?",
+      "answer_gt": "Not mentioned",
+      "answer_pred": "Gina took a temporary job by starting an online clothing store.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 104,
+      "question": "What plans does Gina have after receiving advice at the networking event?",
+      "answer_gt": "Sprucing up her business plan, tweaking her pitch to investors, and working on an online platform.",
+      "answer_pred": "No specific plans are mentioned for Gina after receiving advice at the networking event.",
+      "category": "adversarial"
+    }
+  ],
+  "metrics": {
+    "temporal": {
+      "count": 26,
+      "exact_match": 7.69,
+      "f1": 53.72,
+      "meteor": 39.53,
+      "rouge1_f": 78.72,
+      "rouge2_f": 69.87,
+      "rougeL_f": 78.72,
+      "bleu1": 49.91,
+      "bleu2": 27.79,
+      "bleu3": 21.9,
+      "bleu4": 16.54,
+      "bert_f1": 94.4
+    },
+    "overall": {
+      "count": 105,
+      "exact_match": 7.62,
+      "f1": 30.68,
+      "meteor": 25.13,
+      "rouge1_f": 41.58,
+      "rouge2_f": 28.01,
+      "rougeL_f": 39.86,
+      "bleu1": 27.55,
+      "bleu2": 16.66,
+      "bleu3": 11.51,
+      "bleu4": 8.33,
+      "bert_f1": 89.8
+    },
+    "multi_hop": {
+      "count": 44,
+      "exact_match": 9.09,
+      "f1": 28.28,
+      "meteor": 26.19,
+      "rouge1_f": 34.64,
+      "rouge2_f": 19.48,
+      "rougeL_f": 32.87,
+      "bleu1": 24.86,
+      "bleu2": 17.08,
+      "bleu3": 11.02,
+      "bleu4": 7.56,
+      "bert_f1": 89.04
+    },
+    "single_hop": {
+      "count": 11,
+      "exact_match": 9.09,
+      "f1": 22.33,
+      "meteor": 13.53,
+      "rouge1_f": 36.67,
+      "rouge2_f": 6.13,
+      "rougeL_f": 30.68,
+      "bleu1": 20.27,
+      "bleu2": 6.82,
+      "bleu3": 4.48,
+      "bleu4": 3.71,
+      "bert_f1": 88.92
+    },
+    "adversarial": {
+      "count": 24,
+      "exact_match": 4.17,
+      "f1": 13.96,
+      "meteor": 12.93,
+      "rouge1_f": 16.3,
+      "rouge2_f": 8.31,
+      "rougeL_f": 14.79,
+      "bleu1": 11.58,
+      "bleu2": 8.36,
+      "bleu3": 4.38,
+      "bleu4": 2.94,
+      "bert_f1": 86.61
+    }
+  },
+  "build_time": 570.7,
+  "qa_time": 9414.8,
+  "eval_time": 2.6
+}

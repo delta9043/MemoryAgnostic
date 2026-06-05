@@ -1,0 +1,1450 @@
+{
+  "sample_id": "conv-41",
+  "pipeline": [
+    "NoFilter",
+    "NoCompressor",
+    "NoChunker"
+  ],
+  "results": [
+    {
+      "idx": 0,
+      "question": "Who did Maria have dinner with on May 3, 2023?",
+      "answer_gt": "her mother",
+      "answer_pred": "No information available",
+      "category": "temporal"
+    },
+    {
+      "idx": 1,
+      "question": "When did Maria donate her car?",
+      "answer_gt": "21 December 2022",
+      "answer_pred": "22 December 2022",
+      "category": "temporal"
+    },
+    {
+      "idx": 2,
+      "question": "What martial arts has John done?",
+      "answer_gt": "Kickboxing, Taekwondo",
+      "answer_pred": "John has done kickboxing and taekwondo.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 3,
+      "question": "What type of volunteering have John and Maria both done?",
+      "answer_gt": "Volunteering at a homeless shelter",
+      "answer_pred": "Volunteering at homeless shelters",
+      "category": "single_hop"
+    },
+    {
+      "idx": 4,
+      "question": "When did John join the online support group?",
+      "answer_gt": "The week before 1 January 2023",
+      "answer_pred": "01 January 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 5,
+      "question": "When did Maria go to the beach?",
+      "answer_gt": "December 2022",
+      "answer_pred": "The context does not specify the exact date Maria went to the beach.",
+      "category": "temporal"
+    },
+    {
+      "idx": 6,
+      "question": "Where has Maria made friends?",
+      "answer_gt": "homeless shelter, gym, church",
+      "answer_pred": "Maria has made friends at church, the gym, and through community service.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 7,
+      "question": "What items des John mention having as a child?",
+      "answer_gt": "A doll, a film camera",
+      "answer_pred": "A comforting doll",
+      "category": "single_hop"
+    },
+    {
+      "idx": 8,
+      "question": "What might John's financial status be?",
+      "answer_gt": "Middle-class or wealthy",
+      "answer_pred": "John may be experiencing financial strain due to recent car issues.",
+      "category": "open_domain"
+    },
+    {
+      "idx": 9,
+      "question": "Who gave Maria's family money when she was younger and her family was going through tough times?",
+      "answer_gt": "Her aunt",
+      "answer_pred": "Not specified in the provided context",
+      "category": "single_hop"
+    },
+    {
+      "idx": 10,
+      "question": "When did Maria meet Jean?",
+      "answer_gt": "February 24, 2023",
+      "answer_pred": "25 February 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 11,
+      "question": "What people has Maria met and helped while volunteering?",
+      "answer_gt": "David, Jean, Cindy, Laura",
+      "answer_pred": "Maria met and helped an 8-year-old girl, David, and Cindy while volunteering.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 12,
+      "question": "What test has John taken multiple times?",
+      "answer_gt": "The military aptitude test",
+      "answer_pred": "Aptitude test",
+      "category": "single_hop"
+    },
+    {
+      "idx": 13,
+      "question": "When did Maria's grandmother pass away?",
+      "answer_gt": "The week before 6 March 2023",
+      "answer_pred": "06 March 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 14,
+      "question": "Would John be considered a patriotic person?",
+      "answer_gt": "Yes",
+      "answer_pred": "Yes, John is considered patriotic due to his military respect, veterans' support, and community/service-oriented political goals.",
+      "category": "open_domain"
+    },
+    {
+      "idx": 15,
+      "question": "What writing classes has Maria taken?",
+      "answer_gt": "Poetry, creative writing",
+      "answer_pred": "creative writing and poetry classes",
+      "category": "single_hop"
+    },
+    {
+      "idx": 16,
+      "question": "When did John get his degree?",
+      "answer_gt": "The week before 2 April 2023",
+      "answer_pred": "2 April 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 17,
+      "question": "What might John's degree be in?",
+      "answer_gt": "Political science, Public administration, Public affairs",
+      "answer_pred": "Not specified in the provided context",
+      "category": "open_domain"
+    },
+    {
+      "idx": 18,
+      "question": "Who did John go to yoga with?",
+      "answer_gt": "Rob",
+      "answer_pred": "John went to yoga with Rob.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 19,
+      "question": "What damages have happened to John's car?",
+      "answer_gt": "Broken windshield, Car broke down",
+      "answer_pred": "John's car broke down on 10 April 2023.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 20,
+      "question": "When did John take a road trip to the Pacific Northwest?",
+      "answer_gt": "2022",
+      "answer_pred": "10 April 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 21,
+      "question": "What areas of the U.S. has John been to or is planning to go to?",
+      "answer_gt": "Pacific northwest, east coast",
+      "answer_pred": "Pacific Northwest, California, and East Coast",
+      "category": "single_hop"
+    },
+    {
+      "idx": 22,
+      "question": "When did John go to a convention with colleagues?",
+      "answer_gt": "March 2023",
+      "answer_pred": "18 April 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 23,
+      "question": "What desserts has Maria made?",
+      "answer_gt": "Banana split sundae, Peach cobbler",
+      "answer_pred": "Maria has made cakes and peach cobbler.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 24,
+      "question": "When did John start boot camp with his family?",
+      "answer_gt": "April.2023",
+      "answer_pred": "April 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 25,
+      "question": "What European countries has Maria been to?",
+      "answer_gt": "Spain, England",
+      "answer_pred": "Spain and the United Kingdom",
+      "category": "single_hop"
+    },
+    {
+      "idx": 26,
+      "question": "What has Maria done to feel closer to her faith?",
+      "answer_gt": "Join a local church, buy a cross necklace",
+      "answer_pred": "Maria purchased a cross necklace to feel closer to her faith.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 27,
+      "question": "When did John have a party with veterans?",
+      "answer_gt": "The Friday before 20 May 2023",
+      "answer_pred": "15 May 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 28,
+      "question": "What causes does John feel passionate about supporting?",
+      "answer_gt": "Veterans, schools, infrastructure",
+      "answer_pred": "Supporting veterans' rights and community initiatives for veterans",
+      "category": "single_hop"
+    },
+    {
+      "idx": 29,
+      "question": "What events is Maria planning for the homeless shelter funraiser?",
+      "answer_gt": "Chili cook-off, ring-toss tournament",
+      "answer_pred": "Chili cook-off and ring-toss tournament",
+      "category": "single_hop"
+    },
+    {
+      "idx": 30,
+      "question": "What shelters does Maria volunteer at?",
+      "answer_gt": "The homeless shelter, the dog shelter",
+      "answer_pred": "Homeless shelters and a local dog shelter",
+      "category": "single_hop"
+    },
+    {
+      "idx": 31,
+      "question": "When did John get his dog Max?",
+      "answer_gt": "In 2013",
+      "answer_pred": "Not specified in the provided context",
+      "category": "temporal"
+    },
+    {
+      "idx": 32,
+      "question": "What outdoor activities has John done with his colleagues?",
+      "answer_gt": "Hiking, mountaineering",
+      "answer_pred": "John went mountaineering with his workmates on 12 June 2023.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 33,
+      "question": "What types of yoga has Maria practiced?",
+      "answer_gt": "Aerial, kundalini",
+      "answer_pred": "kundalini yoga and aerial yoga",
+      "category": "single_hop"
+    },
+    {
+      "idx": 34,
+      "question": "When did Maria join a gym?",
+      "answer_gt": "The week before 16 June 2023",
+      "answer_pred": "16 June 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 35,
+      "question": "What states has Maria vacationed at?",
+      "answer_gt": "Oregon, Florida",
+      "answer_pred": "Florida and Oregon",
+      "category": "single_hop"
+    },
+    {
+      "idx": 36,
+      "question": "What music events has John attended?",
+      "answer_gt": "Live music event, violin concert",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking about music events that John has attended. I need to look through the provided contexts to find any mentions of John attending music-related events.\n\nLooking through the contexts one by one. Context 1 is about a yoga studio, not music. Context 2 mentions a violin concert, but it's part of family activities planning, not John attending it. Context 3 is about a charity event for domestic abuse, not music. Context 4 is taekwondo practice. Context 5 and 6 are about veterans events, not music. Context 7 is a personal goal inquiry. Context 8 mentions boot camps. Context 9 is about castles in England. Context 10 is travel inquiry. Context 11 and 12 are about a homeless shelter fundraiser, which might have music, but the context doesn't specify. Context 13 is about a charity run for veterans. Context 14 is political engagement. Context 15 is volunteer opportunities. Context 16 is community service. Context 17 is family motivation. Context 18 is yoga instructor evaluation. Context 19 is community service experience. Context 20 is family activities. Context 21 is political engagement. Context 22 is road trip location. Context 23 is community center renovation. Context 24 is well-w",
+      "category": "single_hop"
+    },
+    {
+      "idx": 37,
+      "question": "What events for veterans has John participated in?",
+      "answer_gt": "Petition, march, party, visiting veterans hospital, 5K charity run",
+      "answer_pred": "John participated in a veterans' rights march (03 July 2023), organized a veterans charity run (09 August 2023), hosted a veterans' story-sharing party (15 May 2023), and initiated a virtual military advocacy group (03 August 2023).",
+      "category": "single_hop"
+    },
+    {
+      "idx": 38,
+      "question": "When did Maria get in a car accident?",
+      "answer_gt": "July 2, 2023",
+      "answer_pred": "Not specified in the context",
+      "category": "temporal"
+    },
+    {
+      "idx": 39,
+      "question": "Around which US holiday did Maria get into a car accident?",
+      "answer_gt": "Independence Day",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking around which US holiday Maria got into a car accident. I need to check the contexts provided.\n\nLooking through the contexts, Context 1 and 2 mention a car accident involving the shelter on 2023-07-03T20:43:00. But the date here is July 3rd, 2023. Now, US holidays... July 4th is Independence Day. But the accident was on July 3rd, which is the day before. However, sometimes events might be associated with the holiday even if they happen the day before. But the question is about the holiday itself. Wait, but maybe there's another context?\n\nLooking at other contexts, Context 56 mentions a veterans' rights march on July 3rd, but that's an event, not a holiday. Context 6 mentions a road trip in April, but that's not a holiday. Context 39 is about a car breakdown in April. Context 45 mentions an unexpected incident on January 9th, but that's not a holiday either. \n\nSo the only date related to an accident is July 3rd, 2023. The closest US holiday is Independence Day on July 4th. However, the accident happened on the 3rd, which isn't a holiday. The user might be thinking that the accident happened around the holiday, but the exact date isn't a holiday. Wait, maybe I'm",
+      "category": "open_domain"
+    },
+    {
+      "idx": 40,
+      "question": "What are the names of John's children?",
+      "answer_gt": "Kyle, Sara",
+      "answer_pred": "Kyle",
+      "category": "single_hop"
+    },
+    {
+      "idx": 41,
+      "question": "Does John live close to a beach or the mountains?",
+      "answer_gt": "beach",
+      "answer_pred": "No information provided about John's current residence proximity to a beach or mountains.",
+      "category": "open_domain"
+    },
+    {
+      "idx": 42,
+      "question": "What area was hit by a flood?",
+      "answer_gt": "West County",
+      "answer_pred": "John's area (location unspecified)",
+      "category": "single_hop"
+    },
+    {
+      "idx": 43,
+      "question": "When was John's old area hit with a flood?",
+      "answer_gt": "The week before 7 July 2023",
+      "answer_pred": "07 July 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 44,
+      "question": "What activities has Maria done with her church friends?",
+      "answer_gt": "Hiking, picnic, volunteer work",
+      "answer_pred": "Maria had a picnic with church friends playing charades and scavenger hunt, went hiking with them, and went camping with them.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 45,
+      "question": "Would John be open to moving to another country?",
+      "answer_gt": "No, he has goals specifically in the U.S. like joining the military and running for office.",
+      "answer_pred": "No information provided about John's openness to moving to another country.",
+      "category": "open_domain"
+    },
+    {
+      "idx": 46,
+      "question": "When did Maria go hiking with her church friends?",
+      "answer_gt": "The weekend before 22 July 2023",
+      "answer_pred": "22 July 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 47,
+      "question": "What exercises has John done?",
+      "answer_gt": "Weight training, Circuit training, Kickboxing, yoga",
+      "answer_pred": "John has done kickboxing, yoga, weight training, boot camps, taekwondo, and fire-fighting brigade training.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 48,
+      "question": "When did John have his first firefighter call-out?",
+      "answer_gt": "The sunday before 3` July 2023",
+      "answer_pred": "31 July 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 49,
+      "question": "What food item did Maria drop off at the homeless shelter?",
+      "answer_gt": "Cakes",
+      "answer_pred": "Baked goods",
+      "category": "single_hop"
+    },
+    {
+      "idx": 50,
+      "question": "What attributes describe John?",
+      "answer_gt": "Selfless, family-oriented, passionate, rational",
+      "answer_pred": "Passionate, motivated, community-oriented, adaptable, and determined",
+      "category": "open_domain"
+    },
+    {
+      "idx": 51,
+      "question": "When did Maria start volunteering at the homeless shelter?",
+      "answer_gt": "Around August 2022",
+      "answer_pred": "The exact start date is not specified in the provided contexts.",
+      "category": "temporal"
+    },
+    {
+      "idx": 52,
+      "question": "Who have written notes of gratitude to Maria?",
+      "answer_gt": "Cindy, Laura",
+      "answer_pred": "Cindy and Laura",
+      "category": "single_hop"
+    },
+    {
+      "idx": 53,
+      "question": "When did John help renovate his hometown community center?",
+      "answer_gt": "2022",
+      "answer_pred": "Last year (2022)",
+      "category": "temporal"
+    },
+    {
+      "idx": 54,
+      "question": "When did Maria take up community work with her church friends?",
+      "answer_gt": "August 4, 2023",
+      "answer_pred": "5 August 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 55,
+      "question": "When did Maria receive a medal from the homeless shelter?",
+      "answer_gt": "The week before 9 August 2023",
+      "answer_pred": "09 August 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 56,
+      "question": "When did John participate in a 5K charity run?",
+      "answer_gt": "first weekend of August 2023",
+      "answer_pred": "John did not participate in a 5K charity run; he organized one for veterans.",
+      "category": "temporal"
+    },
+    {
+      "idx": 57,
+      "question": "What causes has John done events for?",
+      "answer_gt": "Toy drive, Community food drive, veterans, domestic violence",
+      "answer_pred": "John has done events for domestic abuse, veterans, food drives, homeless shelters, community centers, fire stations, and military advocacy.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 58,
+      "question": "When did Maria get Coco?",
+      "answer_gt": "Two weeks before 11 August 2023",
+      "answer_pred": "11 August 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 59,
+      "question": "When did John go on a camping trip with Max?",
+      "answer_gt": "The summer of 2022",
+      "answer_pred": "11 August 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 60,
+      "question": "What are Maria's dogs' names?",
+      "answer_gt": "Coco, Shadow",
+      "answer_pred": "Coco and Shadow",
+      "category": "single_hop"
+    },
+    {
+      "idx": 61,
+      "question": "When did Maria adopt Shadow?",
+      "answer_gt": "The week before 13 August 2023",
+      "answer_pred": "13 August 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 62,
+      "question": "How many dogs has Maria adopted from the dog shelter she volunteers at?",
+      "answer_gt": "two",
+      "answer_pred": "Not specified in the context",
+      "category": "single_hop"
+    },
+    {
+      "idx": 63,
+      "question": "How many weeks passed between Maria adopting Coco and Shadow?",
+      "answer_gt": "two weeks",
+      "answer_pred": "0 weeks",
+      "category": "temporal"
+    },
+    {
+      "idx": 64,
+      "question": "What job might Maria pursue in the future?",
+      "answer_gt": "Shelter coordinator, Counselor",
+      "answer_pred": "Maria might pursue a job in the tech industry.",
+      "category": "open_domain"
+    },
+    {
+      "idx": 65,
+      "question": "What is John's main focus in local politics?",
+      "answer_gt": "Improving education and infrastructure",
+      "answer_pred": "Improving community education and infrastructure",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 66,
+      "question": "What sparked John's interest in improving education and infrastructure in the community?",
+      "answer_gt": "Seeing how lack of education and crumbling infrastructure affected his neighborhood while growing up.",
+      "answer_pred": "Observing their impact on his neighborhood during childhood",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 67,
+      "question": "How did the extra funding help the school shown in the photo shared by John?",
+      "answer_gt": "Enabled needed repairs and renovations, making the learning environment safer and more modern for students.",
+      "answer_pred": "Repairs and renovations improved the school's learning environment.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 68,
+      "question": "What type of workout class did Maria start doing in December 2023?",
+      "answer_gt": "aerial yoga",
+      "answer_pred": "No information provided",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 69,
+      "question": "What did Maria donate to a homeless shelter in December 2023?",
+      "answer_gt": "old car",
+      "answer_pred": "No donation information for December 2023 is provided in the context.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 70,
+      "question": "What kind of meal did John and his family make together in the photo shared by John?",
+      "answer_gt": "pizza",
+      "answer_pred": "Pizza",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 71,
+      "question": "What kind of online group did John join?",
+      "answer_gt": "service-focused online group",
+      "answer_pred": "A service-focused online group",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 72,
+      "question": "What kind of activities did John and his mates from the online group do as part of their service efforts?",
+      "answer_gt": "gave out food and supplies at a homeless shelter, organized a toy drive for kids in need",
+      "answer_pred": "Organized food drives, toy drives, and veterans' events; shared stories and advice in an online group.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 73,
+      "question": "Who inspired Maria to start volunteering?",
+      "answer_gt": "Her aunt",
+      "answer_pred": "Witnessing a family in need",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 74,
+      "question": "Why did Maria sit with the little girl at the shelter event in February 2023?",
+      "answer_gt": "The girl seemed sad and had no other family",
+      "answer_pred": "No specific information provided in the context about Maria sitting with a little girl at a February 2023 shelter event.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 75,
+      "question": "What did Jean go through before meeting Maria?",
+      "answer_gt": "divorce, job loss, homelessness",
+      "answer_pred": "Jean experienced divorce, job loss, and homelessness before meeting Maria.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 76,
+      "question": "Why did John decide to run for office again?",
+      "answer_gt": "saw the impact he could make in the community through politics",
+      "answer_pred": "To make a difference in his community",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 77,
+      "question": "What activity did John's colleague, Rob, invite him to?",
+      "answer_gt": "beginner's yoga class",
+      "answer_pred": "beginner's yoga class on 25 February 2023",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 78,
+      "question": "What is the name of John's one-year-old child?",
+      "answer_gt": "Kyle",
+      "answer_pred": "Kyle",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 79,
+      "question": "How often does John take his kids to the park?",
+      "answer_gt": "A few times a week",
+      "answer_pred": "Three times weekly",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 80,
+      "question": "What did Maria make for her home to remind her of a trip to England?",
+      "answer_gt": "painting of a castle on a hill",
+      "answer_pred": "A painting of English castles inspired by her trip to London",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 81,
+      "question": "Where did Maria get the idea for the castle shadow box in her home?",
+      "answer_gt": "England",
+      "answer_pred": "Maria got the idea from her trip to London.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 82,
+      "question": "What did John receive a certificate for?",
+      "answer_gt": "completion of a university degree",
+      "answer_pred": "There is no information in the context about John receiving a certificate.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 83,
+      "question": "What areas is John particularly interested in for policymaking?",
+      "answer_gt": "education and infrastructure",
+      "answer_pred": "Education and infrastructure",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 84,
+      "question": "What did Maria participate in last weekend before April 10, 2023?",
+      "answer_gt": "a 5K charity run",
+      "answer_pred": "Failed to generate answer",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 85,
+      "question": "What event did John volunteer at last weekend?",
+      "answer_gt": "career fair at a local school",
+      "answer_pred": "Mentoring at a local school",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 86,
+      "question": "What did John do that put a strain on his wallet?",
+      "answer_gt": "His car broke down",
+      "answer_pred": "John's car breakdown on 10 April 2023 caused financial strain.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 87,
+      "question": "Where did John explore on a road trip last year?",
+      "answer_gt": "Pacific Northwest",
+      "answer_pred": "No specific location mentioned for last year's road trip.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 88,
+      "question": "What topic has John been blogging about recently?",
+      "answer_gt": "politics and the government",
+      "answer_pred": "Education reform and infrastructure development",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 89,
+      "question": "Why did John start blogging about politics and policies?",
+      "answer_gt": "raise awareness and start conversations to create positive change",
+      "answer_pred": "To advocate for education reform and infrastructure development based on community needs and personal observations.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 90,
+      "question": "What was the focus of John's recent research and writing on his blog?",
+      "answer_gt": "education reform and infrastructure development",
+      "answer_pred": "Education reform and infrastructure development",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 91,
+      "question": "What did John attend with his colleagues in March 2023?",
+      "answer_gt": "a tech-for-good convention",
+      "answer_pred": "No event attendance with colleagues in March 2023 mentioned.",
+      "category": "temporal"
+    },
+    {
+      "idx": 92,
+      "question": "How often does John work out with his family?",
+      "answer_gt": "Three times a week",
+      "answer_pred": "Three times weekly",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 93,
+      "question": "How has John's fitness improved since starting boot camps with his family?",
+      "answer_gt": "More energy, gains in strength and endurance",
+      "answer_pred": "John has experienced increased energy, strength gains, and family motivation from boot camps.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 94,
+      "question": "What kind of food did Maria have on her dinner spread iwth her mother?",
+      "answer_gt": "Salads, sandwiches, homemade desserts",
+      "answer_pred": "Salads, sandwiches, and desserts",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 95,
+      "question": "What activity did Maria and her mom do together in May 2023?",
+      "answer_gt": "Made dinner together",
+      "answer_pred": "Prepared dinner together on 04 May 2023",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 96,
+      "question": "What did Maria do to feel closer to a community and her faith?",
+      "answer_gt": "joined a nearby church",
+      "answer_pred": "Volunteered at a homeless shelter, joined a local church, and purchased a cross necklace.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 97,
+      "question": "Why did Maria join a nearby church recently?",
+      "answer_gt": "to feel closer to a community and her faith",
+      "answer_pred": "06 May 2023 for community connection and spiritual fulfillment via charitable activities",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 98,
+      "question": "What did John host for the veterans in May 2023 as part of the project?",
+      "answer_gt": "a small party to share their stories",
+      "answer_pred": "A party where veterans shared personal stories and formed connections.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 99,
+      "question": "What did John and the veterans do during the small party?",
+      "answer_gt": "share stories and make connections",
+      "answer_pred": "Shared personal stories and formed connections.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 100,
+      "question": "What emotions did John feel during the small party with the veterans?",
+      "answer_gt": "heartwarming",
+      "answer_pred": "Emotions during the party are not specified in the context.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 101,
+      "question": "What event is Maria getting ready for at the shelter on May 25, 2023?",
+      "answer_gt": "fundraiser",
+      "answer_pred": "Homeless shelter fundraiser chili cook-off on 25 May 2023",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 102,
+      "question": "What does Maria need to spread the word about for the fundraiser for the volunteer shelter?",
+      "answer_gt": "chili cook-off",
+      "answer_pred": "The homeless shelter fundraiser chili cook-off event",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 103,
+      "question": "What was the name of the pet that John had to say goodbye to on 3 June, 2023?",
+      "answer_gt": "Max",
+      "answer_pred": "Max",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 104,
+      "question": "How long was Max a part of John's family?",
+      "answer_gt": "10 years",
+      "answer_pred": "10 years",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 105,
+      "question": "How does John plan to honor the memories of his beloved pet?",
+      "answer_gt": "By considering adopting a rescue dog",
+      "answer_pred": "John honors Max's memory by sharing photos and teaching his children about unconditional love and loyalty.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 106,
+      "question": "What important values does John want to teach his kids through adopting a rescue dog?",
+      "answer_gt": "Responsibility and compassion",
+      "answer_pred": "Responsibility, compassion, unconditional love, and loyalty",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 107,
+      "question": "What new activity did Maria start recently, as mentioned on 3 June, 2023?",
+      "answer_gt": "volunteering at a local dog shelter once a month",
+      "answer_pred": "No new activity mentioned on 3 June 2023",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 108,
+      "question": "What did Maria say it was like being at the waterfall in Oregon?",
+      "answer_gt": "Like being in a fairy tale",
+      "answer_pred": "Maria described it as breathtaking with a waterfall and bridge.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 109,
+      "question": "What does Maria say she feels when doing upside-down yoga poses?",
+      "answer_gt": "Free and light",
+      "answer_pred": "The context does not mention Maria's feelings about upside-down yoga poses.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 110,
+      "question": "What exciting news did Maria share on 16 June, 2023?",
+      "answer_gt": "joined a gym",
+      "answer_pred": "Maria joined a gym and started practicing kundalini yoga on 16 June 2023.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 111,
+      "question": "What yoga activity has Maria been trying to improve her strength and endurance?",
+      "answer_gt": "kundalini yoga",
+      "answer_pred": "kundalini yoga",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 112,
+      "question": "What did John recently get promoted to?",
+      "answer_gt": "assistant manager",
+      "answer_pred": "Assistant manager",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 113,
+      "question": "What was one of the biggest challenges John faced in his journey to becoming assistant manager?",
+      "answer_gt": "self-doubt",
+      "answer_pred": "Technical difficulties, workplace challenges, and self-doubt",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 114,
+      "question": "How does John describe the support he received during his journey to becoming assistant manager?",
+      "answer_gt": "having support at home and his own grit",
+      "answer_pred": "John described receiving support from his family and his own determination.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 115,
+      "question": "What kind of event did John and his family attend in June 2023?",
+      "answer_gt": "live music event",
+      "answer_pred": "A live music event on 27 June 2023",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 116,
+      "question": "Why did Maria need to help her cousin find a new place to live?",
+      "answer_gt": "Her cousin had to leave and find a new place in a hurry.",
+      "answer_pred": "Maria's cousin was in a stressful housing situation.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 117,
+      "question": "What event did John participate in to show support for veterans' rights?",
+      "answer_gt": "marching event",
+      "answer_pred": "Participated in a veterans' rights march on 03 July 2023",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 118,
+      "question": "What inspired John to join the marching event for veterans' rights?",
+      "answer_gt": "Respect for the military and the desire to show support",
+      "answer_pred": "Respect for the military and desire to show support through activism",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 119,
+      "question": "How often does John get to see sunsets like the one he shared with Maria?",
+      "answer_gt": "At least once a week",
+      "answer_pred": "At least once weekly",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 120,
+      "question": "What natural disaster affected John's old area on 7 July, 2023?",
+      "answer_gt": "Flood",
+      "answer_pred": "Flood on 7 July 2023",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 121,
+      "question": "How did the flood impact the homes in John's old area?",
+      "answer_gt": "Lots of homes were ruined.",
+      "answer_pred": "Flood damage linked to infrastructure deficiencies.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 122,
+      "question": "What motivated Maria and John to discuss potential solutions for their community on 7 July, 2023?",
+      "answer_gt": "Flood in John's old area",
+      "answer_pred": "Flood damage and infrastructure deficiencies",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 123,
+      "question": "What did Maria plan to do later on the evening of 7 July, 2023?",
+      "answer_gt": "have dinner with friends from the gym",
+      "answer_pred": "Have dinner with friends from the gym on 7 July 2023",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 124,
+      "question": "What kind of activities did Maria do at the picnic with her church friends?",
+      "answer_gt": "played games like charades and a scavenger hunt",
+      "answer_pred": "Maria played charades and a scavenger hunt at the picnic with her church friends.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 125,
+      "question": "What does John appreciate about the veteran's hospital visit?",
+      "answer_gt": "the resilience of the veterans and their inspiring stories",
+      "answer_pred": "The resilience of veterans and their service contributions.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 126,
+      "question": "What did John take away from visiting the veteran's hospital?",
+      "answer_gt": "appreciation for giving back",
+      "answer_pred": "Inspiration from veterans' resilience and heartfelt stories.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 127,
+      "question": "Why did John feel inspired to join the military after the visit to the hospital?",
+      "answer_gt": "seeing the resilience of the veterans",
+      "answer_pred": "John was inspired by meeting veterans and their stories of resilience during his hospital visit.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 128,
+      "question": "In what activity did Maria and her church friends participate in July 2023?",
+      "answer_gt": "hiking",
+      "answer_pred": "Maria and her church friends had a picnic with charades and a scavenger hunt on 17 July 2023 and went hiking on 22 July 2023.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 129,
+      "question": "What does John think about trying new classes at the yoga studio?",
+      "answer_gt": "Trying new classes is a fun way to switch up the exercise routine.",
+      "answer_pred": "John thinks trying new classes is valuable for personal growth and exploration.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 130,
+      "question": "Which activity has John done apart from yoga at the studio?",
+      "answer_gt": "weight training",
+      "answer_pred": "Weight training",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 131,
+      "question": "What community service did Maria mention that she was involved in on 31 July, 2023?",
+      "answer_gt": "volunteered at a homeless shelter",
+      "answer_pred": "Delivered baked goods to a homeless shelter",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 132,
+      "question": "How did Maria start volunteering at the homeless shelter?",
+      "answer_gt": "Witnessed a family struggling on the streets and reached out to the shelter",
+      "answer_pred": "Maria started volunteering after witnessing a family in need.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 133,
+      "question": "What did John do the week before August 3, 2023 involving his kids?",
+      "answer_gt": "Had a meaningful experience at a military memorial",
+      "answer_pred": "No specific activities involving John's kids are mentioned for the week before August 3, 2023.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 134,
+      "question": "How did John describe his kids' reaction at the military memorial?",
+      "answer_gt": "awestruck and humbled",
+      "answer_pred": "John described his kids as awestruck and humbled.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 135,
+      "question": "Why does Maria think it's important for younger generations to visit military memorials?",
+      "answer_gt": "To remember and appreciate those who served",
+      "answer_pred": "To evoke humility and teach younger generations about veterans' sacrifices.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 136,
+      "question": "What does John believe is important for children regarding veterans?",
+      "answer_gt": "Teaching them to respect and appreciate those who served",
+      "answer_pred": "Teaching children about veterans is important.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 137,
+      "question": "What happened to John's job in August 2023?",
+      "answer_gt": "John lost his job at the mechanical engineering company.",
+      "answer_pred": "John lost his job at a mechanical engineering company in August 2023 and secured a tech industry position.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 138,
+      "question": "What activity did Maria take up with her friends from church in August 2023?",
+      "answer_gt": "community work",
+      "answer_pred": "Community service participation",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 139,
+      "question": "What did John do to help his community last year in his hometown?",
+      "answer_gt": "Helped renovate a rundown community center.",
+      "answer_pred": "Volunteered to renovate a community center in his hometown last year.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 140,
+      "question": "What cause did the 5K charity run organized by John support?",
+      "answer_gt": "veterans and their families",
+      "answer_pred": "Supporting veterans and their families",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 141,
+      "question": "Who did John work with to raise awareness and funds for victims of domestic abuse?",
+      "answer_gt": "a local organization",
+      "answer_pred": "<think>\nOkay, let's tackle this question. The user is asking who John worked with to raise awareness and funds for victims of domestic abuse.\n\nLooking at the context, I need to find mentions of John collaborating with someone on this specific cause. Let's scan through the contexts.\n\nContext 1 mentions John organizing an event through a local organization, but doesn't name a person. Context 3 says Maria praised John's efforts in raising awareness and funds for domestic abuse. Context 5 mentions Maria encouraging community efforts related to domestic abuse. Context 30 and 31 talk about Maria asking John to help recruit volunteers for a homeless shelter fundraiser, but that's about homeless shelters, not domestic abuse. \n\nWait, Context 3 says Maria praised John's efforts in raising awareness and funds for domestic abuse. But does that mean she worked with him? The context says Maria expressed concern and praised John's efforts. However, the user is asking who John worked with. So maybe Maria is the one he worked with? But the contexts don't explicitly state that they collaborated on that specific event. Context 1 mentions a local organization, but no specific person. \n\nWait, Context 3 says Maria praised John's efforts, but it's possible that Maria was part of the local organization mentioned in Context 1. However, the contexts don't explicitly state that Maria was involved in that event. The only direct mention of working together is in Context 30 and 31 where they worked on a homeless shelter fundraiser, but that's a different cause. \n\nHmm, maybe the answer is the local organization mentioned in Context 1. But the user is asking for who, not what organization. Since the contexts don't name a specific person other than Maria praising him, but not necessarily working with him. However, Context 3 says Maria praised John's efforts, which might imply collaboration. But the question is about who he worked with. If the answer isn't explicitly stated, maybe the answer is that he worked with a local organization, but the user might be expecting Maria. However, the contexts don't explicitly state that Maria was his collaborator for that specific event. \n\nWait, Context 1 says John organized the event through a local organization. The answer might be the local organization, but the user is asking for who, not what. Since the contexts don't mention a specific person, maybe the answer is that he worked with a local organization, but the user might be expecting Maria. However, without explicit mention of collaboration, it's safer to go with the local organization. But the user's question is about who, not what. Maybe the answer is Maria, but the contexts don't confirm that. \n\nAlternatively, maybe the answer is that John worked with Maria, as she praised his efforts, but that's not necessarily working together. The answer might be that the context doesn't specify a person, but the user's question requires an answer. Given that Context 1 mentions a local organization, and the user is asking for who, perhaps the answer is the local organization. However, the user might be expecting Maria. But since the contexts don't explicitly state that Maria was involved in that event, the safest answer is the local organization. But the user's question is about who, not what. Maybe the answer is that the context doesn't specify a person, but the user expects an answer. \n\nWait, looking again, Context 3 says Maria praised John's efforts in raising awareness and funds for domestic abuse. That might imply that Maria was involved, but it's not clear. However, the answer might be Maria. But the contexts don't explicitly state that they worked together on that specific cause. \n\nAlternatively, maybe the answer is that John worked with a local organization, as per Context 1. But the user is asking for who, not what. Since the contexts don't mention a specific person, perhaps the answer is that the information isn't provided. But the user expects an answer. \n\nHmm, this is tricky. The most direct answer based on the context is that John worked with a local organization, as mentioned in Context 1. However, the user might be expecting Maria. But without explicit mention of collaboration, the answer should be the local organization. But the user's question",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 142,
+      "question": "What recognition did Maria receive at the homeless shelter in August 2023?",
+      "answer_gt": "a medal for volunteering",
+      "answer_pred": "Received a medal for volunteering on 09 August 2023",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 143,
+      "question": "What is the name of Maria's puppy she got two weeks before August 11, 2023?",
+      "answer_gt": "Coco",
+      "answer_pred": "Coco",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 144,
+      "question": "What activity did John and Max enjoy together last summer?",
+      "answer_gt": "Camping",
+      "answer_pred": "Camping trip involving hiking and swimming",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 145,
+      "question": "How does John describe the camping trip with Max?",
+      "answer_gt": "Peaceful and awesome",
+      "answer_pred": "John describes the camping trip with Max as involving hiking, swimming, and creating memories.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 146,
+      "question": "Why does John say he feels stuck and questioning his decisions and goals?",
+      "answer_gt": "Not feeling like making much of an impact",
+      "answer_pred": "Job loss, career obstacles, and self-doubt led to uncertainty about his impact and decisions.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 147,
+      "question": "What is the name of Maria's second puppy?",
+      "answer_gt": "Shadow",
+      "answer_pred": "Shadow",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 148,
+      "question": "How is Maria's new puppy adjusting to its new home?",
+      "answer_gt": "doing great - learning commands and house training",
+      "answer_pred": "Maria's new puppy is adjusting well, learning commands, and thriving with house training and compatibility with Coco.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 149,
+      "question": "What is John currently doing as a volunteer in August 2023?",
+      "answer_gt": "mentoring students at a local school",
+      "answer_pred": "Volunteering as a mentor at a local school",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 150,
+      "question": "What activities does John's family enjoy doing together?",
+      "answer_gt": "going for hikes, hanging out at the park, having picnics, playing board games, having movie nights",
+      "answer_pred": "John's family enjoys walks, picnics, hiking, playground activities, board games, movie nights, live music events, pizza-making, beach vacations, camping, and shared meals.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 151,
+      "question": "What did the donations help John's community acquire on 16 August, 2023?",
+      "answer_gt": "a brand new fire truck",
+      "answer_pred": "a new fire truck",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 152,
+      "question": "What is John's main focus in international politics?",
+      "answer_gt": "Improving education and infrastructure",
+      "answer_pred": "John's main focus is on local community issues such as education and infrastructure.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 153,
+      "question": "What did Maria donate to a luxury store in December 2023?",
+      "answer_gt": "old car",
+      "answer_pred": "No information provided",
+      "category": "adversarial"
+    },
+    {
+      "idx": 154,
+      "question": "Who inspired John to start volunteering?",
+      "answer_gt": "His aunt",
+      "answer_pred": "Maria inspired John to start volunteering.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 155,
+      "question": "Why did Maria decide to run for office again?",
+      "answer_gt": "saw the impact she could make in the community through politics",
+      "answer_pred": "Maria did not decide to run for office again; the context only mentions John's political campaign.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 156,
+      "question": "What activity did Maria's colleague, Rob, invite her to?",
+      "answer_gt": "beginner's yoga class",
+      "answer_pred": "No information provided about Rob inviting Maria to an activity.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 157,
+      "question": "What is the name of Maria's one-year-old child?",
+      "answer_gt": "Kyle",
+      "answer_pred": "Not mentioned in the context",
+      "category": "adversarial"
+    },
+    {
+      "idx": 158,
+      "question": "How often does John take his kids to the library?",
+      "answer_gt": "A few times a week",
+      "answer_pred": "Not mentioned in the provided contexts",
+      "category": "adversarial"
+    },
+    {
+      "idx": 159,
+      "question": "What did Maria make for her home to remind her of a trip to France?",
+      "answer_gt": "painting of a castle on a hill",
+      "answer_pred": "No information provided about Maria making something for a trip to France.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 160,
+      "question": "Where did John get the idea for the castle shadow box in his home?",
+      "answer_gt": "England",
+      "answer_pred": "Maria's trip to London inspired the idea.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 161,
+      "question": "What did Maria receive a certificate for?",
+      "answer_gt": "completion of a university degree",
+      "answer_pred": "No certificate information provided",
+      "category": "adversarial"
+    },
+    {
+      "idx": 162,
+      "question": "What areas is John particularly interested in for art appreciation?",
+      "answer_gt": "education and infrastructure",
+      "answer_pred": "No information provided on John's art appreciation interests.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 163,
+      "question": "Why did Maria start blogging about politics and policies?",
+      "answer_gt": "raise awareness and start conversations to create positive change",
+      "answer_pred": "Not mentioned in the context",
+      "category": "adversarial"
+    },
+    {
+      "idx": 164,
+      "question": "What was the focus of John's recent travel and photography blog?",
+      "answer_gt": "education reform and infrastructure development",
+      "answer_pred": "No information provided about a travel and photography blog.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 165,
+      "question": "How often does Maria work out with her family?",
+      "answer_gt": "Three times a week",
+      "answer_pred": "Not specified in the context",
+      "category": "adversarial"
+    },
+    {
+      "idx": 166,
+      "question": "How has John's artistic skills improved since starting boot camps with his family?",
+      "answer_gt": "More energy, gains in strength and endurance",
+      "answer_pred": "No improvement in artistic skills mentioned; boot camps focused on fitness and family bonding.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 167,
+      "question": "What kind of food did Maria have on her dinner spread with her father?",
+      "answer_gt": "Salads, sandwiches, homemade desserts",
+      "answer_pred": "Not specified in the provided context",
+      "category": "adversarial"
+    },
+    {
+      "idx": 168,
+      "question": "What did John do to feel closer to a community and his faith?",
+      "answer_gt": "joined a nearby church",
+      "answer_pred": "John joined a fire-fighting brigade to contribute to his community.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 169,
+      "question": "Why did John join a nearby church recently?",
+      "answer_gt": "to feel closer to a community and her faith",
+      "answer_pred": "Not mentioned in the provided context",
+      "category": "adversarial"
+    },
+    {
+      "idx": 170,
+      "question": "How long was Max a part of Maria's family?",
+      "answer_gt": "10 years",
+      "answer_pred": "Max was not part of Maria's family.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 171,
+      "question": "How does Maria plan to honor the memories of her beloved pet?",
+      "answer_gt": "By considering adopting a rescue dog",
+      "answer_pred": "There is no information provided about Maria's specific plans to honor her pet's memory.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 172,
+      "question": "What important values does Maria want to teach her kids through adopting a rescue dog?",
+      "answer_gt": "Responsibility and compassion",
+      "answer_pred": "Responsibility and compassion",
+      "category": "adversarial"
+    },
+    {
+      "idx": 173,
+      "question": "What did Maria say it was like being at the desert in Oregon?",
+      "answer_gt": "Like being in a fairy tale",
+      "answer_pred": "No mention of Maria describing a desert in Oregon in the provided context.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 174,
+      "question": "What does John say she feels when doing upside-down yoga poses?",
+      "answer_gt": "Free and light",
+      "answer_pred": "No information provided",
+      "category": "adversarial"
+    },
+    {
+      "idx": 175,
+      "question": "What did Maria recently get promoted to?",
+      "answer_gt": "assistant manager",
+      "answer_pred": "Not mentioned in the provided contexts",
+      "category": "adversarial"
+    },
+    {
+      "idx": 176,
+      "question": "What was one of the biggest challenges Maria faced in her journey to becoming assistant manager?",
+      "answer_gt": "self-doubt",
+      "answer_pred": "Personal challenges and reliance on family support",
+      "category": "adversarial"
+    },
+    {
+      "idx": 177,
+      "question": "Why did John need to help his cousin find a new place to live?",
+      "answer_gt": "His cousin had to leave and find a new place in a hurry.",
+      "answer_pred": "John needed to help Maria's cousin find a new place due to their stressful housing situation.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 178,
+      "question": "What event did Maria participate in to show support for veterans' rights?",
+      "answer_gt": "marching event",
+      "answer_pred": "Maria did not participate in a veterans' rights event based on the provided context.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 179,
+      "question": "How did the drought impact the homes in John's old area?",
+      "answer_gt": "Lots of homes were ruined.",
+      "answer_pred": "No information provided about drought impacts on homes in John's old area.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 180,
+      "question": "What does John criticize about the veteran's hospital visit?",
+      "answer_gt": "the resilience of the veterans and their inspiring stories",
+      "answer_pred": "No criticism is mentioned in the context.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 181,
+      "question": "What did John take away from visiting the orphanage?",
+      "answer_gt": "appreciation for giving back",
+      "answer_pred": "No information provided about John visiting an orphanage.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 182,
+      "question": "Why did Maria feel inspired to join the military after the visit to the hospital?",
+      "answer_gt": "seeing the resilience of the veterans",
+      "answer_pred": "There is no information indicating Maria joined the military or was inspired to do so by a hospital visit.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 183,
+      "question": "How did Maria describe her kids' reaction at the military memorial?",
+      "answer_gt": "awestruck and humbled",
+      "answer_pred": "No information provided about Maria's kids' reactions.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 184,
+      "question": "Why does Maria think it's important for younger generations to visit art galleries?",
+      "answer_gt": "To remember and appreciate those who served",
+      "answer_pred": "Not mentioned in the provided contexts.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 185,
+      "question": "What happened to Maria's job in August 2023?",
+      "answer_gt": "John lost his job at the mechanical engineering company.",
+      "answer_pred": "No information about Maria's job change in August 2023.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 186,
+      "question": "What cause did the 5K charity run organized by Maria support?",
+      "answer_gt": "veterans and their families",
+      "answer_pred": "Supporting veterans and their families",
+      "category": "adversarial"
+    },
+    {
+      "idx": 187,
+      "question": "Who did John work with to raise awareness and funds for animal welfare?",
+      "answer_gt": "a local organization",
+      "answer_pred": "No information provided",
+      "category": "adversarial"
+    },
+    {
+      "idx": 188,
+      "question": "What recognition did John receive at the homeless shelter in August 2023?",
+      "answer_gt": "a medal for volunteering",
+      "answer_pred": "Praised for community service efforts on 16 August 2023",
+      "category": "adversarial"
+    },
+    {
+      "idx": 189,
+      "question": "What is the name of John's puppy he got two weeks before August 11, 2023?",
+      "answer_gt": "Coco",
+      "answer_pred": "No information provided",
+      "category": "adversarial"
+    },
+    {
+      "idx": 190,
+      "question": "How does Maria describe the camping trip with Max?",
+      "answer_gt": "Peaceful and awesome",
+      "answer_pred": "Maria did not describe a camping trip with Max in the provided context.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 191,
+      "question": "What is the name of Maria's second kitten?",
+      "answer_gt": "Shadow",
+      "answer_pred": "No information about Maria's kittens is provided in the context.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 192,
+      "question": "How is John's new puppy adjusting to its new home?",
+      "answer_gt": "doing great - learning commands and house training",
+      "answer_pred": "There is no information about John's new puppy in the provided context.",
+      "category": "adversarial"
+    }
+  ],
+  "metrics": {
+    "temporal": {
+      "count": 27,
+      "exact_match": 0.0,
+      "f1": 33.89,
+      "meteor": 24.24,
+      "rouge1_f": 39.44,
+      "rouge2_f": 22.49,
+      "rougeL_f": 39.44,
+      "bleu1": 23.37,
+      "bleu2": 16.54,
+      "bleu3": 12.98,
+      "bleu4": 8.81,
+      "bert_f1": 89.44
+    },
+    "overall": {
+      "count": 193,
+      "exact_match": 6.22,
+      "f1": 29.13,
+      "meteor": 26.89,
+      "rouge1_f": 34.36,
+      "rouge2_f": 17.24,
+      "rougeL_f": 32.87,
+      "bleu1": 24.03,
+      "bleu2": 16.65,
+      "bleu3": 12.12,
+      "bleu4": 8.86,
+      "bert_f1": 88.35
+    },
+    "single_hop": {
+      "count": 31,
+      "exact_match": 0.0,
+      "f1": 24.54,
+      "meteor": 22.63,
+      "rouge1_f": 41.98,
+      "rouge2_f": 13.29,
+      "rougeL_f": 36.83,
+      "bleu1": 19.33,
+      "bleu2": 11.87,
+      "bleu3": 6.71,
+      "bleu4": 4.95,
+      "bert_f1": 87.64
+    },
+    "open_domain": {
+      "count": 8,
+      "exact_match": 0.0,
+      "f1": 4.52,
+      "meteor": 5.75,
+      "rouge1_f": 9.09,
+      "rouge2_f": 0.11,
+      "rougeL_f": 7.01,
+      "bleu1": 3.16,
+      "bleu2": 1.12,
+      "bleu3": 0.81,
+      "bleu4": 0.73,
+      "bert_f1": 83.63
+    },
+    "multi_hop": {
+      "count": 86,
+      "exact_match": 12.79,
+      "f1": 40.52,
+      "meteor": 39.2,
+      "rouge1_f": 43.66,
+      "rouge2_f": 23.96,
+      "rougeL_f": 42.55,
+      "bleu1": 35.12,
+      "bleu2": 24.71,
+      "bleu3": 17.95,
+      "bleu4": 13.32,
+      "bert_f1": 90.12
+    },
+    "adversarial": {
+      "count": 41,
+      "exact_match": 2.44,
+      "f1": 10.39,
+      "meteor": 10.16,
+      "rouge1_f": 10.69,
+      "rouge2_f": 6.04,
+      "rougeL_f": 10.27,
+      "bleu1": 8.83,
+      "bleu2": 6.45,
+      "bleu3": 5.62,
+      "bleu4": 4.1,
+      "bert_f1": 85.38
+    }
+  },
+  "build_time": 409.2,
+  "qa_time": 17666.4,
+  "eval_time": 3.4
+}

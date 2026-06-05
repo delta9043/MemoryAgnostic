@@ -1,0 +1,1471 @@
+{
+  "sample_id": "conv-49",
+  "pipeline": [
+    "NoFilter",
+    "NoCompressor",
+    "NoChunker"
+  ],
+  "results": [
+    {
+      "idx": 0,
+      "question": "What kind of car does Evan drive?",
+      "answer_gt": "Prius",
+      "answer_pred": "Toyota Prius",
+      "category": "single_hop"
+    },
+    {
+      "idx": 1,
+      "question": "What kinds of things did Evan have broken?",
+      "answer_gt": "His old Prius and his new Prius.",
+      "answer_pred": "Evan had his Toyota Prius vehicle break down.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 2,
+      "question": "Where has Evan been on roadtrips with his family?",
+      "answer_gt": "Rockies, Jasper",
+      "answer_pred": "Evan has been to the Rockies and Jasper with his family on road trips.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 3,
+      "question": "How many Prius has Evan owned?",
+      "answer_gt": "two",
+      "answer_pred": "Evan has owned 2 Prius vehicles.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 4,
+      "question": "Which hobby did Sam take up in May 2023?",
+      "answer_gt": "painting",
+      "answer_pred": "Painting",
+      "category": "temporal"
+    },
+    {
+      "idx": 5,
+      "question": "Which country was Evan visiting in May 2023?",
+      "answer_gt": "Canada",
+      "answer_pred": "Canada",
+      "category": "open_domain"
+    },
+    {
+      "idx": 6,
+      "question": "How many roadtrips did Evan take in May 2023?",
+      "answer_gt": "two",
+      "answer_pred": "1",
+      "category": "single_hop"
+    },
+    {
+      "idx": 7,
+      "question": "What new hobbies did Sam consider trying?",
+      "answer_gt": "Painting, kayaking, hiking, cooking, running",
+      "answer_pred": "Sam considered trying painting and kayaking.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 8,
+      "question": "What hobby did Evan start practicing a few years ago that he enjoys?",
+      "answer_gt": "Watercolor painting",
+      "answer_pred": "Watercolor painting",
+      "category": "single_hop"
+    },
+    {
+      "idx": 9,
+      "question": "When did Evan go to Jasper with his family?",
+      "answer_gt": "weekend before May 24, 2023",
+      "answer_pred": "24 May 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 10,
+      "question": "Which type of vacation would Evan prefer with his family, walking tours in metropolitan cities or camping trip in the outdoors?",
+      "answer_gt": "camping trip in the outdoors",
+      "answer_pred": "Camping trip in the outdoors",
+      "category": "open_domain"
+    },
+    {
+      "idx": 11,
+      "question": "What health issue did Sam face that motivated him to change his lifestyle?",
+      "answer_gt": "Weight problem",
+      "answer_pred": "A medical diagnosis indicating weight posed a serious health risk",
+      "category": "single_hop"
+    },
+    {
+      "idx": 12,
+      "question": "When did Sam first go to the doctor and find out he had a weight problem?",
+      "answer_gt": "A few days before May 24, 2023.",
+      "answer_pred": "24 May 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 13,
+      "question": "When did Evan have his sudden heart palpitation incident that really shocked him up?",
+      "answer_gt": "first week of June 2023",
+      "answer_pred": "6 June 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 14,
+      "question": "What is Evan's favorite food?",
+      "answer_gt": "Ginger snaps",
+      "answer_pred": "Energy balls",
+      "category": "single_hop"
+    },
+    {
+      "idx": 15,
+      "question": "What kind of unhealthy snacks does Sam enjoy eating?",
+      "answer_gt": "soda, candy",
+      "answer_pred": "Soda and candy",
+      "category": "single_hop"
+    },
+    {
+      "idx": 16,
+      "question": "What recurring issue frustrates Sam at the grocery store?",
+      "answer_gt": "Malfunctioning self-checkout machines.",
+      "answer_pred": "Broken self-checkout machines at the grocery store",
+      "category": "single_hop"
+    },
+    {
+      "idx": 17,
+      "question": "When did Sam's friends mock him for being overweight?",
+      "answer_gt": "Friday before 27 July 2023",
+      "answer_pred": "27 July 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 18,
+      "question": "What kind of healthy food suggestions has Evan given to Sam?",
+      "answer_gt": "flavored seltzer water, dark chocolate with high cocoa content, air-popped popcorn and fruit, veggies, healthy sandwich snacks, energy balls, grilled chicken salad with avocado",
+      "answer_pred": "Flavored seltzer water, dark chocolate, air-popped popcorn, fruit, energy balls, and cookies.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 19,
+      "question": "Considering their conversations and personal growth, what advice might Evan and Sam give to someone facing a major life transition or challenge?",
+      "answer_gt": "Evan and Sam would likely advise embracing small, consistent changes​​, finding stress-relieving activities like hiking​​, painting, and road trips​​, and the importance of friendship and support in navigating challenges​​.",
+      "answer_pred": "Take small steps, celebrate progress, stay patient, lean on support systems, and focus on well-being over perfection.",
+      "category": "open_domain"
+    },
+    {
+      "idx": 20,
+      "question": "In light of the health and dietary changes discussed, what would be an appropriate gift for both Evan and Sam to encourage their healthy lifestyles?",
+      "answer_gt": "a cookbook with healthy recipes or a subscription to a healthy meal delivery service.",
+      "answer_pred": "Healthy snack recipe book",
+      "category": "open_domain"
+    },
+    {
+      "idx": 21,
+      "question": "How does Evan describe the woman and his feelings for her that he met in Canada?",
+      "answer_gt": "He says she's cool, incredible, like something out of a movie, and that he feels alive around her. Every moment with her is fun and energetic, also Evan feels really lucky to have someone who gets him.",
+      "answer_pred": "Evan describes her as incredible and energizing, making him feel alive, and believes in love at first sight.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 22,
+      "question": "When Evan did meet his future wife?",
+      "answer_gt": "week before August 7, 2023.",
+      "answer_pred": "7 August 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 23,
+      "question": "When did Sam start working out at the gym?",
+      "answer_gt": "July 28, 2023",
+      "answer_pred": "27 July 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 24,
+      "question": "What significant event happened in Sam's life towards the end of summer 2023?",
+      "answer_gt": "He fell in love with a Canadian woman",
+      "answer_pred": "Sam adopted a healthier lifestyle through diet and exercise on 19 August 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 25,
+      "question": "Which year did Evan start taking care of his health seriously?",
+      "answer_gt": "2021",
+      "answer_pred": "2021",
+      "category": "temporal"
+    },
+    {
+      "idx": 26,
+      "question": "What motivates Evan to take care of his health?",
+      "answer_gt": "family, fitness tracker, thirst for adventure on interesting hikes",
+      "answer_pred": "Evan is motivated by his health symbol representing strength and resilience, and using a tracking tool to monitor progress.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 27,
+      "question": "What electronic device could Evan gift Sam to help him keep up with his fitness goals?",
+      "answer_gt": "fitness tracker",
+      "answer_pred": "A health tracking device",
+      "category": "open_domain"
+    },
+    {
+      "idx": 28,
+      "question": "What kind of writing does Sam do to relax and cope with his health issues?",
+      "answer_gt": "journalling, creative writing",
+      "answer_pred": "journaling and creative writing",
+      "category": "single_hop"
+    },
+    {
+      "idx": 29,
+      "question": "Who did Evan meet on his trip to Canada, and who did he come back from Canada with?",
+      "answer_gt": "Evan met the woman he fell in love with and returned with her.",
+      "answer_pred": "Evan met his new significant other (a Canadian woman) and returned from Canada with her.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 30,
+      "question": "When Evan get back from a vacation with his SO?",
+      "answer_gt": "August 13, 2023",
+      "answer_pred": "No specific return date provided for Evan's vacation with his SO.",
+      "category": "temporal"
+    },
+    {
+      "idx": 31,
+      "question": "How might Evan and Sam's experiences with health and lifestyle changes influence their approach to stress and challenges?",
+      "answer_gt": "Their experiences likely lead them to view challenges as opportunities for growth and change. They both have embraced healthier lifestyles, indicating a proactive approach to managing stress and challenges.",
+      "answer_pred": "Evan and Sam use hobbies and gradual lifestyle changes, with mutual support, to manage stress and challenges.",
+      "category": "open_domain"
+    },
+    {
+      "idx": 32,
+      "question": "What recurring frustration does Evan experience?",
+      "answer_gt": "Evan consistently misplaces his keys every week.",
+      "answer_pred": "Evan experiences recurring frustration from frequently losing his keys.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 33,
+      "question": "What is the recurring dream that Sam keeps having?",
+      "answer_gt": "he's flying over a cityscape.",
+      "answer_pred": "Soaring over skyscrapers",
+      "category": "single_hop"
+    },
+    {
+      "idx": 34,
+      "question": "What accidents has Evan's son faced lately?",
+      "answer_gt": "injured at a soccer game, fell off his bike",
+      "answer_pred": "Evan's son faced a soccer-related ankle injury (15 August 2023) and a bicycle accident (17 December 2023).",
+      "category": "single_hop"
+    },
+    {
+      "idx": 35,
+      "question": "When was Evan's son injured at soccer?",
+      "answer_gt": "Saturday before August 15, 2023.",
+      "answer_pred": "15 August 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 36,
+      "question": "What kind of foods or recipes has Sam recommended to Evan?",
+      "answer_gt": "grilled vegetables, grilled chicken and veggie stir-fry, poutine",
+      "answer_pred": "Roasted vegetable recipe and grilled chicken and veggie stir-fry",
+      "category": "single_hop"
+    },
+    {
+      "idx": 37,
+      "question": "What kind of healthy meals did Sam start eating after getting a health scare?",
+      "answer_gt": "salad, grilled salmon and vegetables, grilled chicken and veggie stir-fry, Beef Merlot, fruit bowl, smoothie bowl",
+      "answer_pred": "Grilled chicken and vegetable stir-fry, salads, and cooking class meals",
+      "category": "single_hop"
+    },
+    {
+      "idx": 38,
+      "question": "What role does nature and the outdoors play in Evan and Sam's mental well-being?",
+      "answer_gt": "Nature and outdoor activities seem to be significant stress relievers and sources of joy for both Evan and Sam. These activities likely contribute positively to their mental well-being.",
+      "answer_pred": "Failed to generate answer",
+      "category": "open_domain"
+    },
+    {
+      "idx": 39,
+      "question": "How many months lapsed between Sam's first and second doctor's appointment?",
+      "answer_gt": "three months",
+      "answer_pred": "3 months",
+      "category": "temporal"
+    },
+    {
+      "idx": 40,
+      "question": "When did Evan start taking painting classes?",
+      "answer_gt": "Few days before 19 August, 2023.",
+      "answer_pred": "19 August 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 41,
+      "question": "Which classes did Evan join in mid-August 2023?",
+      "answer_gt": "painting classes",
+      "answer_pred": "Evan joined painting classes in mid-August 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 42,
+      "question": "How did Evan get into painting?",
+      "answer_gt": "His friend got him into it by gifting him a painting and giving him some advice. The painting inspired Evan.",
+      "answer_pred": "Evan got into painting after being introduced to it by a friend.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 43,
+      "question": "How often does Sam get health checkups?",
+      "answer_gt": "every three months",
+      "answer_pred": "No information provided",
+      "category": "open_domain"
+    },
+    {
+      "idx": 44,
+      "question": "What kind of subjects does Evan enjoy painting?",
+      "answer_gt": "nature landscapes, portraits, abstract minimalism",
+      "answer_pred": "Landscapes",
+      "category": "single_hop"
+    },
+    {
+      "idx": 45,
+      "question": "Which places in Canada was Evan visiting in July 2023?",
+      "answer_gt": "Banff, Rocky Mountains",
+      "answer_pred": "No places in Canada visited by Evan in July 2023 are mentioned.",
+      "category": "temporal"
+    },
+    {
+      "idx": 46,
+      "question": "How do Evan and Sam use creative outlets to cope with life's challenges?",
+      "answer_gt": "Evan and Sam use creative activities, like painting and writing, as therapeutic tools to express themselves and cope with stress.",
+      "answer_pred": "Failed to generate answer",
+      "category": "open_domain"
+    },
+    {
+      "idx": 47,
+      "question": "When did Evan go skiing in Banff?",
+      "answer_gt": "July 2023",
+      "answer_pred": "19 August 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 48,
+      "question": "What new diet and lifestyle change did Sam adopt over time?",
+      "answer_gt": "Healthy eating, exercise routine, running, hiking",
+      "answer_pred": "Sam adopted a healthier diet with meal planning and incorporated exercise like gym workouts and hiking.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 49,
+      "question": "Who was injured in Evan's family?",
+      "answer_gt": "Evan's son and Evan himself",
+      "answer_pred": "Evan's son and Evan",
+      "category": "single_hop"
+    },
+    {
+      "idx": 50,
+      "question": "What kind of hobbies does Evan pursue?",
+      "answer_gt": "painting, hiking, reading books, biking, skiing, snowboarding, ice skating, swimming, camping, kayaking",
+      "answer_pred": "Evan pursues watercolor painting, hiking, skiing, snowboarding, ice skating, and biking.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 51,
+      "question": "What challenges does Sam face in his quest for a healthier lifestyle, and how does he address them?",
+      "answer_gt": "Sam faces challenges like maintaining motivation and making dietary changes. He addresses them by enrolling in cooking classes and seeking support from friends like Evan.",
+      "answer_pred": "Sam faces challenges like resisting cravings, social/family pressure, and setbacks, addressing them through structured plans, commitment, support, and gradual progress.",
+      "category": "open_domain"
+    },
+    {
+      "idx": 52,
+      "question": "Which activity do Evan and Sam plan on doing together during September 2023?",
+      "answer_gt": "painting",
+      "answer_pred": "Painting session on 16 September 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 53,
+      "question": "When did Evan and Sam decide to paint together?",
+      "answer_gt": "Saturday after 11 September, 2023.",
+      "answer_pred": "11 September 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 54,
+      "question": "What personal health incidents does Evan face in 2023?",
+      "answer_gt": "heart palpitations, twisted ankle, twisted ankle",
+      "answer_pred": "Evan faced a heart palpitation incident on 06 June 2023, a knee injury in August 2023, and a resolved health scare in November 2023.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 55,
+      "question": "What recurring adventure does Evan have with strangers?",
+      "answer_gt": "Helping lost tourists and experiencing unexpected adventures in the city.",
+      "answer_pred": "Helping lost tourists",
+      "category": "single_hop"
+    },
+    {
+      "idx": 56,
+      "question": "What is Sam's persistent problem with his phone?",
+      "answer_gt": "His new phone malfunctioning, particularly with the navigation app.",
+      "answer_pred": "Persistent navigation app issues on his new phone causing wayfinding challenges",
+      "category": "single_hop"
+    },
+    {
+      "idx": 57,
+      "question": "Which US state was Sam travelling in during October 2023?",
+      "answer_gt": "California",
+      "answer_pred": "Lake Tahoe (state not specified in context)",
+      "category": "open_domain"
+    },
+    {
+      "idx": 58,
+      "question": "When did Evan start lifting weights?",
+      "answer_gt": "October 2022",
+      "answer_pred": "08 October 2022",
+      "category": "temporal"
+    },
+    {
+      "idx": 59,
+      "question": "When did Sam and his friend decide to try kayaking?",
+      "answer_gt": "October 14, 2023",
+      "answer_pred": "14 October 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 60,
+      "question": "Which new activity does Sam take up in October 2023?",
+      "answer_gt": "kayaking",
+      "answer_pred": "Kayaking",
+      "category": "temporal"
+    },
+    {
+      "idx": 61,
+      "question": "What kind of stress was Sam dealing with in October 2023?",
+      "answer_gt": "work-related stress",
+      "answer_pred": "Work-related stress",
+      "category": "temporal"
+    },
+    {
+      "idx": 62,
+      "question": "What health scares did Sam and Evan experience?",
+      "answer_gt": "Sam faced a health scare with stomach pains that turned out to be gastritis, prompting him to rethink his health habits. Evan, on the other hand, experienced two separate incidents: a sudden heart palpitation incident and a different event involving a misunderstanding during a medical check-up. These experiences have significantly influenced their perspectives on health and well-being.",
+      "answer_pred": "Evan had hospitalization and heart palpitations; Sam faced weight-related health issues.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 63,
+      "question": "When was Sam in the ER?",
+      "answer_gt": "weekend before 17 October, 2023.",
+      "answer_pred": "17 October 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 64,
+      "question": "Which ailment does Sam have to face due to his weight?",
+      "answer_gt": "gastritis",
+      "answer_pred": "Serious health risks due to weight",
+      "category": "single_hop"
+    },
+    {
+      "idx": 65,
+      "question": "Does Evan live close to a beach or mountains?",
+      "answer_gt": "beach",
+      "answer_pred": "Evan lives close to a beach.",
+      "category": "open_domain"
+    },
+    {
+      "idx": 66,
+      "question": "When did Evan lose his job?",
+      "answer_gt": "end of October 2023",
+      "answer_pred": "09 November 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 67,
+      "question": "When did Evan and Sam planned a trip to the beach together?",
+      "answer_gt": "December, 2023",
+      "answer_pred": "9 November 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 68,
+      "question": "What was Sam doing on December 4, 2023?",
+      "answer_gt": "Attending a Weight Watchers meeting",
+      "answer_pred": "No information available",
+      "category": "temporal"
+    },
+    {
+      "idx": 69,
+      "question": "Which two significant life events occur in Evan's life in December 2023 with his partner?",
+      "answer_gt": "his partner gets pregnant and they get married",
+      "answer_pred": "Announcement of partner's pregnancy on 09 December 2023 and marriage announcement on 26 December 2023",
+      "category": "single_hop"
+    },
+    {
+      "idx": 70,
+      "question": "How long did Evan and his partner date before getting married?",
+      "answer_gt": "four months",
+      "answer_pred": "Approximately 5 months",
+      "category": "temporal"
+    },
+    {
+      "idx": 71,
+      "question": "Which major holiday season conincides with Evan's wedding?",
+      "answer_gt": "Christmas",
+      "answer_pred": "Christmas and New Year's holiday season",
+      "category": "open_domain"
+    },
+    {
+      "idx": 72,
+      "question": "Which activity did Sam resume in December 2023 after a long time?",
+      "answer_gt": "hiking",
+      "answer_pred": "Hiking",
+      "category": "single_hop"
+    },
+    {
+      "idx": 73,
+      "question": "When is Evan planning a big family reunion?",
+      "answer_gt": "Summer 2024",
+      "answer_pred": "9 December 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 74,
+      "question": "When did Evan's son fall off his bike?",
+      "answer_gt": "Thursday before December 17, 2023.",
+      "answer_pred": "17 December 2023 at 6:48 PM",
+      "category": "temporal"
+    },
+    {
+      "idx": 75,
+      "question": "When did Evan announce his marriage to his extended family?",
+      "answer_gt": "January 5, 2024",
+      "answer_pred": "06 January 2024",
+      "category": "temporal"
+    },
+    {
+      "idx": 76,
+      "question": "When did Evan finish the painting that's hanging in the exhibit?",
+      "answer_gt": "few days before 17 December, 2023.",
+      "answer_pred": "Several days before 17 December 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 77,
+      "question": "How does Evan spend his time with his bride after the wedding?",
+      "answer_gt": "family get-together, honeymoon in Canada to see snowy landscapes, ski, taste local cuisine and do some snowshoeing",
+      "answer_pred": "Evan plans a honeymoon trip to Canada with his bride, including skiing, trying local cuisine, and enjoying scenic views.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 78,
+      "question": "Who did Evan tell about his marriage?",
+      "answer_gt": "To Sam, to his friends from work, and to his and his wife's families.",
+      "answer_pred": "Sam",
+      "category": "single_hop"
+    },
+    {
+      "idx": 79,
+      "question": "When will Evan and his partner have their honeymoon in Canada?",
+      "answer_gt": "February 2024",
+      "answer_pred": "February 2024",
+      "category": "temporal"
+    },
+    {
+      "idx": 80,
+      "question": "When did Evan have a drunken night with his friends?",
+      "answer_gt": "January 9, 2023",
+      "answer_pred": "10 January 2024",
+      "category": "temporal"
+    },
+    {
+      "idx": 81,
+      "question": "What is a stress reliever for Evan?",
+      "answer_gt": "Drawing, traveling, places with a beautiful view, yoga, sunsets or something comfortable for Evan",
+      "answer_pred": "Painting",
+      "category": "single_hop"
+    },
+    {
+      "idx": 82,
+      "question": "What is a stress reliever for Sam?",
+      "answer_gt": "Unhealthy snacks, sweets, yoga, places with beautiful views",
+      "answer_pred": "Painting and car rides",
+      "category": "single_hop"
+    },
+    {
+      "idx": 83,
+      "question": "What type of car did Evan get after his old Prius broke down?",
+      "answer_gt": "new Prius",
+      "answer_pred": "Toyota Prius",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 84,
+      "question": "How did Evan get into watercolor painting?",
+      "answer_gt": "friend's advice",
+      "answer_pred": "Evan got into watercolor painting through a friend's introduction.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 85,
+      "question": "What did Evan start doing a few years back as a stress-buster?",
+      "answer_gt": "watercolor painting",
+      "answer_pred": "Evan started painting as a stress-buster.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 86,
+      "question": "What advice did Evan give Sam about finding a passion?",
+      "answer_gt": "keep trying new things until something sparks excitement",
+      "answer_pred": "Explore new experiences and try new hobbies.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 87,
+      "question": "Where did Evan take his family for a road trip on 24 May, 2023?",
+      "answer_gt": "Jasper",
+      "answer_pred": "Jasper, Canada",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 88,
+      "question": "What did Evan find relaxing about his road trip to Jasper?",
+      "answer_gt": "fresh air, peacefulness, cozy cabin surrounded by mountains and forests",
+      "answer_pred": "A peaceful cabin stay surrounded by mountains and forests.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 89,
+      "question": "What habit is Sam trying to change in terms of diet?",
+      "answer_gt": "consuming soda and candy",
+      "answer_pred": "Reducing soda and candy consumption and resisting sugary food cravings",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 90,
+      "question": "What new suggestion did Evan give to Sam regarding his soda and candy consumption?",
+      "answer_gt": "try flavored seltzer water and dark chocolate with high cocoa content",
+      "answer_pred": "Evan suggested replacing soda with flavored seltzer water and candy with dark chocolate.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 91,
+      "question": "What did Sam agree to try instead of soda and candy?",
+      "answer_gt": "flavored seltzer water and dark chocolate with high cocoa content",
+      "answer_pred": "flavored seltzer water and dark chocolate",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 92,
+      "question": "What frustrating issue did Sam face at the supermarket?",
+      "answer_gt": "broken self-checkout machines",
+      "answer_pred": "Broken self-checkout machines at the supermarket",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 93,
+      "question": "What novel is Evan reading that he finds gripping?",
+      "answer_gt": "The Great Gatsby",
+      "answer_pred": "The Great Gatsby",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 94,
+      "question": "What kind of water does Evan suggest Sam try as an alternative to soda?",
+      "answer_gt": "Flavored seltzer water",
+      "answer_pred": "flavored seltzer water",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 95,
+      "question": "What does the smartwatch help Evan with?",
+      "answer_gt": "tracks progress and serves as a constant reminder to keep going",
+      "answer_pred": "Monitors health progress and reminds Evan to stay on track.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 96,
+      "question": "What does the bonsai tree symbolize for Evan?",
+      "answer_gt": "strength and resilience",
+      "answer_pred": "No information provided",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 97,
+      "question": "Why did Evan decide to get the bonsai tree?",
+      "answer_gt": "motivates him to keep going through tough times",
+      "answer_pred": "Not mentioned in the provided contexts.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 98,
+      "question": "According to Sam, what is more important than perfection?",
+      "answer_gt": "progress",
+      "answer_pred": "Progress is more important than perfection.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 99,
+      "question": "What did Evan suggest Sam to check out for insights into his dream?",
+      "answer_gt": "dream interpretation book",
+      "answer_pred": "a dream interpretation book",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 100,
+      "question": "What did Evan mention he had been searching for fruitlessly for half an hour?",
+      "answer_gt": "his keys",
+      "answer_pred": "his keys",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 101,
+      "question": "What class is Sam taking to learn how to make healthier meals?",
+      "answer_gt": "cooking class",
+      "answer_pred": "a cooking class for healthier meals",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 102,
+      "question": "What dish did Sam make on 18 August, 2023 that turned out flavorful?",
+      "answer_gt": "grilled dish with salmon and vegetables",
+      "answer_pred": "No dish made by Sam on 18 August 2023 is mentioned in the context.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 103,
+      "question": "What kind of recipe did Evan request from Sam on 19 August, 2023?",
+      "answer_gt": "recipes with more vegetables",
+      "answer_pred": "Grilled chicken and veggie stir-fry",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 104,
+      "question": "What food did Sam share a photo of on 19 August, 2023?",
+      "answer_gt": "bowl of spinach, avocado, and strawberries",
+      "answer_pred": "No photo of food shared by Sam on 19 August 2023",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 105,
+      "question": "What type of painting classes did Evan start taking in 2023?",
+      "answer_gt": "watercolor painting classes",
+      "answer_pred": "Watercolor painting classes focused on nature observation",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 106,
+      "question": "What did Evan start painting years ago due to being inspired by a friend's gift?",
+      "answer_gt": "forest scene",
+      "answer_pred": "Evan started painting classes after a friend's gift.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 107,
+      "question": "What nature concept do watercolor painting classes emphasize according to Evan?",
+      "answer_gt": "observing nature and painting what is seen",
+      "answer_pred": "Nature observation",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 108,
+      "question": "What type of landscapes does Evan love painting the most?",
+      "answer_gt": "sunsets over the ocean",
+      "answer_pred": "Evan loves painting serene natural landscapes, including mountains, forests, sunsets, and significant personal locations like the Rocky Mountains and his childhood island.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 109,
+      "question": "What fun activity did Evan mention doing in July 2023?",
+      "answer_gt": "skiing",
+      "answer_pred": "Exercising",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 110,
+      "question": "What injury did Evan suffer from in August 2023?",
+      "answer_gt": "Twisted knee",
+      "answer_pred": "Knee injury",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 111,
+      "question": "What sports activity has Evan been doing to stay active while dealing with the knee injury?",
+      "answer_gt": "Swimming",
+      "answer_pred": "Swimming",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 112,
+      "question": "What suggestion did Sam give to Evan to help with his knee issue?",
+      "answer_gt": "Consider low-impact exercises or physical therapy",
+      "answer_pred": "Sam suggested low-impact exercises and physical therapy for Evan's knee.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 113,
+      "question": "What did Evan suggest Sam try as a calming hobby?",
+      "answer_gt": "Painting",
+      "answer_pred": "Painting",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 114,
+      "question": "What did Evan recommend Sam acquire to get started with painting?",
+      "answer_gt": "Acrylic paints, brushes, canvas/paper, palette",
+      "answer_pred": "supplies",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 115,
+      "question": "What activity does Evan do to keep himself busy while healing his knee?",
+      "answer_gt": "Watercolor painting",
+      "answer_pred": "Swimming and physical therapy",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 116,
+      "question": "What painting did Evan share with Sam in October?",
+      "answer_gt": "a cactus in the desert",
+      "answer_pred": "sunset painting",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 117,
+      "question": "What kind of writing does Sam enjoy as a form of expression?",
+      "answer_gt": "creative writing",
+      "answer_pred": "Journal and creative writing",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 118,
+      "question": "What electronics issue has been frustrating Sam lately?",
+      "answer_gt": "malfunctioning navigation app on the new phone",
+      "answer_pred": "Navigation app malfunction on new phone",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 119,
+      "question": "What activity did Evan start one year ago?",
+      "answer_gt": "lifting weights",
+      "answer_pred": "Weightlifting",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 120,
+      "question": "What advice did Evan give to Sam to avoid injuries while starting weightlifting?",
+      "answer_gt": "Find a trainer",
+      "answer_pred": "Prioritize proper form, hire a trainer, and maintain consistency.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 121,
+      "question": "Where did Sam and his mate plan to try kayaking?",
+      "answer_gt": "Lake Tahoe",
+      "answer_pred": "Lake Tahoe",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 122,
+      "question": "What digestive issue did Sam experience lately?",
+      "answer_gt": "Gastritis",
+      "answer_pred": "Gastritis",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 123,
+      "question": "What adventurous theme is emerging in Evan's life as mentioned by Sam?",
+      "answer_gt": "helping lost tourists",
+      "answer_pred": "Hiking and road trips",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 124,
+      "question": "What does Evan mention about his progress at the gym to Sam?",
+      "answer_gt": "gaining strength",
+      "answer_pred": "Evan mentioned his recent gym progress.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 125,
+      "question": "How did Evan start his transformation journey two years ago?",
+      "answer_gt": "Changed his diet and started walking regularly",
+      "answer_pred": "Evan started by focusing on well-being over quick results and letting go of pressure.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 126,
+      "question": "What gift did Evan receive from a close friend?",
+      "answer_gt": "1968 Kustom K-200A vintage guitar",
+      "answer_pred": "A gift painting from Sam",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 127,
+      "question": "Why had Evan been going through a tough time lately?",
+      "answer_gt": "Lost their job due to downsizing",
+      "answer_pred": "Health scare, job loss, and personal incident with partner.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 128,
+      "question": "How does Evan describe the island he grew up on?",
+      "answer_gt": "A happy place",
+      "answer_pred": "Evan describes the island as his childhood home and a place of personal significance, emphasizing its calming effects.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 129,
+      "question": "What was the main reason for Evan's frustration with his new Prius breaking down?",
+      "answer_gt": "He relied on it for his active lifestyle and road trips",
+      "answer_pred": "The breakdown disrupted Evan's active lifestyle and travel plans.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 130,
+      "question": "How did Sam suggest Evan view the setback with his broken Prius?",
+      "answer_gt": "As a chance to explore other ways of staying active and traveling",
+      "answer_pred": "View the setback as an opportunity for new possibilities.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 131,
+      "question": "What did Sam suggest Evan try for stress relief and flexibility?",
+      "answer_gt": "Yoga",
+      "answer_pred": "Yoga",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 132,
+      "question": "What did Sam offer Evan regarding yoga?",
+      "answer_gt": "Support and tips",
+      "answer_pred": "Sam offered to provide yoga tips or other assistance to Evan.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 133,
+      "question": "What news did Evan share with Sam on 9th December 2023?",
+      "answer_gt": "partner is pregnant",
+      "answer_pred": "Evan shared news of his partner's pregnancy.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 134,
+      "question": "What family event is Evan planning for next summer?",
+      "answer_gt": "big family reunion",
+      "answer_pred": "Family reunion next summer",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 135,
+      "question": "What is the motto of Evan's family?",
+      "answer_gt": "'Bring it on Home'",
+      "answer_pred": "'Bring it on Home'",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 136,
+      "question": "According to Evan, what is important for Sam to believe in concerning his weight?",
+      "answer_gt": "Your worth is not defined by your weight",
+      "answer_pred": "The importance of exercise alongside dietary changes.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 137,
+      "question": "Who helped Evan get the painting published in the exhibition?",
+      "answer_gt": "a close friend",
+      "answer_pred": "A close friend",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 138,
+      "question": "What did Sam recently start enjoying to clear his head?",
+      "answer_gt": "running in the mornings",
+      "answer_pred": "Car rides and countryside scenery",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 139,
+      "question": "What did Sam suggest Evan should do with his keys?",
+      "answer_gt": "put a GPS sensor on them",
+      "answer_pred": "No suggestion from Sam about Evan's keys is mentioned in the context.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 140,
+      "question": "How did Evan feel when he painted the piece with the bird flying over it?",
+      "answer_gt": "a sense of joy and freedom",
+      "answer_pred": "The context does not specify Evan's feelings about the bird painting.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 141,
+      "question": "What did Evan suggest Sam should keep doing to find his own version of love?",
+      "answer_gt": "Keep trying new things",
+      "answer_pred": "explore new experiences",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 142,
+      "question": "How did Evan describe the process of creating the painting with the bird flying over it?",
+      "answer_gt": "embracing the creative process without restraint",
+      "answer_pred": "No information provided about a painting with a bird.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 143,
+      "question": "What did Evan want to share with his work friends?",
+      "answer_gt": "getting married",
+      "answer_pred": "Evan wanted to share his marriage news with his work friends.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 144,
+      "question": "What did Evan share with Sam after their hiking trip?",
+      "answer_gt": "a photo of a man standing on a rock looking out over a valley",
+      "answer_pred": "Evan shared his family's hiking trip in the Rockies.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 145,
+      "question": "What did Evan offer to share with Sam after talking about healthy snacks?",
+      "answer_gt": "the recipes for cookies",
+      "answer_pred": "Cookie and energy ball recipes",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 146,
+      "question": "What did Evan and his partner share with their extended family on January 5, 2024?",
+      "answer_gt": "their marriage",
+      "answer_pred": "No information provided about January 5, 2024",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 147,
+      "question": "What was Evan limiting himself to on his new diet?",
+      "answer_gt": "just two ginger snaps a day",
+      "answer_pred": "Two ginger snaps per day",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 148,
+      "question": "What sports activity did Evan and his partner try in a recent weekend?",
+      "answer_gt": "Snowshoeing",
+      "answer_pred": "Snowshoeing on 10 January 2024",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 149,
+      "question": "What advice did Evan suggest Sam seek from a doctor?",
+      "answer_gt": "diet plan and low-impact exercises",
+      "answer_pred": "Evan did not suggest seeking a doctor's advice.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 150,
+      "question": "What suggestions did Evan give for low-impact exercises?",
+      "answer_gt": "swimming, yoga, walking",
+      "answer_pred": "Swimming, yoga, walking, and beach sunset walks",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 151,
+      "question": "What movie did Sam watch that motivated him to keep up with his routine?",
+      "answer_gt": "The Godfather",
+      "answer_pred": "The Godfather",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 152,
+      "question": "What activity helped Evan with stress and flexibility?",
+      "answer_gt": "Yoga",
+      "answer_pred": "Yoga",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 153,
+      "question": "What did Evan share a photo of that was taken on a camping trip?",
+      "answer_gt": "a kayak",
+      "answer_pred": "a camping trip photograph taken at a lake",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 154,
+      "question": "Why did Evan apologize to his partner?",
+      "answer_gt": "for a drunken night",
+      "answer_pred": "Evan apologized for a drunken incident involving roses that embarrassed his partner.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 155,
+      "question": "How does Evan describe being out on the water while kayaking and watching the sunset?",
+      "answer_gt": "peaceful",
+      "answer_pred": "Unforgettable and peaceful",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 156,
+      "question": "What type of car did Sam get after his old Prius broke down?",
+      "answer_gt": "new Prius",
+      "answer_pred": "No information provided",
+      "category": "adversarial"
+    },
+    {
+      "idx": 157,
+      "question": "How did Sam get into watercolor painting?",
+      "answer_gt": "friend's advice",
+      "answer_pred": "Evan introduced Sam to watercolor painting and helped him start the hobby.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 158,
+      "question": "What did Sam start doing a few years back as a stress-buster?",
+      "answer_gt": "watercolor painting",
+      "answer_pred": "Sam started painting as a stress-buster.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 159,
+      "question": "Where did Sam take his family for a road trip on 24 May, 2023?",
+      "answer_gt": "Jasper",
+      "answer_pred": "No information provided about Sam's road trip on 24 May 2023.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 160,
+      "question": "What did Sam find relaxing about his road trip to Jasper?",
+      "answer_gt": "fresh air, peacefulness, cozy cabin surrounded by mountains and forests",
+      "answer_pred": "Sam found car rides and countryside scenery relaxing.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 161,
+      "question": "What habit is Evan trying to change in terms of diet?",
+      "answer_gt": "consuming soda and candy",
+      "answer_pred": "Reducing sugary snacks and processed foods while adopting healthier alternatives.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 162,
+      "question": "What frustrating issue did Evan face at the supermarket?",
+      "answer_gt": "broken self-checkout machines",
+      "answer_pred": "Evan did not face a frustrating issue at the supermarket.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 163,
+      "question": "What novel is Sam reading that he finds gripping?",
+      "answer_gt": "The Great Gatsby",
+      "answer_pred": "The Great Gatsby",
+      "category": "adversarial"
+    },
+    {
+      "idx": 164,
+      "question": "What does the smartwatch help Sam with?",
+      "answer_gt": "tracks progress and serves as a constant reminder to keep going",
+      "answer_pred": "The smartwatch is not mentioned in the context; health tracking tools are discussed but not specified as smartwatches.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 165,
+      "question": "Why did Sam decide to get the bonsai tree?",
+      "answer_gt": "motivates him to keep going through tough times",
+      "answer_pred": "The context does not mention Sam getting a bonsai tree.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 166,
+      "question": "What did Sam mention he had been searching for fruitlessly for half an hour?",
+      "answer_gt": "his keys",
+      "answer_pred": "No information provided",
+      "category": "adversarial"
+    },
+    {
+      "idx": 167,
+      "question": "What class is Evan taking to learn how to make healthier meals?",
+      "answer_gt": "cooking class",
+      "answer_pred": "Evan is not taking a cooking class; Sam is enrolled in one for healthier meals.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 168,
+      "question": "What dish did Sam make on 18 August, 2023 that turned out bland?",
+      "answer_gt": "grilled dish with salmon and vegetables",
+      "answer_pred": "No information available",
+      "category": "adversarial"
+    },
+    {
+      "idx": 169,
+      "question": "What food did Evan share a photo of on 19 August, 2023?",
+      "answer_gt": "bowl of spinach, avocado, and strawberries",
+      "answer_pred": "No food photo shared by Evan on 19 August 2023",
+      "category": "adversarial"
+    },
+    {
+      "idx": 170,
+      "question": "What did Evan start sculpting years ago due to being inspired by a friend's gift?",
+      "answer_gt": "forest scene",
+      "answer_pred": "Evan started painting due to a friend's gift.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 171,
+      "question": "What nature concept do watercolor painting classes emphasize according to Sam?",
+      "answer_gt": "observing nature and painting what is seen",
+      "answer_pred": "Nature observation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 172,
+      "question": "What type of landscapes does Sam love painting the most?",
+      "answer_gt": "sunsets over the ocean",
+      "answer_pred": "The context does not specify Sam's preferred landscapes for painting.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 173,
+      "question": "What sports activity has Sam been doing to stay active while dealing with the knee injury?",
+      "answer_gt": "Swimming",
+      "answer_pred": "No information provided about Sam's sports activity related to a knee injury.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 174,
+      "question": "What activity does Sam do to keep himself busy while healing his knee?",
+      "answer_gt": "Watercolor painting",
+      "answer_pred": "Sam uses car rides to relax and enjoy the countryside.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 175,
+      "question": "What kind of writing does Evan enjoy as a form of expression?",
+      "answer_gt": "creative writing",
+      "answer_pred": "Evan enjoys painting as a form of expression, not writing.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 176,
+      "question": "What electronics issue has been frustrating Evan lately?",
+      "answer_gt": "malfunctioning navigation app on the new phone",
+      "answer_pred": "No electronics issue mentioned for Evan",
+      "category": "adversarial"
+    },
+    {
+      "idx": 177,
+      "question": "What activity did Evan quit one year ago?",
+      "answer_gt": "lifting weights",
+      "answer_pred": "No information provided about Evan quitting an activity one year ago.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 178,
+      "question": "Where did Sam and his mate plan to try skydiving?",
+      "answer_gt": "Lake Tahoe",
+      "answer_pred": "There is no mention of skydiving in the provided context.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 179,
+      "question": "What digestive issue did Evan experience lately?",
+      "answer_gt": "Gastritis",
+      "answer_pred": "No digestive issue mentioned for Evan",
+      "category": "adversarial"
+    },
+    {
+      "idx": 180,
+      "question": "How did Sam start his transformation journey two years ago?",
+      "answer_gt": "Changed his diet and started walking regularly",
+      "answer_pred": "Sam started his transformation journey in July 2023 after friends mocked his weight and he committed to gym exercises.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 181,
+      "question": "What gift did Sam receive from a close friend?",
+      "answer_gt": "1968 Kustom K-200A vintage guitar",
+      "answer_pred": "No gift received by Sam from a close friend is mentioned in the context.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 182,
+      "question": "How does Sam describe the island he grew up on?",
+      "answer_gt": "A happy place",
+      "answer_pred": "No information provided about Sam's childhood island.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 183,
+      "question": "What was the main reason for Evan's frustration with his new Prius getting stolen?",
+      "answer_gt": "He relied on it for his active lifestyle and road trips",
+      "answer_pred": "There is no information provided about Evan's Prius being stolen.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 184,
+      "question": "What family event is Sam planning for next summer?",
+      "answer_gt": "big family reunion",
+      "answer_pred": "Family reunion next summer",
+      "category": "adversarial"
+    },
+    {
+      "idx": 185,
+      "question": "What is the motto of Sam's family?",
+      "answer_gt": "'Bring it on Home'",
+      "answer_pred": "'Bring it on Home'",
+      "category": "adversarial"
+    },
+    {
+      "idx": 186,
+      "question": "Who helped Sam get the painting published in the exhibition?",
+      "answer_gt": "a close friend",
+      "answer_pred": "Evan's close friend",
+      "category": "adversarial"
+    },
+    {
+      "idx": 187,
+      "question": "How did Sam feel when he painted the piece with the bird flying over it?",
+      "answer_gt": "a sense of joy and freedom",
+      "answer_pred": "No information provided",
+      "category": "adversarial"
+    },
+    {
+      "idx": 188,
+      "question": "How did Sam describe the process of creating the painting with the bird flying over it?",
+      "answer_gt": "embracing the creative process without restraint",
+      "answer_pred": "No information provided",
+      "category": "adversarial"
+    },
+    {
+      "idx": 189,
+      "question": "What did Evan and his partner keep from their extended family on January 5, 2024?",
+      "answer_gt": "their marriage",
+      "answer_pred": "No information provided about January 5, 2024.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 190,
+      "question": "What was Sam limiting himself to on his new diet?",
+      "answer_gt": "just two ginger snaps a day",
+      "answer_pred": "Reducing soda and candy consumption",
+      "category": "adversarial"
+    },
+    {
+      "idx": 191,
+      "question": "What dance activity did Evan and his partner try in a recent weekend?",
+      "answer_gt": "Snowshoeing",
+      "answer_pred": "No dance activity mentioned; they engaged in snowshoeing.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 192,
+      "question": "What suggestions did Evan give for high-impact exercises?",
+      "answer_gt": "swimming, yoga, walking",
+      "answer_pred": "Evan suggested low-impact exercises such as swimming, yoga, walking, and beach sunset walks.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 193,
+      "question": "What movie did Evan watch that motivated him to keep up with his routine?",
+      "answer_gt": "The Godfather",
+      "answer_pred": "No information provided about Evan watching a motivating movie.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 194,
+      "question": "What activity hindered Evan's stress and flexibility?",
+      "answer_gt": "Yoga",
+      "answer_pred": "Yoga",
+      "category": "adversarial"
+    },
+    {
+      "idx": 195,
+      "question": "What did Sam share a photo of that was taken on a camping trip?",
+      "answer_gt": "a kayak",
+      "answer_pred": "a countryside photograph",
+      "category": "adversarial"
+    }
+  ],
+  "metrics": {
+    "single_hop": {
+      "count": 37,
+      "exact_match": 5.41,
+      "f1": 27.31,
+      "meteor": 22.36,
+      "rouge1_f": 37.38,
+      "rouge2_f": 15.81,
+      "rougeL_f": 34.71,
+      "bleu1": 22.32,
+      "bleu2": 14.18,
+      "bleu3": 9.82,
+      "bleu4": 7.86,
+      "bert_f1": 88.69
+    },
+    "overall": {
+      "count": 196,
+      "exact_match": 12.24,
+      "f1": 30.82,
+      "meteor": 26.05,
+      "rouge1_f": 36.82,
+      "rouge2_f": 16.2,
+      "rougeL_f": 34.91,
+      "bleu1": 26.82,
+      "bleu2": 17.26,
+      "bleu3": 12.65,
+      "bleu4": 9.62,
+      "bert_f1": 88.87
+    },
+    "temporal": {
+      "count": 33,
+      "exact_match": 15.15,
+      "f1": 44.84,
+      "meteor": 32.54,
+      "rouge1_f": 57.07,
+      "rouge2_f": 20.06,
+      "rougeL_f": 52.68,
+      "bleu1": 39.48,
+      "bleu2": 21.1,
+      "bleu3": 14.31,
+      "bleu4": 11.07,
+      "bert_f1": 92.05
+    },
+    "open_domain": {
+      "count": 13,
+      "exact_match": 15.38,
+      "f1": 23.62,
+      "meteor": 19.13,
+      "rouge1_f": 28.97,
+      "rouge2_f": 10.49,
+      "rougeL_f": 27.98,
+      "bleu1": 20.52,
+      "bleu2": 12.88,
+      "bleu3": 11.42,
+      "bleu4": 10.56,
+      "bert_f1": 87.64
+    },
+    "multi_hop": {
+      "count": 73,
+      "exact_match": 16.44,
+      "f1": 35.96,
+      "meteor": 32.93,
+      "rouge1_f": 39.44,
+      "rouge2_f": 20.17,
+      "rougeL_f": 38.25,
+      "bleu1": 31.75,
+      "bleu2": 22.14,
+      "bleu3": 16.27,
+      "bleu4": 11.59,
+      "bert_f1": 89.54
+    },
+    "adversarial": {
+      "count": 40,
+      "exact_match": 7.5,
+      "f1": 15.44,
+      "meteor": 13.8,
+      "rouge1_f": 17.36,
+      "rouge2_f": 8.0,
+      "rougeL_f": 16.61,
+      "bleu1": 13.6,
+      "bleu2": 9.47,
+      "bleu3": 7.71,
+      "bleu4": 6.13,
+      "bert_f1": 85.56
+    }
+  },
+  "build_time": 359.9,
+  "qa_time": 18493.1,
+  "eval_time": 2.3
+}

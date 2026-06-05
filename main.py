@@ -1,13 +1,14 @@
 import argparse
+import copy
 import json
 import os
 import time
 import yaml
-from collections import defaultdict
 
 from data.locomo_loader import load_locomo10, load_filtered_json
 from data.schema import ProcessedSample
 from factory import build_chunker, build_pre_chunking_modules, build_memory_backend
+from eval.metrics import evaluate_results, print_metrics
 
 
 def load_config(config_path: str) -> dict:
@@ -15,50 +16,8 @@ def load_config(config_path: str) -> dict:
         return yaml.safe_load(f)
 
 
-def _compute_f1(pred: str, gt: str) -> float:
-    pred_tokens = pred.lower().split()
-    gt_tokens = gt.lower().split()
-    if not pred_tokens or not gt_tokens:
-        return 0.0
-    common = set(pred_tokens) & set(gt_tokens)
-    if not common:
-        return 0.0
-    precision = len(common) / len(pred_tokens)
-    recall = len(common) / len(gt_tokens)
-    return 2 * precision * recall / (precision + recall)
-
-
-def _compute_bleu1(pred: str, gt: str) -> float:
-    pred_tokens = pred.lower().split()
-    gt_tokens = gt.lower().split()
-    if not pred_tokens or not gt_tokens:
-        return 0.0
-    gt_set = set(gt_tokens)
-    matches = sum(1 for t in pred_tokens if t in gt_set)
-    return matches / len(pred_tokens)
-
-
-def _compute_metrics(results: list) -> dict:
-    category_results = defaultdict(list)
-    for r in results:
-        cat = r.get("category", "unknown")
-        f1 = _compute_f1(r["answer_pred"], r["answer_gt"])
-        bleu1 = _compute_bleu1(r["answer_pred"], r["answer_gt"])
-        category_results[cat].append({"f1": f1, "bleu1": bleu1})
-        category_results["overall"].append({"f1": f1, "bleu1": bleu1})
-
-    metrics = {}
-    for cat, scores in category_results.items():
-        metrics[cat] = {
-            "f1": round(sum(s["f1"] for s in scores) / len(scores) * 100, 2),
-            "bleu1": round(sum(s["bleu1"] for s in scores) / len(scores) * 100, 2),
-            "count": len(scores),
-        }
-    return metrics
-
-
 def run(cfg: dict):
-    # 0. url 변경 확인
+    # 0. vLLM URL 환경변수 오버라이드
     base_url_override = os.environ.get("VLLM_BASE_URL")
     if base_url_override and "memory_backend" in cfg:
         cfg["memory_backend"]["base_url"] = base_url_override
@@ -71,14 +30,12 @@ def run(cfg: dict):
 
     original_path = dataset_cfg.get("original_path")
     if original_path:
-        # filtered JSON 로드
         raw = load_filtered_json(
             filtered_path=dataset_cfg["path"],
             original_path=original_path,
             sample_idx=sample_idx,
         )
     else:
-        # 원본 LoCoMo10 로드
         raw = load_locomo10(dataset_cfg["path"], sample_idx=sample_idx)
 
     print(f"[loader] sample_id: {raw.sample_id}")
@@ -96,7 +53,6 @@ def run(cfg: dict):
     chunks = chunker.chunk(turns)
     print(f"[chunker] num chunks: {len(chunks)}")
 
-    # 3. ProcessedSample 생성
     module_names = [m["type"] for m in cfg["pipeline"]["pre_chunking"]]
     module_names.append(cfg["pipeline"]["chunker"]["type"])
     processed = ProcessedSample(
@@ -106,11 +62,11 @@ def run(cfg: dict):
         metadata={"pipeline": module_names},
     )
 
-    # 4. Memory Backend 연동
+    # 3. Memory Backend
     backend = build_memory_backend(cfg)
     if backend is None:
         print("[memory] No memory backend configured. Skipping.")
-        return
+        return None
 
     print(f"[memory] Building memory from {len(chunks)} chunks...")
     build_start = time.time()
@@ -118,13 +74,13 @@ def run(cfg: dict):
     build_time = time.time() - build_start
     print(f"[memory] Memory build complete. ({build_time:.1f}s)")
 
-    # 5. 평가
+    # 4. QA 수행
     eval_cfg = cfg.get("evaluation", {})
     result_file = eval_cfg.get("result_file", "results/output.json")
     total_qa = len(processed.qa)
 
     results = []
-    eval_start = time.time()
+    qa_start = time.time()
     for i, qa in enumerate(processed.qa):
         question = qa.question
         answer_gt = qa.answer
@@ -139,28 +95,25 @@ def run(cfg: dict):
         print(f"[QA {i+1}/{total_qa}] ({qa.category}) Q: {question[:60]}")
         print(f"  GT:   {answer_gt[:80]}")
         print(f"  PRED: {answer_pred[:80]}")
+    qa_time = time.time() - qa_start
 
+    # 5. Evaluation
+    print(f"\n[eval] Computing metrics for {len(results)} QA results...")
+    eval_start = time.time()
+    use_bertscore = eval_cfg.get("use_bertscore", True)
+    metrics = evaluate_results(results, use_bertscore=use_bertscore)
     eval_time = time.time() - eval_start
+    print_metrics(metrics)
+    print(f"\n[eval] QA time: {qa_time:.1f}s, Metric time: {eval_time:.1f}s")
 
-    # 6. 메트릭 계산
-    metrics = _compute_metrics(results)
-    print("\n" + "=" * 60)
-    print("[metrics] Results")
-    print("=" * 60)
-    cat_order = ["single_hop", "temporal", "open_domain", "multi_hop", "adversarial", "overall"]
-    for cat in cat_order:
-        if cat in metrics:
-            m = metrics[cat]
-            print(f"  {cat:<15} F1: {m['f1']:6.2f}  BLEU-1: {m['bleu1']:6.2f}  (n={m['count']})")
-    print(f"\n[eval] Total QA time: {eval_time:.1f}s")
-
-    # 7. 결과 저장
+    # 6. 결과 저장
     output = {
         "sample_id": raw.sample_id,
         "pipeline": module_names,
         "results": results,
         "metrics": metrics,
         "build_time": round(build_time, 1),
+        "qa_time": round(qa_time, 1),
         "eval_time": round(eval_time, 1),
     }
     os.makedirs(os.path.dirname(result_file), exist_ok=True)
@@ -169,6 +122,7 @@ def run(cfg: dict):
     print(f"[eval] Results saved to {result_file}")
 
     backend.reset()
+    return output
 
 
 def main():
@@ -176,7 +130,62 @@ def main():
     parser.add_argument("--config", type=str, required=True)
     args = parser.parse_args()
     cfg = load_config(args.config)
-    run(cfg)
+
+    sample_idx = cfg["dataset"].get("sample_idx", None)
+
+    if sample_idx is not None:
+        # 단일 샘플 처리
+        run(cfg)
+    else:
+        # 전체 샘플 순차 처리 후 결과 종합
+        original_path = cfg["dataset"].get("original_path") or cfg["dataset"]["path"]
+        with open(original_path, encoding="utf-8") as f:
+            total = len(json.load(f))
+        print(f"[main] Total samples: {total}")
+
+        eval_cfg = cfg.get("evaluation", {})
+        base_result_file = eval_cfg.get("result_file", "results/output.json")
+
+        all_results = []
+        all_metrics_by_cat = {}
+
+        for i in range(total):
+            print(f"\n[main] ===== Sample {i+1}/{total} =====")
+            sample_cfg = copy.deepcopy(cfg)
+            sample_cfg["dataset"]["sample_idx"] = i
+            stem = base_result_file.replace(".json", "")
+            sample_cfg["evaluation"]["result_file"] = f"{stem}_sample{i}.json"
+
+            result = run(sample_cfg)
+            if result:
+                all_results.extend(result["results"])
+                for cat, m in result["metrics"].items():
+                    if cat not in all_metrics_by_cat:
+                        all_metrics_by_cat[cat] = []
+                    all_metrics_by_cat[cat].append(m)
+
+        # 전체 메트릭 평균
+        aggregated_metrics = {}
+        for cat, metric_list in all_metrics_by_cat.items():
+            keys = [k for k in metric_list[0].keys() if k != "count"]
+            aggregated_metrics[cat] = {
+                k: round(sum(m[k] for m in metric_list) / len(metric_list), 2)
+                for k in keys
+            }
+            aggregated_metrics[cat]["count"] = sum(m["count"] for m in metric_list)
+
+        # 종합 결과 저장
+        output = {
+            "total_samples": total,
+            "pipeline": cfg["pipeline"],
+            "metrics": aggregated_metrics,
+            "results": all_results,
+        }
+        os.makedirs(os.path.dirname(base_result_file), exist_ok=True)
+        with open(base_result_file, "w", encoding="utf-8") as f:
+            json.dump(output, f, ensure_ascii=False, indent=2)
+        print(f"\n[main] All results saved to {base_result_file}")
+        print_metrics(aggregated_metrics)
 
 
 if __name__ == "__main__":

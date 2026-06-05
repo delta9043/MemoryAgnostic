@@ -19,7 +19,7 @@ Content: {content}
 
 [Requirements]
 1. **Discard social filler**: Remove acknowledgements and conversational routines that introduce no new factual or semantic information.
-2. **Discard redundant confirmations**: Remove confirmations unless they modify or finalize a decision.
+2. **Discard redundant confirmations**: Discard redundant confirmations unless they modify or finalize a decision.
 3. **Keep informative content unchanged**: Do NOT paraphrase, summarize, or add any new information. Only remove the non-informative parts.
 4. **If no informative content is present**: Output an empty string.
 

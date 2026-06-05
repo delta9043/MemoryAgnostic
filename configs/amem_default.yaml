@@ -1,7 +1,6 @@
 dataset:
   name: locomo10
   path: /data/delta9043/datasets/locomo/locomo10.json
-  sample_idx: 0
 
 pipeline:
   pre_chunking:

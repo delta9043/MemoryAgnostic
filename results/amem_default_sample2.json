@@ -1,0 +1,1450 @@
+{
+  "sample_id": "conv-41",
+  "pipeline": [
+    "NoFilter",
+    "NoCompressor",
+    "NoChunker"
+  ],
+  "results": [
+    {
+      "idx": 0,
+      "question": "Who did Maria have dinner with on May 3, 2023?",
+      "answer_gt": "her mother",
+      "answer_pred": "mom",
+      "category": "temporal"
+    },
+    {
+      "idx": 1,
+      "question": "When did Maria donate her car?",
+      "answer_gt": "21 December 2022",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking when Maria donated her car. I need to look through the provided conversation contexts to find the date.\n\nLooking at the first entry, the talk start time is 6:10 pm on 22 December, 2022. The memory content there says Maria donated her old car to a homeless shelter. The context mentions that she did this yesterday relative to the conversation date. Wait, the talk start time is December 22, 2022, and the memory says she donated it yesterday. But the talk start time is the date of the conversation. Wait, the context says \"In the meantime, I donated my old car to a homeless shelter I volunteer at yesterday.\" So if the conversation is on December 22, 2022, then \"yesterday\" would be December 21, 2022. But the talk start time is 6:10 pm on 22 December, so maybe the donation was on the same day? Wait, no, the conversation is on the 22nd, and she says she donated it yesterday. So the actual date of the donation would be December 21, 2022. But the user is asking for the date of the conversation where she mentioned donating the car, which is December 22, 2022. However, the question is \"When did Maria donate her car?\" So the answer is the actual date of the donation, not the conversation. But the context says she donated it yesterday relative to the conversation date. Wait, the conversation on December 22nd, the talk start time is 6:10 pm. If the conversation is on the 22nd, then \"yesterday\" would be the 21st. So the donation was on the 21st. But the user might be looking for the conversation date where she mentioned it, not the actual donation date. Wait, the question is \"When did Maria donate her car?\" So the answer should be the date of the donation, not when she talked about it. But the context only gives the date of the conversation (December 22, 2022) and says she donated it yesterday. So the donation was on December 21, 2022. But the user might be confused. However, in the memory content, the talk start time is listed as 6:10 pm on 22 December 2022, and the memory content says she donated the car yesterday. Therefore, the answer should be December 21, 2022. But I need to check if the user wants the date of the conversation or the donation. The question is \"When did Maria donate her car?\" So the answer is the date of the donation, which is December 21, 2022. However, in the data provided, the only date mentioned is the conversation date. Wait, but the memory content says she donated it \"yesterday\" during the conversation on December 22, which would be the 21st. So the answer is December 21, 2022. But the user might have intended the conversation date. Wait, the user says \"use DATE of CONVERSATION to answer with an approximate date.\" Wait, the instruction says to use the conversation date. Wait, the original question says \"When did Maria donate her car?\" and the user says to use the DATE of CONVERSATION to answer. But in the context, the conversation is on 22 Dec 2022, and the donation was yesterday (21 Dec). But the instruction says to use the conversation date. Wait, the user's note says \"use DATE of CONVERSATION to answer with an approximate date.\" So maybe the answer should be the conversation date, even if the actual donation was the day before. But that's conflicting. Wait, maybe the user wants the approximate date based on the conversation. The conversation where Maria mentions the donation is on 22 Dec 2022. But the actual donation was on 21 Dec. However, the user says to use the conversation date. Wait, the instruction says: \"Use DATE of CONVERSATION to answer with an approximate date.\" So even though the donation was on the 21st, the answer should be the conversation date, which is December 22, 2022. But this is confusing. Alternatively, the user might have made a mistake, but according to the data, the memory content says she donated it yesterday (relative to the conversation date). So the answer is December 21, 2022. But the user says to use the conversation date. I need to follow the exact instructions. The",
+      "category": "temporal"
+    },
+    {
+      "idx": 2,
+      "question": "What martial arts has John done?",
+      "answer_gt": "Kickboxing, Taekwondo",
+      "answer_pred": "Short answer: taekwondo, kickboxing",
+      "category": "single_hop"
+    },
+    {
+      "idx": 3,
+      "question": "What type of volunteering have John and Maria both done?",
+      "answer_gt": "Volunteering at a homeless shelter",
+      "answer_pred": "<think>\nOkay, let's see. The question is asking what type of volunteering both John and Maria have done. I need to look through the context provided and find the common volunteering activities between them.\n\nFirst, looking at John's activities. From the first memory, John volunteered at a career fair at a local school. Then, in another entry, he mentions organizing events at a homeless shelter, giving out food and supplies, and a toy drive. There's also mention of him exploring shelters, maybe for pet adoption. \n\nNow Maria's volunteering. She's mentioned volunteering at a homeless shelter multiple times, like at the front desk, organizing meals, giving talks there, and even donating a car to the shelter. She also volunteered at an animal shelter once a month and was involved in pet adoption efforts. Additionally, she volunteered at a career fair too, as mentioned in the first memory. \n\nWait, the first memory where John talks about the career fair, Maria isn't mentioned there. But later, in the memory where Maria says she started volunteering to help make a difference, and in another part, there's a mention of both John and Maria volunteering at a homeless shelter. Also, in the context, John's volunteering includes homeless shelters and career fairs, while Maria's includes homeless shelters, animal shelters, and career fairs? Wait, no, looking back, Maria's volunteering is mainly at homeless shelters and animal shelters. John's volunteering includes career fairs, homeless shelters, and pet adoption (since there's mention of John's new shelter exploration and pet adoption). \n\nWait, the first memory where John says he volunteered at a career fair. Then, Maria's first memory is about volunteering at a shelter. But later, in the talk start time 8:30 pm on 1 January 2023, John mentions organizing a toy drive and going to a homeless shelter. Maria's volunteering is at homeless shelters and animal shelters. However, there's a mention in one of the entries where Maria volunteers at a local dog shelter once a month. But the question is about what both have done. \n\nWait, looking again: The first memory with John's career fair. Maria's volunteering is at homeless shelters and animal shelters. But there's also a mention that John volunteered at a career fair, and Maria's context includes a career fair? Wait, in the first memory, John says he volunteered at a career fair at a local school. Then, in the memory where Maria says \"I started volunteering to help make a difference...\" but that's not a career fair. However, in the first memory, the context says \"the experience of volunteering at a career fair highlights...\" but that's John's experience. \n\nWait, the question is about both John and Maria. So, what do they both have in common? \n\nJohn: Volunteered at career fair, homeless shelter, toy drive, and pet adoption (maybe). \n\nMaria: Volunteered at homeless shelters, animal shelters, and also gave talks at the homeless shelter, organized meals, etc. \n\nWait, but is there any overlap? The only common one seems to be homeless shelter volunteering. Both John and Maria have done that. Let me check again. \n\nJohn: In the first context, he volunteered at a career fair. Later, he went to a homeless shelter to give out food and supplies, organized a toy drive. Then, there's a mention of John's new shelter exploration and pet adoption. \n\nMaria: Volunteered at homeless shelters (multiple times), animal shelters (once a month), and also at a career fair? Wait, in the first memory, the context is about John's career fair, but Maria's memory tags include 'community service' and other things. Wait, no, Maria's volunteering is at shelters. Wait, the first memory with John's career fair, but Maria's volunteering is mentioned as homeless shelters and animal shelters. However, in the memory where Maria says \"I just started volunteering at a local dog shelter once a month,\" which is animal shelter. \n\nBut the only common volunteering they both did is homeless shelter. Wait, John went to a homeless shelter to give out food and supplies. Maria volunteers at the homeless shelter. So both have done homeless shelter volunteering. Also, Maria mentioned volunteering at a career fair? Wait, no. Let me check again. \n\nLooking at the first memory: John's context is about volunteering at a career fair. The memory content is Speaker John says: I got to volunteer at a career fair... So John did that. Maria's first memory is about volunteering at a shelter. However, later, in the memory where Maria says \"I'm now friends with one of my fellow volunteers!\" and the context mentions her volunteering at a homeless shelter. \n\nWait, the only common activity between John and Maria is volunteering at homeless shelters. John went to a homeless shelter to give out food and supplies, and",
+      "category": "single_hop"
+    },
+    {
+      "idx": 4,
+      "question": "When did John join the online support group?",
+      "answer_gt": "The week before 1 January 2023",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking when John joined the online support group. I need to look through the provided memories to find the relevant date.\n\nLooking at the first memory, the talk start time is 6:20 pm on 3 August 2023. The memory content mentions John talking about a virtual support group. But wait, the context says he asked family and friends to join, so maybe that's when he started the group, not joined it. \n\nThen there's another memory with a talk start time of 8:30 pm on 1 January 2023. The content here says John joined a service-focused online group last week. Wait, the date here is January 1st, but he mentions \"last week.\" If the conversation was on January 1st, then \"last week\" would be around December 25th, but that's not specified. However, the exact date of joining isn't given here, just that he joined last week relative to the conversation date. But the user wants the date he joined, not the conversation date. \n\nWait, maybe the first memory is more relevant. The first memory is from August 3rd, 2023, where John mentions he asked family and friends to join the virtual support group. But that might be when he initiated the group, not when he joined. However, the question is about when he joined the online support group. \n\nLooking again at the third memory, the talk start time is 8:30 pm on 1 January 2023. The memory content says, \"I joined a service-focused online group last week.\" If the conversation was on January 1st, then \"last week\" would be December 25th, but the exact date isn't specified. However, the user might be looking for the date from the memory where he mentions joining. But the answer needs to use the conversation date. \n\nAlternatively, maybe the answer is the date of the conversation where he mentions joining. The memory with the talk start time of 8:30 pm on 1 January 2023 is when John said he joined the group last week. But the exact joining date isn't given, just relative to that conversation. However, the user might want the date from the context where he joined, even if it's approximate. But the instructions say to use the DATE OF CONVERSATION to answer. So if the conversation where he mentions joining was on 1 January 2023, and he joined last week, but the exact date isn't specified, but the user wants the approximate date based on the conversation. However, the problem is that the exact date when he joined isn't provided, only the conversation date. But maybe the answer is the date of the conversation where he joined. Wait, the memory content says he joined last week during the conversation on 1 January 2023. But the user is asking for the date he joined, so that would be around December 25th, but that's not in the data. However, the user wants the answer based on the conversation dates. Since the conversation on 1 January 2023 is when he mentioned joining last week, but there's no exact date. However, the user might need the approximate date from the conversation where he joined. Wait, the first memory is August 3rd, 2023, where he mentioned the virtual support group, but that's when he started it. The third memory is January 1st, 2023, where he says he joined a service-focused online group last week. The answer should be the date from the conversation where he joined, but since the conversation is on 1 January 2023 and he joined last week, but we don't have that exact date. However, the user might be expecting the answer to be the conversation date, even though the joining date is earlier. But the question is when he joined, so maybe the answer is the date from the conversation where he mentioned joining, which is 1 January 2023. But that's the date of the conversation, not the joining. But the user says \"use DATE of CONVERSATION to answer with an approximate date.\" So perhaps the answer is the date of the conversation where he mentioned joining, which is 1 January 2023. However, the user might be confused. Alternatively, looking at the first memory, the talk start time is 3 August 2023, where John mentions the virtual support group, but that might be when he started it, not joined. The third memory is 1 January 2023, where he says he joined a service-focused online group last week. If the conversation is on 1 January 202",
+      "category": "temporal"
+    },
+    {
+      "idx": 5,
+      "question": "When did Maria go to the beach?",
+      "answer_gt": "December 2022",
+      "answer_pred": "Short answer: 1 January 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 6,
+      "question": "Where has Maria made friends?",
+      "answer_gt": "homeless shelter, gym, church",
+      "answer_pred": "The context does not specify where Maria made friends.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 7,
+      "question": "What items des John mention having as a child?",
+      "answer_gt": "A doll, a film camera",
+      "answer_pred": "No information provided.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 8,
+      "question": "What might John's financial status be?",
+      "answer_gt": "Middle-class or wealthy",
+      "answer_pred": "Short answer: financial strain",
+      "category": "open_domain"
+    },
+    {
+      "idx": 9,
+      "question": "Who gave Maria's family money when she was younger and her family was going through tough times?",
+      "answer_gt": "Her aunt",
+      "answer_pred": "Maria's auntie.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 10,
+      "question": "When did Maria meet Jean?",
+      "answer_gt": "February 24, 2023",
+      "answer_pred": "Maria did not meet Jean; the conversations involve Maria and John.",
+      "category": "temporal"
+    },
+    {
+      "idx": 11,
+      "question": "What people has Maria met and helped while volunteering?",
+      "answer_gt": "David, Jean, Cindy, Laura",
+      "answer_pred": "Short answer: shelter residents and kids in need.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 12,
+      "question": "What test has John taken multiple times?",
+      "answer_gt": "The military aptitude test",
+      "answer_pred": "<think>\nOkay, let me figure out the answer to the question: \"What test has John taken multiple times?\" \n\nFirst, I need to look through the provided context to find any mentions of John taking a test more than once. Let me scan through the memories.\n\nLooking at the first memory from March 6, 2023, John mentions retaking the aptitude test with great results. The keywords here include 'aptitude test'. Then, there's another memory on January 1, 2023, where John says he failed the military aptitude test recently. He later mentions retaking it successfully. \n\nSo, the aptitude test is mentioned both in the context of retaking it (implying he took it before) and failing it initially. The military aptitude test is specifically named here. However, the first mention was just \"aptitude test\" without the military specification. But in the later context, it's clarified as the military aptitude test. \n\nWait, but the question is about a test taken multiple times. The first instance says he retook the aptitude test, which suggests he had taken it before. Then, in the January 1 memory, he mentions failing the military aptitude test and then later retaking it successfully. So, the military aptitude test is the specific one he took twice: once where he failed and then retake it successfully. \n\nBut in the March 6 entry, he says \"retook the aptitude test\" which might refer to the same military one. However, the exact name \"military aptitude test\" is only mentioned in the January 1 entry. But since the user wants the exact words from the context, I need to check if \"military aptitude test\" is the exact phrase used. \n\nLooking back, the January 1 memory's content has John saying \"after I failed the military aptitude test recently, I've been feeling a bit stressed out.\" Then later, in the March 6 memory, he says \"retook the aptitude test with some great results.\" So, the first time it's called \"military aptitude test,\" the second time it's just \"aptitude test.\" But since the user wants exact words, but the answer might need to use the full name if that's the exact term. However, the March 6 entry doesn't specify \"military,\" but the January entry does. But the question is about multiple times. \n\nHowever, the answer should use exact words from the context. The military aptitude test is mentioned once, and \"aptitude test\" is mentioned another time. But the same test is likely being referred to both times. However, the exact phrasing in the context for the test taken multiple times would be \"military aptitude test,\" as that's the specific name given. But in the March 6 entry, he says \"retook the aptitude test,\" which might be the same test. However, the exact term \"military aptitude test\" is only used once. \n\nBut the user wants the answer with exact words from the context. Since in the first instance, the test is referred to as \"aptitude test\" and later as \"military aptitude test,\" but the answer should be the exact term used. However, the question is about a test taken multiple times. Since the retake is mentioned in the March 6 entry, and the failure in the January entry, the exact term would be \"military aptitude test\" because that's the specific name given. But the March 6 entry only says \"aptitude test.\" However, the answer must use exact words from the context. \n\nWait, the user said to answer with exact words from the context whenever possible. So, in the first memory, John says \"retook the aptitude test,\" and in the January 1 memory, he mentions failing the \"military aptitude test.\" But the answer should be the exact term used. However, since the military aptitude test is the specific name, but \"aptitude test\" is also used. However, the answer might be \"military aptitude test\" because that's the exact term used in the context. But the March 6 entry doesn't specify \"military.\" \n\nBut the user wants the answer to use exact words from the context. Since the test is referred to as \"military aptitude test\" in one instance and \"aptitude test\" in another, but it's the same test, the answer should probably use the exact term that's used in the context. However, the answer needs to be the exact words from the context. Since the user is asking for the test taken multiple times, and the context mentions \"aptitude test\" (retaken) and \"military aptitude test\" (failed). But the exact term that is used in the context for the",
+      "category": "single_hop"
+    },
+    {
+      "idx": 13,
+      "question": "When did Maria's grandmother pass away?",
+      "answer_gt": "The week before 6 March 2023",
+      "answer_pred": "Short answer: 6 March 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 14,
+      "question": "Would John be considered a patriotic person?",
+      "answer_gt": "Yes",
+      "answer_pred": "Short answer: \"serve my country\"",
+      "category": "open_domain"
+    },
+    {
+      "idx": 15,
+      "question": "What writing classes has Maria taken?",
+      "answer_gt": "Poetry, creative writing",
+      "answer_pred": "Maria has taken a creative writing class and a poetry class.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 16,
+      "question": "When did John get his degree?",
+      "answer_gt": "The week before 2 April 2023",
+      "answer_pred": "Short answer: 2 April 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 17,
+      "question": "What might John's degree be in?",
+      "answer_gt": "Political science, Public administration, Public affairs",
+      "answer_pred": "public policy",
+      "category": "open_domain"
+    },
+    {
+      "idx": 18,
+      "question": "Who did John go to yoga with?",
+      "answer_gt": "Rob",
+      "answer_pred": "a colleague",
+      "category": "single_hop"
+    },
+    {
+      "idx": 19,
+      "question": "What damages have happened to John's car?",
+      "answer_gt": "Broken windshield, Car broke down",
+      "answer_pred": "Short answer: car broke down",
+      "category": "single_hop"
+    },
+    {
+      "idx": 20,
+      "question": "When did John take a road trip to the Pacific Northwest?",
+      "answer_gt": "2022",
+      "answer_pred": "April 10, 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 21,
+      "question": "What areas of the U.S. has John been to or is planning to go to?",
+      "answer_gt": "Pacific northwest, east coast",
+      "answer_pred": "Pacific Northwest, East Coast.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 22,
+      "question": "When did John go to a convention with colleagues?",
+      "answer_gt": "March 2023",
+      "answer_pred": "Short answer: 18 April 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 23,
+      "question": "What desserts has Maria made?",
+      "answer_gt": "Banana split sundae, Peach cobbler",
+      "answer_pred": "Short answer: cakes",
+      "category": "single_hop"
+    },
+    {
+      "idx": 24,
+      "question": "When did John start boot camp with his family?",
+      "answer_gt": "April.2023",
+      "answer_pred": "Short answer: 4 May 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 25,
+      "question": "What European countries has Maria been to?",
+      "answer_gt": "Spain, England",
+      "answer_pred": "England, Spain.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 26,
+      "question": "What has Maria done to feel closer to her faith?",
+      "answer_gt": "Join a local church, buy a cross necklace",
+      "answer_pred": "bought a cross necklace",
+      "category": "single_hop"
+    },
+    {
+      "idx": 27,
+      "question": "When did John have a party with veterans?",
+      "answer_gt": "The Friday before 20 May 2023",
+      "answer_pred": "Short answer: 20 May 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 28,
+      "question": "What causes does John feel passionate about supporting?",
+      "answer_gt": "Veterans, schools, infrastructure",
+      "answer_pred": "improving education and infrastructure in our community",
+      "category": "single_hop"
+    },
+    {
+      "idx": 29,
+      "question": "What events is Maria planning for the homeless shelter funraiser?",
+      "answer_gt": "Chili cook-off, ring-toss tournament",
+      "answer_pred": "fundraiser",
+      "category": "single_hop"
+    },
+    {
+      "idx": 30,
+      "question": "What shelters does Maria volunteer at?",
+      "answer_gt": "The homeless shelter, the dog shelter",
+      "answer_pred": "homeless shelter",
+      "category": "single_hop"
+    },
+    {
+      "idx": 31,
+      "question": "When did John get his dog Max?",
+      "answer_gt": "In 2013",
+      "answer_pred": "Short answer: Around 2013.",
+      "category": "temporal"
+    },
+    {
+      "idx": 32,
+      "question": "What outdoor activities has John done with his colleagues?",
+      "answer_gt": "Hiking, mountaineering",
+      "answer_pred": "mountaineering trip",
+      "category": "single_hop"
+    },
+    {
+      "idx": 33,
+      "question": "What types of yoga has Maria practiced?",
+      "answer_gt": "Aerial, kundalini",
+      "answer_pred": "aerial yoga, kundalini yoga",
+      "category": "single_hop"
+    },
+    {
+      "idx": 34,
+      "question": "When did Maria join a gym?",
+      "answer_gt": "The week before 16 June 2023",
+      "answer_pred": "Short answer: 16 June 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 35,
+      "question": "What states has Maria vacationed at?",
+      "answer_gt": "Oregon, Florida",
+      "answer_pred": "Short answer: Oregon, Florida.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 36,
+      "question": "What music events has John attended?",
+      "answer_gt": "Live music event, violin concert",
+      "answer_pred": "Short answer: live music event, violin concert",
+      "category": "single_hop"
+    },
+    {
+      "idx": 37,
+      "question": "What events for veterans has John participated in?",
+      "answer_gt": "Petition, march, party, visiting veterans hospital, 5K charity run",
+      "answer_pred": "5K charity run, community fundraising event, and a party where veterans shared stories.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 38,
+      "question": "When did Maria get in a car accident?",
+      "answer_gt": "July 2, 2023",
+      "answer_pred": "Short answer: 3 July 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 39,
+      "question": "Around which US holiday did Maria get into a car accident?",
+      "answer_gt": "Independence Day",
+      "answer_pred": "Short answer: Independence Day",
+      "category": "open_domain"
+    },
+    {
+      "idx": 40,
+      "question": "What are the names of John's children?",
+      "answer_gt": "Kyle, Sara",
+      "answer_pred": "Kyle and Sara.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 41,
+      "question": "Does John live close to a beach or the mountains?",
+      "answer_gt": "beach",
+      "answer_pred": "No information provided.",
+      "category": "open_domain"
+    },
+    {
+      "idx": 42,
+      "question": "What area was hit by a flood?",
+      "answer_gt": "West County",
+      "answer_pred": "Short answer: old area",
+      "category": "single_hop"
+    },
+    {
+      "idx": 43,
+      "question": "When was John's old area hit with a flood?",
+      "answer_gt": "The week before 7 July 2023",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking when John's old area was hit with a flood. I need to look through the provided context to find the relevant date.\n\nLooking at the first memory content, Speaker John says: \"My old area was hit by a nasty flood last week.\" The talk start time for that memory is 6:29 pm on 7 July, 2023. So the flood happened last week relative to that date. But wait, the exact date of the flood isn't mentioned here. The conversation took place on July 7th, and he's referring to the flood happening last week before that. So if the talk was on July 7th, then \"last week\" would be around June 30th to July 6th. However, the user wants the approximate date based on the conversation's DATE. Since the conversation was on July 7th, and the flood was last week, the answer would be approximately the week of June 30th to July 6th. But the user might just want the date mentioned in the conversation, which is July 7th, but the flood was before that. Wait, the question is asking for the date the flood happened, not when the conversation was. But the context doesn't provide an exact date for the flood, only that it was last week relative to the conversation date.\n\nWait, the user says to use the DATE of CONVERSATION to answer with an approximate date. So the conversation was on July 7th, and the flood was last week before that. So the approximate date would be around the week of June 30th to July 6th. But the answer should be the date from the conversation's context. However, the user might be expecting the answer to be the date mentioned in the conversation, which is July 7th, but that's when the conversation happened, not the flood. Hmm, but the answer needs to be based on the conversation date. Wait, the user is asking \"When was John's old area hit with a flood?\" and the answer should be derived from the conversation's date. Since John mentioned the flood happened \"last week\" during the conversation on July 7th, the approximate date would be around July 1st to July 6th. But the exact date isn't given. The user wants the shortest possible answer using words from the conversation. The conversation's date is July 7th, but the flood was last week. However, the answer might just need to state the date from the conversation, but that's not the flood's date. Wait, maybe I'm overcomplicating. The answer should be the date mentioned in the context. The context says the flood was last week, and the conversation was on July 7th. So the answer is \"last week\" but the user wants an approximate date. Since the conversation was on July 7th, the flood was approximately the week of June 30th to July 6th. The answer would be \"last week\" but the user might want the approximate date as July 7th minus one week, which would be around June 30th. However, the exact date isn't specified, so the answer should be based on the conversation's date, which is July 7th. Wait, the user says to use the DATE of CONVERSATION to answer with an approximate date. So the answer would be the date of the conversation, which is July 7th, but the flood was last week before that. But the answer should be the date when the flood happened. However, since the exact date isn't given, the answer is \"last week\" but the user wants a date. Maybe the answer is \"week of June 30th\" or similar. But the user might expect \"last week\" as the answer. However, the user wants the shortest possible answer using words from the conversation. The conversation says \"last week,\" so the answer is \"last week.\" But the user wants the approximate date. Wait, the answer needs to be in terms of the conversation's date. If the conversation was on July 7th, the flood was last week, which would be around June 30th. So the approximate date would be June 30th. But the answer should be concise. The user might accept \"last week\" but the instructions say to use the DATE of CONVERSATION to answer with an approximate date. Therefore, the answer is \"last week\" but that's not a date. Alternatively, the answer is the date of the conversation, July 7th, but that's when the conversation happened, not the flood. I'm confused. Wait, the user's instruction says: \"Use DATE of CONVERSATION to answer with an approximate date.\" So the answer should be based on the conversation",
+      "category": "temporal"
+    },
+    {
+      "idx": 44,
+      "question": "What activities has Maria done with her church friends?",
+      "answer_gt": "Hiking, picnic, volunteer work",
+      "answer_pred": "Short answer: community work with friends from church.",
+      "category": "single_hop"
+    },
+    {
+      "idx": 45,
+      "question": "Would John be open to moving to another country?",
+      "answer_gt": "No, he has goals specifically in the U.S. like joining the military and running for office.",
+      "answer_pred": "No.",
+      "category": "open_domain"
+    },
+    {
+      "idx": 46,
+      "question": "When did Maria go hiking with her church friends?",
+      "answer_gt": "The weekend before 22 July 2023",
+      "answer_pred": "Not mentioned.",
+      "category": "temporal"
+    },
+    {
+      "idx": 47,
+      "question": "What exercises has John done?",
+      "answer_gt": "Weight training, Circuit training, Kickboxing, yoga",
+      "answer_pred": "kickboxing, yoga, circuit training, rock climbing",
+      "category": "single_hop"
+    },
+    {
+      "idx": 48,
+      "question": "When did John have his first firefighter call-out?",
+      "answer_gt": "The sunday before 3` July 2023",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking when John had his first firefighter call-out. I need to look through the provided conversation data to find the relevant date.\n\nLooking at the memory content, there's a mention from John: \"Last Sunday we had our first call-out...\" The talk start time for that conversation is 1:59 pm on 31 July, 2023. So the first call-out was last Sunday relative to that date. Wait, but the exact date isn't given here. The talk start time is 31 July, but the call-out was last Sunday. So I need to figure out what date that Sunday was.\n\nIf the conversation started on 31 July, then last Sunday would be the previous Sunday. Let's check the dates. July 31, 2023, was a Monday. Wait, no, wait. Let me confirm the day of the week for July 31, 2023. Checking a calendar, July 31, 2023, is actually a Monday. So last Sunday would be July 30, 2023. But wait, the user might not need the exact date, just the approximate date based on the conversation's date. However, the answer should use the date from the conversation where the call-out was mentioned. The conversation where John talks about the first call-out is on 31 July, 2023, but he says \"Last Sunday,\" which would be the Sunday before that conversation. However, the problem is that the user wants the answer based on the DATE OF CONVERSATION, not the actual calendar date. Wait, the instruction says to use the DATE of CONVERSATION to answer with an approximate date. So the conversation where John mentions the first call-out is on 31 July 2023. The answer should be the approximate date when the call-out happened, which is \"Last Sunday\" as per the conversation. But the user wants the answer based on the date of the conversation, which is 31 July. Therefore, the answer should be the date of the conversation, which is 31 July 2023, but since the call-out was last Sunday, which would be July 30. However, the user's instruction says to use the DATE OF CONVERSATION to answer with an approximate date. So maybe just state the date of the conversation as the approximate date. But the call-out was on the Sunday before the conversation. However, the exact date isn't specified in the conversation content, only \"Last Sunday\". The user's answer needs to use words from the conversation where possible. The answer should be \"Last Sunday\" but since the user wants an approximate date, maybe the answer is the date of the conversation, which is 31 July 2023. Wait, but the call-out was before that. The answer might be \"Last Sunday\" as per the conversation, but the user might expect the date. However, the user says to use the DATE OF CONVERSATION to answer. The conversation where the call-out was discussed is on 31 July 2023. Therefore, the answer is approximately July 30, 2023. However, without knowing the actual day of the week for July 31, 2023, I can't be certain. Wait, let me check: July 31, 2023, is a Monday. So last Sunday would be July 30, 2023. But the user's answer should be based on the conversation date. The answer should be \"Last Sunday\" as per the conversation, but the user wants the approximate date. However, the instructions say to use the DATE OF CONVERSATION. So the answer is the date of the conversation, which is 31 July 2023. But the call-out was on the Sunday before. However, the user's answer might need to be the date when the call-out happened, which is the Sunday before the conversation date. But the user's answer should be based on the conversation's date. Since the conversation is on 31 July, and the call-out was last Sunday, which is July 30. Therefore, the answer is approximately July 30, 2023. But the user might accept \"Last Sunday\" as per the conversation. However, the instruction says to use the DATE OF CONVERSATION to answer with an approximate date. Therefore, the answer is the date of the conversation, which is July 31, 2023, but the call-out was on the previous Sunday. However, the user might want the answer as \"Last Sunday\", but the question asks for the date. Since the exact date isn",
+      "category": "temporal"
+    },
+    {
+      "idx": 49,
+      "question": "What food item did Maria drop off at the homeless shelter?",
+      "answer_gt": "Cakes",
+      "answer_pred": "baked goods",
+      "category": "single_hop"
+    },
+    {
+      "idx": 50,
+      "question": "What attributes describe John?",
+      "answer_gt": "Selfless, family-oriented, passionate, rational",
+      "answer_pred": "passionate, dedicated, determined, motivated, focused on positive impact",
+      "category": "open_domain"
+    },
+    {
+      "idx": 51,
+      "question": "When did Maria start volunteering at the homeless shelter?",
+      "answer_gt": "Around August 2022",
+      "answer_pred": "Short answer: about a year ago",
+      "category": "temporal"
+    },
+    {
+      "idx": 52,
+      "question": "Who have written notes of gratitude to Maria?",
+      "answer_gt": "Cindy, Laura",
+      "answer_pred": "John",
+      "category": "single_hop"
+    },
+    {
+      "idx": 53,
+      "question": "When did John help renovate his hometown community center?",
+      "answer_gt": "2022",
+      "answer_pred": "Short answer: 5 August 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 54,
+      "question": "When did Maria take up community work with her church friends?",
+      "answer_gt": "August 4, 2023",
+      "answer_pred": "Short answer: 5 August, 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 55,
+      "question": "When did Maria receive a medal from the homeless shelter?",
+      "answer_gt": "The week before 9 August 2023",
+      "answer_pred": "Short answer: 9 August 2023",
+      "category": "temporal"
+    },
+    {
+      "idx": 56,
+      "question": "When did John participate in a 5K charity run?",
+      "answer_gt": "first weekend of August 2023",
+      "answer_pred": "Short answer: 9 August 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 57,
+      "question": "What causes has John done events for?",
+      "answer_gt": "Toy drive, Community food drive, veterans, domestic violence",
+      "answer_pred": "homeless shelter, toy drive for kids in need, veterans and their families",
+      "category": "single_hop"
+    },
+    {
+      "idx": 58,
+      "question": "When did Maria get Coco?",
+      "answer_gt": "Two weeks before 11 August 2023",
+      "answer_pred": "Short answer: Two weeks before August 11, 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 59,
+      "question": "When did John go on a camping trip with Max?",
+      "answer_gt": "The summer of 2022",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking when John went on a camping trip with Max. I need to look through the provided memories to find the relevant information.\n\nLooking at the first memory, the talk start time is 12:10 am on 11 August, 2023. The content mentions John saying that he and Max had a blast on their camping trip last summer. The context also refers to the camping trip with Max. The keywords here are 'camping trip' and 'memories', and the tags include 'pet_companionship'.\n\nAnother memory from the same date (12:10 am on 11 August, 2023) has Maria commenting on the camping trip with pets being soul-nourishing. But the key part is John's mention of last summer. Since the conversation date is August 2023, last summer would be around the same time, but the exact date isn't specified. However, the user wants the approximate date based on the conversation's DATE. Wait, the question is about when John went on the trip, not when the conversation happened. The conversation mentions \"last summer,\" which would be around the same time as the conversation's date, but the exact date isn't given. However, the user wants the answer based on the DATE of the CONVERSATION. Wait, the instructions say to use the DATE of CONVERSATION to answer with an approximate date. Wait, but the question is about when the trip happened, not the conversation date. Wait, the user wrote: \"Use DATE of CONVERSATION to answer with an approximate date.\" So maybe the answer is the conversation's date, but that doesn't make sense. Wait, no. The DATE of CONVERSATION is when they talked about the trip, not when the trip happened. The trip was \"last summer,\" which would be around the time of the conversation, which is August 2023. But the exact trip date isn't given. However, the context says \"last summer,\" which would be the previous summer. Wait, the conversation is in August 2023, so last summer would be 2022. But the memory's talk start time is 12 August 2023. Hmm, maybe the answer should be the approximate time mentioned in the conversation, which is \"last summer,\" but the user wants the answer using the DATE of the CONVERSATION. This is confusing. Wait, the user says: \"Use DATE of CONVERSATION to answer with an approximate date.\" So even if the trip was last summer, but the DATE of the CONVERSATION is 11 August 2023, maybe the answer is that date. But that's not correct. Wait, the question is when did John go on the trip, not when the conversation happened. The conversation mentions \"last summer,\" so the answer should be \"last summer,\" which would be around the same time as the previous year, but the user wants the answer based on the DATE of the CONVERSATION. Maybe the answer is August 2022, but the conversation date is August 2023. However, the exact date isn't specified, just \"last summer.\" Since the user wants the answer using the DATE of the CONVERSATION, which is August 11, 2023, but the trip was last summer, which would be 2022. But the user might be looking for the approximate time mentioned in the conversation, which is \"last summer.\" However, the instructions say to use the DATE of the CONVERSATION to answer. I'm a bit confused here. Maybe the answer is \"last summer,\" but the user wants the answer using the DATE of the CONVERSATION. Alternatively, the answer is the date when the conversation happened, but that's not correct. Wait, the original memory says \"last summer,\" so the trip was in the summer before the conversation date. The conversation is in August 2023, so last summer would be 2022. Therefore, the answer is \"last summer,\" but the user wants the date. However, since the exact date isn't given, the answer is \"last summer.\" But the user might want the answer based on the DATE of the CONVERSATION, which is August 2023, but that's not when the trip happened. Maybe the answer is \"last summer\" as per the conversation. But the user wants the answer using the DATE of the CONVERSATION. I think the answer is the date when the conversation occurred, but that's not right. The user's instruction is confusing. Alternatively, since the trip was \"last summer,\" and the conversation is in August 2023, the approximate date is summer 2022",
+      "category": "temporal"
+    },
+    {
+      "idx": 60,
+      "question": "What are Maria's dogs' names?",
+      "answer_gt": "Coco, Shadow",
+      "answer_pred": "Coco and Shadow",
+      "category": "single_hop"
+    },
+    {
+      "idx": 61,
+      "question": "When did Maria adopt Shadow?",
+      "answer_gt": "The week before 13 August 2023",
+      "answer_pred": "August 13, 2023.",
+      "category": "temporal"
+    },
+    {
+      "idx": 62,
+      "question": "How many dogs has Maria adopted from the dog shelter she volunteers at?",
+      "answer_gt": "two",
+      "answer_pred": "Short answer: 1",
+      "category": "single_hop"
+    },
+    {
+      "idx": 63,
+      "question": "How many weeks passed between Maria adopting Coco and Shadow?",
+      "answer_gt": "two weeks",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking how many weeks passed between Maria adopting Coco and Shadow. First, I need to find the dates when Maria mentioned adopting each puppy.\n\nLooking at the context, Maria talks about getting a puppy named Coco on 11 August 2023 at 12:10 am. Then later, on 13 August 2023 at 3:14 pm, she mentions her dog Shadow. Wait, but in that message, she says \"Her name is Shadow! She's full of energy...\" So that's when she introduced Shadow. But when was Shadow actually adopted? The context doesn't explicitly say when Shadow was adopted. Wait, maybe I need to check all the entries again.\n\nWait, the first mention of Coco is on 11 August 2023, where Maria says she got Coco two weeks ago. Wait, no, in the first memory content, Maria says \"I got a puppy two weeks ago! Her name's Coco...\" So that conversation started on 11 August 2023. If she got Coco two weeks before that date, then the adoption date would be around 25 July 2023. But the user is asking about the time between adopting Coco and Shadow. However, the problem is that the context doesn't mention when Shadow was adopted. The only mention of Shadow is on 13 August 2023, but there's no indication of the adoption date for Shadow. Wait, maybe there's a mistake here. Let me check again.\n\nWait, the first memory content says Maria got Coco two weeks ago, and the talk start time is 11 August 2023. So that would mean Coco was adopted on 25 July 2023 (two weeks before 11 August). Then, the next mention of Shadow is on 13 August 2023, but the context says Maria describes Shadow as her energetic dog. However, there's no mention of when Shadow was adopted. Unless Shadow is another dog, but the user is asking about the time between adopting Coco and Shadow. But if Shadow was adopted on 13 August, then the time between 25 July and 13 August is about two weeks. Wait, but that would be 19 days, which is about 2.7 weeks. But the problem is that Maria might have adopted both dogs, but the context doesn't clarify if Shadow is another dog or if there's a mix-up. Wait, looking back, the first message is about Coco, and then on 13 August, Maria talks about Shadow. But the context for that message says \"Maria describes her energetic dog Shadow as a joyful companion...\" So that's the same Maria, but does that mean she has two dogs? The user is asking about the time between adopting Coco and Shadow. However, the context doesn't mention when Shadow was adopted. The only time Shadow is mentioned is on 13 August, but there's no adoption date given. Therefore, the answer might be that there isn't enough information. But the user is probably assuming that Shadow was adopted after Coco. However, the problem is that the adoption date of Shadow is not provided. Wait, but in the first message, Maria says she got Coco two weeks ago, which would be 25 July 2023. Then, the next message about Shadow is on 13 August 2023. But if Shadow is a new dog, perhaps she adopted Shadow on 13 August. But that would mean zero weeks between Coco and Shadow. Alternatively, maybe Shadow is another dog, but the context doesn't mention the adoption date. Therefore, the answer is that the information isn't provided. However, the user might be expecting that since Coco was adopted two weeks before 11 August, and Shadow was mentioned on 13 August, perhaps the answer is two weeks. But that's not accurate because Shadow's adoption date isn't given. Wait, but maybe the user is confused between Coco and Shadow. Wait, in the first message, Maria says she got Coco two weeks ago. Then later, on 13 August, she talks about Shadow. But the user is asking about the time between adopting Coco and Shadow. If Shadow was adopted on the same day as the message (13 August), then the time between 25 July (Coco's adoption) and 13 August is 19 days, which is about 2.7 weeks. But the user might be expecting an approximate answer. Alternatively, if Shadow was adopted on 13 August, and Coco was adopted two weeks before 11 August (25 July), then the time between 25 July and 13 August is about 2 weeks. But the exact answer would",
+      "category": "temporal"
+    },
+    {
+      "idx": 64,
+      "question": "What job might Maria pursue in the future?",
+      "answer_gt": "Shelter coordinator, Counselor",
+      "answer_pred": "The context does not specify Maria's future job.",
+      "category": "open_domain"
+    },
+    {
+      "idx": 65,
+      "question": "What is John's main focus in local politics?",
+      "answer_gt": "Improving education and infrastructure",
+      "answer_pred": "Improving education and infrastructure in our community.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 66,
+      "question": "What sparked John's interest in improving education and infrastructure in the community?",
+      "answer_gt": "Seeing how lack of education and crumbling infrastructure affected his neighborhood while growing up.",
+      "answer_pred": "Growing up, I saw how lack of education and crumbling infrastructure affected my neighborhood.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 67,
+      "question": "How did the extra funding help the school shown in the photo shared by John?",
+      "answer_gt": "Enabled needed repairs and renovations, making the learning environment safer and more modern for students.",
+      "answer_pred": "enabled needed repairs and renovations, making the learning environment safer and more modern for students.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 68,
+      "question": "What type of workout class did Maria start doing in December 2023?",
+      "answer_gt": "aerial yoga",
+      "answer_pred": "No information provided about Maria's workout class in December 2023.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 69,
+      "question": "What did Maria donate to a homeless shelter in December 2023?",
+      "answer_gt": "old car",
+      "answer_pred": "No information provided about Maria's December 2023 donations to a homeless shelter.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 70,
+      "question": "What kind of meal did John and his family make together in the photo shared by John?",
+      "answer_gt": "pizza",
+      "answer_pred": "Short answer: pizza",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 71,
+      "question": "What kind of online group did John join?",
+      "answer_gt": "service-focused online group",
+      "answer_pred": "service-focused online group",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 72,
+      "question": "What kind of activities did John and his mates from the online group do as part of their service efforts?",
+      "answer_gt": "gave out food and supplies at a homeless shelter, organized a toy drive for kids in need",
+      "answer_pred": "Short answer: They went to a homeless shelter to give out food and supplies and organized a toy drive for kids in need.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 73,
+      "question": "Who inspired Maria to start volunteering?",
+      "answer_gt": "Her aunt",
+      "answer_pred": "Maria's aunt.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 74,
+      "question": "Why did Maria sit with the little girl at the shelter event in February 2023?",
+      "answer_gt": "The girl seemed sad and had no other family",
+      "answer_pred": "<think>\nOkay, let's tackle this question. The user is asking why Maria sat with the little girl at the shelter event in February 2023. First, I need to look through the provided context to find any mentions of Maria interacting with a child at a shelter event around that time.\n\nLooking through the memories, there's an entry from 8:06 pm on 9 August 2023 where Maria says, \"This pic is heartwarming, that little girl has such a cute smile. What was the event all about?\" The context mentions a heartwarming photo of a child and the event's inspiring nature. However, the date here is August 2023, not February 2023. \n\nAnother entry from 2:33 pm on 5 February 2023 has John praising Maria's community event and asking about her feelings. The context here notes that Maria's reflections are on empathy. But there's no mention of sitting with a girl specifically.\n\nWait, there's another entry on 12:24 am on 7 April 2023 where Maria shares an event photo, mentioning collective energy and a shared cause. The context includes a heartwarming photo of a child, but again, not specifically February 2023.\n\nLooking again, the question specifies February 2023. The 5 February 2023 entry has John's comment about the community event and Maria's involvement. The context for that entry says John's praise is contextualized within Maria's reflections on empathy. However, there's no direct mention of Maria sitting with a little girl.\n\nWait, maybe the answer is inferred from the heartwarming photo mentioned in the August 2023 entry, but the user is asking about February 2023. The problem is that none of the entries explicitly state that Maria sat with the girl. The closest is the August entry where she mentions the photo, but the date doesn't match. \n\nAlternatively, maybe the answer is that Maria was part of the community event where the photo was taken, and the reason is related to the event's purpose, like supporting underprivileged youth or domestic abuse awareness. However, the exact reason isn't directly stated. The context tags for the August entry include 'Heartwarming Moments' and 'Child Engagement', suggesting she was involved in engaging with children, but the specific action of sitting with the girl isn't detailed. \n\nSince the user wants an exact phrase from the context, and there's no direct mention of Maria sitting with the girl in February 2023, perhaps there's a misunderstanding. However, looking again, the 8:06 pm entry on 9 August 2023 is the only one mentioning the girl, but the date is wrong. The February 2023 entries don't mention the girl. Therefore, maybe the answer isn't directly available, but the user might expect using the closest related phrase. Alternatively, maybe the answer is inferred from the 'heartwarming' and 'child engagement' tags. However, without explicit context, it's hard. But the user wants exact words, so perhaps there's no direct answer. Wait, but the question might be based on a different entry. Let me check again.\n\nWait, the 25 May 2023 entry: Maria mentions preparing for a fundraiser at the homeless shelter and hopes to cover basic needs. The context mentions her recent donation of baked goods. But again, not about sitting with a girl. \n\nThe 8:06 pm entry on 9 August 2023 is the only one with a specific mention of a little girl and the photo. However, the date is August, not February. Since the user specified February 2023, and none of the entries in that month mention the girl, maybe the answer is that the context doesn't specify, but the user wants an answer. Alternatively, perhaps the answer is inferred from the 'heartwarming' and 'child engagement' tags, but without exact words, that's not allowed. \n\nWait, maybe the answer is in the memory content of 8:06 pm on 9 August 2023: \"This pic is heartwarming, that little girl has such a cute smile. What was the event all about?\" The exact phrase here is \"heartwarming\" and \"little girl,\" but the reason for sitting with her isn't stated. The user might be expecting an answer like \"to engage with children\" or \"heartwarming moment,\" but the exact words from context might be \"heartwarming\" or \"child engagement.\" However, the question is about why she sat with the girl, which isn't directly answered. \n\nGiven the constraints, perhaps the answer is that the context doesn't specify the reason",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 75,
+      "question": "What did Jean go through before meeting Maria?",
+      "answer_gt": "divorce, job loss, homelessness",
+      "answer_pred": "The context does not mention Jean.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 76,
+      "question": "Why did John decide to run for office again?",
+      "answer_gt": "saw the impact he could make in the community through politics",
+      "answer_pred": "\"I can't let go of my dream to make a difference in my community.\"",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 77,
+      "question": "What activity did John's colleague, Rob, invite him to?",
+      "answer_gt": "beginner's yoga class",
+      "answer_pred": "The context does not mention John's colleague Rob or any invitation from Rob.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 78,
+      "question": "What is the name of John's one-year-old child?",
+      "answer_gt": "Kyle",
+      "answer_pred": "Kyle",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 79,
+      "question": "How often does John take his kids to the park?",
+      "answer_gt": "A few times a week",
+      "answer_pred": "Short answer: a few times a week.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 80,
+      "question": "What did Maria make for her home to remind her of a trip to England?",
+      "answer_gt": "painting of a castle on a hill",
+      "answer_pred": "Short answer: a painting.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 81,
+      "question": "Where did Maria get the idea for the castle shadow box in her home?",
+      "answer_gt": "England",
+      "answer_pred": "Short answer: that trip to England a few years ago.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 82,
+      "question": "What did John receive a certificate for?",
+      "answer_gt": "completion of a university degree",
+      "answer_pred": "The context does not mention John receiving a certificate.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 83,
+      "question": "What areas is John particularly interested in for policymaking?",
+      "answer_gt": "education and infrastructure",
+      "answer_pred": "education and infrastructure",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 84,
+      "question": "What did Maria participate in last weekend before April 10, 2023?",
+      "answer_gt": "a 5K charity run",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking what Maria participated in last weekend before April 10, 2023. First, I need to check the context provided for any mentions of Maria's activities around that time.\n\nLooking at the memory entries, the talk start times are listed. The one closest to April 10, 2023, is on May 6, 2023, where Maria mentions joining a gym. But that's after April 10. Wait, the user is asking for last weekend before April 10, so March 2023? Let me check the dates again.\n\nWait, the dates in the context are: May 6, 2023; January 28, 2023; August 9, 2023; February 5, 2023; April 18, 2023; June 16, 2023; May 20, 2023; March 6, 2023; July 22, 2023. \n\nWait, the user is asking about last weekend before April 10, 2023. So that would be around March 2023. Looking at March 6, 2023, there's a memory where Maria talks about joining a gym. But the talk start time for that is 7:34 pm on 16 June 2023? Wait, no, let me check again. Wait, the memory with the gym is on 16 June 2023. Wait, no, looking back:\n\nWait, the first entry is talk start time:5:04 pm on 6 May, 2023. Then 1:17 pm on 28 January, 2023. Then 8:06 pm on 9 August, 2023. Then 2:33 pm on 5 February, 2023. Then 7:34 pm on 18 April, 2023. Then 7:20 pm on 16 June, 2023. Then 7:38 pm on 20 May, 2023. Then 6:03 pm on 6 March, 2023. Then 2:33 pm on 5 February, 2023 again. Then 6:21 pm on 22 July, 2023.\n\nSo, the March 6, 2023 entry: Speaker Maria says: Hey John, been good since we talked? I got some great news to share - I joined a gym last week! It's been super positive - I'm sticking to my workout routine and the people are awesome. The atmosphere is so welcoming. \n\nSo the talk start time is 6:03 pm on 6 March 2023. The user is asking about last weekend before April 10, 2023. April 10 is in April, so the previous weekend would be around March 25 or March 26, 2023. But Maria joined the gym \"last week\" when she spoke on March 6. So if the conversation on March 6 is about joining the gym \"last week,\" that would be around February 28 to March 6, depending on the week. But the user is asking for what she participated in before April 10. Since the gym was mentioned in March 6, and that's before April 10, but the question is about last weekend before April 10, which would be March 25-26. However, there's no mention of Maria's activities during that specific weekend in the context. \n\nWait, but maybe there's another entry. Let me check again. The other entries: On May 20, 2023, she mentions planning a ring-toss tournament for the homeless shelter's fundraiser. But that's after April 10. The March 6 entry is about joining a gym. The question is, what did she participate in last weekend before April 10. If the last weekend before April 10 is March 25-26, but there's no info about that. The closest is the gym on March 6. However, the user might be looking for the event she mentioned in the March 6 entry. Wait, the March 6 entry says she joined a gym last week. If the conversation is on March 6, then \"last week\" would be the week before, so around February 28",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 85,
+      "question": "What event did John volunteer at last weekend?",
+      "answer_gt": "career fair at a local school",
+      "answer_pred": "Short answer: a community event to raise money for a good cause.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 86,
+      "question": "What did John do that put a strain on his wallet?",
+      "answer_gt": "His car broke down",
+      "answer_pred": "car breakdown",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 87,
+      "question": "Where did John explore on a road trip last year?",
+      "answer_gt": "Pacific Northwest",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking where John explored on a road trip last year. I need to check the context provided.\n\nLooking through the memory entries, there's a mention of John's family road trip in the context from 11:01 am on 17 December, 2022. The content says: \"Speaker John says: Hey Maria! Good to see you. Just got back from a family road trip yesterday, it was fun! Anything exciting happening for you?\" The keywords here are 'family road trip', 'fun', 'got back'. The tags include 'shared travel experiences' and 'vacation'.\n\nAnother entry on 6:13 pm on 10 April, 2023 has Maria asking John about a road trip picture, and John's response mentions the Pacific Northwest and national parks. Wait, but that's a mountaineering trip? Wait, let me check again.\n\nWait, in the talk start time 6:13 pm on 10 April, 2023, Speaker John says: \"Thanks! We explored the coast up in the Pacific Northwest and hit some cool national parks. The beauty of nature was absolutely breathtaking!\" So that's a road trip? Wait, the memory content there is about a road trip? Wait, the context for that entry says: \"memory context: The speaker shares an experience of exploring natural beauty in the Pacific Northwest, emphasizing its breathtaking impact and connection to personal reflection.\" So the road trip was to the Pacific Northwest, exploring the coast and national parks.\n\nBut the question is about a road trip last year. The date here is 10 April 2023. If the current year is 2023, then last year would be 2022. The December 2022 entry mentions a family road trip, but doesn't specify the location. However, the April 2023 entry mentions Pacific Northwest. Wait, but the question says \"last year,\" so if the current time is 2023, last year would be 2022. But the April 2023 trip is this year. The December 2022 trip is last year. But the location isn't specified in the December 2022 entry. The only specific location is in the April 2023 entry, which is this year.\n\nBut the user's question is about last year. So maybe the answer is not available? Wait, the December 2022 entry says John's family road trip, but no location. However, in another entry, Maria mentions Oregon. Wait, in the first memory content, Speaker Maria says: \"When I was younger, my family and I went on a road trip to Oregon.\" Then later, in the December 2022 entry, John's family road trip might be connected to Maria's Oregon trip. But the context says \"John's family road trip discussion now connects to Maria's Oregon road trip...\" So maybe John's road trip was also to Oregon?\n\nWait, the memory context for the December 17, 2022 entry says: \"John's family road trip discussion now connects to Maria's Oregon road trip, emphasizing shared travel experiences...\" So that suggests that John's family road trip was also to Oregon. But the memory content for that entry doesn't explicitly state Oregon, just that he got back from a family road trip. However, the context links it to Maria's Oregon trip. So maybe the answer is Oregon. But I need to check if the exact words are present. The user wants the answer to use exact words from the context. The December 2022 entry doesn't have 'Oregon' in the content, but the context mentions Maria's Oregon trip. However, the answer must be based on exact words from the memory content. Since the December 2022 entry's content doesn't mention Oregon, but the context connects it, but the exact words aren't there. Alternatively, the April 2023 entry mentions Pacific Northwest, but that's this year. The user is asking about last year, so 2022. Therefore, the answer might be that John's road trip last year was to Oregon, based on the context linking it to Maria's Oregon trip. However, the exact words from the context for John's trip in December 2022 are \"family road trip\" but no specific location. But the context says \"connects to Maria's Oregon road trip,\" so perhaps the answer is Oregon. However, the user wants exact words from the context. If the content doesn't explicitly state Oregon, maybe the answer isn't possible. But maybe there's another entry. Let me check again.\n\nLooking back, the first memory content from 2:47 pm on",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 88,
+      "question": "What topic has John been blogging about recently?",
+      "answer_gt": "politics and the government",
+      "answer_pred": "politics and the government",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 89,
+      "question": "Why did John start blogging about politics and policies?",
+      "answer_gt": "raise awareness and start conversations to create positive change",
+      "answer_pred": "To drive systemic reform and policy impact.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 90,
+      "question": "What was the focus of John's recent research and writing on his blog?",
+      "answer_gt": "education reform and infrastructure development",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking about the focus of John's recent research and writing on his blog. I need to look through the provided context to find the exact answer.\n\nLooking at the memories, there's one from 7:34 pm on 18 April, 2023 where John says he's been blogging about politics and the government, emphasizing the need for better education and infrastructure. The keywords here include 'blogging', 'politics', 'government', 'education', 'infrastructure', and 'impact'. The tags are 'Politics', 'Social Issues', 'Public Policy', 'Blogging Influence'.\n\nAnother relevant part is from 7:34 pm on 18 April, 2023 where John mentions researching policies and writing about his thoughts and ideas to raise awareness and start conversations for positive change. The keywords here are 'political system', 'researching policies', 'raising awareness' with tags like 'politics', 'advocacy', 'discussion'.\n\nAlso, in the memory from 1:17 pm on 28 January, 2023, John talks about community meetings and the state of education, which ties into his blogging on systemic challenges and advocacy for funding. But the direct mention of his blog's focus is in the April entry where he specifically says he's been blogging about politics and government, focusing on education and infrastructure.\n\nSo the exact phrase from the context would be \"politics and the government\" but the user wants the focus, which is on education and infrastructure. Wait, looking at the exact quote: \"I've been blogging about politics and the government. It's been a really satisfying experience and I care about making a real impact. We need way better education and infrastructure and I know firsthand how this impacts neighborhoods.\"\n\nSo the focus is on politics and government, but the specific areas he cares about are education and infrastructure. However, the question is about the focus of his research and writing. The answer should be exact words from the context. The exact words he used are \"politics and the government,\" but the follow-up mentions education and infrastructure as the areas he cares about. However, the user might be looking for the specific topics he wrote about, which in the context are politics and government, but the emphasis is on education and infrastructure. Wait, the exact answer from the context is \"politics and the government,\" but the user's question is about the focus of his research and writing. But in the same sentence, he says \"I care about making a real impact. We need way better education and infrastructure...\" So maybe the answer is \"education and infrastructure\" as the focus. But the exact words from the context where he talks about his blog's focus are \"blogging about politics and the government.\" However, the subsequent part mentions education and infrastructure as the areas he's focused on. The user wants the answer to use exact words from the context. Which part is the exact focus of his research and writing? The answer might be \"politics and the government,\" but the user might be looking for the specific issues he's addressing through that, which are education and infrastructure. However, the exact answer from the context is \"politics and the government,\" but the user's question is about the focus of his research and writing. Let me check again.\n\nIn the memory from 7:34 pm on 18 April, 2023, John says: \"I've been blogging about politics and the government. It's been a really satisfying experience and I care about making a real impact. We need way better education and infrastructure and I know firsthand how this impacts neighborhoods.\"\n\nSo the direct answer is \"politics and the government,\" but the focus within that is on education and infrastructure. However, the user might expect the answer to be \"education and infrastructure\" as these are the specific areas he's emphasizing. But the question is about the focus of his research and writing on his blog. The blog is about politics and government, but the specific issues are education and infrastructure. But the exact words from the context are \"politics and the government,\" so that's the direct answer. However, the user might be looking for the specific topics he's researching, which in the context are education and infrastructure. Wait, in the same sentence, he says \"We need way better education and infrastructure...\" but that's his opinion, not the focus of the blog. The blog's focus is on politics and government, but the topics within that are education and infrastructure. However, the answer needs to use exact words from the context. The exact words are \"politics and the government,\" but the user might be looking for \"education and infrastructure\" as the focus. This is a bit ambiguous. Let me check the memory tags for that entry. The tags are 'Politics', 'Social Issues', 'Public Policy', '",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 91,
+      "question": "What did John attend with his colleagues in March 2023?",
+      "answer_gt": "a tech-for-good convention",
+      "answer_pred": "No specific event mentioned.",
+      "category": "temporal"
+    },
+    {
+      "idx": 92,
+      "question": "How often does John work out with his family?",
+      "answer_gt": "Three times a week",
+      "answer_pred": "Short answer: Three times a week.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 93,
+      "question": "How has John's fitness improved since starting boot camps with his family?",
+      "answer_gt": "More energy, gains in strength and endurance",
+      "answer_pred": "Short answer: They've had lots more energy and noticed some gains in strength and endurance.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 94,
+      "question": "What kind of food did Maria have on her dinner spread iwth her mother?",
+      "answer_gt": "Salads, sandwiches, homemade desserts",
+      "answer_pred": "The specific food Maria had on her dinner spread with her mother is not mentioned in the context.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 95,
+      "question": "What activity did Maria and her mom do together in May 2023?",
+      "answer_gt": "Made dinner together",
+      "answer_pred": "Short answer: made some dinner together",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 96,
+      "question": "What did Maria do to feel closer to a community and her faith?",
+      "answer_gt": "joined a nearby church",
+      "answer_pred": "Short answer: joined a nearby church.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 97,
+      "question": "Why did Maria join a nearby church recently?",
+      "answer_gt": "to feel closer to a community and her faith",
+      "answer_pred": "Short answer: I wanted to feel closer to a community and my faith.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 98,
+      "question": "What did John host for the veterans in May 2023 as part of the project?",
+      "answer_gt": "a small party to share their stories",
+      "answer_pred": "throwing a small party",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 99,
+      "question": "What did John and the veterans do during the small party?",
+      "answer_gt": "share stories and make connections",
+      "answer_pred": "shared their stories",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 100,
+      "question": "What emotions did John feel during the small party with the veterans?",
+      "answer_gt": "heartwarming",
+      "answer_pred": "Short answer: Hope, resilience, gratitude.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 101,
+      "question": "What event is Maria getting ready for at the shelter on May 25, 2023?",
+      "answer_gt": "fundraiser",
+      "answer_pred": "fundraiser",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 102,
+      "question": "What does Maria need to spread the word about for the fundraiser for the volunteer shelter?",
+      "answer_gt": "chili cook-off",
+      "answer_pred": "fundraiser for the homeless shelter",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 103,
+      "question": "What was the name of the pet that John had to say goodbye to on 3 June, 2023?",
+      "answer_gt": "Max",
+      "answer_pred": "Max",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 104,
+      "question": "How long was Max a part of John's family?",
+      "answer_gt": "10 years",
+      "answer_pred": "Short answer: 10 years.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 105,
+      "question": "How does John plan to honor the memories of his beloved pet?",
+      "answer_gt": "By considering adopting a rescue dog",
+      "answer_pred": "The context does not specify how John plans to honor the memories of his beloved pet.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 106,
+      "question": "What important values does John want to teach his kids through adopting a rescue dog?",
+      "answer_gt": "Responsibility and compassion",
+      "answer_pred": "responsibility and compassion",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 107,
+      "question": "What new activity did Maria start recently, as mentioned on 3 June, 2023?",
+      "answer_gt": "volunteering at a local dog shelter once a month",
+      "answer_pred": "Short answer: joined a gym.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 108,
+      "question": "What did Maria say it was like being at the waterfall in Oregon?",
+      "answer_gt": "Like being in a fairy tale",
+      "answer_pred": "\"I felt like I was in a fairy tale! The water sounded so calming and the surroundings were beautiful. It was truly magical!\"",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 109,
+      "question": "What does Maria say she feels when doing upside-down yoga poses?",
+      "answer_gt": "Free and light",
+      "answer_pred": "feel free and light",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 110,
+      "question": "What exciting news did Maria share on 16 June, 2023?",
+      "answer_gt": "joined a gym",
+      "answer_pred": "Maria shared no exciting news on 16 June, 2023.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 111,
+      "question": "What yoga activity has Maria been trying to improve her strength and endurance?",
+      "answer_gt": "kundalini yoga",
+      "answer_pred": "kundalini yoga",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 112,
+      "question": "What did John recently get promoted to?",
+      "answer_gt": "assistant manager",
+      "answer_pred": "assistant manager",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 113,
+      "question": "What was one of the biggest challenges John faced in his journey to becoming assistant manager?",
+      "answer_gt": "self-doubt",
+      "answer_pred": "Short answer: self-doubt",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 114,
+      "question": "How does John describe the support he received during his journey to becoming assistant manager?",
+      "answer_gt": "having support at home and his own grit",
+      "answer_pred": "Short answer: \"your support really means a lot\" and \"your encouragement gives me the strength to keep going.\"",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 115,
+      "question": "What kind of event did John and his family attend in June 2023?",
+      "answer_gt": "live music event",
+      "answer_pred": "community event with arts and crafts",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 116,
+      "question": "Why did Maria need to help her cousin find a new place to live?",
+      "answer_gt": "Her cousin had to leave and find a new place in a hurry.",
+      "answer_pred": "Short answer: Her cousin just had a tough time recently.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 117,
+      "question": "What event did John participate in to show support for veterans' rights?",
+      "answer_gt": "marching event",
+      "answer_pred": "Short answer: marching event",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 118,
+      "question": "What inspired John to join the marching event for veterans' rights?",
+      "answer_gt": "Respect for the military and the desire to show support",
+      "answer_pred": "Short answer: Their sacrifices for us.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 119,
+      "question": "How often does John get to see sunsets like the one he shared with Maria?",
+      "answer_gt": "At least once a week",
+      "answer_pred": "frequency of sunsets",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 120,
+      "question": "What natural disaster affected John's old area on 7 July, 2023?",
+      "answer_gt": "Flood",
+      "answer_pred": "flood",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 121,
+      "question": "How did the flood impact the homes in John's old area?",
+      "answer_gt": "Lots of homes were ruined.",
+      "answer_pred": "Short answer: lots of homes were ruined.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 122,
+      "question": "What motivated Maria and John to discuss potential solutions for their community on 7 July, 2023?",
+      "answer_gt": "Flood in John's old area",
+      "answer_pred": "Recent flood-related infrastructure failures and community development needs.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 123,
+      "question": "What did Maria plan to do later on the evening of 7 July, 2023?",
+      "answer_gt": "have dinner with friends from the gym",
+      "answer_pred": "No information provided.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 124,
+      "question": "What kind of activities did Maria do at the picnic with her church friends?",
+      "answer_gt": "played games like charades and a scavenger hunt",
+      "answer_pred": "chilled under the trees, played games, and ate yummy food.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 125,
+      "question": "What does John appreciate about the veteran's hospital visit?",
+      "answer_gt": "the resilience of the veterans and their inspiring stories",
+      "answer_pred": "appreciate what we have and the need to give back",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 126,
+      "question": "What did John take away from visiting the veteran's hospital?",
+      "answer_gt": "appreciation for giving back",
+      "answer_pred": "No specific information about visiting a veteran's hospital is mentioned in the context.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 127,
+      "question": "Why did John feel inspired to join the military after the visit to the hospital?",
+      "answer_gt": "seeing the resilience of the veterans",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking why John felt inspired to join the military after visiting the hospital. I need to look through the context provided to find the exact reason.\n\nLooking at the memories, there's one from 3:34 pm on 17 July, 2023 where John says he visited a veteran's hospital and met amazing people, which made him appreciate what they have and the need to give back. But that's about the hospital visit leading to gratitude and giving back, not specifically joining the military.\n\nAnother entry from 8:30 pm on 1 January, 2023 mentions John talking about hearing stories from veterans like Samuel, which highlighted resilience and hope for military service. However, the direct link to joining the military is in the memory from 3:34 pm on 17 July, 2023 where John says, \"It reminded me why I wanted to join the military.\" Wait, no, that's in the context of hearing stories from Samuel. Let me check again.\n\nWait, there's a memory where John says: \"I heard some cool stories from an elderly veteran named Samuel. It was inspiring and heartbreaking, but seeing their resilience really filled me with hope. It reminded me why I wanted to join the military.\" That's from 7:38 pm on 20 May, 2023. So the exact words are \"seeing their resilience really filled me with hope. It reminded me why I wanted to join the military.\" However, the question is about the visit to the hospital. Wait, the user is asking about the visit to the hospital, but in the context, the hospital visit is mentioned in a different memory. Let me check again.\n\nWait, the user's question is about the visit to the hospital making John want to join the military. But looking at the context, the hospital visit is mentioned in the 3:34 pm on 17 July, 2023 entry where John says he visited a veteran's hospital and met amazing people, which made him appreciate what they have and the need to give back. But that's not directly linking to joining the military. However, another entry from 3:34 pm on 17 July, 2023 has Maria saying that John learned something cool during his visit, but the answer might be in the context where John's visit to the hospital made him appreciate and want to give back, but the actual reason for joining the military is from the Samuel story. Wait, the user's question specifically mentions the visit to the hospital. But in the context, the hospital visit is linked to giving back, not joining the military. The joining the military is linked to hearing Samuel's stories. So perhaps the user is conflating different visits. However, the answer needs to be based on the exact context. Let me check again.\n\nWait, the user's question is: Why did John feel inspired to join the military after the visit to the hospital? But in the context, the hospital visit is in the 3:34 pm on 17 July, 2023 entry where John says he visited a veteran's hospital and met amazing people. However, the reason he wanted to join the military is mentioned in the entry from 7:38 pm on 20 May, 2023 where he heard stories from Samuel, not the hospital visit. Therefore, there might be a confusion here. However, the user's question is about the hospital visit. Unless there's a different context. Wait, maybe the answer is in the memory where John says, \"It reminded me why I wanted to join the military\" after hearing Samuel's stories. But the question is about the hospital visit. However, in the context, the hospital visit is mentioned as leading to appreciation and giving back, not joining the military. Therefore, maybe the user made a mistake in the question, but the answer should be based on the exact context. Alternatively, perhaps the answer is from the hospital visit. Let me check again. The memory on 3:34 pm on 17 July, 2023 where John says he visited a veteran's hospital and met amazing people. The context says the visit led to personal reflection on gratitude and the importance of contributing to others, connected to humility and generational responsibility. But the direct reason for joining the military is from the Samuel story. Therefore, the answer should be from the Samuel story, not the hospital visit. But the user's question is about the hospital visit. So there's a contradiction here. But the user's question might have an error, but the answer should be based on the exact context. Therefore, the answer is not present in the hospital visit context but in the Samuel story. However, the user's question is about the hospital visit.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 128,
+      "question": "In what activity did Maria and her church friends participate in July 2023?",
+      "answer_gt": "hiking",
+      "answer_pred": "Short answer: picnic",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 129,
+      "question": "What does John think about trying new classes at the yoga studio?",
+      "answer_gt": "Trying new classes is a fun way to switch up the exercise routine.",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking what John thinks about trying new classes at the yoga studio. I need to look through the provided context to find John's opinions on this.\n\nLooking at the memories, there's a talk from John on 7 April where he mentions starting a weekend yoga class with a colleague and how it's awesome. He feels great mentally and physically. He also says that the instructor is great. Then, Maria encourages him to try new classes. \n\nAnother entry from 22 July, Maria says trying new classes sounds fun to switch up the exercise routine, and John might have mentioned something about that. Wait, in the memory with talk start time 8:55 pm on 25 February, John says \"Let's do it, Maria! Together, we can make a real difference and bring a brighter future. And nothing too soon, but my colleague Rob invited me to a beginner's yoga class.\" So he was invited to a beginner's class, which he joined. \n\nAlso, in the context where Maria asks if it's a martial arts place or yoga studio, John's response isn't there, but Maria clarifies it's a yoga studio. \n\nBut the direct mention of John's thoughts on trying new classes might be in the 22 July entry where Maria says \"Trying new classes sounds like a fun way to switch up your exercise routine - I should give it a go!\" and John's response isn't there, but Maria is encouraging him. However, in another part, John says he found a beginner class to help him flex up, and Maria encourages joining new classes. \n\nWait, in the context where Maria says \"So cool you found a beginner class to help you flex up. Keep it up!\" John's response isn't there, but he did start the class. Also, in the 25 February entry, John mentions being invited to a beginner's class. \n\nBut the exact words from John about trying new classes? Let me check again. \n\nLooking at the memory where Maria says \"Trying new classes sounds like a fun way to switch up your exercise routine - I should give it a go!\" and the context says that Maria encourages John to try new classes. However, John's own statements about trying new classes: in the 25 February entry, he says he was invited to a beginner's class, which he joined. But does he mention trying new classes beyond that? \n\nAnother entry: in the 7 April talk, John says he started a weekend class and that he's been wanting to try yoga for a while. So he's positive about starting a class, but does he mention trying new ones? Maybe when Maria encourages him to try new classes, he might have agreed. However, in the 22 July entry, Maria says \"Trying new classes sounds like a fun way...\" and John's response isn't directly quoted, but the context says that Maria is encouraging him. \n\nWait, in the memory with talk start time 12:24 am on 7 April, John says \"Hey Maria, I'm so excited to tell you I started a weekend yoga class...\" and Maria responds positively. Then later, Maria encourages him to try new classes. But does John explicitly say anything about trying new classes? \n\nWait, in the memory where Maria asks about the studio, John's response isn't directly quoted, but Maria clarifies it's a yoga studio. \n\nHmm. The exact words from John about trying new classes might not be present. But in the 25 February entry, John says \"my colleague Rob invited me to a beginner's yoga class\" which implies he's open to trying new classes. However, the question is about John's thoughts on trying new classes. If he hasn't explicitly said anything beyond joining the beginner's class, maybe the answer is that he's open to it, but the exact words from the context might be \"I find it helps me relax and increase my flexibility\" from the 7 April entry. Wait, no, that's about the class he's already in. \n\nWait, in the 7 April talk, John says \"I'd been wanting to try yoga for a while and finally took the plunge.\" So he's positive about starting, but not necessarily about trying new classes. \n\nWait, the answer needs to be a short phrase using exact words from the context. The only direct mention from John about trying new classes might be in the 25 Feb entry where he says \"my colleague Rob invited me to a beginner's yoga class\" which is about joining a class. However, the user is asking about John's thoughts on trying new classes. If John hasn't explicitly mentioned trying new classes beyond joining the beginner's one, but in the context where Maria encourages him to try new classes, maybe he didn't directly respond. \n\nAlternatively, in the 7 April entry, John",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 130,
+      "question": "Which activity has John done apart from yoga at the studio?",
+      "answer_gt": "weight training",
+      "answer_pred": "<think>\nOkay, let's see. The user is asking which activity John has done apart from yoga at the studio. I need to look through the provided context to find any mention of other activities.\n\nLooking at the memories, most of them are about John doing yoga classes, talking about stretching, breathing, and the instructor. But there's one entry where John says, \"Yeah, they offer a bunch, like yoga, kickboxing, and circuit training. It keeps things interesting!\" This is from the talk start time 6:21 pm on 22 July, 2023. So here, John mentions that the studio offers kickboxing and circuit training in addition to yoga. \n\nThe question is about an activity John has done apart from yoga. The context mentions kickboxing and circuit training as activities offered, but does it say John did them? Wait, the exact quote is \"they offer a bunch, like yoga, kickboxing, and circuit training.\" The \"they\" here probably refers to the studio. But does John say he does them, or just that they are available?\n\nWait, the user is asking what John has done apart from yoga. The context doesn't explicitly state that John participated in kickboxing or circuit training. It only mentions that the studio offers those activities. However, in the same sentence, John is talking about the variety of activities available. But the question is about what John has done, not what's available. \n\nWait, maybe I need to check again. The memory content says: \"Speaker John says: Yeah, they offer a a bunch, like yoga, kickboxing, and circuit training. It keeps things interesting!\" So John is talking about the studio's offerings, but he hasn't explicitly said he does kickboxing or circuit training. Unless \"they\" refers to him, but that's unlikely. The \"they\" would refer to the studio. Therefore, the context doesn't mention John doing any other activity besides yoga. \n\nWait, but maybe there's another part. Let me check again. The other entries all talk about John's yoga experience. There's no mention of him doing kickboxing or circuit training. Therefore, the answer might be that there's no other activity mentioned, but the user might expect the answer from the context where John lists the activities offered. However, the question is about what John has done, not what's available. \n\nHmm, maybe I need to re-examine the exact wording. The user's question is \"Which activity has John done apart from yoga at the studio?\" The answer should be an activity that John has done. But in the context, John only mentions starting a yoga class and talking about the studio's offerings. The answer might be that there's no other activity mentioned, but perhaps the user is referring to the studio offering other activities, but the question is about John's participation. \n\nWait, looking back at the memory content: \"Speaker John says: Yeah, they offer a a bunch, like yoga, kickboxing, and circuit training. It keeps things interesting!\" Here, \"they\" refers to the studio, not John. So John is just mentioning that the studio offers those activities, not that he does them. Therefore, the answer is that there's no other activity mentioned that John has done besides yoga. But the user might be expecting an answer based on that mention, even if it's not explicitly stated. However, the question is about what John has done, not what's available. Therefore, the answer might be that there's no other activity mentioned. But maybe the user is looking for kickboxing or circuit training as the answer, assuming that John is referring to himself. \n\nAlternatively, maybe there's a mistake here. Let me check again. The user's answer should be based on exact words from the context. The only time John mentions other activities is when he says the studio offers kickboxing and circuit training, but that's about the studio's offerings, not his own activities. Therefore, the answer would be that there is no other activity mentioned that John has done apart from yoga. However, the user might be expecting the answer to be kickboxing or circuit training based on the mention, even if it's not explicitly stated. But according to the context, John hasn't done those; he's just talking about the studio's offerings. \n\nWait, but maybe the answer is \"kickboxing and circuit training\" because the question is phrased as \"has John done apart from yoga at the studio?\" and the context says the studio offers those, so maybe the answer is that John has done those? But that's not stated. The answer must be based on exact words from the context. Since the context doesn't say John did them, the answer would be that there's no other activity mentioned. However, the user might be expecting the answer from the part where John lists the activities, even if it's not clear.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 131,
+      "question": "What community service did Maria mention that she was involved in on 31 July, 2023?",
+      "answer_gt": "volunteered at a homeless shelter",
+      "answer_pred": "The provided context does not mention any community service involvement by Maria on 31 July, 2023.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 132,
+      "question": "How did Maria start volunteering at the homeless shelter?",
+      "answer_gt": "Witnessed a family struggling on the streets and reached out to the shelter",
+      "answer_pred": "after witnessing a family struggling on the streets. It made me want to help, so I reached out to the shelter and asked if they needed any volunteers.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 133,
+      "question": "What did John do the week before August 3, 2023 involving his kids?",
+      "answer_gt": "Had a meaningful experience at a military memorial",
+      "answer_pred": "No specific activity involving John's kids is mentioned in the week before August 3, 2023.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 134,
+      "question": "How did John describe his kids' reaction at the military memorial?",
+      "answer_gt": "awestruck and humbled",
+      "answer_pred": "Short answer: It really made an impact on my kids.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 135,
+      "question": "Why does Maria think it's important for younger generations to visit military memorials?",
+      "answer_gt": "To remember and appreciate those who served",
+      "answer_pred": "to remember and appreciate those who served.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 136,
+      "question": "What does John believe is important for children regarding veterans?",
+      "answer_gt": "Teaching them to respect and appreciate those who served",
+      "answer_pred": "passing down remembrance and humility to younger generations",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 137,
+      "question": "What happened to John's job in August 2023?",
+      "answer_gt": "John lost his job at the mechanical engineering company.",
+      "answer_pred": "John lost his job at the mechanical engineering company.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 138,
+      "question": "What activity did Maria take up with her friends from church in August 2023?",
+      "answer_gt": "community work",
+      "answer_pred": "No specific activity mentioned.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 139,
+      "question": "What did John do to help his community last year in his hometown?",
+      "answer_gt": "Helped renovate a rundown community center.",
+      "answer_pred": "Short answer: set up a 5K charity run to help veterans and their families.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 140,
+      "question": "What cause did the 5K charity run organized by John support?",
+      "answer_gt": "veterans and their families",
+      "answer_pred": "veterans and their families",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 141,
+      "question": "Who did John work with to raise awareness and funds for victims of domestic abuse?",
+      "answer_gt": "a local organization",
+      "answer_pred": "Short answer: a local organization",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 142,
+      "question": "What recognition did Maria receive at the homeless shelter in August 2023?",
+      "answer_gt": "a medal for volunteering",
+      "answer_pred": "a medal",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 143,
+      "question": "What is the name of Maria's puppy she got two weeks before August 11, 2023?",
+      "answer_gt": "Coco",
+      "answer_pred": "Coco",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 144,
+      "question": "What activity did John and Max enjoy together last summer?",
+      "answer_gt": "Camping",
+      "answer_pred": "hiked, swam, and made great memories",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 145,
+      "question": "How does John describe the camping trip with Max?",
+      "answer_gt": "Peaceful and awesome",
+      "answer_pred": "John describes the camping trip with Max as \"had a blast\" and \"a really peaceful and awesome experience.\"",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 146,
+      "question": "Why does John say he feels stuck and questioning his decisions and goals?",
+      "answer_gt": "Not feeling like making much of an impact",
+      "answer_pred": "Short answer: \"Don't feel like I'm making much of an impact here\"",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 147,
+      "question": "What is the name of Maria's second puppy?",
+      "answer_gt": "Shadow",
+      "answer_pred": "Short answer: Shadow",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 148,
+      "question": "How is Maria's new puppy adjusting to its new home?",
+      "answer_gt": "doing great - learning commands and house training",
+      "answer_pred": "The context does not mention Maria's new puppy or its adjustment to a new home.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 149,
+      "question": "What is John currently doing as a volunteer in August 2023?",
+      "answer_gt": "mentoring students at a local school",
+      "answer_pred": "Short answer: I haven't been able to volunteer much lately.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 150,
+      "question": "What activities does John's family enjoy doing together?",
+      "answer_gt": "going for hikes, hanging out at the park, having picnics, playing board games, having movie nights",
+      "answer_pred": "Short answer: going for hikes, hanging out at the park, having picnics, playing board games, and having movie nights at home.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 151,
+      "question": "What did the donations help John's community acquire on 16 August, 2023?",
+      "answer_gt": "a brand new fire truck",
+      "answer_pred": "Short answer: a brand new fire truck.",
+      "category": "multi_hop"
+    },
+    {
+      "idx": 152,
+      "question": "What is John's main focus in international politics?",
+      "answer_gt": "Improving education and infrastructure",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 153,
+      "question": "What did Maria donate to a luxury store in December 2023?",
+      "answer_gt": "old car",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 154,
+      "question": "Who inspired John to start volunteering?",
+      "answer_gt": "His aunt",
+      "answer_pred": "Short answer: Maria inspired John to start volunteering.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 155,
+      "question": "Why did Maria decide to run for office again?",
+      "answer_gt": "saw the impact she could make in the community through politics",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Maria's involvement in charity work and community service is discussed, but there is no mention of her deciding to run for office again.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 156,
+      "question": "What activity did Maria's colleague, Rob, invite her to?",
+      "answer_gt": "beginner's yoga class",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 157,
+      "question": "What is the name of Maria's one-year-old child?",
+      "answer_gt": "Kyle",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 158,
+      "question": "How often does John take his kids to the library?",
+      "answer_gt": "A few times a week",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 159,
+      "question": "What did Maria make for her home to remind her of a trip to France?",
+      "answer_gt": "painting of a castle on a hill",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 160,
+      "question": "Where did John get the idea for the castle shadow box in his home?",
+      "answer_gt": "England",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 161,
+      "question": "What did Maria receive a certificate for?",
+      "answer_gt": "completion of a university degree",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 162,
+      "question": "What areas is John particularly interested in for art appreciation?",
+      "answer_gt": "education and infrastructure",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 163,
+      "question": "Why did Maria start blogging about politics and policies?",
+      "answer_gt": "raise awareness and start conversations to create positive change",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer:",
+      "category": "adversarial"
+    },
+    {
+      "idx": 164,
+      "question": "What was the focus of John's recent travel and photography blog?",
+      "answer_gt": "education reform and infrastructure development",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 165,
+      "question": "How often does Maria work out with her family?",
+      "answer_gt": "Three times a week",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 166,
+      "question": "How has John's artistic skills improved since starting boot camps with his family?",
+      "answer_gt": "More energy, gains in strength and endurance",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 167,
+      "question": "What kind of food did Maria have on her dinner spread with her father?",
+      "answer_gt": "Salads, sandwiches, homemade desserts",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 168,
+      "question": "What did John do to feel closer to a community and his faith?",
+      "answer_gt": "joined a nearby church",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 169,
+      "question": "Why did John join a nearby church recently?",
+      "answer_gt": "to feel closer to a community and her faith",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 170,
+      "question": "How long was Max a part of Maria's family?",
+      "answer_gt": "10 years",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 171,
+      "question": "How does Maria plan to honor the memories of her beloved pet?",
+      "answer_gt": "By considering adopting a rescue dog",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer:",
+      "category": "adversarial"
+    },
+    {
+      "idx": 172,
+      "question": "What important values does Maria want to teach her kids through adopting a rescue dog?",
+      "answer_gt": "Responsibility and compassion",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 173,
+      "question": "What did Maria say it was like being at the desert in Oregon?",
+      "answer_gt": "Like being in a fairy tale",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 174,
+      "question": "What does John say she feels when doing upside-down yoga poses?",
+      "answer_gt": "Free and light",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 175,
+      "question": "What did Maria recently get promoted to?",
+      "answer_gt": "assistant manager",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 176,
+      "question": "What was one of the biggest challenges Maria faced in her journey to becoming assistant manager?",
+      "answer_gt": "self-doubt",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 177,
+      "question": "Why did John need to help his cousin find a new place to live?",
+      "answer_gt": "His cousin had to leave and find a new place in a hurry.",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer:",
+      "category": "adversarial"
+    },
+    {
+      "idx": 178,
+      "question": "What event did Maria participate in to show support for veterans' rights?",
+      "answer_gt": "marching event",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 179,
+      "question": "How did the drought impact the homes in John's old area?",
+      "answer_gt": "Lots of homes were ruined.",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 180,
+      "question": "What does John criticize about the veteran's hospital visit?",
+      "answer_gt": "the resilience of the veterans and their inspiring stories",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 181,
+      "question": "What did John take away from visiting the orphanage?",
+      "answer_gt": "appreciation for giving back",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 182,
+      "question": "Why did Maria feel inspired to join the military after the visit to the hospital?",
+      "answer_gt": "seeing the resilience of the veterans",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer:",
+      "category": "adversarial"
+    },
+    {
+      "idx": 183,
+      "question": "How did Maria describe her kids' reaction at the military memorial?",
+      "answer_gt": "awestruck and humbled",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer:",
+      "category": "adversarial"
+    },
+    {
+      "idx": 184,
+      "question": "Why does Maria think it's important for younger generations to visit art galleries?",
+      "answer_gt": "To remember and appreciate those who served",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer:",
+      "category": "adversarial"
+    },
+    {
+      "idx": 185,
+      "question": "What happened to Maria's job in August 2023?",
+      "answer_gt": "John lost his job at the mechanical engineering company.",
+      "answer_pred": "Not mentioned in the conversation.",
+      "category": "adversarial"
+    },
+    {
+      "idx": 186,
+      "question": "What cause did the 5K charity run organized by Maria support?",
+      "answer_gt": "veterans and their families",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 187,
+      "question": "Who did John work with to raise awareness and funds for animal welfare?",
+      "answer_gt": "a local organization",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 188,
+      "question": "What recognition did John receive at the homeless shelter in August 2023?",
+      "answer_gt": "a medal for volunteering",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 189,
+      "question": "What is the name of John's puppy he got two weeks before August 11, 2023?",
+      "answer_gt": "Coco",
+      "answer_pred": "Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 190,
+      "question": "How does Maria describe the camping trip with Max?",
+      "answer_gt": "Peaceful and awesome",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 191,
+      "question": "What is the name of Maria's second kitten?",
+      "answer_gt": "Shadow",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Not mentioned in the conversation",
+      "category": "adversarial"
+    },
+    {
+      "idx": 192,
+      "question": "How is John's new puppy adjusting to its new home?",
+      "answer_gt": "doing great - learning commands and house training",
+      "answer_pred": "Not mentioned in the conversation  \nShort answer: Not mentioned in the conversation",
+      "category": "adversarial"
+    }
+  ],
+  "metrics": {
+    "temporal": {
+      "count": 27,
+      "exact_match": 0.0,
+      "f1": 12.23,
+      "meteor": 11.36,
+      "rouge1_f": 24.52,
+      "rouge2_f": 10.51,
+      "rougeL_f": 23.16,
+      "bleu1": 10.57,
+      "bleu2": 7.66,
+      "bleu3": 4.89,
+      "bleu4": 3.3,
+      "bert_f1": 85.03
+    },
+    "overall": {
+      "count": 193,
+      "exact_match": 7.25,
+      "f1": 23.06,
+      "meteor": 21.91,
+      "rouge1_f": 29.23,
+      "rouge2_f": 16.27,
+      "rougeL_f": 27.76,
+      "bleu1": 20.01,
+      "bleu2": 14.82,
+      "bleu3": 12.15,
+      "bleu4": 9.7,
+      "bert_f1": 87.02
+    },
+    "single_hop": {
+      "count": 31,
+      "exact_match": 0.0,
+      "f1": 20.32,
+      "meteor": 17.81,
+      "rouge1_f": 34.75,
+      "rouge2_f": 14.29,
+      "rougeL_f": 29.94,
+      "bleu1": 16.4,
+      "bleu2": 11.3,
+      "bleu3": 9.03,
+      "bleu4": 6.87,
+      "bert_f1": 87.3
+    },
+    "open_domain": {
+      "count": 8,
+      "exact_match": 0.0,
+      "f1": 13.54,
+      "meteor": 13.19,
+      "rouge1_f": 14.77,
+      "rouge2_f": 6.25,
+      "rougeL_f": 14.77,
+      "bleu1": 8.66,
+      "bleu2": 6.01,
+      "bleu3": 3.21,
+      "bleu4": 2.72,
+      "bert_f1": 84.79
+    },
+    "multi_hop": {
+      "count": 86,
+      "exact_match": 16.28,
+      "f1": 38.2,
+      "meteor": 37.11,
+      "rouge1_f": 42.74,
+      "rouge2_f": 27.43,
+      "rougeL_f": 41.61,
+      "bleu1": 34.06,
+      "bleu2": 25.92,
+      "bleu3": 21.96,
+      "bleu4": 17.82,
+      "bert_f1": 88.97
+    },
+    "adversarial": {
+      "count": 41,
+      "exact_match": 0.0,
+      "f1": 2.35,
+      "meteor": 1.78,
+      "rouge1_f": 2.65,
+      "rouge2_f": 0.12,
+      "rougeL_f": 2.65,
+      "bleu1": 1.71,
+      "bleu2": 0.65,
+      "bleu3": 0.44,
+      "bleu4": 0.4,
+      "bert_f1": 84.46
+    }
+  },
+  "build_time": 41499.5,
+  "qa_time": 4036.5,
+  "eval_time": 4.6
+}

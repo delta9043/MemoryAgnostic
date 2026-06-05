@@ -2,7 +2,6 @@ dataset:
   name: locomo10_32bfilter
   path: /data/delta9043/repos/MemoryAgnostic/data/filtered_data/filtered_32b.json
   original_path: /data/delta9043/datasets/locomo/locomo10.json
-  sample_idx: 0
 
 pipeline:
   pre_chunking:

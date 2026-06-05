@@ -5,7 +5,7 @@
       {
         "turn_id": "D1:1",
         "speaker": "Caroline",
-        "content": "",
+        "content": "How have you been?",
         "timestamp": "1:56 pm on 8 May, 2023",
         "session_id": "session_1"
       },
@@ -124,7 +124,7 @@
       {
         "turn_id": "D1:18",
         "speaker": "Melanie",
-        "content": "Taking care of ourselves is vital. I'm off to go swimming with the kids.",
+        "content": "Taking care of ourselves is vital.",
         "timestamp": "1:56 pm on 8 May, 2023",
         "session_id": "session_1"
       },
@@ -166,7 +166,7 @@
       {
         "turn_id": "D2:6",
         "speaker": "Caroline",
-        "content": "",
+        "content": "Taking time for yourself is so important.",
         "timestamp": "1:14 pm on 25 May, 2023",
         "session_id": "session_2"
       },
@@ -271,7 +271,7 @@
       {
         "turn_id": "D3:4",
         "speaker": "Melanie",
-        "content": "Caroline, you're doing an awesome job of inspiring others with your journey. It's great to be part of it and see how you're positively affecting so many. Talking about inclusivity and acceptance is crucial, and you're so brave to speak up for the trans community. Keep up the great work!",
+        "content": "Caroline, you're doing an awesome job of inspiring others with your journey. Talking about inclusivity and acceptance is crucial, and you're so brave to speak up for the trans community. Keep up the great work!",
         "timestamp": "7:55 pm on 9 June, 2023",
         "session_id": "session_3"
       },
@@ -544,7 +544,7 @@
       {
         "turn_id": "D5:2",
         "speaker": "Melanie",
-        "content": "Has this experience influenced your goals at all?",
+        "content": "It's great to see the love and support for the LGBTQ+ community. Congrats! Has this experience influenced your goals at all?",
         "timestamp": "1:36 pm on 3 July, 2023",
         "session_id": "session_5"
       },
@@ -656,7 +656,7 @@
       {
         "turn_id": "D6:2",
         "speaker": "Melanie",
-        "content": "Missed you. Anything new?",
+        "content": "Missed you. Anything new? Spill the beans!",
         "timestamp": "8:18 pm on 6 July, 2023",
         "session_id": "session_6"
       },
@@ -852,7 +852,7 @@
       {
         "turn_id": "D7:14",
         "speaker": "Melanie",
-        "content": "self-acceptance and finding support are key. Plus pets are awesome for joy and comfort",
+        "content": "Caroline, those lessons are great - self-acceptance and finding support are key. Plus pets are awesome for joy and comfort, can't agree more!",
         "timestamp": "4:33 pm on 12 July, 2023",
         "session_id": "session_7"
       },
@@ -1020,7 +1020,7 @@
       {
         "turn_id": "D8:11",
         "speaker": "Caroline",
-        "content": "love the blue vase in the pic! Blue's my fave, it makes me feel relaxed. Sunflowers mean warmth and happiness, right? While roses stand for love and beauty? What do flowers mean to you?",
+        "content": "Blue's my fave, it makes me feel relaxed. Sunflowers mean warmth and happiness, right? While roses stand for love and beauty? What do flowers mean to you?",
         "timestamp": "1:51 pm on 15 July, 2023",
         "session_id": "session_8"
       },
@@ -1209,7 +1209,7 @@
       {
         "turn_id": "D8:38",
         "speaker": "Melanie",
-        "content": "",
+        "content": "Appreciate your friendship. It's great to have a supporter!",
         "timestamp": "1:51 pm on 15 July, 2023",
         "session_id": "session_8"
       },
@@ -1300,7 +1300,7 @@
       {
         "turn_id": "D9:12",
         "speaker": "Caroline",
-        "content": "Next month I'm having an LGBTQ art show with my paintings",
+        "content": "Next month I'm having an LGBTQ art show with my paintings - can't wait!",
         "timestamp": "2:31 pm on 17 July, 2023",
         "session_id": "session_9"
       },
@@ -1321,7 +1321,7 @@
       {
         "turn_id": "D9:15",
         "speaker": "Melanie",
-        "content": "That painting is awesome! Those colors are so vivid and the whole thing looks really unified. What inspired you?",
+        "content": "Caroline, that painting is awesome! Those colors are so vivid and the whole thing looks really unified. What inspired you?",
         "timestamp": "2:31 pm on 17 July, 2023",
         "session_id": "session_9"
       },
@@ -1335,7 +1335,7 @@
       {
         "turn_id": "D9:17",
         "speaker": "Melanie",
-        "content": "It really conveys unity and strength - such a gorgeous piece! My kids and I just finished another painting like our last one.",
+        "content": "My kids and I just finished another painting like our last one.",
         "timestamp": "2:31 pm on 17 July, 2023",
         "session_id": "session_9"
       },
@@ -1377,7 +1377,7 @@
       {
         "turn_id": "D10:6",
         "speaker": "Melanie",
-        "content": "Have you been part of any events or campaigns lately?",
+        "content": "Supporting each other and making good things happen. Have you been part of any events or campaigns lately?",
         "timestamp": "8:56 pm on 20 July, 2023",
         "session_id": "session_10"
       },
@@ -1391,7 +1391,7 @@
       {
         "turn_id": "D10:8",
         "speaker": "Melanie",
-        "content": "Caroline! Bet the atmosphere was incredible. We went to the beach recently. The kids had such a blast.",
+        "content": "Caroline! Bet the atmosphere was incredible. We went to the beach recently. It was awesome! The kids had such a blast.",
         "timestamp": "8:56 pm on 20 July, 2023",
         "session_id": "session_10"
       },
@@ -1496,7 +1496,7 @@
       {
         "turn_id": "D10:23",
         "speaker": "Caroline",
-        "content": "",
+        "content": "Melanie, what a beautiful moment! Lucky you to have such an awesome family!",
         "timestamp": "8:56 pm on 20 July, 2023",
         "session_id": "session_10"
       },
@@ -1657,7 +1657,7 @@
       {
         "turn_id": "D12:5",
         "speaker": "Caroline",
-        "content": "What gave you the idea for all the colors and patterns?",
+        "content": "That bowl is awesome. What gave you the idea for all the colors and patterns?",
         "timestamp": "1:50 pm on 17 August, 2023",
         "session_id": "session_12"
       },
@@ -1713,7 +1713,7 @@
       {
         "turn_id": "D12:13",
         "speaker": "Caroline",
-        "content": "",
+        "content": "It means a lot having you in my corner.",
         "timestamp": "1:50 pm on 17 August, 2023",
         "session_id": "session_12"
       },
@@ -1818,7 +1818,7 @@
       {
         "turn_id": "D13:7",
         "speaker": "Caroline",
-        "content": "I used to go horseback riding with my dad when I was a kid, we'd go through the fields, feeling the wind. I've always had a love for horses!",
+        "content": "I used to go horseback riding with my dad when I was a kid, we'd go through the fields, feeling the wind. It was so special. I've always had a love for horses!",
         "timestamp": "3:31 pm on 23 August, 2023",
         "session_id": "session_13"
       },
@@ -1846,7 +1846,7 @@
       {
         "turn_id": "D13:11",
         "speaker": "Caroline",
-        "content": "Painting's great for expressing myself. Here's a recent self-portrait I made last week.",
+        "content": "Painting's great for expressing myself. I love creating art! Here's a recent self-portrait I made last week.",
         "timestamp": "3:31 pm on 23 August, 2023",
         "session_id": "session_13"
       },
@@ -1916,7 +1916,7 @@
       {
         "turn_id": "D14:3",
         "speaker": "Caroline",
-        "content": "Did you make it?",
+        "content": "That plate is awesome! Did you make it?",
         "timestamp": "1:33 pm on 25 August, 2023",
         "session_id": "session_14"
       },
@@ -2238,7 +2238,7 @@
       {
         "turn_id": "D15:14",
         "speaker": "Melanie",
-        "content": "that pic was from a show I went to. It was so much fun and reminded me of how music brings us together.",
+        "content": "It was from a show I went to. It was so much fun and reminded me of how music brings us together.",
         "timestamp": "3:19 pm on 28 August, 2023",
         "session_id": "session_15"
       },
@@ -2413,7 +2413,7 @@
       {
         "turn_id": "D16:11",
         "speaker": "Caroline",
-        "content": "I haven't done pottery yet. I might try it sometime! Check out this piece I made!",
+        "content": "I haven't done pottery yet. I'm game for trying new art. I might try it sometime! Check out this piece I made!",
         "timestamp": "12:09 am on 13 September, 2023",
         "session_id": "session_16"
       },
@@ -2434,14 +2434,14 @@
       {
         "turn_id": "D16:14",
         "speaker": "Melanie",
-        "content": "Caro, that painting is amazing! You've made so much progress. I'm super proud of you for being your true self. What effect has the journey had on your relationships?",
+        "content": "Caro, that painting is amazing. You've made so much progress. I'm proud of you for being your true self. What effect has the journey had on your relationships?",
         "timestamp": "12:09 am on 13 September, 2023",
         "session_id": "session_16"
       },
       {
         "turn_id": "D16:15",
         "speaker": "Caroline",
-        "content": "It's definitely changed them. Some close friends kept supporting me, but a few weren't able to handle it. It wasn't easy, but I'm much happier being around those who accept and love me. Now my relationships feel more genuine.",
+        "content": "Some close friends kept supporting me, but a few weren't able to handle it. It wasn't easy, but I'm much happier being around those who accept and love me. Now my relationships feel more genuine.",
         "timestamp": "12:09 am on 13 September, 2023",
         "session_id": "session_16"
       },
@@ -2455,7 +2455,7 @@
       {
         "turn_id": "D16:17",
         "speaker": "Caroline",
-        "content": "Whoa, Mel, that sign looks serious. Did anything happen?",
+        "content": "That sign looks serious. Did anything happen?",
         "timestamp": "12:09 am on 13 September, 2023",
         "session_id": "session_16"
       },
@@ -2511,7 +2511,7 @@
       {
         "turn_id": "D17:5",
         "speaker": "Caroline",
-        "content": "If you ever do it, let me know — I'd love to help in any way I can.",
+        "content": "It's a great way to add to your family and show your love. If you ever do it, let me know — I'd love to help in any way I can.",
         "timestamp": "10:31 am on 13 October, 2023",
         "session_id": "session_17"
       },
@@ -2637,7 +2637,7 @@
       {
         "turn_id": "D17:23",
         "speaker": "Caroline",
-        "content": "It stands for freedom and being real. It's like a nudge to always stay true to myself and embrace my womanhood.",
+        "content": "I drew it. It stands for freedom and being real. It's like a nudge to always stay true to myself and embrace my womanhood.",
         "timestamp": "10:31 am on 13 October, 2023",
         "session_id": "session_17"
       },
@@ -2784,7 +2784,7 @@
       {
         "turn_id": "D18:18",
         "speaker": "Caroline",
-        "content": "Nature sure seems to refresh us, huh?",
+        "content": "",
         "timestamp": "6:55 pm on 20 October, 2023",
         "session_id": "session_18"
       },
@@ -2805,14 +2805,14 @@
       {
         "turn_id": "D18:21",
         "speaker": "Melanie",
-        "content": "We bond over stories, campfires and nature. Waking up to the sound of birds and the smell of fresh air refreshes my soul.",
+        "content": "We bond over stories, campfires and nature. It's so peaceful waking up to the sound of birds and the smell of fresh air - it always refreshes my soul.",
         "timestamp": "6:55 pm on 20 October, 2023",
         "session_id": "session_18"
       },
       {
         "turn_id": "D18:22",
         "speaker": "Caroline",
-        "content": "I can picture waking up to nature. It's great that you get to spend quality, tranquil time with your family.",
+        "content": "I can picture waking up to nature.",
         "timestamp": "6:55 pm on 20 October, 2023",
         "session_id": "session_18"
       },
@@ -2826,7 +2826,7 @@
       {
         "turn_id": "D18:24",
         "speaker": "Caroline",
-        "content": "",
+        "content": "They're priceless.",
         "timestamp": "6:55 pm on 20 October, 2023",
         "session_id": "session_18"
       },
@@ -2840,7 +2840,7 @@
       {
         "turn_id": "D19:2",
         "speaker": "Melanie",
-        "content": "Adoption sounds awesome. These figurines I bought yesterday remind me of family love. Tell me, what's your vision for the future?",
+        "content": "These figurines I bought yesterday remind me of family love. Tell me, what's your vision for the future?",
         "timestamp": "9:55 am on 22 October, 2023",
         "session_id": "session_19"
       },
@@ -2910,7 +2910,7 @@
       {
         "turn_id": "D19:12",
         "speaker": "Melanie",
-        "content": "",
+        "content": "I'm so glad we can always be there for each other.",
         "timestamp": "9:55 am on 22 October, 2023",
         "session_id": "session_19"
       },
@@ -3034,7 +3034,7 @@
       {
         "turn_id": "D1:14",
         "speaker": "Jon",
-        "content": "",
+        "content": "This is gonna be great!",
         "timestamp": "4:04 pm on 20 January, 2023",
         "session_id": "session_1"
       },
@@ -3090,7 +3090,7 @@
       {
         "turn_id": "D1:22",
         "speaker": "Jon",
-        "content": "we will find a place like this that will inspire us",
+        "content": "we will find a place like this that will inspire us!",
         "timestamp": "4:04 pm on 20 January, 2023",
         "session_id": "session_1"
       },
@@ -3279,14 +3279,14 @@
       {
         "turn_id": "D3:5",
         "speaker": "Jon",
-        "content": "Must've taken you ages to design it. What made you pick out the furniture and decor?",
+        "content": "What made you pick out the furniture and decor?",
         "timestamp": "12:48 am on 1 February, 2023",
         "session_id": "session_3"
       },
       {
         "turn_id": "D3:6",
         "speaker": "Gina",
-        "content": "It took a bit of time but I wanted to make the place look like my own style and make my customers feel cozy. I chose furniture that looks great and is comfy too. The chandelier adds a nice glam feel while matching the style of the store.",
+        "content": "I wanted to make the place look like my own style and make my customers feel cozy. I chose furniture that looks great and is comfy too. The chandelier adds a nice glam feel while matching the style of the store.",
         "timestamp": "12:48 am on 1 February, 2023",
         "session_id": "session_3"
       },
@@ -3356,7 +3356,7 @@
       {
         "turn_id": "D4:2",
         "speaker": "Gina",
-        "content": "The store's doing great.",
+        "content": "The store's doing great! How's the biz?",
         "timestamp": "10:43 am on 4 February, 2023",
         "session_id": "session_4"
       },
@@ -3433,7 +3433,7 @@
       {
         "turn_id": "D4:13",
         "speaker": "Jon",
-        "content": "I'm getting ready for a dance comp near me next month. It's a great chance for me to show my skillz and get some props from the dance fam.",
+        "content": "I'm getting ready for a dance comp near me next month. It's a great chance for me to show my skillz and, hopefully, get some props from the dance fam.",
         "timestamp": "10:43 am on 4 February, 2023",
         "session_id": "session_4"
       },
@@ -3510,7 +3510,7 @@
       {
         "turn_id": "D5:5",
         "speaker": "Gina",
-        "content": "I'm sure you feel great knowing your students are doing so well with dance. It's amazing what it can do for people! Oh, and btw - I've been working hard on my online store and just teamed up with a local artist for some cool designs. Check 'em out!",
+        "content": "I'm sure you feel great knowing your students are doing so well with dance. It's amazing what it can do for people! I've been working hard on my online store and just teamed up with a local artist for some cool designs. Check 'em out!",
         "timestamp": "9:32 am on 8 February, 2023",
         "session_id": "session_5"
       },
@@ -3545,7 +3545,7 @@
       {
         "turn_id": "D5:10",
         "speaker": "Jon",
-        "content": "Taking risks is key for success. It's made me grow, and even got me out of my secure 9-5 as a banker. Now, I'm aiming to turn my dancing passion into a business. I'm determined to make it work. That being said, I definitely don't underestimate the difficulties - it ain't been a walk in the park, that's for sure.",
+        "content": "Taking risks is key for success. It's made me grow, and even got me out of my secure 9-5 as a banker. Now, I'm aiming to turn my dancing passion into a business. I'm determined to make it work, I just know it! That being said, I definitely don't underestimate the difficulties - it ain't been a walk in the park, that's for sure.",
         "timestamp": "9:32 am on 8 February, 2023",
         "session_id": "session_5"
       },
@@ -3573,7 +3573,7 @@
       {
         "turn_id": "D5:14",
         "speaker": "Jon",
-        "content": "did you just get it?",
+        "content": "Love the tattoo, did you just get it?",
         "timestamp": "9:32 am on 8 February, 2023",
         "session_id": "session_5"
       },
@@ -3678,7 +3678,7 @@
       {
         "turn_id": "D6:6",
         "speaker": "Gina",
-        "content": "My online clothes store is open!",
+        "content": "My online clothes store is open! I've been dreaming of this for a while now - can't wait to see what happens!",
         "timestamp": "2:35 pm on 16 March, 2023",
         "session_id": "session_6"
       },
@@ -3839,21 +3839,21 @@
       {
         "turn_id": "D7:10",
         "speaker": "Gina",
-        "content": "Supporting your dreams is awesome!",
+        "content": "It's nice to be part of something positive. Supporting your dreams is awesome!",
         "timestamp": "7:28 pm on 23 March, 2023",
         "session_id": "session_7"
       },
       {
         "turn_id": "D7:11",
         "speaker": "Jon",
-        "content": "",
+        "content": "Your help means a lot.",
         "timestamp": "7:28 pm on 23 March, 2023",
         "session_id": "session_7"
       },
       {
         "turn_id": "D7:12",
         "speaker": "Gina",
-        "content": "",
+        "content": "I'm here for you, rooting for you all the way.",
         "timestamp": "7:28 pm on 23 March, 2023",
         "session_id": "session_7"
       },
@@ -4021,7 +4021,7 @@
       {
         "turn_id": "D8:19",
         "speaker": "Jon",
-        "content": "",
+        "content": "Can't wait to see you!",
         "timestamp": "1:26 pm on 3 April, 2023",
         "session_id": "session_8"
       },
@@ -4035,7 +4035,7 @@
       {
         "turn_id": "D8:21",
         "speaker": "Jon",
-        "content": "",
+        "content": "Gina, good luck with your store!",
         "timestamp": "1:26 pm on 3 April, 2023",
         "session_id": "session_8"
       },
@@ -4168,14 +4168,14 @@
       {
         "turn_id": "D9:14",
         "speaker": "Gina",
-        "content": "",
+        "content": "you're almost there",
         "timestamp": "10:33 am on 9 April, 2023",
         "session_id": "session_9"
       },
       {
         "turn_id": "D10:1",
         "speaker": "Jon",
-        "content": "Yesterday, I went to a fair to show off my studio, it was both stressful and great! I got some possible leads. But overall, I've learned that this biz is no cakewalk and having confidence in yourself is important for making it successful!",
+        "content": "Yesterday, I went to a fair to show off my studio, it was both stressful and great! I got some possible leads, so that was awesome. But overall, I've learned that this biz is no cakewalk and having confidence in yourself is important for making it successful!",
         "timestamp": "11:24 am on 25 April, 2023",
         "session_id": "session_10"
       },
@@ -4224,7 +4224,7 @@
       {
         "turn_id": "D10:8",
         "speaker": "Gina",
-        "content": "I stay motivated by reminding myself of my successes and progress. It also helps to have a good support system. Just focus on why you started this – because you love it! Have faith in yourself, Jon. I do!",
+        "content": "I stay motivated by reminding myself of my successes and progress. It also helps to have a good support system. Just focus on why you started this – because you love it! Have faith in yourself.",
         "timestamp": "11:24 am on 25 April, 2023",
         "session_id": "session_10"
       },
@@ -4252,7 +4252,7 @@
       {
         "turn_id": "D10:12",
         "speaker": "Gina",
-        "content": "",
+        "content": "We're in this together!",
         "timestamp": "11:24 am on 25 April, 2023",
         "session_id": "session_10"
       },
@@ -4294,7 +4294,7 @@
       {
         "turn_id": "D11:4",
         "speaker": "Gina",
-        "content": "With your determination and drive, your dance studio will be a huge success.",
+        "content": "With your determination and drive, your dance studio will be a huge success. Keep that positive outlook and keep going!",
         "timestamp": "3:14 pm on 11 May, 2023",
         "session_id": "session_11"
       },
@@ -4364,7 +4364,7 @@
       {
         "turn_id": "D11:14",
         "speaker": "Gina",
-        "content": "I had an interview for a design internship yesterday! It was so cool.",
+        "content": "Can't wait to hear more and watch it come to life! I had an interview for a design internship yesterday!",
         "timestamp": "3:14 pm on 11 May, 2023",
         "session_id": "session_11"
       },
@@ -4455,7 +4455,7 @@
       {
         "turn_id": "D12:5",
         "speaker": "Gina",
-        "content": "I'm a mix of excited and scared to get into fashion, but I'm trying to stay upbeat and learn as much as I can.",
+        "content": "I'm a mix of excited and scared to get into fashion, but I'm trying to stay upbeat and learn as much as I can. What about you? Got something new?",
         "timestamp": "7:18 pm on 27 May, 2023",
         "session_id": "session_12"
       },
@@ -4637,7 +4637,7 @@
       {
         "turn_id": "D13:12",
         "speaker": "Gina",
-        "content": "Being organized sure is key for getting stuff done. How do you keep up with your goals and progress?",
+        "content": "How do you keep up with your goals and progress?",
         "timestamp": "8:29 pm on 13 June, 2023",
         "session_id": "session_13"
       },
@@ -4679,7 +4679,7 @@
       {
         "turn_id": "D13:18",
         "speaker": "Gina",
-        "content": "",
+        "content": "its a great idea!",
         "timestamp": "8:29 pm on 13 June, 2023",
         "session_id": "session_13"
       },
@@ -4700,7 +4700,7 @@
       {
         "turn_id": "D13:21",
         "speaker": "Jon",
-        "content": "",
+        "content": "Your support's really been awesome.",
         "timestamp": "8:29 pm on 13 June, 2023",
         "session_id": "session_13"
       },
@@ -4728,7 +4728,7 @@
       {
         "turn_id": "D14:2",
         "speaker": "Gina",
-        "content": "I'm working on my online store, growing the customer base. It's tough but I'm determined.",
+        "content": "I'm working on my online store, growing the customer base. It's tough but I'm determined. How about you? Any new things happening?",
         "timestamp": "9:38 pm on 16 June, 2023",
         "session_id": "session_14"
       },
@@ -4805,7 +4805,7 @@
       {
         "turn_id": "D14:13",
         "speaker": "Jon",
-        "content": "I won't quit, no matter what. Your encouragement really motivates me to keep going.",
+        "content": "Your encouragement really motivates me to keep going.",
         "timestamp": "9:38 pm on 16 June, 2023",
         "session_id": "session_14"
       },
@@ -4917,7 +4917,7 @@
       {
         "turn_id": "D15:9",
         "speaker": "Jon",
-        "content": "Tomorrow's gonna be an awesome night and I'm not gonna forget a second of it. I put so much into this and I want to savor all the good vibes.",
+        "content": "I put so much into this and I want to savor all the good vibes.",
         "timestamp": "10:04 am on 19 June, 2023",
         "session_id": "session_15"
       },
@@ -4952,7 +4952,7 @@
       {
         "turn_id": "D15:14",
         "speaker": "Gina",
-        "content": "make more memories at your dance studio",
+        "content": "Can't wait to make more memories at your dance studio!",
         "timestamp": "10:04 am on 19 June, 2023",
         "session_id": "session_15"
       },
@@ -5113,14 +5113,14 @@
       {
         "turn_id": "D16:15",
         "speaker": "Gina",
-        "content": "",
+        "content": "Believe in yourself and keep going. You can do it!",
         "timestamp": "2:15 pm on 21 June, 2023",
         "session_id": "session_16"
       },
       {
         "turn_id": "D16:16",
         "speaker": "Jon",
-        "content": "I'm feeling confident and won't give up.",
+        "content": "I'm feeling confident and won't give up. Your support means a ton to me.",
         "timestamp": "2:15 pm on 21 June, 2023",
         "session_id": "session_16"
       },
@@ -5197,7 +5197,7 @@
       {
         "turn_id": "D17:11",
         "speaker": "Gina",
-        "content": "You have potential!",
+        "content": "Don't let anything stop you. You have potential!",
         "timestamp": "1:25 pm on 9 July, 2023",
         "session_id": "session_17"
       },
@@ -5288,7 +5288,7 @@
       {
         "turn_id": "D18:3",
         "speaker": "Gina",
-        "content": "Sorry to hear about the studio, but glad to see the positivity. Not easy facing setbacks but I believe in you. Finding investors can be tough, but you've got the passion and experience to make it happen. Rome wasn't built in a day so keep pushing on!",
+        "content": "Sorry to hear about the studio, but glad to see the positivity. Finding investors can be tough, but you've got the passion and experience to make it happen.",
         "timestamp": "5:44 pm on 21 July, 2023",
         "session_id": "session_18"
       },
@@ -5309,7 +5309,7 @@
       {
         "turn_id": "D18:6",
         "speaker": "Jon",
-        "content": "Lately I've been networking and it's gotten me some good stuff. Really can't beat what connections can do. Check this pic I got from the last networking event!",
+        "content": "Lately I've been networking and it's gotten me some good stuff. Really can't beat what connections can do.",
         "timestamp": "5:44 pm on 21 July, 2023",
         "session_id": "session_18"
       },
@@ -5491,7 +5491,7 @@
       {
         "turn_id": "D19:10",
         "speaker": "Gina",
-        "content": "I'm here to support you. Every step's getting you closer to your dream.",
+        "content": "I'm here to support you. Every step's getting you closer to your dream. Never give up!",
         "timestamp": "6:46 pm on 23 July, 2023",
         "session_id": "session_19"
       },
@@ -5594,7 +5594,7 @@
       {
         "turn_id": "D1:10",
         "speaker": "John",
-        "content": "Growing up, I saw how lack of education and crumbling infrastructure affected my neighborhood. I don't want future generations to go through that, so I think schools and infrastructure should be funded properly.",
+        "content": "Growing up, I saw how lack of education and crumbling infrastructure affected my neighborhood. I don't want future generations to go through that, so I think schools and infrastructure should be funded properly. Here's a pic of a school last year, after they got the funding.",
         "timestamp": "11:01 am on 17 December, 2022",
         "session_id": "session_1"
       },
@@ -5615,7 +5615,7 @@
       {
         "turn_id": "D1:13",
         "speaker": "Maria",
-        "content": "It really made a difference for schools and students. What's your next move in politics?",
+        "content": "it really made a difference for schools and students! What's your next move in politics?",
         "timestamp": "11:01 am on 17 December, 2022",
         "session_id": "session_1"
       },
@@ -5832,14 +5832,14 @@
       {
         "turn_id": "D2:28",
         "speaker": "John",
-        "content": "I'm off to do some taekwondo!",
+        "content": "Let's keep making great memories with our loved ones and cherishing the time we have. I'm off to do some taekwondo!",
         "timestamp": "6:10 pm on 22 December, 2022",
         "session_id": "session_2"
       },
       {
         "turn_id": "D3:1",
         "speaker": "John",
-        "content": "I joined a service-focused online group last week and it's been an emotional ride. Everyone there is incredible with their own inspiring stories. They've opened my eyes to new perspectives, and I'm feeling a sense of connection and purpose with them.",
+        "content": "I joined a service-focused online group last week. Everyone there is incredible with their own inspiring stories. They've opened my eyes to new perspectives, and I'm feeling a sense of connection and purpose with them.",
         "timestamp": "8:30 pm on 1 January, 2023",
         "session_id": "session_3"
       },
@@ -5909,14 +5909,14 @@
       {
         "turn_id": "D3:11",
         "speaker": "John",
-        "content": "I really appreciate your support. Especially after I failed the military aptitude test recently, I've been feeling a bit stressed out.",
+        "content": "I failed the military aptitude test recently, I've been feeling a bit stressed out.",
         "timestamp": "8:30 pm on 1 January, 2023",
         "session_id": "session_3"
       },
       {
         "turn_id": "D3:12",
         "speaker": "Maria",
-        "content": "I'm here for you and I got your back. Nature's beauty reminds me to slow down and enjoy the small stuff.",
+        "content": "Nature's beauty reminds me to slow down and enjoy the small stuff.",
         "timestamp": "8:30 pm on 1 January, 2023",
         "session_id": "session_3"
       },
@@ -5937,7 +5937,7 @@
       {
         "turn_id": "D3:15",
         "speaker": "John",
-        "content": "nature can be so beautiful! It reminds me of the film camera I had as a kid, I took plenty of beach pics.",
+        "content": "It reminds me of the film camera I had as a kid, I took plenty of beach pics.",
         "timestamp": "8:30 pm on 1 January, 2023",
         "session_id": "session_3"
       },
@@ -6014,7 +6014,7 @@
       {
         "turn_id": "D4:9",
         "speaker": "Maria",
-        "content": "Appreciate what you've got. You got through it - stay strong. Are there any things you like to do to calm down during times like this?",
+        "content": "You got through it - stay strong. Are there any things you like to do to calm down during times like this?",
         "timestamp": "7:06 pm on 9 January, 2023",
         "session_id": "session_4"
       },
@@ -6084,7 +6084,7 @@
       {
         "turn_id": "D4:19",
         "speaker": "Maria",
-        "content": "Talking and working together will make a great difference.",
+        "content": "Talking and working together will make a great difference. You're really doing our community a service by speaking out.",
         "timestamp": "7:06 pm on 9 January, 2023",
         "session_id": "session_4"
       },
@@ -6133,7 +6133,7 @@
       {
         "turn_id": "D4:26",
         "speaker": "John",
-        "content": "Glad to have you.",
+        "content": "we rock as a team! Glad to have you.",
         "timestamp": "7:06 pm on 9 January, 2023",
         "session_id": "session_4"
       },
@@ -6203,7 +6203,7 @@
       {
         "turn_id": "D5:10",
         "speaker": "Maria",
-        "content": "I noticed a little girl around 8 sitting all alone. She seemed so sad. I sat with her and we talked. She had no other family. I was able to give her some comfort and a listening ear. We ended up laughing and having a good time.",
+        "content": "I noticed a little girl around 8 sitting all alone. She seemed so sad. I sat with her and we talked. Turns out she had no other family. I was able to give her some comfort and a listening ear. We ended up laughing and having a good time.",
         "timestamp": "1:17 pm on 28 January, 2023",
         "session_id": "session_5"
       },
@@ -6259,7 +6259,7 @@
       {
         "turn_id": "D6:2",
         "speaker": "John",
-        "content": "How did it feel to be part of that event?",
+        "content": "It's so cool to see how our community can make a difference. How did it feel to be part of that event?",
         "timestamp": "2:33 pm on 5 February, 2023",
         "session_id": "session_6"
       },
@@ -6539,7 +6539,7 @@
       {
         "turn_id": "D8:3",
         "speaker": "Maria",
-        "content": "What's their name?",
+        "content": "How's your family doing? What's their name?",
         "timestamp": "6:03 pm on 6 March, 2023",
         "session_id": "session_8"
       },
@@ -6616,7 +6616,7 @@
       {
         "turn_id": "D8:14",
         "speaker": "John",
-        "content": "What gave you the idea for this?",
+        "content": "It looks like something from a storybook. What gave you the idea for this?",
         "timestamp": "6:03 pm on 6 March, 2023",
         "session_id": "session_8"
       },
@@ -6644,7 +6644,7 @@
       {
         "turn_id": "D8:18",
         "speaker": "John",
-        "content": "Having symbols of travel memories in our homes is so cool! Last week I retook the aptitude test with some great results, and I feel drawn to serving my country in this way.",
+        "content": "Having symbols of travel memories in our homes is so cool. Last week I retook the aptitude test with some great results, and I feel drawn to serving my country in this way.",
         "timestamp": "6:03 pm on 6 March, 2023",
         "session_id": "session_8"
       },
@@ -6714,7 +6714,7 @@
       {
         "turn_id": "D9:2",
         "speaker": "John",
-        "content": "Since we spoke last, I've had quite the adventure!",
+        "content": "Sounds like a great way to delve into your feelings. Since we spoke last, I've had quite the adventure!",
         "timestamp": "9:36 am on 2 April, 2023",
         "session_id": "session_9"
       },
@@ -6826,7 +6826,7 @@
       {
         "turn_id": "D9:18",
         "speaker": "John",
-        "content": "It was cool to see how our actions can make a big impact. Let's keep helping out and making things better! Our actions really do matter.",
+        "content": "It was cool to see how our actions can make a big impact. Let's keep helping out and making things better!",
         "timestamp": "9:36 am on 2 April, 2023",
         "session_id": "session_9"
       },
@@ -6938,7 +6938,7 @@
       {
         "turn_id": "D10:16",
         "speaker": "Maria",
-        "content": "It's inspiring to see how these kids can do great things with support. You're doing awesome work by helping and motivating them.",
+        "content": "It's inspiring to see how these kids can do great things with support.",
         "timestamp": "12:24 am on 7 April, 2023",
         "session_id": "session_10"
       },
@@ -7078,7 +7078,7 @@
       {
         "turn_id": "D11:18",
         "speaker": "Maria",
-        "content": "it was really nice to help bring people together and create a sense of comfort and community. It's something special to see people supporting each other.",
+        "content": "It was really nice to help bring people together and create a sense of comfort and community. It's something special to see people supporting each other.",
         "timestamp": "6:13 pm on 10 April, 2023",
         "session_id": "session_11"
       },
@@ -7211,7 +7211,7 @@
       {
         "turn_id": "D12:16",
         "speaker": "Maria",
-        "content": "Anything exciting on the horizon?",
+        "content": "It's inspiring to be around people like that. Anything exciting on the horizon?",
         "timestamp": "7:34 pm on 18 April, 2023",
         "session_id": "session_12"
       },
@@ -7246,7 +7246,7 @@
       {
         "turn_id": "D12:21",
         "speaker": "John",
-        "content": "Every act of kindness matters. You're so dedicated and inspiring, Maria.",
+        "content": "every act of kindness matters. You're so dedicated and inspiring, Maria. Keep going!",
         "timestamp": "7:34 pm on 18 April, 2023",
         "session_id": "session_12"
       },
@@ -7435,7 +7435,7 @@
       {
         "turn_id": "D13:25",
         "speaker": "John",
-        "content": "finding beauty in the world can really make a difference. It sounds like your solo trip was a transformative experience.",
+        "content": "life can be tough but finding beauty in the world can really make a difference. It sounds like your solo trip was a transformative experience.",
         "timestamp": "3:18 pm on 4 May, 2023",
         "session_id": "session_13"
       },
@@ -7498,7 +7498,7 @@
       {
         "turn_id": "D13:34",
         "speaker": "Maria",
-        "content": "",
+        "content": "That's so important.",
         "timestamp": "3:18 pm on 4 May, 2023",
         "session_id": "session_13"
       },
@@ -7554,7 +7554,7 @@
       {
         "turn_id": "D14:5",
         "speaker": "John",
-        "content": "Your words really mean something. Sometimes it feels like it's too much, but your encouragement gives me the strength to keep going.",
+        "content": "Sometimes it feels like it's too much, but your encouragement gives me the strength to keep going.",
         "timestamp": "5:04 pm on 6 May, 2023",
         "session_id": "session_14"
       },
@@ -7603,7 +7603,7 @@
       {
         "turn_id": "D14:12",
         "speaker": "Maria",
-        "content": "Life's been a bit rough lately but I'm doing alright. I'm taking the time to reflect and find some balance. What's been going on since we last talked?",
+        "content": "Life's been a bit rough lately but I'm doing alright. I'm taking the time to reflect and find some balance.",
         "timestamp": "5:04 pm on 6 May, 2023",
         "session_id": "session_14"
       },
@@ -7876,7 +7876,7 @@
       {
         "turn_id": "D16:9",
         "speaker": "John",
-        "content": "Working together with passionate people like you is awesome! Let's make a difference.",
+        "content": "Let's make a difference.",
         "timestamp": "1:24 pm on 25 May, 2023",
         "session_id": "session_16"
       },
@@ -7897,7 +7897,7 @@
       {
         "turn_id": "D16:12",
         "speaker": "Maria",
-        "content": "It really gives me hope to appreciate the little moments.",
+        "content": "that pic is gorgeous! It really gives me hope to appreciate the little moments.",
         "timestamp": "1:24 pm on 25 May, 2023",
         "session_id": "session_16"
       },
@@ -8016,7 +8016,7 @@
       {
         "turn_id": "D17:10",
         "speaker": "Maria",
-        "content": "Both are really important for strong relationships.",
+        "content": "Both are really important for strong relationships. Any plans to give another pet a loving home?",
         "timestamp": "11:51 am on 3 June, 2023",
         "session_id": "session_17"
       },
@@ -8037,14 +8037,14 @@
       {
         "turn_id": "D17:13",
         "speaker": "John",
-        "content": "",
+        "content": "If we need help, we'll let you know.",
         "timestamp": "11:51 am on 3 June, 2023",
         "session_id": "session_17"
       },
       {
         "turn_id": "D17:14",
         "speaker": "Maria",
-        "content": "Let me know if you need any help.",
+        "content": "",
         "timestamp": "11:51 am on 3 June, 2023",
         "session_id": "session_17"
       },
@@ -8058,7 +8058,7 @@
       {
         "turn_id": "D17:16",
         "speaker": "Maria",
-        "content": "",
+        "content": "I'm here for you.",
         "timestamp": "11:51 am on 3 June, 2023",
         "session_id": "session_17"
       },
@@ -8177,7 +8177,7 @@
       {
         "turn_id": "D18:17",
         "speaker": "Maria",
-        "content": "It's tough to pick just one, but I really enjoy the upside-down poses. They make me feel free and light.",
+        "content": "I really enjoy the upside-down poses. They make me feel free and light.",
         "timestamp": "2:47 pm on 12 June, 2023",
         "session_id": "session_18"
       },
@@ -8233,7 +8233,7 @@
       {
         "turn_id": "D19:2",
         "speaker": "John",
-        "content": "Do you have any fitness goals in mind?",
+        "content": "Having a positive environment and supportive people can really help with motivation. Do you have any fitness goals in mind?",
         "timestamp": "7:20 pm on 16 June, 2023",
         "session_id": "session_19"
       },
@@ -8254,7 +8254,7 @@
       {
         "turn_id": "D19:5",
         "speaker": "Maria",
-        "content": "I haven't tried it yet. It sounds like a great way to push yourself. Let me know how it goes if you give it a shot!",
+        "content": "No, I haven't tried it yet. It sounds like a great way to push yourself.",
         "timestamp": "7:20 pm on 16 June, 2023",
         "session_id": "session_19"
       },
@@ -8359,7 +8359,7 @@
       {
         "turn_id": "D19:20",
         "speaker": "John",
-        "content": "It can be challenging, so I try to organize my time and make sure I'm there for the important things. It's all about finding that balance and making those moments count!",
+        "content": "I try to organize my time and make sure I'm there for the important things. It's all about finding that balance and making those moments count!",
         "timestamp": "7:20 pm on 16 June, 2023",
         "session_id": "session_19"
       },
@@ -8394,14 +8394,14 @@
       {
         "turn_id": "D19:25",
         "speaker": "Maria",
-        "content": "The kids look so happy splashing in the waves. It must have been such a joyful and carefree time!",
+        "content": "The kids look so happy splashing in the waves.",
         "timestamp": "7:20 pm on 16 June, 2023",
         "session_id": "session_19"
       },
       {
         "turn_id": "D19:26",
         "speaker": "John",
-        "content": "Enjoying these special family times is why life is great.",
+        "content": "it was amazing. Enjoying these special family times is why life is great.",
         "timestamp": "7:20 pm on 16 June, 2023",
         "session_id": "session_19"
       },
@@ -8443,7 +8443,7 @@
       {
         "turn_id": "D20:6",
         "speaker": "John",
-        "content": "It was definitely an amazing experience. Moments like these remind me to appreciate the ones I love. Life can be tough, but finding silver linings helps me keep going. How have you been finding silver linings in tough times?",
+        "content": "Moments like these remind me to appreciate the ones I love. Life can be tough, but finding silver linings helps me keep going. How have you been finding silver linings in tough times?",
         "timestamp": "12:21 am on 27 June, 2023",
         "session_id": "session_20"
       },
@@ -8625,14 +8625,14 @@
       {
         "turn_id": "D21:14",
         "speaker": "John",
-        "content": "I'll do my best to find some resources.",
+        "content": "I'll do my best to find some resources. Helping those in need is important to me too.",
         "timestamp": "8:43 pm on 3 July, 2023",
         "session_id": "session_21"
       },
       {
         "turn_id": "D21:15",
         "speaker": "Maria",
-        "content": "",
+        "content": "It's a wonderful quality to have.",
         "timestamp": "8:43 pm on 3 July, 2023",
         "session_id": "session_21"
       },
@@ -8751,7 +8751,7 @@
       {
         "turn_id": "D22:3",
         "speaker": "John",
-        "content": "Feeling like it's an uphill battle is tough, but it's great to know there are people out there who see the value in them - it keeps me going.",
+        "content": "Feeling like it's an uphill battle is tough. It keeps me going.",
         "timestamp": "6:59 pm on 5 July, 2023",
         "session_id": "session_22"
       },
@@ -8814,7 +8814,7 @@
       {
         "turn_id": "D22:12",
         "speaker": "Maria",
-        "content": "we all have our own special sources of inspiration that keep us going.",
+        "content": "we all have our own special sources of inspiration that keep us going",
         "timestamp": "6:59 pm on 5 July, 2023",
         "session_id": "session_22"
       },
@@ -9010,7 +9010,7 @@
       {
         "turn_id": "D24:5",
         "speaker": "John",
-        "content": "We're like a family - always supporting each other. Do anything fun lately?",
+        "content": "It's great to be part of this organization and work with such passionate people. We're like a family - always supporting each other. Do anything fun lately?",
         "timestamp": "3:34 pm on 17 July, 2023",
         "session_id": "session_24"
       },
@@ -9129,7 +9129,7 @@
       {
         "turn_id": "D25:5",
         "speaker": "John",
-        "content": "What were some of your best bits from the hike?",
+        "content": "Connecting with good people and taking in the beautiful views really boosts your mood. It's important to make time for yourself and find those special moments of joy. What were some of your best bits from the hike?",
         "timestamp": "6:21 pm on 22 July, 2023",
         "session_id": "session_25"
       },
@@ -9178,7 +9178,7 @@
       {
         "turn_id": "D25:12",
         "speaker": "Maria",
-        "content": "That definitely makes the workout experience more enjoyable. Do they offer a variety of classes?",
+        "content": "Do they offer a variety of classes?",
         "timestamp": "6:21 pm on 22 July, 2023",
         "session_id": "session_25"
       },
@@ -9346,7 +9346,7 @@
       {
         "turn_id": "D26:16",
         "speaker": "John",
-        "content": "",
+        "content": "Keep on being positive and making a difference.",
         "timestamp": "1:59 pm on 31 July, 2023",
         "session_id": "session_26"
       },
@@ -9367,7 +9367,7 @@
       {
         "turn_id": "D27:2",
         "speaker": "Maria",
-        "content": "I'm doing my part too, volunteering at a homeless shelter.",
+        "content": "I'm doing my part too, volunteering at a homeless shelter. It's so rewarding.",
         "timestamp": "6:20 pm on 3 August, 2023",
         "session_id": "session_27"
       },
@@ -9416,7 +9416,7 @@
       {
         "turn_id": "D27:9",
         "speaker": "John",
-        "content": "Maria, you're making a difference like that. Last week, we had a meaningful experience at a military memorial. It really made an impact on my kids.",
+        "content": "Last week, we had a meaningful experience at a military memorial. It really made an impact on my kids.",
         "timestamp": "6:20 pm on 3 August, 2023",
         "session_id": "session_27"
       },
@@ -9514,7 +9514,7 @@
       {
         "turn_id": "D28:7",
         "speaker": "John",
-        "content": "",
+        "content": "I appreciate your support, it really means a lot.",
         "timestamp": "5:19 pm on 5 August, 2023",
         "session_id": "session_28"
       },
@@ -9773,7 +9773,7 @@
       {
         "turn_id": "D30:7",
         "speaker": "Maria",
-        "content": "John, you and Max had a great time! Camping with pets can be so soul-nourishing.",
+        "content": "John, you and Max had a great time! Camping with pets can be so soul-nourishing, right?",
         "timestamp": "12:10 am on 11 August, 2023",
         "session_id": "session_30"
       },
@@ -9808,7 +9808,7 @@
       {
         "turn_id": "D30:12",
         "speaker": "John",
-        "content": "I'm glad my photos can capture that feeling. They help me take a step back and appreciate the little things in life - especially these days. There've been some tough times lately for me.",
+        "content": "They help me take a step back and appreciate the little things in life - especially these days. There've been some tough times lately for me.",
         "timestamp": "12:10 am on 11 August, 2023",
         "session_id": "session_30"
       },
@@ -9836,7 +9836,7 @@
       {
         "turn_id": "D30:16",
         "speaker": "John",
-        "content": "I just want to positively affect people and the world. It feels like I'm stuck. I need to find a better way to focus my passion and enthusiasm.",
+        "content": "I just want to positively affect people and the world. I need to find a better way to focus my passion and enthusiasm.",
         "timestamp": "12:10 am on 11 August, 2023",
         "session_id": "session_30"
       },
@@ -9899,7 +9899,7 @@
       {
         "turn_id": "D31:2",
         "speaker": "Maria",
-        "content": "You're doing great things. On another note, I just adopted this cute pup from a shelter last week. She brings so much joy! I feel blessed to be able to give her a home.",
+        "content": "You're doing great things. Kudos for helping kids learn. I just adopted this cute pup from a shelter last week. She brings so much joy! I feel blessed to be able to give her a home.",
         "timestamp": "3:14 pm on 13 August, 2023",
         "session_id": "session_31"
       },
@@ -9969,7 +9969,7 @@
       {
         "turn_id": "D31:12",
         "speaker": "Maria",
-        "content": "She's an amazing learner - so much fun to work with and watch her grow. She's brought me so much joy!",
+        "content": "She's an amazing learner - so much fun to work with and watch her grow.",
         "timestamp": "3:14 pm on 13 August, 2023",
         "session_id": "session_31"
       },
@@ -10046,14 +10046,14 @@
       {
         "turn_id": "D31:23",
         "speaker": "John",
-        "content": "",
+        "content": "Stay safe!",
         "timestamp": "3:14 pm on 13 August, 2023",
         "session_id": "session_31"
       },
       {
         "turn_id": "D32:1",
         "speaker": "John",
-        "content": "I'm now part of the fire-fighting brigade.",
+        "content": "I'm now part of the fire-fighting brigade. I'm super excited to be involved and help out my community!",
         "timestamp": "11:08 am on 16 August, 2023",
         "session_id": "session_32"
       },
@@ -10081,7 +10081,7 @@
       {
         "turn_id": "D32:5",
         "speaker": "John",
-        "content": "It's amazing how a group can succeed at something so important. It only took us two hours. We worked hard but did something good – it was really satisfying.",
+        "content": "Everyone was so into it. It's amazing how a group can succeed at something so important. It only took us two hours. We worked hard but did something good – it was really satisfying.",
         "timestamp": "11:08 am on 16 August, 2023",
         "session_id": "session_32"
       },
@@ -10137,7 +10137,7 @@
       {
         "turn_id": "D32:13",
         "speaker": "John",
-        "content": "",
+        "content": "I appreciate your support.",
         "timestamp": "11:08 am on 16 August, 2023",
         "session_id": "session_32"
       },
@@ -10165,7 +10165,7 @@
       {
         "turn_id": "D32:17",
         "speaker": "John",
-        "content": "Together, our impact will surely last.",
+        "content": "Maria, let's keep each other and everyone else motivated to make a difference! Together, our impact will surely last.",
         "timestamp": "11:08 am on 16 August, 2023",
         "session_id": "session_32"
       }
@@ -10415,7 +10415,7 @@
       {
         "turn_id": "D2:13",
         "speaker": "Joanna",
-        "content": "",
+        "content": "Adorable!",
         "timestamp": "2:01 pm on 23 January, 2022",
         "session_id": "session_2"
       },
@@ -10520,7 +10520,7 @@
       {
         "turn_id": "D2:28",
         "speaker": "Nate",
-        "content": "",
+        "content": "Keep doing what you love!",
         "timestamp": "2:01 pm on 23 January, 2022",
         "session_id": "session_2"
       },
@@ -10548,7 +10548,7 @@
       {
         "turn_id": "D3:3",
         "speaker": "Joanna",
-        "content": "I put a lot of effort into it and I'm crossing my fingers.",
+        "content": "I put a lot of effort into it.",
         "timestamp": "9:27 am on 7 February, 2022",
         "session_id": "session_3"
       },
@@ -10576,7 +10576,7 @@
       {
         "turn_id": "D3:7",
         "speaker": "Joanna",
-        "content": "Will you give it another go?",
+        "content": "I love when you try something new and it actually works out. Will you give it another go?",
         "timestamp": "9:27 am on 7 February, 2022",
         "session_id": "session_3"
       },
@@ -10681,7 +10681,7 @@
       {
         "turn_id": "D3:22",
         "speaker": "Nate",
-        "content": "",
+        "content": "You'll be the first to know.",
         "timestamp": "9:27 am on 7 February, 2022",
         "session_id": "session_3"
       },
@@ -10737,7 +10737,7 @@
       {
         "turn_id": "D4:5",
         "speaker": "Nate",
-        "content": "I know one recipe using coconut milk. Would you like me to send it to you?",
+        "content": "I know one recipe using coconut milk.",
         "timestamp": "1:07 pm on 25 February, 2022",
         "session_id": "session_4"
       },
@@ -10758,7 +10758,7 @@
       {
         "turn_id": "D4:8",
         "speaker": "Joanna",
-        "content": "",
+        "content": "Love your creations!",
         "timestamp": "1:07 pm on 25 February, 2022",
         "session_id": "session_4"
       },
@@ -10835,7 +10835,7 @@
       {
         "turn_id": "D4:19",
         "speaker": "Nate",
-        "content": "",
+        "content": "Hope your screenplay finds a fan and is given its due.",
         "timestamp": "1:07 pm on 25 February, 2022",
         "session_id": "session_4"
       },
@@ -10870,7 +10870,7 @@
       {
         "turn_id": "D5:5",
         "speaker": "Joanna",
-        "content": "What made you choose them as pets?",
+        "content": "They always look so relaxed outside. What made you choose them as pets?",
         "timestamp": "6:59 pm on 18 March, 2022",
         "session_id": "session_5"
       },
@@ -10919,7 +10919,7 @@
       {
         "turn_id": "D5:12",
         "speaker": "Nate",
-        "content": "Maybe there are other animals you could consider! In the meantime though, I'll be sure to send you pics of my turtles so you can still watch them grow without getting too close.",
+        "content": "Maybe there are other animals you could consider! I'll be sure to send you pics of my turtles so you can still watch them grow without getting too close.",
         "timestamp": "6:59 pm on 18 March, 2022",
         "session_id": "session_5"
       },
@@ -11003,7 +11003,7 @@
       {
         "turn_id": "D6:3",
         "speaker": "Nate",
-        "content": "How did it go?",
+        "content": "",
         "timestamp": "1:43 pm on 24 March, 2022",
         "session_id": "session_6"
       },
@@ -11024,7 +11024,7 @@
       {
         "turn_id": "D6:6",
         "speaker": "Joanna",
-        "content": "I'll make sure to keep you updated. Anything new on your end?",
+        "content": "I'll make sure to keep you updated.",
         "timestamp": "1:43 pm on 24 March, 2022",
         "session_id": "session_6"
       },
@@ -11423,7 +11423,7 @@
       {
         "turn_id": "D9:15",
         "speaker": "Joanna",
-        "content": "I'm definitely going to check it out!",
+        "content": "Heard of that series! It's been on my list forever. I'm definitely going to check it out!",
         "timestamp": "7:44 pm on 21 April, 2022",
         "session_id": "session_9"
       },
@@ -11507,7 +11507,7 @@
       {
         "turn_id": "D10:9",
         "speaker": "Joanna",
-        "content": "Been working on some projects and testing out dairy-free dessert recipes for friends and fam. Here's a pic of a cake I made recently!",
+        "content": "Been working on some projects and testing out dairy-free dessert recipes for friends and fam.",
         "timestamp": "11:54 am on 2 May, 2022",
         "session_id": "session_10"
       },
@@ -11542,7 +11542,7 @@
       {
         "turn_id": "D10:14",
         "speaker": "Nate",
-        "content": "",
+        "content": "It must be so rewarding to see everyone enjoying your creations.",
         "timestamp": "11:54 am on 2 May, 2022",
         "session_id": "session_10"
       },
@@ -11997,7 +11997,7 @@
       {
         "turn_id": "D14:1",
         "speaker": "Joanna",
-        "content": "Nate, after finishing my screenplay I got a rejection letter from a major company. It really bummed me out.",
+        "content": "Nate, after finishing my screenplay I got a rejection letter from a major company.",
         "timestamp": "5:44 pm on 3 June, 2022",
         "session_id": "session_14"
       },
@@ -12116,7 +12116,7 @@
       {
         "turn_id": "D14:18",
         "speaker": "Nate",
-        "content": "Do you have any plans for the weekend?",
+        "content": "I just like helping people. Do you have any plans for the weekend?",
         "timestamp": "5:44 pm on 3 June, 2022",
         "session_id": "session_14"
       },
@@ -12165,7 +12165,7 @@
       {
         "turn_id": "D14:25",
         "speaker": "Joanna",
-        "content": "",
+        "content": "What a sweet idea.",
         "timestamp": "5:44 pm on 3 June, 2022",
         "session_id": "session_14"
       },
@@ -12326,7 +12326,7 @@
       {
         "turn_id": "D16:4",
         "speaker": "Nate",
-        "content": "Most of them did! I can't say if all of them will continue to use them or not.",
+        "content": "I can't say if all of them will continue to use them or not.",
         "timestamp": "10:55 am on 24 June, 2022",
         "session_id": "session_16"
       },
@@ -12424,7 +12424,7 @@
       {
         "turn_id": "D17:2",
         "speaker": "Joanna",
-        "content": "Your hard work really paid off. I took a road trip for research for my next movie while you were winning. Much-needed break and a chance to explore new places and get inspired.",
+        "content": "Your hard work really paid off. I took a road trip for research for my next movie. Much-needed break and a chance to explore new places and get inspired.",
         "timestamp": "2:34 pm on 10 July, 2022",
         "session_id": "session_17"
       },
@@ -12487,7 +12487,7 @@
       {
         "turn_id": "D17:11",
         "speaker": "Nate",
-        "content": "I'm sure it will do just as well as your last one! Keep on trying and believe in yourself!",
+        "content": "Keep on trying and believe in yourself!",
         "timestamp": "2:34 pm on 10 July, 2022",
         "session_id": "session_17"
       },
@@ -12683,7 +12683,7 @@
       {
         "turn_id": "D19:2",
         "speaker": "Joanna",
-        "content": "So proud of you for winning that tournament. Must feel great to turn your passion into a career.",
+        "content": "Nate! Proud of you for winning that tournament. Must feel great to turn your passion into a career.",
         "timestamp": "10:57 am on 22 August, 2022",
         "session_id": "session_19"
       },
@@ -12697,7 +12697,7 @@
       {
         "turn_id": "D19:4",
         "speaker": "Joanna",
-        "content": "It looks like they have so much more room to swim now!",
+        "content": "I can see why you enjoy spending time with them. It looks like they have so much more room to swim now!",
         "timestamp": "10:57 am on 22 August, 2022",
         "session_id": "session_19"
       },
@@ -12956,7 +12956,7 @@
       {
         "turn_id": "D20:19",
         "speaker": "Nate",
-        "content": "",
+        "content": "Good luck!",
         "timestamp": "6:03 pm on 5 September, 2022",
         "session_id": "session_20"
       },
@@ -13005,7 +13005,7 @@
       {
         "turn_id": "D21:7",
         "speaker": "Joanna",
-        "content": "I love the color and texture. Could you share the recipe? I'd love to try making it sometime!",
+        "content": "I love the color and texture. It's great that you're making these options. Could you share the recipe? I'd love to try making it sometime!",
         "timestamp": "1:43 pm on 14 September, 2022",
         "session_id": "session_21"
       },
@@ -13117,7 +13117,7 @@
       {
         "turn_id": "D22:3",
         "speaker": "Joanna",
-        "content": "Winning the tournament and earning cash is awesome - congrats! Did you save it for something special?",
+        "content": "Winning the tournament and earning cash is awesome. Did you save it for something special?",
         "timestamp": "11:15 am on 6 October, 2022",
         "session_id": "session_22"
       },
@@ -13180,7 +13180,7 @@
       {
         "turn_id": "D22:12",
         "speaker": "Nate",
-        "content": "You've worked so hard and accomplished a lot – I'm proud.",
+        "content": "You've worked so hard and accomplished a lot – I'm proud. Keep on going!",
         "timestamp": "11:15 am on 6 October, 2022",
         "session_id": "session_22"
       },
@@ -13292,7 +13292,7 @@
       {
         "turn_id": "D23:5",
         "speaker": "Nate",
-        "content": "I also met some people who also played this boardgame I love, so I joined in. We had a lot in common and hit it off. It's great when shared hobbies can bond people!",
+        "content": "I also met some people who also played this boardgame I love, so I joined in. We had a lot in common and hit it off.",
         "timestamp": "10:58 am on 9 October, 2022",
         "session_id": "session_23"
       },
@@ -13446,7 +13446,7 @@
       {
         "turn_id": "D23:27",
         "speaker": "Nate",
-        "content": "Sounds like you really got into making your living room!",
+        "content": "Thanks, I'll try that out for myself!",
         "timestamp": "10:58 am on 9 October, 2022",
         "session_id": "session_23"
       },
@@ -13474,7 +13474,7 @@
       {
         "turn_id": "D24:1",
         "speaker": "Nate",
-        "content": "",
+        "content": "Haven't seen you since we last talked.",
         "timestamp": "2:01 pm on 21 October, 2022",
         "session_id": "session_24"
       },
@@ -13495,7 +13495,7 @@
       {
         "turn_id": "D24:4",
         "speaker": "Joanna",
-        "content": "Pets have a way of brightening our days. I still have that stuffed animal dog you gave me! I named her Tilly, and she's always with me while I write.",
+        "content": "I still have that stuffed animal dog you gave me! I named her Tilly, and she's always with me while I write.",
         "timestamp": "2:01 pm on 21 October, 2022",
         "session_id": "session_24"
       },
@@ -13516,7 +13516,7 @@
       {
         "turn_id": "D24:7",
         "speaker": "Nate",
-        "content": "",
+        "content": "Glad the stuffed animal means so much!",
         "timestamp": "2:01 pm on 21 October, 2022",
         "session_id": "session_24"
       },
@@ -13537,7 +13537,7 @@
       {
         "turn_id": "D24:10",
         "speaker": "Joanna",
-        "content": "have you been up to anything recenly",
+        "content": "So have you been up to anything recenly?",
         "timestamp": "2:01 pm on 21 October, 2022",
         "session_id": "session_24"
       },
@@ -13593,7 +13593,7 @@
       {
         "turn_id": "D24:18",
         "speaker": "Joanna",
-        "content": "",
+        "content": "I'll see you around!",
         "timestamp": "2:01 pm on 21 October, 2022",
         "session_id": "session_24"
       },
@@ -13677,7 +13677,7 @@
       {
         "turn_id": "D25:11",
         "speaker": "Nate",
-        "content": "It's amazing how our imaginations can bring ideas to life. Can you tell me more about the character on the left in the photo?",
+        "content": "Can you tell me more about the character on the left in the photo?",
         "timestamp": "8:16 pm on 25 October, 2022",
         "session_id": "session_25"
       },
@@ -13705,7 +13705,7 @@
       {
         "turn_id": "D25:15",
         "speaker": "Nate",
-        "content": "I was bored today, so I just took my turtles out for a walk.",
+        "content": "I just took my turtles out for a walk.",
         "timestamp": "8:16 pm on 25 October, 2022",
         "session_id": "session_25"
       },
@@ -13740,7 +13740,7 @@
       {
         "turn_id": "D25:20",
         "speaker": "Joanna",
-        "content": "It's interesting how they have such a varied diet, including insects.",
+        "content": "It's interesting how they have such a varied diet, including insects. Do you have a favorite among their food choices?",
         "timestamp": "8:16 pm on 25 October, 2022",
         "session_id": "session_25"
       },
@@ -13775,7 +13775,7 @@
       {
         "turn_id": "D25:25",
         "speaker": "Nate",
-        "content": "One is more adventurous while the other is more reserved, which I find cute. Having them around brings me joy and they make great companions.",
+        "content": "One is more adventurous while the other is more reserved. Having them around brings me joy and they make great companions.",
         "timestamp": "8:16 pm on 25 October, 2022",
         "session_id": "session_25"
       },
@@ -13831,14 +13831,14 @@
       {
         "turn_id": "D26:4",
         "speaker": "Nate",
-        "content": "Putting yourself out there is really brave and winning recognition for your hard work feels great. It's just like when I win a video game tournament - it feels awesome! I'm so proud of you and so glad you're feeling hopeful and inspired.",
+        "content": "Putting yourself out there is really brave and winning recognition for your hard work feels great. I'm so proud of you and so glad you're feeling hopeful and inspired.",
         "timestamp": "3:56 pm on 4 November, 2022",
         "session_id": "session_26"
       },
       {
         "turn_id": "D26:5",
         "speaker": "Joanna",
-        "content": "Writing isn't always easy but moments like these make me appreciate it. I'm so thankful for all the opportunities. Last week, I found these old notebooks with my early writings - it was cool to see how far I've come.",
+        "content": "Your support and encouragement mean a lot. Writing isn't always easy but moments like these make me appreciate it. I'm so thankful for all the opportunities. Last week, I found these old notebooks with my early writings - it was cool to see how far I've come.",
         "timestamp": "3:56 pm on 4 November, 2022",
         "session_id": "session_26"
       },
@@ -13859,7 +13859,7 @@
       {
         "turn_id": "D26:8",
         "speaker": "Nate",
-        "content": "Their resilience is so inspiring! Take courage and keep pushing yourself with your writing.",
+        "content": "Take courage and keep pushing yourself with your writing.",
         "timestamp": "3:56 pm on 4 November, 2022",
         "session_id": "session_26"
       },
@@ -13985,7 +13985,7 @@
       {
         "turn_id": "D27:2",
         "speaker": "Joanna",
-        "content": "I've been working on something exciting too. Last Friday, I finished the presentation for producers - it was tough but it's looking good. What have you been up to?",
+        "content": "Congrats on winning the tournament. I've been working on something exciting too. Last Friday, I finished the presentation for producers - it was tough but it's looking good. What have you been up to?",
         "timestamp": "8:10 pm on 7 November, 2022",
         "session_id": "session_27"
       },
@@ -14034,7 +14034,7 @@
       {
         "turn_id": "D27:9",
         "speaker": "Nate",
-        "content": "These little guys sure bring joy to my life! Watching them is so calming and fascinating. I've really grown fond of them. What brings you happiness?",
+        "content": "These little guys sure bring joy to my life! Watching them is so calming and fascinating. I've really grown fond of them. So, what about you, Joanna? What brings you happiness?",
         "timestamp": "8:10 pm on 7 November, 2022",
         "session_id": "session_27"
       },
@@ -14139,7 +14139,7 @@
       {
         "turn_id": "D27:24",
         "speaker": "Joanna",
-        "content": "What made you start playing it? That's a japanese game series",
+        "content": "What made you start playing it? That's a Japanese game series right?",
         "timestamp": "8:10 pm on 7 November, 2022",
         "session_id": "session_27"
       },
@@ -14174,7 +14174,7 @@
       {
         "turn_id": "D27:29",
         "speaker": "Nate",
-        "content": "That letter is really awesome! Does it remind you of your childhood?",
+        "content": "Does it remind you of your childhood?",
         "timestamp": "8:10 pm on 7 November, 2022",
         "session_id": "session_27"
       },
@@ -14461,7 +14461,7 @@
       {
         "turn_id": "D28:32",
         "speaker": "Joanna",
-        "content": "",
+        "content": "see you tomorrow!",
         "timestamp": "5:54 pm on 9 November, 2022",
         "session_id": "session_28"
       },
@@ -14503,7 +14503,7 @@
       {
         "turn_id": "D29:5",
         "speaker": "Joanna",
-        "content": "One of the actors came up to me and told me how much she liked my script! I was so excited when that happened - it gave me chills!",
+        "content": "One of the actors came up to me and told me how much she liked my script!",
         "timestamp": "12:06 am on 11 November, 2022",
         "session_id": "session_29"
       },
@@ -14566,7 +14566,7 @@
       {
         "turn_id": "D29:14",
         "speaker": "Nate",
-        "content": "",
+        "content": "Hope you enjoy it!",
         "timestamp": "12:06 am on 11 November, 2022",
         "session_id": "session_29"
       },
@@ -14753,7 +14753,7 @@
       {
         "turn_id": "D2:5",
         "speaker": "Tim",
-        "content": "Can't wait to see which brands you choose to work with",
+        "content": "",
         "timestamp": "5:08 pm on 15 June, 2023",
         "session_id": "session_2"
       },
@@ -14837,7 +14837,7 @@
       {
         "turn_id": "D2:17",
         "speaker": "Tim",
-        "content": "it must be so awesome playing at that level",
+        "content": "You look so into it in that pic – it must be so awesome playing at that level! Keep rockin' it!",
         "timestamp": "5:08 pm on 15 June, 2023",
         "session_id": "session_2"
       },
@@ -14914,7 +14914,7 @@
       {
         "turn_id": "D3:9",
         "speaker": "John",
-        "content": "I've talked to some big names, which looks promising.",
+        "content": "I'm getting somewhere with endorsements. I've talked to some big names, which looks promising. Exciting to see what's in store!",
         "timestamp": "4:21 pm on 16 July, 2023",
         "session_id": "session_3"
       },
@@ -14970,7 +14970,7 @@
       {
         "turn_id": "D3:17",
         "speaker": "John",
-        "content": "",
+        "content": "This is where I'm headed.",
         "timestamp": "4:21 pm on 16 July, 2023",
         "session_id": "session_3"
       },
@@ -15110,7 +15110,7 @@
       {
         "turn_id": "D4:2",
         "speaker": "John",
-        "content": "How did it happen?",
+        "content": "Congrats on the opportunity to write about what you're into! How did it happen?",
         "timestamp": "4:17 pm on 2 August, 2023",
         "session_id": "session_4"
       },
@@ -15285,7 +15285,7 @@
       {
         "turn_id": "D5:12",
         "speaker": "John",
-        "content": "Having someone to support and motivate you is so important, whether it's in sports or any other aspect of life. I know you've found your peace in reading fantasy books - that's amazing! What book are you currently reading? Anything that has stood out to you?",
+        "content": "Having someone to support and motivate you is so important, whether it's in sports or any other aspect of life. What book are you currently reading? Anything that has stood out to you?",
         "timestamp": "10:29 am on 9 August, 2023",
         "session_id": "session_5"
       },
@@ -15306,7 +15306,7 @@
       {
         "turn_id": "D5:15",
         "speaker": "Tim",
-        "content": "It's a book by Patrick Rothfuss. The way the author builds the world and characters is amazing.",
+        "content": "It's a book by Patrick Rothfuss. The way the author builds the world and characters is amazing. You should read it!",
         "timestamp": "10:29 am on 9 August, 2023",
         "session_id": "session_5"
       },
@@ -15369,7 +15369,7 @@
       {
         "turn_id": "D6:4",
         "speaker": "Tim",
-        "content": "It's refreshing to try something new and connect with people from different backgrounds.",
+        "content": "It's refreshing to try something new and connect with people from different backgrounds. Have you ever been to a sports game and felt a real connection with the other fans?",
         "timestamp": "1:08 pm on 11 August, 2023",
         "session_id": "session_6"
       },
@@ -15404,7 +15404,7 @@
       {
         "turn_id": "D6:9",
         "speaker": "John",
-        "content": "Love a good fantasy with strong characters and cool world-building. Adding it to my list. These are my lucky basketball shoes. They've been with me through the good and bad. Every mark has a story.",
+        "content": "Love a good fantasy with strong characters and cool world-building. Adding it to my list.",
         "timestamp": "1:08 pm on 11 August, 2023",
         "session_id": "session_6"
       },
@@ -15467,7 +15467,7 @@
       {
         "turn_id": "D6:18",
         "speaker": "Tim",
-        "content": "",
+        "content": "Making a difference like that is truly amazing. I can't wait to see the impact it'll have.",
         "timestamp": "1:08 pm on 11 August, 2023",
         "session_id": "session_6"
       },
@@ -15530,7 +15530,7 @@
       {
         "turn_id": "D7:4",
         "speaker": "Tim",
-        "content": "I felt like I belonged a few times, but last month at that event was one of my favorites. Everyone shared the same love for it and it felt like being in a world where everyone understood it. I'm really thankful for those experiences - it's great to know there are people out there who appreciate and share my interests.",
+        "content": "Last month at that event was one of my favorites. Everyone shared the same love for it and it felt like being in a world where everyone understood it. I'm really thankful for those experiences - it's great to know there are people out there who appreciate and share my interests.",
         "timestamp": "7:54 pm on 17 August, 2023",
         "session_id": "session_7"
       },
@@ -15586,14 +15586,14 @@
       {
         "turn_id": "D7:12",
         "speaker": "Tim",
-        "content": "It's great to have something so meaningful to keep you motivated.",
+        "content": "It's great to have something so meaningful to keep you motivated. I'll keep that in mind next time I need a push to reach my goals.",
         "timestamp": "7:54 pm on 17 August, 2023",
         "session_id": "session_7"
       },
       {
         "turn_id": "D7:13",
         "speaker": "John",
-        "content": "It's really motivating to have something that reminds you of why you started, and having supportive people around is like having a cheer team that helps you through tough times.",
+        "content": "Having something that reminds you of why you started. Having supportive people around is like having a cheer team that helps you through tough times.",
         "timestamp": "7:54 pm on 17 August, 2023",
         "session_id": "session_7"
       },
@@ -15621,7 +15621,7 @@
       {
         "turn_id": "D8:1",
         "speaker": "John",
-        "content": "Just the other day, I found a new gym to stay on my b-ball game. Staying fit is essential to surviving pro ball, so I had to find something that fits the bill. Finding the right spot was tough but here we are!",
+        "content": "I found a new gym to stay on my b-ball game. Staying fit is essential to surviving pro ball, so I had to find something that fits the bill. Finding the right spot was tough but here we are!",
         "timestamp": "4:29 pm on 21 August, 2023",
         "session_id": "session_8"
       },
@@ -15635,7 +15635,7 @@
       {
         "turn_id": "D8:3",
         "speaker": "John",
-        "content": "The gym is awesome. I had to overcome the hurdle of adapting and tweaking my routine. Finding the right balance was tricky, but I eventually got the hang of it.",
+        "content": "The gym is awesome. Finding the right balance was tricky, but I eventually got the hang of it.",
         "timestamp": "4:29 pm on 21 August, 2023",
         "session_id": "session_8"
       },
@@ -15733,7 +15733,7 @@
       {
         "turn_id": "D8:17",
         "speaker": "John",
-        "content": "I even have the whole collection.",
+        "content": "I love that first movie too, I even have the whole collection.",
         "timestamp": "4:29 pm on 21 August, 2023",
         "session_id": "session_8"
       },
@@ -15817,7 +15817,7 @@
       {
         "turn_id": "D8:29",
         "speaker": "John",
-        "content": "\"The Santa Clause\" is a classic! It's so sweet and really captures the Christmas magic. It's just one of those movies that gets us all feeling festive. This was our tree last year.",
+        "content": "\"The Santa Clause\" is a classic! It's so sweet and really captures the Christmas magic. It's just one of those movies that gets us all feeling festive.",
         "timestamp": "4:29 pm on 21 August, 2023",
         "session_id": "session_8"
       },
@@ -15880,14 +15880,14 @@
       {
         "turn_id": "D9:1",
         "speaker": "Tim",
-        "content": "this week's been really busy for me. Assignments and exams are overwhelming. I'm trying to find a way to juggle studying with my fantasy reading hobby.",
+        "content": "Assignments and exams are overwhelming. I'm trying to find a way to juggle studying with my fantasy reading hobby.",
         "timestamp": "6:59 pm on 26 August, 2023",
         "session_id": "session_9"
       },
       {
         "turn_id": "D9:2",
         "speaker": "John",
-        "content": "I know the stress of exams and homework. I'm doing OK. Last week I visited home and caught up with my family and old friends. We had a great time talking about our childhood.",
+        "content": "I'm doing OK. Last week I visited home and caught up with my family and old friends. We had a great time talking about our childhood.",
         "timestamp": "6:59 pm on 26 August, 2023",
         "session_id": "session_9"
       },
@@ -16006,7 +16006,7 @@
       {
         "turn_id": "D10:4",
         "speaker": "John",
-        "content": "I've been trying out cooking recipes. Made this tasty soup recently - it was real good!",
+        "content": "Taking the plunge and presenting can be tough, but awesome work! Progress is progress, keep it up. I've been trying out cooking recipes. Made this tasty soup recently - it was real good!",
         "timestamp": "2:52 pm on 31 August, 2023",
         "session_id": "session_10"
       },
@@ -16041,7 +16041,7 @@
       {
         "turn_id": "D10:9",
         "speaker": "Tim",
-        "content": "Love experimenting with spices. By the way, have you been to Universal Studios? Planning a trip there next month.",
+        "content": "Excited to try this. Love experimenting with spices. Have you been to Universal Studios? Planning a trip there next month.",
         "timestamp": "2:52 pm on 31 August, 2023",
         "session_id": "session_10"
       },
@@ -16055,7 +16055,7 @@
       {
         "turn_id": "D10:11",
         "speaker": "Tim",
-        "content": "it's my first time going. I'm super stoked for the Harry Potter stuff.",
+        "content": "I'm super stoked for the Harry Potter stuff.",
         "timestamp": "2:52 pm on 31 August, 2023",
         "session_id": "session_10"
       },
@@ -16083,7 +16083,7 @@
       {
         "turn_id": "D10:15",
         "speaker": "Tim",
-        "content": "have a safe trip",
+        "content": "I'll make sure to have a safe trip.",
         "timestamp": "2:52 pm on 31 August, 2023",
         "session_id": "session_10"
       },
@@ -16356,7 +16356,7 @@
       {
         "turn_id": "D12:7",
         "speaker": "Tim",
-        "content": "Any favorite memories from the big day?",
+        "content": "Your wedding day must've been so special. Any favorite memories from the big day?",
         "timestamp": "3:00 pm on 2 October, 2023",
         "session_id": "session_12"
       },
@@ -16370,7 +16370,7 @@
       {
         "turn_id": "D12:9",
         "speaker": "Tim",
-        "content": "I saw your photo of you two dancing, it must have been incredible. Wanna tell me more?",
+        "content": "I saw your photo of you two dancing",
         "timestamp": "3:00 pm on 2 October, 2023",
         "session_id": "session_12"
       },
@@ -16384,7 +16384,7 @@
       {
         "turn_id": "D12:11",
         "speaker": "Tim",
-        "content": "Weddings truly are the best!",
+        "content": "A candlelit dance in a cozy restaurant. Weddings truly are the best!",
         "timestamp": "3:00 pm on 2 October, 2023",
         "session_id": "session_12"
       },
@@ -16496,14 +16496,14 @@
       {
         "turn_id": "D12:27",
         "speaker": "Tim",
-        "content": "The game must've been amazing!",
+        "content": "That crowd looks wild! The game must've been amazing!",
         "timestamp": "3:00 pm on 2 October, 2023",
         "session_id": "session_12"
       },
       {
         "turn_id": "D12:28",
         "speaker": "John",
-        "content": "The energy was incredible!",
+        "content": "The energy was incredible! It's moments like these that make me love my job.",
         "timestamp": "3:00 pm on 2 October, 2023",
         "session_id": "session_12"
       },
@@ -16587,7 +16587,7 @@
       {
         "turn_id": "D13:11",
         "speaker": "Tim",
-        "content": "Keep believing in yourself!",
+        "content": "I'm here for you anytime.",
         "timestamp": "1:50 pm on 13 October, 2023",
         "session_id": "session_13"
       },
@@ -16762,7 +16762,7 @@
       {
         "turn_id": "D14:14",
         "speaker": "Tim",
-        "content": "I took this pic last summer. Seeing it was so stunning.",
+        "content": "I took this pic last summer.",
         "timestamp": "1:50 pm on 17 October, 2023",
         "session_id": "session_14"
       },
@@ -16783,7 +16783,7 @@
       {
         "turn_id": "D14:17",
         "speaker": "John",
-        "content": "it's amazing how nature's beauty and grandeur can take our breath away. It's so nice to escape the noise of the city and relax in nature. Good for you to get to enjoy that stunning view!",
+        "content": "it's amazing how nature's beauty and grandeur can take our breath away. It's so nice to escape the noise of the city and relax in nature.",
         "timestamp": "1:50 pm on 17 October, 2023",
         "session_id": "session_14"
       },
@@ -16895,7 +16895,7 @@
       {
         "turn_id": "D15:10",
         "speaker": "John",
-        "content": "They become part of our life and affect our interests. Do you have a favorite J.K. Rowling quote?",
+        "content": "Some authors really have such an influence on us! They become part of our life and affect our interests. Do you have a favorite J.K. Rowling quote?",
         "timestamp": "5:51 pm on 21 October, 2023",
         "session_id": "session_15"
       },
@@ -17070,7 +17070,7 @@
       {
         "turn_id": "D15:35",
         "speaker": "Tim",
-        "content": "Thanks for sharing the recipe!",
+        "content": "Can't wait to try it.",
         "timestamp": "5:51 pm on 21 October, 2023",
         "session_id": "session_15"
       },
@@ -17105,7 +17105,7 @@
       {
         "turn_id": "D16:2",
         "speaker": "John",
-        "content": "you stuck it out, that's so cool. Same with me on the court. Just gotta find a way to tough it out and keep things flowing. Then when you make it through, it's all the more satisfying, right?",
+        "content": "But you stuck it out, that's so cool. Same with me on the court. Just gotta find a way to tough it out and keep things flowing. Then when you make it through, it's all the more satisfying, right?",
         "timestamp": "11:41 am on 6 November, 2023",
         "session_id": "session_16"
       },
@@ -17140,7 +17140,7 @@
       {
         "turn_id": "D16:7",
         "speaker": "Tim",
-        "content": "Do you have any photos or keepsakes from the game? I have something special too - this is my prized possession, a basketball signed by my favorite player. It serves as a reminder of all the hard work.",
+        "content": "You really showed determination and perseverance. Do you have any photos or keepsakes from the game? I'd love to see them! I have something special too - this is my prized possession, a basketball signed by my favorite player. It serves as a reminder of all the hard work.",
         "timestamp": "11:41 am on 6 November, 2023",
         "session_id": "session_16"
       },
@@ -17217,14 +17217,14 @@
       {
         "turn_id": "D17:1",
         "speaker": "John",
-        "content": "",
+        "content": "So much has happened!",
         "timestamp": "3:36 pm on 11 November, 2023",
         "session_id": "session_17"
       },
       {
         "turn_id": "D17:2",
         "speaker": "Tim",
-        "content": "What's been happening lately? I've been reading as usual.",
+        "content": "What's been happening lately?",
         "timestamp": "3:36 pm on 11 November, 2023",
         "session_id": "session_17"
       },
@@ -17238,7 +17238,7 @@
       {
         "turn_id": "D17:4",
         "speaker": "Tim",
-        "content": "",
+        "content": "I'm glad you and your wife had such a great time!",
         "timestamp": "3:36 pm on 11 November, 2023",
         "session_id": "session_17"
       },
@@ -17266,7 +17266,7 @@
       {
         "turn_id": "D17:8",
         "speaker": "Tim",
-        "content": "It always makes us realize how huge the world is and how special it is. These moments really show us the beauty around us.",
+        "content": "These moments really show us the beauty around us.",
         "timestamp": "3:36 pm on 11 November, 2023",
         "session_id": "session_17"
       },
@@ -17294,7 +17294,7 @@
       {
         "turn_id": "D17:12",
         "speaker": "Tim",
-        "content": "it's awesome how books and movies can take you away. A great escape",
+        "content": "Books and movies can take you away. A great escape.",
         "timestamp": "3:36 pm on 11 November, 2023",
         "session_id": "session_17"
       },
@@ -17441,7 +17441,7 @@
       {
         "turn_id": "D18:14",
         "speaker": "John",
-        "content": "",
+        "content": "Talk soon!",
         "timestamp": "3:59 pm on 16 November, 2023",
         "session_id": "session_18"
       },
@@ -17553,7 +17553,7 @@
       {
         "turn_id": "D19:15",
         "speaker": "Tim",
-        "content": "I love how they take me to other places. What other books do you like?",
+        "content": "I love how they take me to other places.",
         "timestamp": "10:22 am on 21 November, 2023",
         "session_id": "session_19"
       },
@@ -17581,7 +17581,7 @@
       {
         "turn_id": "D19:19",
         "speaker": "Tim",
-        "content": "I recently read a book that really made a big impact on me. It's all about how small changes can make big differences. It really changed the way I do things.",
+        "content": "I recently read a book that really made a big impact on me. It's all about how small changes can make big differences. It really changed the way I do things. Have you read any good books lately?",
         "timestamp": "10:22 am on 21 November, 2023",
         "session_id": "session_19"
       },
@@ -17609,7 +17609,7 @@
       {
         "turn_id": "D19:23",
         "speaker": "Tim",
-        "content": "Books have a way of opening up new worlds, inspiring us, and making us think. They have the power to make us feel better and help us grow, which is amazing. It's great that we share a love for reading. Let's keep exploring books and motivating each other!",
+        "content": "Books have a way of opening up new worlds, inspiring us, and making us think. They have the power to make us feel better and help us grow, which is amazing.",
         "timestamp": "10:22 am on 21 November, 2023",
         "session_id": "session_19"
       },
@@ -17693,7 +17693,7 @@
       {
         "turn_id": "D20:12",
         "speaker": "John",
-        "content": "Let me know how it goes.",
+        "content": "",
         "timestamp": "9:52 am on 1 December, 2023",
         "session_id": "session_20"
       },
@@ -17721,7 +17721,7 @@
       {
         "turn_id": "D20:16",
         "speaker": "John",
-        "content": "",
+        "content": "Your friendship means a lot to me too.",
         "timestamp": "9:52 am on 1 December, 2023",
         "session_id": "session_20"
       },
@@ -17763,7 +17763,7 @@
       {
         "turn_id": "D20:22",
         "speaker": "John",
-        "content": "I've read that other popular fantasy series too. It has such a cool story!",
+        "content": "It's one of my favorites. It has such a cool story!",
         "timestamp": "9:52 am on 1 December, 2023",
         "session_id": "session_20"
       },
@@ -17966,7 +17966,7 @@
       {
         "turn_id": "D21:8",
         "speaker": "John",
-        "content": "On the court, I'm getting better at my overall game. Money-wise, I've gotten some cool endorsement deals. Plus, I'm learning how to market myself and boost my brand. It's been really rewarding to see all these areas progress.",
+        "content": "on the court, I'm getting better at my overall game. Money-wise, I've gotten some cool endorsement deals. Plus, I'm learning how to market myself and boost my brand. It's been really rewarding to see all these areas progress.",
         "timestamp": "5:34 pm on 6 December, 2023",
         "session_id": "session_21"
       },
@@ -18099,7 +18099,7 @@
       {
         "turn_id": "D22:8",
         "speaker": "John",
-        "content": "What kind of stuff do they do in the series? Same with us - we have team dinners, outings, and basketball games. It's those moments away from practice that really build and strengthen our unity.",
+        "content": "What kind of stuff do they do in the series? I'm sure the importance of friendship is emphasized. Same with us - we have team dinners, outings, and basketball games. It's those moments away from practice that really build and strengthen our unity.",
         "timestamp": "7:42 pm on 8 December, 2023",
         "session_id": "session_22"
       },
@@ -18148,7 +18148,7 @@
       {
         "turn_id": "D22:15",
         "speaker": "Tim",
-        "content": "Just the GoT series. Have you tried reading any of them?",
+        "content": "Just the GoT series.",
         "timestamp": "7:42 pm on 8 December, 2023",
         "session_id": "session_22"
       },
@@ -18351,7 +18351,7 @@
       {
         "turn_id": "D24:10",
         "speaker": "John",
-        "content": "I injured myself not too long ago. It sucked because I had to miss some games and couldn't help my team.",
+        "content": "I injured myself not too long ago. I had to miss some games and couldn't help my team.",
         "timestamp": "3:37 pm on 16 December, 2023",
         "session_id": "session_24"
       },
@@ -18407,14 +18407,14 @@
       {
         "turn_id": "D24:18",
         "speaker": "John",
-        "content": "I'm gonna keep pushing and staying positive. We had a ton of fun.",
+        "content": "I'm gonna keep pushing and staying positive.",
         "timestamp": "3:37 pm on 16 December, 2023",
         "session_id": "session_24"
       },
       {
         "turn_id": "D24:19",
         "speaker": "Tim",
-        "content": "",
+        "content": "everyone had fun",
         "timestamp": "3:37 pm on 16 December, 2023",
         "session_id": "session_24"
       },
@@ -18428,7 +18428,7 @@
       {
         "turn_id": "D25:1",
         "speaker": "Tim",
-        "content": "",
+        "content": "How's it going?",
         "timestamp": "10:04 am on 19 December, 2023",
         "session_id": "session_25"
       },
@@ -18470,7 +18470,7 @@
       {
         "turn_id": "D25:7",
         "speaker": "Tim",
-        "content": "What drew you to that spot?",
+        "content": "the rocks and river look so peaceful. What drew you to that spot?",
         "timestamp": "10:04 am on 19 December, 2023",
         "session_id": "session_25"
       },
@@ -18526,7 +18526,7 @@
       {
         "turn_id": "D25:15",
         "speaker": "Tim",
-        "content": "Glad to hear you guys are bonding. Keep it up!",
+        "content": "",
         "timestamp": "10:04 am on 19 December, 2023",
         "session_id": "session_25"
       },
@@ -18540,7 +18540,7 @@
       {
         "turn_id": "D25:17",
         "speaker": "Tim",
-        "content": "",
+        "content": "I'm here for you. Just keep believing in yourself!",
         "timestamp": "10:04 am on 19 December, 2023",
         "session_id": "session_25"
       },
@@ -18666,7 +18666,7 @@
       {
         "turn_id": "D26:18",
         "speaker": "Tim",
-        "content": "Her women's rights advocacy is also a huge inspiration to me! Seeing people use their platform for causes like gender equality is really inspiring. It's so cool to see people making a difference.",
+        "content": "Her women's rights advocacy is also a huge inspiration to me! Seeing people use their platform for causes like gender equality is really inspiring.",
         "timestamp": "3:35 pm on 26 December, 2023",
         "session_id": "session_26"
       },
@@ -18708,7 +18708,7 @@
       {
         "turn_id": "D26:24",
         "speaker": "Tim",
-        "content": "Making a difference to those kids was great.",
+        "content": "Making a difference to those kids was great. Your passion for helping others is awesome.",
         "timestamp": "3:35 pm on 26 December, 2023",
         "session_id": "session_26"
       },
@@ -18750,7 +18750,7 @@
       {
         "turn_id": "D26:30",
         "speaker": "Tim",
-        "content": "Watching movies is a fun way to relax. We love having movie marathons with our friends.",
+        "content": "We love having movie marathons with our friends.",
         "timestamp": "3:35 pm on 26 December, 2023",
         "session_id": "session_26"
       },
@@ -18778,7 +18778,7 @@
       {
         "turn_id": "D26:34",
         "speaker": "Tim",
-        "content": "There's a new fantasy TV series coming out next month",
+        "content": "There's a new fantasy TV series coming out next month - can't wait!",
         "timestamp": "3:35 pm on 26 December, 2023",
         "session_id": "session_26"
       },
@@ -18876,7 +18876,7 @@
       {
         "turn_id": "D27:10",
         "speaker": "John",
-        "content": "I've been using that app on my phone to practice too. It's helped a lot.",
+        "content": "I've been using that app on my phone to practice too! It's helped a lot.",
         "timestamp": "5:26 pm on 2 January, 2024",
         "session_id": "session_27"
       },
@@ -18932,7 +18932,7 @@
       {
         "turn_id": "D27:18",
         "speaker": "John",
-        "content": "Thanks for showing us your collection! Which one do you like best that takes you to another world?",
+        "content": "It's amazing how much playing a game can help us grow. Which one do you like best that takes you to another world?",
         "timestamp": "5:26 pm on 2 January, 2024",
         "session_id": "session_27"
       },
@@ -18967,7 +18967,7 @@
       {
         "turn_id": "D27:23",
         "speaker": "Tim",
-        "content": "That's an awesome collection! Have you watched them heaps? Got any favorite characters from those movies?",
+        "content": "Have you watched them heaps? Got any favorite characters from those movies?",
         "timestamp": "5:26 pm on 2 January, 2024",
         "session_id": "session_27"
       },
@@ -19079,7 +19079,7 @@
       {
         "turn_id": "D27:39",
         "speaker": "Tim",
-        "content": "Can't wait to see it for myself. Traveling is so eye-opening!",
+        "content": "it looks amazing! Can't wait to see it for myself. Traveling is so eye-opening!",
         "timestamp": "5:26 pm on 2 January, 2024",
         "session_id": "session_27"
       },
@@ -19177,7 +19177,7 @@
       {
         "turn_id": "D28:13",
         "speaker": "Tim",
-        "content": "",
+        "content": "Great job organizing the event. That's really making a difference!",
         "timestamp": "5:24 pm on 7 January, 2024",
         "session_id": "session_28"
       },
@@ -19226,7 +19226,7 @@
       {
         "turn_id": "D28:20",
         "speaker": "John",
-        "content": "",
+        "content": "Thanks for the recommendation!",
         "timestamp": "5:24 pm on 7 January, 2024",
         "session_id": "session_28"
       },
@@ -19282,7 +19282,7 @@
       {
         "turn_id": "D29:7",
         "speaker": "Tim",
-        "content": "That sense of accomplishment is awesome and really boosts your self-esteem. I can imagine all the hard work you put into it was definitely worth it.",
+        "content": "I can imagine all the hard work you put into it was definitely worth it.",
         "timestamp": "1:41 pm on 12 January, 2024",
         "session_id": "session_29"
       },
@@ -19324,7 +19324,7 @@
       {
         "turn_id": "D29:13",
         "speaker": "Tim",
-        "content": "Definitely adding it to my list.",
+        "content": "Barcelona sounds awesome! I've heard so many great things. Definitely adding it to my list.",
         "timestamp": "1:41 pm on 12 January, 2024",
         "session_id": "session_29"
       },
@@ -19357,7 +19357,7 @@
       {
         "turn_id": "D1:2",
         "speaker": "Andrew",
-        "content": "I started a new job as a Financial Analyst last week - it's been quite a change from my previous job.",
+        "content": "I started a new job as a Financial Analyst last week - it's been quite a change from my previous job. How about you? Anything interesting happening?",
         "timestamp": "1:10 pm on 27 March, 2023",
         "session_id": "session_1"
       },
@@ -19420,7 +19420,7 @@
       {
         "turn_id": "D1:11",
         "speaker": "Audrey",
-        "content": "Do you have any pets?",
+        "content": "It's great how much happiness they bring. Do you have any pets?",
         "timestamp": "1:10 pm on 27 March, 2023",
         "session_id": "session_1"
       },
@@ -19623,7 +19623,7 @@
       {
         "turn_id": "D2:16",
         "speaker": "Andrew",
-        "content": "It'd be so great to have a furry buddy to cuddle and hang with. Here's a photo of my family's dog on a couch.",
+        "content": "Here's a photo of my family's dog on a couch.",
         "timestamp": "2:42 pm on 2 April, 2023",
         "session_id": "session_2"
       },
@@ -19700,7 +19700,7 @@
       {
         "turn_id": "D3:1",
         "speaker": "Andrew",
-        "content": "Check it out, my girl & I tried out that new cafe scene in the city last weekend! Super fun but kinda sad not being out in nature - that's when I feel like I'm really thriving. Oh man, I miss the peacefulness of being out on a hike.",
+        "content": "my girl & I tried out that new cafe scene in the city last weekend. Super fun but kinda sad not being out in nature - that's when I feel like I'm really thriving. I miss the peacefulness of being out on a hike.",
         "timestamp": "4:19 pm on 16 April, 2023",
         "session_id": "session_3"
       },
@@ -19805,7 +19805,7 @@
       {
         "turn_id": "D3:16",
         "speaker": "Audrey",
-        "content": "What did you get?",
+        "content": "What did you get? Now I'm craving pastries!",
         "timestamp": "4:19 pm on 16 April, 2023",
         "session_id": "session_3"
       },
@@ -19833,14 +19833,14 @@
       {
         "turn_id": "D3:20",
         "speaker": "Audrey",
-        "content": "My dogs will tag along.",
+        "content": "My dogs will tag along. My furry friends would love it!",
         "timestamp": "4:19 pm on 16 April, 2023",
         "session_id": "session_3"
       },
       {
         "turn_id": "D3:21",
         "speaker": "Andrew",
-        "content": "They'll have a great time at the party!",
+        "content": "They'll have a great time at the party! Can't wait for the party!",
         "timestamp": "4:19 pm on 16 April, 2023",
         "session_id": "session_3"
       },
@@ -20085,7 +20085,7 @@
       {
         "turn_id": "D4:25",
         "speaker": "Audrey",
-        "content": "The hats don't bother them, they just put them on for fun and treats. And the dog park is great place to start! They can run and mingle with other pooches. It's such a fun spot for playdates!",
+        "content": "The hats don't bother them, they just put them on for fun and treats. And the dog park is great place to start! They can run and mingle with other pooches.",
         "timestamp": "5:41 pm on 3 May, 2023",
         "session_id": "session_4"
       },
@@ -20204,7 +20204,7 @@
       {
         "turn_id": "D5:12",
         "speaker": "Audrey",
-        "content": "Having your furry friends on a road trip is an amazing experience. They make it really fun and exciting.",
+        "content": "Having your furry friends on a road trip is an amazing experience. They make it really fun and exciting. It's definitely something to look forward to!",
         "timestamp": "10:47 am on 6 May, 2023",
         "session_id": "session_5"
       },
@@ -20295,7 +20295,7 @@
       {
         "turn_id": "D6:3",
         "speaker": "Andrew",
-        "content": "Glad have the opportunity to bond with your pets. Where did you hear about it?",
+        "content": "Where did you hear about it?",
         "timestamp": "2:03 pm on 11 May, 2023",
         "session_id": "session_6"
       },
@@ -20533,7 +20533,7 @@
       {
         "turn_id": "D8:8",
         "speaker": "Audrey",
-        "content": "Last week, I found a great spot for my dogs' walk. It's a small park with a trail surrounded by trees. Would you like to come along?",
+        "content": "Last week, I found a great spot for my dogs' walk. It's a small park with a trail surrounded by trees. It's so nice and I think my dogs like it too. Would you like to come along?",
         "timestamp": "5:23 pm on 13 June, 2023",
         "session_id": "session_8"
       },
@@ -20701,7 +20701,7 @@
       {
         "turn_id": "D9:4",
         "speaker": "Andrew",
-        "content": "Any plans on making it even more pup-friendly?",
+        "content": "Makes me happy seeing them have fun. Any plans on making it even more pup-friendly?",
         "timestamp": "1:51 pm on 26 June, 2023",
         "session_id": "session_9"
       },
@@ -20904,7 +20904,7 @@
       {
         "turn_id": "D10:6",
         "speaker": "Andrew",
-        "content": "I don't think I ever asked what breed they are. Also, what do they enjoy doing the most?",
+        "content": "I don't think I ever asked what breed they are. Also, what do they enjoy doing the most? Looks like they're having a blast!",
         "timestamp": "8:32 pm on 3 July, 2023",
         "session_id": "session_10"
       },
@@ -20946,7 +20946,7 @@
       {
         "turn_id": "D10:12",
         "speaker": "Andrew",
-        "content": "Lately I've been finding new hobbies since I can't hike. I've been getting into cooking more and trying out new recipes - it's been enjoyable. Do you enjoy cooking? Any favorite recipes?",
+        "content": "Lately I've been finding new hobbies since I can't hike. I've been getting into cooking more and trying out new recipes - it's been enjoyable.",
         "timestamp": "8:32 pm on 3 July, 2023",
         "session_id": "session_10"
       },
@@ -21051,7 +21051,7 @@
       {
         "turn_id": "D10:27",
         "speaker": "Audrey",
-        "content": "Let me know how it turns out!",
+        "content": "I hope you enjoy making and eating it. Let me know how it turns out!",
         "timestamp": "8:32 pm on 3 July, 2023",
         "session_id": "session_10"
       },
@@ -21191,7 +21191,7 @@
       {
         "turn_id": "D11:18",
         "speaker": "Audrey",
-        "content": "",
+        "content": "They really are a lot of fun.",
         "timestamp": "9:48 am on 8 July, 2023",
         "session_id": "session_11"
       },
@@ -21261,7 +21261,7 @@
       {
         "turn_id": "D11:28",
         "speaker": "Audrey",
-        "content": "it's gonna be a great day! Just take a look how happy my dogs are just at out local park",
+        "content": "I'm 100% sure that it's gonna be a great day! Just take a look how happy my dogs are just at out local park.",
         "timestamp": "9:48 am on 8 July, 2023",
         "session_id": "session_11"
       },
@@ -21457,7 +21457,7 @@
       {
         "turn_id": "D13:1",
         "speaker": "Andrew",
-        "content": "My GF and I just had a great experience volunteering at a pet shelter on Monday. We loved spending time with those cute animals and it gave us so much joy. It reminded me just how much I love them!",
+        "content": "My GF and I just had a great experience volunteering at a pet shelter on Monday. We loved spending time with those cute animals and it gave us so much joy. It was so rewarding, it reminded me just how much I love them!",
         "timestamp": "3:52 pm on 27 July, 2023",
         "session_id": "session_13"
       },
@@ -21478,7 +21478,7 @@
       {
         "turn_id": "D13:4",
         "speaker": "Audrey",
-        "content": "Never been to an animal shelter before, but it must be great! My four fur babies are more important to me than anything! Here's a pic of us from a fun day out at the park.",
+        "content": "Never been to an animal shelter before, but it must be great! My four fur babies are more important to me than anything!",
         "timestamp": "3:52 pm on 27 July, 2023",
         "session_id": "session_13"
       },
@@ -21632,7 +21632,7 @@
       {
         "turn_id": "D14:10",
         "speaker": "Audrey",
-        "content": "Nature really refreshes you. It's nice to appreciate all the beauty around us. Are there any outdoor activities you enjoy lately?",
+        "content": "Are there any outdoor activities you enjoy lately?",
         "timestamp": "11:05 am on 4 August, 2023",
         "session_id": "session_14"
       },
@@ -21702,7 +21702,7 @@
       {
         "turn_id": "D14:20",
         "speaker": "Audrey",
-        "content": "German Shepherds are awesome. They are super loyal and smart. You'll have an amazing connection with one!",
+        "content": "German Shepherds are awesome! They are super loyal and smart. You'll have an amazing connection with one!",
         "timestamp": "11:05 am on 4 August, 2023",
         "session_id": "session_14"
       },
@@ -21779,7 +21779,7 @@
       {
         "turn_id": "D15:4",
         "speaker": "Andrew",
-        "content": "Oof, that vet trip must have been chaotic. That photo you shared was sweet - do they have a favorite spot to relax?",
+        "content": "That photo you shared was sweet - do they have a favorite spot to relax?",
         "timestamp": "9:58 pm on 16 August, 2023",
         "session_id": "session_15"
       },
@@ -21814,7 +21814,7 @@
       {
         "turn_id": "D15:9",
         "speaker": "Audrey",
-        "content": "They always sleep like that. They cuddle up together, especially when it's time to nap. They really are best friends.",
+        "content": "They cuddle up together, especially when it's time to nap. They really are best friends.",
         "timestamp": "9:58 pm on 16 August, 2023",
         "session_id": "session_15"
       },
@@ -21982,7 +21982,7 @@
       {
         "turn_id": "D16:14",
         "speaker": "Audrey",
-        "content": "Don't forget to take some nice pictures!",
+        "content": "Have a great time reconnecting with nature. Don't forget to take some nice pictures!",
         "timestamp": "9:19 pm on 19 August, 2023",
         "session_id": "session_16"
       },
@@ -22073,7 +22073,7 @@
       {
         "turn_id": "D17:8",
         "speaker": "Audrey",
-        "content": "my dogs make me really happy. I love them so much and I want to make them as happy as possible. We have a strong bond.",
+        "content": "My dogs make me really happy. I love them so much and I want to make them as happy as possible. We have a strong bond.",
         "timestamp": "12:24 am on 24 August, 2023",
         "session_id": "session_17"
       },
@@ -22115,7 +22115,7 @@
       {
         "turn_id": "D17:14",
         "speaker": "Audrey",
-        "content": "Remember, it takes time to form a bond, don't rush!",
+        "content": "it takes time to form a bond, don't rush!",
         "timestamp": "12:24 am on 24 August, 2023",
         "session_id": "session_17"
       },
@@ -22171,7 +22171,7 @@
       {
         "turn_id": "D18:1",
         "speaker": "Andrew",
-        "content": "Since we last talked, a few new things have come up in my life. Work's been tough and stressful, so my outdoor activities have taken a backseat. Finding balance has been challenging.",
+        "content": "Work's been tough and stressful, so my outdoor activities have taken a backseat. Finding balance has been challenging.",
         "timestamp": "7:49 pm on 6 September, 2023",
         "session_id": "session_18"
       },
@@ -22325,7 +22325,7 @@
       {
         "turn_id": "D19:1",
         "speaker": "Andrew",
-        "content": "",
+        "content": "How have you been?",
         "timestamp": "5:53 pm on 24 September, 2023",
         "session_id": "session_19"
       },
@@ -22367,7 +22367,7 @@
       {
         "turn_id": "D19:7",
         "speaker": "Andrew",
-        "content": "Patience and practice are important for establishing a bond with our pooches, just like any other meaningful relationship. Some dogs just need more time! It must be so satisfying to see those successes and progress. Your pup looks so sharp in that green hat! Is there anything specific you do with them to work on training?",
+        "content": "Patience and practice are important for establishing a bond with our pooches, just like any other meaningful relationship. Some dogs just need more time! It must be so satisfying to see those successes and progress. Is there anything specific you do with them to work on training?",
         "timestamp": "5:53 pm on 24 September, 2023",
         "session_id": "session_19"
       },
@@ -22500,7 +22500,7 @@
       {
         "turn_id": "D19:26",
         "speaker": "Audrey",
-        "content": "Just my fur babies.",
+        "content": "my fur babies",
         "timestamp": "5:53 pm on 24 September, 2023",
         "session_id": "session_19"
       },
@@ -22521,14 +22521,14 @@
       {
         "turn_id": "D19:29",
         "speaker": "Andrew",
-        "content": "",
+        "content": "They really bring so much joy to our lives.",
         "timestamp": "5:53 pm on 24 September, 2023",
         "session_id": "session_19"
       },
       {
         "turn_id": "D19:30",
         "speaker": "Audrey",
-        "content": "They really do, bringing loads of love and happiness. They are everything to me.",
+        "content": "They are everything to me.",
         "timestamp": "5:53 pm on 24 September, 2023",
         "session_id": "session_19"
       },
@@ -22808,7 +22808,7 @@
       {
         "turn_id": "D20:40",
         "speaker": "Audrey",
-        "content": "Can't wait to check out those bike routes and soak up the scenery.",
+        "content": "Can't wait to check out those bike routes and soak up the scenery. It should be a blast!",
         "timestamp": "7:09 pm on 1 October, 2023",
         "session_id": "session_20"
       },
@@ -22948,7 +22948,7 @@
       {
         "turn_id": "D22:2",
         "speaker": "Andrew",
-        "content": "Bummer not being able to take them for a stroll. They must've been over the moon when you could finally take them out again. Glad you got that adorable pic too! Dogs are awesome like that, huh? Remind us to stop and smell the roses.",
+        "content": "Bummer not being able to take them for a stroll. They must've been over the moon when you could finally take them out again. Glad you got that adorable pic too! Dogs are awesome like that. Remind us to stop and smell the roses.",
         "timestamp": "9:41 pm on 6 October, 2023",
         "session_id": "session_22"
       },
@@ -22962,7 +22962,7 @@
       {
         "turn_id": "D22:4",
         "speaker": "Andrew",
-        "content": "I rememver you mentionoed about that jewelry earlier? I remember you saying you make them with recycled objects. That sounds cool - tell me more!",
+        "content": "Dogs sure know how to find the simple joys of life! Appreciating the little things is so important. Speaking of interesting hobbies, I rememver you mentionoed about that jewelry earlier? I remember you saying you make them with recycled objects. That sounds cool - tell me more!",
         "timestamp": "9:41 pm on 6 October, 2023",
         "session_id": "session_22"
       },
@@ -23018,7 +23018,7 @@
       {
         "turn_id": "D22:12",
         "speaker": "Andrew",
-        "content": "Life is all about rolling with the punches and making a difference, whatever happens. Your hard work is really amazing.",
+        "content": "Life is all about rolling with the punches and making a difference, whatever happens.",
         "timestamp": "9:41 pm on 6 October, 2023",
         "session_id": "session_22"
       },
@@ -23144,7 +23144,7 @@
       {
         "turn_id": "D23:17",
         "speaker": "Andrew",
-        "content": "they really do bring joy",
+        "content": "It's wonderful.",
         "timestamp": "4:22 pm on 13 October, 2023",
         "session_id": "session_23"
       },
@@ -23347,7 +23347,7 @@
       {
         "turn_id": "D24:18",
         "speaker": "Andrew",
-        "content": "Let's find something just as nice for our hike.",
+        "content": "let's find something just as nice for our hike.",
         "timestamp": "6:12 pm on 19 October, 2023",
         "session_id": "session_24"
       },
@@ -23403,7 +23403,7 @@
       {
         "turn_id": "D25:4",
         "speaker": "Audrey",
-        "content": "feeling better each day. I know what to get for dinner tonight.",
+        "content": "feeling better each day. And wow that Sushi looks phenomenal. I know what to get for dinner tonight.",
         "timestamp": "10:14 am on 24 October, 2023",
         "session_id": "session_25"
       },
@@ -23438,7 +23438,7 @@
       {
         "turn_id": "D25:9",
         "speaker": "Andrew",
-        "content": "Gonna go with a California or salmon roll and try out some sauces.",
+        "content": "Gonna go with a California or salmon roll and try out some sauces. I'll let you know how it goes.",
         "timestamp": "10:14 am on 24 October, 2023",
         "session_id": "session_25"
       },
@@ -23480,7 +23480,7 @@
       {
         "turn_id": "D25:15",
         "speaker": "Andrew",
-        "content": "",
+        "content": "Have a good one!",
         "timestamp": "10:14 am on 24 October, 2023",
         "session_id": "session_25"
       },
@@ -23494,7 +23494,7 @@
       {
         "turn_id": "D26:1",
         "speaker": "Audrey",
-        "content": "I noticed they weren't acting normally, so I made an appointment with an animal behaviorist last Wed.",
+        "content": "I noticed they weren't acting normally, so I made an appointment with an animal behaviorist last Wed. It's been a bit hectic but I'm hopeful it'll help me better understand them.",
         "timestamp": "2:36 pm on 28 October, 2023",
         "session_id": "session_26"
       },
@@ -23620,7 +23620,7 @@
       {
         "turn_id": "D26:19",
         "speaker": "Audrey",
-        "content": "Let's pick a date and go hike.",
+        "content": "Let's pick a date and go hike. It should be good!",
         "timestamp": "2:36 pm on 28 October, 2023",
         "session_id": "session_26"
       },
@@ -23788,7 +23788,7 @@
       {
         "turn_id": "D26:43",
         "speaker": "Audrey",
-        "content": "Can't wait to see my pups being happy and hiking.",
+        "content": "I'm really looking forward to it! Can't wait to see my pups being happy and hiking.",
         "timestamp": "2:36 pm on 28 October, 2023",
         "session_id": "session_26"
       },
@@ -23809,7 +23809,7 @@
       {
         "turn_id": "D26:46",
         "speaker": "Andrew",
-        "content": "gonna head out soon",
+        "content": "Let me get ready, gonna head out soon.",
         "timestamp": "2:36 pm on 28 October, 2023",
         "session_id": "session_26"
       },
@@ -23844,7 +23844,7 @@
       {
         "turn_id": "D27:4",
         "speaker": "Audrey",
-        "content": "I try to meet up with other dog owners once a week for tips from other parents and so they can all play together. Have you ever thought about joining one?",
+        "content": "I try to meet up with other dog owners once a week for tips from other parents and so they can all play together.",
         "timestamp": "7:59 pm on 4 November, 2023",
         "session_id": "session_27"
       },
@@ -23963,7 +23963,7 @@
       {
         "turn_id": "D28:3",
         "speaker": "Audrey",
-        "content": "Here's a pic of them, looking all groomed. Look at those shiny coats! To top it off, they were really good at the salon",
+        "content": "Here's a pic of them, looking all groomed. Look at those shiny coats! To top it off, they were really good at the salon - I always worry about them in new places.",
         "timestamp": "9:02 am on 22 November, 2023",
         "session_id": "session_28"
       },
@@ -24157,7 +24157,7 @@
       {
         "turn_id": "D1:12",
         "speaker": "James",
-        "content": "For example, we could write some kind of application for dogs.",
+        "content": "we could write some kind of application for dogs.",
         "timestamp": "3:47 pm on 17 March, 2022",
         "session_id": "session_1"
       },
@@ -24178,7 +24178,7 @@
       {
         "turn_id": "D1:15",
         "speaker": "John",
-        "content": "Bet that app would find a lot of buyers. What sets it apart from other existing apps?",
+        "content": "What sets it apart from other existing apps?",
         "timestamp": "3:47 pm on 17 March, 2022",
         "session_id": "session_1"
       },
@@ -24381,7 +24381,7 @@
       {
         "turn_id": "D2:7",
         "speaker": "James",
-        "content": "Games are my go-to when I'm feeling overwhelmed. It's like therapy. I can relax, forget my troubles, and get lost in another world.",
+        "content": "Games are my go-to when I'm feeling overwhelmed. I can relax, forget my troubles, and get lost in another world.",
         "timestamp": "9:26 pm on 20 March, 2022",
         "session_id": "session_2"
       },
@@ -24458,7 +24458,7 @@
       {
         "turn_id": "D2:18",
         "speaker": "John",
-        "content": "I want one so bad, but I'm not there yet.",
+        "content": "I want one so bad, but I'm not there yet. Someday!",
         "timestamp": "9:26 pm on 20 March, 2022",
         "session_id": "session_2"
       },
@@ -24703,7 +24703,7 @@
       {
         "turn_id": "D4:9",
         "speaker": "John",
-        "content": "his advice will help you develop in the game",
+        "content": "I'm sure his advice will help you develop in the game.",
         "timestamp": "2:13 pm on 4 April, 2022",
         "session_id": "session_4"
       },
@@ -24850,7 +24850,7 @@
       {
         "turn_id": "D5:5",
         "speaker": "James",
-        "content": "Will I like it? I'm always up for trying new games.",
+        "content": "I'm always up for trying new games.",
         "timestamp": "9:52 am on 12 April, 2022",
         "session_id": "session_5"
       },
@@ -24871,7 +24871,7 @@
       {
         "turn_id": "D5:8",
         "speaker": "John",
-        "content": "Even with minor bugs, the game still looks great. The graphics are awesome and the gameplay is super immersive. I'm sure you should try it out now.",
+        "content": "Even with minor bugs, the game still looks great. The graphics are awesome and the gameplay is super immersive.",
         "timestamp": "9:52 am on 12 April, 2022",
         "session_id": "session_5"
       },
@@ -24906,7 +24906,7 @@
       {
         "turn_id": "D5:13",
         "speaker": "James",
-        "content": "",
+        "content": "Enjoy the gaming!",
         "timestamp": "9:52 am on 12 April, 2022",
         "session_id": "session_5"
       },
@@ -24934,7 +24934,7 @@
       {
         "turn_id": "D6:1",
         "speaker": "John",
-        "content": "Last Tuesday I met three cool new friends in my programming course, they share the same passion as me and it's cool to grow my social circle. Have you had any fun surprises lately?",
+        "content": "Last Tuesday I met three cool new friends in my programming course, they share the same passion as me and it's cool to grow my social circle.",
         "timestamp": "9:32 pm on 20 April, 2022",
         "session_id": "session_6"
       },
@@ -25060,7 +25060,7 @@
       {
         "turn_id": "D6:19",
         "speaker": "John",
-        "content": "",
+        "content": "Let me know if you need help.",
         "timestamp": "9:32 pm on 20 April, 2022",
         "session_id": "session_6"
       },
@@ -25130,7 +25130,7 @@
       {
         "turn_id": "D7:10",
         "speaker": "James",
-        "content": "What's been going on? Is there anything you want to talk about?",
+        "content": "What's been going on? Is there anything you want to talk about? I'm here for you.",
         "timestamp": "11:04 am on 23 April, 2022",
         "session_id": "session_7"
       },
@@ -25242,7 +25242,7 @@
       {
         "turn_id": "D8:5",
         "speaker": "James",
-        "content": "How's the progress been?",
+        "content": "Congrats on your first professional project, John! Bet it's been great applying what you learned in class. How's the progress been?",
         "timestamp": "2:36 pm on 29 April, 2022",
         "session_id": "session_8"
       },
@@ -25648,7 +25648,7 @@
       {
         "turn_id": "D9:23",
         "speaker": "John",
-        "content": "",
+        "content": "will check it out",
         "timestamp": "7:01 pm on 4 May, 2022",
         "session_id": "session_9"
       },
@@ -25697,7 +25697,7 @@
       {
         "turn_id": "D10:5",
         "speaker": "James",
-        "content": "organizing that tournament for charity must have been a ton of effort, but it sounds like it was so worth it",
+        "content": "Organizing that tournament for charity must have been a ton of effort, but it sounds like it was so worth it!",
         "timestamp": "12:45 am on 8 May, 2022",
         "session_id": "session_10"
       },
@@ -25753,7 +25753,7 @@
       {
         "turn_id": "D10:13",
         "speaker": "James",
-        "content": "You are doing a great job John, keep up the good work!",
+        "content": "",
         "timestamp": "12:45 am on 8 May, 2022",
         "session_id": "session_10"
       },
@@ -25767,7 +25767,7 @@
       {
         "turn_id": "D10:15",
         "speaker": "James",
-        "content": "",
+        "content": "I'm really proud of you!",
         "timestamp": "12:45 am on 8 May, 2022",
         "session_id": "session_10"
       },
@@ -25781,7 +25781,7 @@
       {
         "turn_id": "D11:2",
         "speaker": "James",
-        "content": "Would love to hear more about it!",
+        "content": "It's awesome that you used your skills to make a difference. Would love to hear more about it!",
         "timestamp": "5:00 pm on 11 May, 2022",
         "session_id": "session_11"
       },
@@ -25823,7 +25823,7 @@
       {
         "turn_id": "D11:8",
         "speaker": "James",
-        "content": "How did it affect you?",
+        "content": "It's awesome how you blended your passion with a good cause. How did it affect you?",
         "timestamp": "5:00 pm on 11 May, 2022",
         "session_id": "session_11"
       },
@@ -25886,7 +25886,7 @@
       {
         "turn_id": "D11:17",
         "speaker": "John",
-        "content": "",
+        "content": "your encouragement means a lot",
         "timestamp": "5:00 pm on 11 May, 2022",
         "session_id": "session_11"
       },
@@ -25956,7 +25956,7 @@
       {
         "turn_id": "D12:8",
         "speaker": "John",
-        "content": "I also got this trophy! It reminds me to always put in my best effort. What about you? Any success stories lately?",
+        "content": "I also got this trophy! So satisfying. It reminds me to always put in my best effort. What about you? Any success stories lately?",
         "timestamp": "7:33 pm on 23 May, 2022",
         "session_id": "session_12"
       },
@@ -25991,7 +25991,7 @@
       {
         "turn_id": "D12:13",
         "speaker": "James",
-        "content": "",
+        "content": "I'll definitely keep that in mind.",
         "timestamp": "7:33 pm on 23 May, 2022",
         "session_id": "session_12"
       },
@@ -26236,7 +26236,7 @@
       {
         "turn_id": "D14:14",
         "speaker": "John",
-        "content": "I can tell Max brings you a lot of happiness.",
+        "content": "I can tell Max brings you a lot of happiness. Pets are always such a great source of joy and love.",
         "timestamp": "5:07 pm on 16 June, 2022",
         "session_id": "session_14"
       },
@@ -26313,14 +26313,14 @@
       {
         "turn_id": "D14:25",
         "speaker": "James",
-        "content": "We love them; they're great exercise and give us fresh air. Here is a photo of us from a recent walk in the forest.",
+        "content": "We love them; they're great exercise and give us fresh air.",
         "timestamp": "5:07 pm on 16 June, 2022",
         "session_id": "session_14"
       },
       {
         "turn_id": "D14:26",
         "speaker": "John",
-        "content": "Where's that spot where you could take a stroll? Max loves all those hikes.",
+        "content": "Where's that spot where you could take a stroll? Bet Max loves all those hikes.",
         "timestamp": "5:07 pm on 16 June, 2022",
         "session_id": "session_14"
       },
@@ -26376,7 +26376,7 @@
       {
         "turn_id": "D14:34",
         "speaker": "John",
-        "content": "",
+        "content": "Take care of yourself!",
         "timestamp": "5:07 pm on 16 June, 2022",
         "session_id": "session_14"
       },
@@ -26418,7 +26418,7 @@
       {
         "turn_id": "D15:6",
         "speaker": "John",
-        "content": "Lately, I've been thinking about my career and where I want to be in the future. I'm driven and passionate, and I also want to make a positive impact on the world.",
+        "content": "I've been thinking about my career and where I want to be in the future. I'm driven and passionate, and I also want to make a positive impact on the world.",
         "timestamp": "9:59 pm on 19 June, 2022",
         "session_id": "session_15"
       },
@@ -26439,7 +26439,7 @@
       {
         "turn_id": "D15:9",
         "speaker": "James",
-        "content": "Here's a pic I took when I volunteered last month. It was really rewarding to see how little gifts can do so much!",
+        "content": "I'm sure with your skills and passion, you could do some really cool things with nonprofits. Here's a pic I took when I volunteered last month. It was really rewarding to see how little gifts can do so much!",
         "timestamp": "9:59 pm on 19 June, 2022",
         "session_id": "session_15"
       },
@@ -26453,7 +26453,7 @@
       {
         "turn_id": "D15:11",
         "speaker": "James",
-        "content": "It was great to see how much a simple act of kindness can mean to someone in need. I volunteered with an organization that provides necessary items to those who are less fortunate. It felt so rewarding to help, even if it was in a small way.",
+        "content": "I volunteered with an organization that provides necessary items to those who are less fortunate.",
         "timestamp": "9:59 pm on 19 June, 2022",
         "session_id": "session_15"
       },
@@ -26572,7 +26572,7 @@
       {
         "turn_id": "D16:9",
         "speaker": "James",
-        "content": "I also love to read. I bought air tickets to Toronto, and I’m leaving the day after tomorrow evening.",
+        "content": "I bought air tickets to Toronto, and I’m leaving the day after tomorrow evening.",
         "timestamp": "5:13 pm on 9 July, 2022",
         "session_id": "session_16"
       },
@@ -26635,7 +26635,7 @@
       {
         "turn_id": "D17:2",
         "speaker": "James",
-        "content": "I've played chess before. It's a game that really tests your strategy. It's great that you're enjoying it!",
+        "content": "I've played chess before. It's a game that really tests your strategy.",
         "timestamp": "9:49 am on 22 July, 2022",
         "session_id": "session_17"
       },
@@ -26719,7 +26719,7 @@
       {
         "turn_id": "D17:14",
         "speaker": "James",
-        "content": "But I don’t remember at all under what circumstances we took this picture. What's the story behind it?",
+        "content": "I don’t remember at all under what circumstances we took this picture. What's the story behind it?",
         "timestamp": "9:49 am on 22 July, 2022",
         "session_id": "session_17"
       },
@@ -27083,7 +27083,7 @@
       {
         "turn_id": "D19:9",
         "speaker": "John",
-        "content": "The graphics are truly stunning! By the way, look how I organized my workplace!",
+        "content": "The graphics are truly stunning!",
         "timestamp": "9:16 am on 10 August, 2022",
         "session_id": "session_19"
       },
@@ -27118,7 +27118,7 @@
       {
         "turn_id": "D19:14",
         "speaker": "James",
-        "content": "I even met one beautiful girl. She left me her phone number, I think I'll call tomorrow.",
+        "content": "I even met one beautiful girl. I'm thinking of asking her out on a date! She left me her phone number, I think I'll call tomorrow.",
         "timestamp": "9:16 am on 10 August, 2022",
         "session_id": "session_19"
       },
@@ -27132,14 +27132,14 @@
       {
         "turn_id": "D19:16",
         "speaker": "James",
-        "content": "She is Samantha.",
+        "content": "She is Samantha. I'll definitely call her!",
         "timestamp": "9:16 am on 10 August, 2022",
         "session_id": "session_19"
       },
       {
         "turn_id": "D19:17",
         "speaker": "John",
-        "content": "",
+        "content": "Hope you have a wonderful time!",
         "timestamp": "9:16 am on 10 August, 2022",
         "session_id": "session_19"
       },
@@ -27286,7 +27286,7 @@
       {
         "turn_id": "D20:21",
         "speaker": "John",
-        "content": "",
+        "content": "Gonna have a great time.",
         "timestamp": "3:57 pm on 21 August, 2022",
         "session_id": "session_20"
       },
@@ -27328,7 +27328,7 @@
       {
         "turn_id": "D21:5",
         "speaker": "James",
-        "content": "Regarding your siblings, are you already working on anything cool with them?",
+        "content": "are you already working on anything cool with them?",
         "timestamp": "9:18 pm on 26 August, 2022",
         "session_id": "session_21"
       },
@@ -27349,7 +27349,7 @@
       {
         "turn_id": "D21:8",
         "speaker": "John",
-        "content": "They're playing a simple, text-based adventure game, working on their coding skills and having fun. Maybe they'll even create their own video games. Any new game designs on your mind?",
+        "content": "They're playing a simple, text-based adventure game, working on their coding skills and having fun. Maybe they'll even create their own video games, huh? Any new game designs on your mind?",
         "timestamp": "9:18 pm on 26 August, 2022",
         "session_id": "session_21"
       },
@@ -27440,7 +27440,7 @@
       {
         "turn_id": "D22:2",
         "speaker": "John",
-        "content": "Can I see more of it? Got any other screenshots to show me?",
+        "content": "Congrats on finishing your game! It looks amazing and I'm so proud of you for all the hard work you put in. Can I see more of it? Got any other screenshots to show me?",
         "timestamp": "6:53 pm on 1 September, 2022",
         "session_id": "session_22"
       },
@@ -27545,7 +27545,7 @@
       {
         "turn_id": "D22:17",
         "speaker": "James",
-        "content": "",
+        "content": "I'm here for you, no doubt.",
         "timestamp": "6:53 pm on 1 September, 2022",
         "session_id": "session_22"
       },
@@ -27594,7 +27594,7 @@
       {
         "turn_id": "D23:5",
         "speaker": "James",
-        "content": "She and I are going to a baseball game next Sunday. I'll show you what Samantha looks like.",
+        "content": "She and I are going to a baseball game next Sunday, want to join? I'll show you what Samantha looks like.",
         "timestamp": "9:23 pm on 4 September, 2022",
         "session_id": "session_23"
       },
@@ -27664,7 +27664,7 @@
       {
         "turn_id": "D23:15",
         "speaker": "James",
-        "content": "At only $10 per class. Also, I made meringue there and they taught us how to make the dough.",
+        "content": "At only $10 per class, it's very cheap! Also, I made meringue there and they taught us how to make the dough.",
         "timestamp": "9:23 pm on 4 September, 2022",
         "session_id": "session_23"
       },
@@ -27699,7 +27699,7 @@
       {
         "turn_id": "D23:20",
         "speaker": "John",
-        "content": "",
+        "content": "That's why we are friends, to support each other!",
         "timestamp": "9:23 pm on 4 September, 2022",
         "session_id": "session_23"
       },
@@ -27832,7 +27832,7 @@
       {
         "turn_id": "D24:18",
         "speaker": "James",
-        "content": "Do you have any recordings or videos of those sessions?",
+        "content": "Jamming with friends is always a blast. Do you have any recordings or videos of those sessions?",
         "timestamp": "6:02 pm on 18 September, 2022",
         "session_id": "session_24"
       },
@@ -28049,7 +28049,7 @@
       {
         "turn_id": "D26:3",
         "speaker": "John",
-        "content": "They asked me to be a programming mentor for game developers. I'll be teaching coding and assisting with projects. I'm really excited to share my knowledge and motivate people who are passionate about gaming.",
+        "content": "They asked me to be a programming mentor for game developers. I'll be teaching coding and assisting with projects.",
         "timestamp": "9:20 am on 3 October, 2022",
         "session_id": "session_26"
       },
@@ -28175,7 +28175,7 @@
       {
         "turn_id": "D27:6",
         "speaker": "James",
-        "content": "Playing video games was always great, but creating my own game was really special. Witcher 3 gave me a ton of inspiration, with its amazing world and story. Plus, it pushed me to create something cool.",
+        "content": "Creating my own game was really special. Witcher 3 gave me a ton of inspiration, with its amazing world and story. Plus, it pushed me to create something cool.",
         "timestamp": "2:14 pm on 13 October, 2022",
         "session_id": "session_27"
       },
@@ -28196,7 +28196,7 @@
       {
         "turn_id": "D27:9",
         "speaker": "John",
-        "content": "I can't wait to see where your journey leads and the new creations you come up with. Your determination and love for game development is incredible. Keep going and you'll do great things!",
+        "content": "Keep going and you'll do great things!",
         "timestamp": "2:14 pm on 13 October, 2022",
         "session_id": "session_27"
       },
@@ -28210,14 +28210,14 @@
       {
         "turn_id": "D27:11",
         "speaker": "John",
-        "content": "I'm here for you. Anything you need, count on me!",
+        "content": "Anything you need, count on me!",
         "timestamp": "2:14 pm on 13 October, 2022",
         "session_id": "session_27"
       },
       {
         "turn_id": "D27:12",
         "speaker": "James",
-        "content": "",
+        "content": "Your support is really appreciated.",
         "timestamp": "2:14 pm on 13 October, 2022",
         "session_id": "session_27"
       },
@@ -28252,7 +28252,7 @@
       {
         "turn_id": "D28:3",
         "speaker": "James",
-        "content": "Three days ago my apartment lost power. Had to wait hours before playing again.",
+        "content": "Three days ago my apartment lost power - so annoying because I had just gotten to the big reveal in that game! Had to wait hours before playing again.",
         "timestamp": "7:36 pm on 21 October, 2022",
         "session_id": "session_28"
       },
@@ -28266,7 +28266,7 @@
       {
         "turn_id": "D28:5",
         "speaker": "James",
-        "content": "It definitely messed up my progress. I lost some of it because I forgot to save. Frustrating, but now I know to save more often!",
+        "content": "It definitely messed up my progress. I lost some of it because I forgot to save. Now I know to save more often!",
         "timestamp": "7:36 pm on 21 October, 2022",
         "session_id": "session_28"
       },
@@ -28364,7 +28364,7 @@
       {
         "turn_id": "D28:19",
         "speaker": "James",
-        "content": "I'll reach out if I need help. By the way, my mother came to see me with her army friend two days ago. We had fun.",
+        "content": "By the way, my mother came to see me with her army friend two days ago. We had fun.",
         "timestamp": "7:36 pm on 21 October, 2022",
         "session_id": "session_28"
       },
@@ -28420,7 +28420,7 @@
       {
         "turn_id": "D28:27",
         "speaker": "James",
-        "content": "Those games introduced me to gaming and I've been hooked ever since. I tried Cyberpunk 2077. Great game, so addictive!",
+        "content": "Those games introduced me to gaming and I've been hooked ever since. Yesterday I tried Cyberpunk 2077. Great game, so addictive!",
         "timestamp": "7:36 pm on 21 October, 2022",
         "session_id": "session_28"
       },
@@ -28448,7 +28448,7 @@
       {
         "turn_id": "D28:31",
         "speaker": "James",
-        "content": "",
+        "content": "I will definitely keep this in mind!",
         "timestamp": "7:36 pm on 21 October, 2022",
         "session_id": "session_28"
       },
@@ -28462,7 +28462,7 @@
       {
         "turn_id": "D28:33",
         "speaker": "James",
-        "content": "I'll definitely take your advice, John! Thank you for avoiding spoilers.",
+        "content": "Thank you for avoiding spoilers.",
         "timestamp": "7:36 pm on 21 October, 2022",
         "session_id": "session_28"
       },
@@ -28497,14 +28497,14 @@
       {
         "turn_id": "D29:3",
         "speaker": "John",
-        "content": "My gaming pals and I also played Overwatch and Apex Legends. Everyone had a blast raising money for the kids' hospital. The atmosphere was awesome and everyone was so competitive. In the end, we raised a good amount.",
+        "content": "My gaming pals and I also played Overwatch and Apex Legends. Everyone had a blast raising money for the kids' hospital. The atmosphere was awesome and everyone was so competitive. In the end, we raised a good amount. Feels good to use our love of gaming for good!",
         "timestamp": "12:37 am on 31 October, 2022",
         "session_id": "session_29"
       },
       {
         "turn_id": "D29:4",
         "speaker": "James",
-        "content": "You made a huge difference in the kids' lives! Do you have any photos from the tournament?",
+        "content": "It's great how gaming can bring people together like that. You made a huge difference in the kids' lives! Do you have any photos from the tournament?",
         "timestamp": "12:37 am on 31 October, 2022",
         "session_id": "session_29"
       },
@@ -28777,7 +28777,7 @@
       {
         "turn_id": "D31:8",
         "speaker": "John",
-        "content": "",
+        "content": "I'll definitely let you know when it's out and I'm really excited to hear your thoughts.",
         "timestamp": "8:57 pm on 7 November, 2022",
         "session_id": "session_31"
       },
@@ -28847,7 +28847,7 @@
       {
         "turn_id": "D31:18",
         "speaker": "John",
-        "content": "Dogs are awesome for sure! They make us feel so loved and cheerful.",
+        "content": "Dogs are awesome for sure! They make us feel so loved and cheerful, don't they?",
         "timestamp": "8:57 pm on 7 November, 2022",
         "session_id": "session_31"
       },
@@ -29139,7 +29139,7 @@
       {
         "turn_id": "D2:16",
         "speaker": "Jolene",
-        "content": "Does it bring back any special memories?",
+        "content": "it sounds like that spot holds a lot of sentimental value. Does it bring back any special memories?",
         "timestamp": "9:49 am on 27 January, 2023",
         "session_id": "session_2"
       },
@@ -29181,7 +29181,7 @@
       {
         "turn_id": "D2:22",
         "speaker": "Jolene",
-        "content": "I was playing video games and my pet just slinked out of her cage and coiled up next to me. It was too funny! My second snake Seraphim did it. Look at her sly eyes!",
+        "content": "I was playing video games and my pet just slinked out of her cage and coiled up next to me. My second snake Seraphim did it.",
         "timestamp": "9:49 am on 27 January, 2023",
         "session_id": "session_2"
       },
@@ -29244,7 +29244,7 @@
       {
         "turn_id": "D2:31",
         "speaker": "Deborah",
-        "content": "",
+        "content": "keep spreading those good vibes",
         "timestamp": "9:49 am on 27 January, 2023",
         "session_id": "session_2"
       },
@@ -29433,14 +29433,14 @@
       {
         "turn_id": "D4:11",
         "speaker": "Jolene",
-        "content": "I'm determined to keep going and make a difference. Your encouragement really motivates me to pursue my passions.",
+        "content": "I'm determined to keep going and make a difference.",
         "timestamp": "9:48 am on 4 February, 2023",
         "session_id": "session_4"
       },
       {
         "turn_id": "D4:12",
         "speaker": "Deborah",
-        "content": "When things get tough, just take a deep breath and remember why you're doing this. This is where I spend a lot of my time, teaching yoga. It's a great way to find balance and reconnect with ourselves. I bonded with Anna during yesterday's yoga class.",
+        "content": "This is where I spend a lot of my time, teaching yoga. It's a great way to find balance and reconnect with ourselves. I bonded with Anna during yesterday's yoga class.",
         "timestamp": "9:48 am on 4 February, 2023",
         "session_id": "session_4"
       },
@@ -29650,14 +29650,14 @@
       {
         "turn_id": "D4:42",
         "speaker": "Deborah",
-        "content": "Life's tough but hang in there. Look to your sources of strength and you'll do great.",
+        "content": "Look to your sources of strength and you'll do great.",
         "timestamp": "9:48 am on 4 February, 2023",
         "session_id": "session_4"
       },
       {
         "turn_id": "D4:43",
         "speaker": "Jolene",
-        "content": "",
+        "content": "I'll definitely stay in touch.",
         "timestamp": "9:48 am on 4 February, 2023",
         "session_id": "session_4"
       },
@@ -29678,7 +29678,7 @@
       {
         "turn_id": "D5:2",
         "speaker": "Deborah",
-        "content": "Did you gain any new insights from it?",
+        "content": "Taking time to reflect can be really awesome. Did you gain any new insights from it?",
         "timestamp": "9:03 pm on 9 February, 2023",
         "session_id": "session_5"
       },
@@ -29720,14 +29720,14 @@
       {
         "turn_id": "D5:8",
         "speaker": "Deborah",
-        "content": "Have you thought of a plan yet?",
+        "content": "It's a great way to help and inspire others. They would benefit a lot from your knowledge. Have you thought of a plan yet?",
         "timestamp": "9:03 pm on 9 February, 2023",
         "session_id": "session_5"
       },
       {
         "turn_id": "D5:9",
         "speaker": "Jolene",
-        "content": "Haven't finished planning yet but I'm thinking of teaming up with local schools/centers to do workshops. We could even invite engineers as guest speakers to show kids their career options.",
+        "content": "I'm thinking of teaming up with local schools/centers to do workshops. We could even invite engineers as guest speakers to show kids their career options.",
         "timestamp": "9:03 pm on 9 February, 2023",
         "session_id": "session_5"
       },
@@ -29741,7 +29741,7 @@
       {
         "turn_id": "D5:11",
         "speaker": "Jolene",
-        "content": "I want to solidify the plan first.",
+        "content": "I want to solidify the plan first. Can't wait to start reaching out, though!",
         "timestamp": "9:03 pm on 9 February, 2023",
         "session_id": "session_5"
       },
@@ -29930,7 +29930,7 @@
       {
         "turn_id": "D7:5",
         "speaker": "Jolene",
-        "content": "He started joining me sometimes, which is nice for bonding and relaxing. It's brought us closer.",
+        "content": "He started joining me sometimes. It's brought us closer.",
         "timestamp": "4:50 pm on 25 February, 2023",
         "session_id": "session_7"
       },
@@ -30091,7 +30091,7 @@
       {
         "turn_id": "D8:5",
         "speaker": "Deborah",
-        "content": "it helped me reset my mind",
+        "content": "I also did the same, it helped me reset my mind.",
         "timestamp": "7:18 pm on 2 March, 2023",
         "session_id": "session_8"
       },
@@ -30119,7 +30119,7 @@
       {
         "turn_id": "D8:9",
         "speaker": "Deborah",
-        "content": "",
+        "content": "Looks like you guys had fun!",
         "timestamp": "7:18 pm on 2 March, 2023",
         "session_id": "session_8"
       },
@@ -30350,7 +30350,7 @@
       {
         "turn_id": "D9:19",
         "speaker": "Deborah",
-        "content": "Let's catch up soon.",
+        "content": "I'm here for you if you need me. Let's catch up soon.",
         "timestamp": "11:22 am on 13 March, 2023",
         "session_id": "session_9"
       },
@@ -30364,7 +30364,7 @@
       {
         "turn_id": "D10:1",
         "speaker": "Deborah",
-        "content": "Hope you're doing okay with all your exams and deadlines. I know it's difficult for you right now.",
+        "content": "I know it's difficult for you right now.",
         "timestamp": "5:35 pm on 22 March, 2023",
         "session_id": "session_10"
       },
@@ -30539,7 +30539,7 @@
       {
         "turn_id": "D11:2",
         "speaker": "Deborah",
-        "content": "I bought new props for the yoga class!",
+        "content": "You've really proven your skills. And I bought new props for the yoga class!",
         "timestamp": "4:03 pm on 28 March, 2023",
         "session_id": "session_11"
       },
@@ -30553,14 +30553,14 @@
       {
         "turn_id": "D11:4",
         "speaker": "Deborah",
-        "content": "I also bought this candle for the atmosphere and to improve my yoga practice. How about you? When you do it, what feelings do you get?",
+        "content": "I also bought this candle for the atmosphere and to improve my yoga practice. When you do it, what feelings do you get?",
         "timestamp": "4:03 pm on 28 March, 2023",
         "session_id": "session_11"
       },
       {
         "turn_id": "D11:5",
         "speaker": "Jolene",
-        "content": "I feel relaxed during this activity. I love creating a serene space with soothing scents like lavender and rosemary. Do you have any favorite scents or rituals for when you do it?",
+        "content": "I feel relaxed during this activity. I love creating a serene space with soothing scents like lavender and rosemary.",
         "timestamp": "4:03 pm on 28 March, 2023",
         "session_id": "session_11"
       },
@@ -30700,7 +30700,7 @@
       {
         "turn_id": "D12:11",
         "speaker": "Deborah",
-        "content": "I am waiting to hear how everything turns out.",
+        "content": "",
         "timestamp": "4:30 pm on 9 April, 2023",
         "session_id": "session_12"
       },
@@ -30728,7 +30728,7 @@
       {
         "turn_id": "D12:15",
         "speaker": "Deborah",
-        "content": "",
+        "content": "make time for the things that bring you joy",
         "timestamp": "4:30 pm on 9 April, 2023",
         "session_id": "session_12"
       },
@@ -30945,7 +30945,7 @@
       {
         "turn_id": "D14:3",
         "speaker": "Deborah",
-        "content": "I tried a new pose - Dancer Pose (Natarajasana).",
+        "content": "I tried a new pose - Dancer Pose (Natarajasana). Rate, did I succeed?",
         "timestamp": "9:17 am on 26 June, 2023",
         "session_id": "session_14"
       },
@@ -31225,7 +31225,7 @@
       {
         "turn_id": "D15:20",
         "speaker": "Jolene",
-        "content": "I have lots of great memories, like our little 'snake adventure'. She got out and I spent hours searching, so relieved when I finally found her snuggling under the bed. It really showed how much I love her.",
+        "content": "I have lots of great memories, like our little 'snake adventure'. She got out and I spent hours searching, so relieved when I finally found her snuggling under the bed.",
         "timestamp": "7:37 pm on 9 July, 2023",
         "session_id": "session_15"
       },
@@ -31309,7 +31309,7 @@
       {
         "turn_id": "D15:32",
         "speaker": "Jolene",
-        "content": "Whenever I can, I love going for walks to take it all in. And I take photos like this",
+        "content": "Whenever I can, I love going for walks to take it all in.",
         "timestamp": "7:37 pm on 9 July, 2023",
         "session_id": "session_15"
       },
@@ -31533,7 +31533,7 @@
       {
         "turn_id": "D17:5",
         "speaker": "Deborah",
-        "content": "",
+        "content": "Your creativity is amazing!",
         "timestamp": "8:50 pm on 12 August, 2023",
         "session_id": "session_17"
       },
@@ -31547,7 +31547,7 @@
       {
         "turn_id": "D17:7",
         "speaker": "Deborah",
-        "content": "Does that usually inspire your engineering projects too?",
+        "content": "You have such a knack for turning these into art. They make me feel excited just by looking at them. Your creativity is amazing! Does that usually inspire your engineering projects too?",
         "timestamp": "8:50 pm on 12 August, 2023",
         "session_id": "session_17"
       },
@@ -31568,7 +31568,7 @@
       {
         "turn_id": "D17:10",
         "speaker": "Jolene",
-        "content": "Working on a cool project now - a prototype that could revolutionize aerial surveillance.",
+        "content": "Working on a cool project now - a prototype that could revolutionize aerial surveillance. Can't wait to see the results!",
         "timestamp": "8:50 pm on 12 August, 2023",
         "session_id": "session_17"
       },
@@ -31652,7 +31652,7 @@
       {
         "turn_id": "D18:7",
         "speaker": "Jolene",
-        "content": "it's like a little reminder to stick to my goals and never give up",
+        "content": "it's like a little reminder to stick to my goals and never give up.",
         "timestamp": "2:58 pm on 16 August, 2023",
         "session_id": "session_18"
       },
@@ -31813,7 +31813,7 @@
       {
         "turn_id": "D19:15",
         "speaker": "Deborah",
-        "content": "We also enjoyed spending time outdoors and exploring nature.",
+        "content": "We also enjoyed spending time outdoors and exploring nature. It was always so refreshing to be outside and soak up the fresh air.",
         "timestamp": "12:52 am on 19 August, 2023",
         "session_id": "session_19"
       },
@@ -32191,7 +32191,7 @@
       {
         "turn_id": "D22:2",
         "speaker": "Jolene",
-        "content": "Remembering and cherishing the memories of our loved ones is so important. It's comforting to know that their influence still guides us. Last Friday, my partner and I talked about how our loved ones have influenced us and what their values meant to us. It was an emotional chat, but it made us feel closer and showed us what really matters.",
+        "content": "Last Friday, my partner and I talked about how our loved ones have influenced us and what their values meant to us. It was an emotional chat, but it made us feel closer and showed us what really matters.",
         "timestamp": "5:33 pm on 26 August, 2023",
         "session_id": "session_22"
       },
@@ -32443,7 +32443,7 @@
       {
         "turn_id": "D23:8",
         "speaker": "Deborah",
-        "content": "It's special for me. Is there a place that helps you relax?",
+        "content": "How about you? Is there a place that helps you relax?",
         "timestamp": "11:46 am on 30 August, 2023",
         "session_id": "session_23"
       },
@@ -32541,7 +32541,7 @@
       {
         "turn_id": "D23:22",
         "speaker": "Deborah",
-        "content": "This was written to me by a friend who will never be able to support me. This quote says \"Let go of what no longer serves you.\"",
+        "content": "This was written to me by a friend who, unfortunately, will never be able to support me. This quote says \"Let go of what no longer serves you.\"",
         "timestamp": "11:46 am on 30 August, 2023",
         "session_id": "session_23"
       },
@@ -33157,7 +33157,7 @@
       {
         "turn_id": "D28:9",
         "speaker": "Deborah",
-        "content": "Pictures really have a way of bringing back memories and making us appreciate the special bond we have with our loved ones. They remind me of how strong love is and how amazing human relationships can be.",
+        "content": "Pictures really have a way of bringing back memories and making us appreciate the special bond we have with our loved ones. They remind me of how strong love is and how amazing human relationships can be. Just like this one.",
         "timestamp": "3:09 pm on 15 September, 2023",
         "session_id": "session_28"
       },
@@ -33262,7 +33262,7 @@
       {
         "turn_id": "D28:24",
         "speaker": "Jolene",
-        "content": "my pals keeping me company.",
+        "content": "Here are my pals keeping me company.",
         "timestamp": "3:09 pm on 15 September, 2023",
         "session_id": "session_28"
       },
@@ -33318,7 +33318,7 @@
       {
         "turn_id": "D29:2",
         "speaker": "Jolene",
-        "content": "",
+        "content": "here's hoping for more events like this in the future!",
         "timestamp": "1:24 pm on 17 September, 2023",
         "session_id": "session_29"
       },
@@ -33493,7 +33493,7 @@
       {
         "turn_id": "D29:27",
         "speaker": "Deborah",
-        "content": "we can try it together sometime",
+        "content": "we can try it together sometime!",
         "timestamp": "1:24 pm on 17 September, 2023",
         "session_id": "session_29"
       },
@@ -33528,7 +33528,7 @@
       {
         "turn_id": "D29:32",
         "speaker": "Jolene",
-        "content": "agree and choose the right time for both of us",
+        "content": "all that remains is to agree and choose the right time for both of us",
         "timestamp": "1:24 pm on 17 September, 2023",
         "session_id": "session_29"
       },
@@ -33612,7 +33612,7 @@
       {
         "turn_id": "D30:10",
         "speaker": "Jolene",
-        "content": "I'm planning to get out in nature again next month.",
+        "content": "I'm planning to get out in nature again next month. It's going to be great reconnecting with it!",
         "timestamp": "10:17 am on 20 September, 2023",
         "session_id": "session_30"
       },
@@ -33661,7 +33661,7 @@
       {
         "turn_id": "D30:17",
         "speaker": "Deborah",
-        "content": "",
+        "content": "It's a great habit.",
         "timestamp": "10:17 am on 20 September, 2023",
         "session_id": "session_30"
       },
@@ -33855,7 +33855,7 @@
       {
         "turn_id": "D2:4",
         "speaker": "Sam",
-        "content": "Mine's been tough.",
+        "content": "It's so important to take time for ourselves and find peace, especially after a hard week. Mine's been tough.",
         "timestamp": "7:11 pm on 24 May, 2023",
         "session_id": "session_2"
       },
@@ -33918,7 +33918,7 @@
       {
         "turn_id": "D2:13",
         "speaker": "Evan",
-        "content": "",
+        "content": "Can't wait to hear how it's going!",
         "timestamp": "7:11 pm on 24 May, 2023",
         "session_id": "session_2"
       },
@@ -33981,7 +33981,7 @@
       {
         "turn_id": "D3:5",
         "speaker": "Evan",
-        "content": "Breaking habits can be tough. Making small changes can have a big impact later on. Have you considered swapping soda for flavored seltzer water? It's still bubbly and tasty, but without the sugar. And instead of candy, you could try dark chocolate with high cocoa content - it's a healthier option.",
+        "content": "Breaking habits can be tough. Making small changes can have a big impact later on. Have you considered swapping soda for flavored seltzer water? It's still bubbly and tasty, but without the sugar. And instead of candy, you could try dark chocolate with high cocoa content - it's a healthier option. What do you think?",
         "timestamp": "3:55 pm on 6 June, 2023",
         "session_id": "session_3"
       },
@@ -34002,7 +34002,7 @@
       {
         "turn_id": "D3:8",
         "speaker": "Sam",
-        "content": "",
+        "content": "I'll definitely keep you posted.",
         "timestamp": "3:55 pm on 6 June, 2023",
         "session_id": "session_3"
       },
@@ -34030,7 +34030,7 @@
       {
         "turn_id": "D3:12",
         "speaker": "Sam",
-        "content": "",
+        "content": "I appreciate your support, it means a lot to me to have you in my corner.",
         "timestamp": "3:55 pm on 6 June, 2023",
         "session_id": "session_3"
       },
@@ -34114,7 +34114,7 @@
       {
         "turn_id": "D4:6",
         "speaker": "Evan",
-        "content": "I made some dietary changes, like cutting down on sugary snacks and eating more veggies and fruit, and it made a big impact on my health. Have you considered any changes?",
+        "content": "I made some dietary changes, like cutting down on sugary snacks and eating more veggies and fruit, and it made a big impact on my health.",
         "timestamp": "10:52 am on 27 July, 2023",
         "session_id": "session_4"
       },
@@ -34198,7 +34198,7 @@
       {
         "turn_id": "D4:18",
         "speaker": "Evan",
-        "content": "",
+        "content": "you've got this!",
         "timestamp": "10:52 am on 27 July, 2023",
         "session_id": "session_4"
       },
@@ -34226,7 +34226,7 @@
       {
         "turn_id": "D5:2",
         "speaker": "Sam",
-        "content": "Congrats Evan! She must be something special! Being with someone who makes you feel alive is amazing. I'm sorry to hear that you're dealing with health issues lately, it can be really tough.",
+        "content": "Congrats Evan! She must be something special! Being with someone who makes you feel alive is amazing. I'm sorry to hear that you're dealing with health issues lately, it can be really tough. It's hard to fully enjoy things sometimes.",
         "timestamp": "7:52 pm on 7 August, 2023",
         "session_id": "session_5"
       },
@@ -34268,14 +34268,14 @@
       {
         "turn_id": "D5:8",
         "speaker": "Sam",
-        "content": "I wish your motivation never goes anywhere! I'm thinking of ordering myself some similar ones too.",
+        "content": "I'm thinking of ordering myself some similar ones too, what do you think, are they worth it?",
         "timestamp": "7:52 pm on 7 August, 2023",
         "session_id": "session_5"
       },
       {
         "turn_id": "D5:9",
         "speaker": "Evan",
-        "content": "My family motivates me to stay healthy. It helps a lot with my health goals. It tracks my progress really well and serves as a constant reminder to keep going.",
+        "content": "My family motivates me to stay healthy. It tracks my progress really well and serves as a constant reminder to keep going.",
         "timestamp": "7:52 pm on 7 August, 2023",
         "session_id": "session_5"
       },
@@ -34667,7 +34667,7 @@
       {
         "turn_id": "D8:5",
         "speaker": "Sam",
-        "content": "there are many, such as more energy and less sluggishness after eating",
+        "content": "there are many, such as more energy and less sluggishness after eating. This is really encouraging!",
         "timestamp": "6:17 pm on 19 August, 2023",
         "session_id": "session_8"
       },
@@ -34856,7 +34856,7 @@
       {
         "turn_id": "D8:32",
         "speaker": "Evan",
-        "content": "I'd like you to join me, too. Winter activities are a blast",
+        "content": "I'd like you to join me, too. Winter activities are a blast - hopefully someday you will!",
         "timestamp": "6:17 pm on 19 August, 2023",
         "session_id": "session_8"
       },
@@ -34877,7 +34877,7 @@
       {
         "turn_id": "D9:2",
         "speaker": "Evan",
-        "content": "Twisted my knee last Friday and it's really painful, so it's been tough to stay consistent with my usual fitness routine. Staying active is like, mega-important to me.",
+        "content": "Twisted my knee last Friday and it's really painful, so it's been tough to stay consistent with my usual fitness routine.",
         "timestamp": "10:18 am on 27 August, 2023",
         "session_id": "session_9"
       },
@@ -34940,7 +34940,7 @@
       {
         "turn_id": "D9:11",
         "speaker": "Sam",
-        "content": "I haven't gone on a road trip in ages, but I love being surrounded by nature. I'd love to go hiking more, but it can be a bit challenging sometimes. However, I am working on becoming healthier, so maybe a road trip and a hike will be possible soon.",
+        "content": "I haven't gone on a road trip in ages. I love being surrounded by nature. It's so tranquil and refreshing. I'd love to go hiking more. It can be a bit challenging sometimes. I am working on becoming healthier. Maybe a road trip and a hike will be possible soon.",
         "timestamp": "10:18 am on 27 August, 2023",
         "session_id": "session_9"
       },
@@ -35038,7 +35038,7 @@
       {
         "turn_id": "D10:6",
         "speaker": "Sam",
-        "content": "It's usually stress, boredom, or just wanting comfort.",
+        "content": "It's usually stress, boredom, or just wanting comfort. Those sugary treats are so tempting.",
         "timestamp": "9:28 am on 11 September, 2023",
         "session_id": "session_10"
       },
@@ -35227,7 +35227,7 @@
       {
         "turn_id": "D11:19",
         "speaker": "Sam",
-        "content": "It really helps me make sense of things and express my feelings. It's like having a conversation with myself.",
+        "content": "It really helps me make sense of things and express my feelings.",
         "timestamp": "8:57 pm on 6 October, 2023",
         "session_id": "session_11"
       },
@@ -35332,14 +35332,14 @@
       {
         "turn_id": "D12:14",
         "speaker": "Evan",
-        "content": "",
+        "content": "Keep staying motivated and believing in yourself. You've got this!",
         "timestamp": "3:09 pm on 8 October, 2023",
         "session_id": "session_12"
       },
       {
         "turn_id": "D12:15",
         "speaker": "Sam",
-        "content": "",
+        "content": "Your support means a lot to me.",
         "timestamp": "3:09 pm on 8 October, 2023",
         "session_id": "session_12"
       },
@@ -35437,7 +35437,7 @@
       {
         "turn_id": "D13:12",
         "speaker": "Sam",
-        "content": "",
+        "content": "Thanks for the help!",
         "timestamp": "4:07 pm on 14 October, 2023",
         "session_id": "session_13"
       },
@@ -35479,7 +35479,7 @@
       {
         "turn_id": "D14:2",
         "speaker": "Evan",
-        "content": "Gastritis can be tough. Taking care of ourselves is important. BTW, I've been focusing on fitness and it's been really beneficial for my overall well-being. Funny thing, I had another encounter with a lost tourist recently. Seems like helping tourists is becoming a recurring theme in my life!",
+        "content": "Gastritis can be tough. Taking care of ourselves is important. I've been focusing on fitness and it's been really beneficial for my overall well-being. I had another encounter with a lost tourist recently. Seems like helping tourists is becoming a recurring theme in my life!",
         "timestamp": "1:50 pm on 17 October, 2023",
         "session_id": "session_14"
       },
@@ -35563,7 +35563,7 @@
       {
         "turn_id": "D14:14",
         "speaker": "Evan",
-        "content": "Whenever you need support, I'm here for you. Stay safe!",
+        "content": "Whenever you need support, I'm here for you.",
         "timestamp": "1:50 pm on 17 October, 2023",
         "session_id": "session_14"
       },
@@ -35598,7 +35598,7 @@
       {
         "turn_id": "D15:3",
         "speaker": "Sam",
-        "content": "it's easier when you have a great support system",
+        "content": "it's easier when you have a great support system. Thanks for being there for me.",
         "timestamp": "2:56 pm on 25 October, 2023",
         "session_id": "session_15"
       },
@@ -35619,7 +35619,7 @@
       {
         "turn_id": "D15:6",
         "speaker": "Evan",
-        "content": "progress takes time. So just take it one step at a time.",
+        "content": "Progress takes time. So just take it one step at a time.",
         "timestamp": "2:56 pm on 25 October, 2023",
         "session_id": "session_15"
       },
@@ -35633,7 +35633,7 @@
       {
         "turn_id": "D15:8",
         "speaker": "Evan",
-        "content": "I went through a similar phase a twoyears ago. Changed my diet, started walking regularly, things like that.",
+        "content": "I went through a similar phase two years ago. Changed my diet, started walking regularly, things like that.",
         "timestamp": "2:56 pm on 25 October, 2023",
         "session_id": "session_15"
       },
@@ -35773,7 +35773,7 @@
       {
         "turn_id": "D16:10",
         "speaker": "Evan",
-        "content": "It's a 1968 Kustom K-200A vintage guitar and I got it as a gift from a close friend. It's been a tough time for me since we last caught up; I lost my job last month, which has been pretty rough.",
+        "content": "It's a 1968 Kustom K-200A vintage guitar and I got it as a gift from a close friend. I lost my job last month.",
         "timestamp": "9:13 pm on 9 November, 2023",
         "session_id": "session_16"
       },
@@ -35892,7 +35892,7 @@
       {
         "turn_id": "D17:3",
         "speaker": "Sam",
-        "content": "A health scare can really make you re-evaluate what's important. As for me, I've been dealing with some discomfort and it's been limiting my movement. I've been trying to make changes diet-wise, but it can be hard.",
+        "content": "Phew, it was just a misunderstanding. A health scare can really make you re-evaluate what's important. As for me, I've been dealing with some discomfort and it's been limiting my movement. I've been trying to make changes diet-wise, but it can be hard.",
         "timestamp": "7:30 pm on 21 November, 2023",
         "session_id": "session_17"
       },
@@ -35934,7 +35934,7 @@
       {
         "turn_id": "D17:9",
         "speaker": "Sam",
-        "content": "",
+        "content": "It means a lot.",
         "timestamp": "7:30 pm on 21 November, 2023",
         "session_id": "session_17"
       },
@@ -35990,7 +35990,7 @@
       {
         "turn_id": "D17:17",
         "speaker": "Sam",
-        "content": "",
+        "content": "Where is that?",
         "timestamp": "7:30 pm on 21 November, 2023",
         "session_id": "session_17"
       },
@@ -36004,7 +36004,7 @@
       {
         "turn_id": "D17:19",
         "speaker": "Sam",
-        "content": "Growing up there must have been so peaceful and stunning.",
+        "content": "That spot looks gorgeous. Growing up there must have been so peaceful and stunning.",
         "timestamp": "7:30 pm on 21 November, 2023",
         "session_id": "session_17"
       },
@@ -36032,7 +36032,7 @@
       {
         "turn_id": "D17:23",
         "speaker": "Sam",
-        "content": "",
+        "content": "It's heavenly!",
         "timestamp": "7:30 pm on 21 November, 2023",
         "session_id": "session_17"
       },
@@ -36074,7 +36074,7 @@
       {
         "turn_id": "D18:1",
         "speaker": "Evan",
-        "content": "my new Prius, the one I just bought, broke down. It's a bit of a stressor since I rely on it for my active lifestyle and road trips. It's frustrating when new things go awry so soon.",
+        "content": "my new Prius, the one I just bought, broke down. It's a stressor since I rely on it for my active lifestyle and road trips. It's frustrating when new things go awry so soon.",
         "timestamp": "8:16 pm on 5 December, 2023",
         "session_id": "session_18"
       },
@@ -36368,7 +36368,7 @@
       {
         "turn_id": "D20:13",
         "speaker": "Evan",
-        "content": "Trying something new and succeeding gives a great feeling of accomplishment. Give it a go, even if it's just a little thing.",
+        "content": "Trying something new and succeeding gives a great feeling of accomplishment. Give it a go, even if it's just a little thing. You'll be amazed!",
         "timestamp": "6:48 pm on 17 December, 2023",
         "session_id": "session_20"
       },
@@ -36550,7 +36550,7 @@
       {
         "turn_id": "D21:22",
         "speaker": "Evan",
-        "content": "I'll do that as soon as I find it!",
+        "content": "I think I'll do that as soon as I find it!",
         "timestamp": "4:25 pm on 26 December, 2023",
         "session_id": "session_21"
       },
@@ -36711,7 +36711,7 @@
       {
         "turn_id": "D23:2",
         "speaker": "Sam",
-        "content": "You two look so happy in the pic.",
+        "content": "You two look so happy in the pic. These moments make life so wonderful; super stoked for you!",
         "timestamp": "1:32 pm on 6 January, 2024",
         "session_id": "session_23"
       },
@@ -36823,7 +36823,7 @@
       {
         "turn_id": "D23:18",
         "speaker": "Sam",
-        "content": "the lasagna was pretty awesome, but check out what I had for dessert",
+        "content": "the lasagna was pretty awesome, check out what I had for dessert, I'm sure you're drooling",
         "timestamp": "1:32 pm on 6 January, 2024",
         "session_id": "session_23"
       },
@@ -36844,7 +36844,7 @@
       {
         "turn_id": "D23:21",
         "speaker": "Evan",
-        "content": "",
+        "content": "This looks great, yum!",
         "timestamp": "1:32 pm on 6 January, 2024",
         "session_id": "session_23"
       },
@@ -36886,7 +36886,7 @@
       {
         "turn_id": "D23:27",
         "speaker": "Evan",
-        "content": "Gonna try some poutine while we're there",
+        "content": "Gonna try some poutine while we're there - can't wait!",
         "timestamp": "1:32 pm on 6 January, 2024",
         "session_id": "session_23"
       },
@@ -36921,7 +36921,7 @@
       {
         "turn_id": "D23:32",
         "speaker": "Sam",
-        "content": "Have a great trip!",
+        "content": "Catch you soon. Have a great trip!",
         "timestamp": "1:32 pm on 6 January, 2024",
         "session_id": "session_23"
       },
@@ -36991,14 +36991,14 @@
       {
         "turn_id": "D24:9",
         "speaker": "Evan",
-        "content": "They were understanding. But it's a good reminder to be more careful. We all make mistakes, but it's important to learn from them. My partner and I tried snowshoeing this weekend. It was part of a new adventure for us and surprisingly fun.",
+        "content": "They were understanding. But it's a good reminder to be more careful. We all make mistakes, but it's important to learn from them. Speaking of, my partner and I tried snowshoeing this weekend. It was part of a new adventure for us and surprisingly fun.",
         "timestamp": "12:17 am on 10 January, 2024",
         "session_id": "session_24"
       },
       {
         "turn_id": "D24:10",
         "speaker": "Sam",
-        "content": "Mistakes happen, but it's good to learn from them. Snowshoeing sounds like a great way to stay active during the winter. I've been thinking and I made a meal plan and workout schedule. I'm getting motivated by something I saw, so starting today I'm gonna do my best to stay on track.",
+        "content": "Snowshoeing sounds like a great way to stay active during the winter. I've been thinking and I made a meal plan and workout schedule. I'm getting motivated by something I saw, so starting today I'm gonna do my best to stay on track.",
         "timestamp": "12:17 am on 10 January, 2024",
         "session_id": "session_24"
       },
@@ -37054,7 +37054,7 @@
       {
         "turn_id": "D24:18",
         "speaker": "Sam",
-        "content": "The salad idea from a restaurant is a smart move, Evan! Also I watched The Godfather last night, and it motivated me to keep up with my routine. \"I'm gonna make him an offer he can't refuse\" - now that's motivation!",
+        "content": "The salad idea from a restaurant is a smart move. And thanks for the exercise tips. Also I watched The Godfather last night, and it motivated me to keep up with my routine.",
         "timestamp": "12:17 am on 10 January, 2024",
         "session_id": "session_24"
       },
@@ -37075,7 +37075,7 @@
       {
         "turn_id": "D24:21",
         "speaker": "Evan",
-        "content": "There are plenty of other low-impact exercises that can be fun. Going on beach sunsets is one of my favorites - good for exercise and totally calming.",
+        "content": "By the way there are plenty of other low-impact exercises that can be fun. Going on beach sunsets is one of my favorites - good for exercise and totally calming.",
         "timestamp": "12:17 am on 10 January, 2024",
         "session_id": "session_24"
       },
@@ -37110,7 +37110,7 @@
       {
         "turn_id": "D25:2",
         "speaker": "Evan",
-        "content": "It's tough when it gets in the way of life. You're being positive, but remember to take care of yourself too. I had to apologize to my partner for that drunken night, it was pretty embarrassing.",
+        "content": "Sorry to hear about your health. It's tough when it gets in the way of life. You're being positive, but remember to take care of yourself too. I had to apologize to my partner for that drunken night, it was pretty embarrassing.",
         "timestamp": "9:37 pm on 11 January, 2024",
         "session_id": "session_25"
       },
@@ -37124,7 +37124,7 @@
       {
         "turn_id": "D25:4",
         "speaker": "Evan",
-        "content": "She wasn't thrilled, but understood it was an accident. I promised to be more careful in the future. Have you found any low-impact exercises that you enjoy?",
+        "content": "she wasn't thrilled, but understood it was an accident. I promised to be more careful in the future. have you found any low-impact exercises that you enjoy?",
         "timestamp": "9:37 pm on 11 January, 2024",
         "session_id": "session_25"
       },
@@ -37229,7 +37229,7 @@
       {
         "turn_id": "D25:19",
         "speaker": "Sam",
-        "content": "",
+        "content": "Your words help a lot.",
         "timestamp": "9:37 pm on 11 January, 2024",
         "session_id": "session_25"
       },
@@ -37416,7 +37416,7 @@
       {
         "turn_id": "D2:6",
         "speaker": "Dave",
-        "content": "Calvin, that car looks awesome!",
+        "content": "Calvin, that car looks awesome! You must feel amazing every time you get inside! You deserved it - congrats buddy!",
         "timestamp": "4:45 pm on 26 March, 2023",
         "session_id": "session_2"
       },
@@ -37458,7 +37458,7 @@
       {
         "turn_id": "D2:12",
         "speaker": "Dave",
-        "content": "I finally saw them live and it was such an amazing experience! He was jamming out to one of their hits. Check out this epic picture of them!",
+        "content": "I finally saw them live and it was such an amazing experience! He was jamming out to one of their hits.",
         "timestamp": "4:45 pm on 26 March, 2023",
         "session_id": "session_2"
       },
@@ -37577,7 +37577,7 @@
       {
         "turn_id": "D3:8",
         "speaker": "Dave",
-        "content": "It got me thinking, where do you see your music taking you?",
+        "content": "It's really motivating to see you staying true to yourself. It got me thinking, where do you see your music taking you?",
         "timestamp": "4:15 pm on 20 April, 2023",
         "session_id": "session_3"
       },
@@ -37626,7 +37626,7 @@
       {
         "turn_id": "D3:15",
         "speaker": "Calvin",
-        "content": "Been pretty busy with rehearsals and traveling. But I'm looking forward to exploring the city, trying out some delicious food, and visiting the popular attractions. Maybe we can grab a bite together when I'm there?",
+        "content": "Been pretty busy with rehearsals and traveling. Looking forward to exploring the city, trying out some delicious food, and visiting the popular attractions. Maybe we can grab a bite together when I'm there?",
         "timestamp": "4:15 pm on 20 April, 2023",
         "session_id": "session_3"
       },
@@ -37689,7 +37689,7 @@
       {
         "turn_id": "D4:6",
         "speaker": "Calvin",
-        "content": "Going for it with classic cars is cool! Fulfilling your dreams is so important.",
+        "content": "Fulfilling your dreams is so important.",
         "timestamp": "6:24 pm on 1 May, 2023",
         "session_id": "session_4"
       },
@@ -37703,7 +37703,7 @@
       {
         "turn_id": "D4:8",
         "speaker": "Calvin",
-        "content": "",
+        "content": "That looks awesome!",
         "timestamp": "6:24 pm on 1 May, 2023",
         "session_id": "session_4"
       },
@@ -37857,7 +37857,7 @@
       {
         "turn_id": "D5:2",
         "speaker": "Calvin",
-        "content": "That's awesome news about teaming up with a local garage. Congratulations on this new venture. It's impressive how far you've come since we last chatted. How's everything going?",
+        "content": "That's awesome news about teaming up with a local garage. How's everything going?",
         "timestamp": "1:16 pm on 3 May, 2023",
         "session_id": "session_5"
       },
@@ -37871,7 +37871,7 @@
       {
         "turn_id": "D5:4",
         "speaker": "Calvin",
-        "content": "Got any plans for what's next?",
+        "content": "Keep up the good work. Got any plans for what's next?",
         "timestamp": "1:16 pm on 3 May, 2023",
         "session_id": "session_5"
       },
@@ -37983,7 +37983,7 @@
       {
         "turn_id": "D6:5",
         "speaker": "Calvin",
-        "content": "Waiting on insurance to kick in so I can start repairs - fingers crossed it won't take too long. Take a look at my creative haven, where I pour my heart into the music.",
+        "content": "Waiting on insurance to kick in so I can start repairs - fingers crossed it won't take too long.",
         "timestamp": "11:50 am on 16 May, 2023",
         "session_id": "session_6"
       },
@@ -38032,14 +38032,14 @@
       {
         "turn_id": "D6:12",
         "speaker": "Dave",
-        "content": "Doing a show in Tokyo.",
+        "content": "Doing a show in Tokyo, wow! I'm sure the audience is gonna love it. Wishing you all the luck! Let me know how it goes.",
         "timestamp": "11:50 am on 16 May, 2023",
         "session_id": "session_6"
       },
       {
         "turn_id": "D6:13",
         "speaker": "Calvin",
-        "content": "",
+        "content": "I'll keep you posted on how it goes.",
         "timestamp": "11:50 am on 16 May, 2023",
         "session_id": "session_6"
       },
@@ -38263,14 +38263,14 @@
       {
         "turn_id": "D8:8",
         "speaker": "Dave",
-        "content": "Haven't gone hiking recently, but it's awesome - being in nature and pushing yourself to new heights. Clears your mind and brings a sense of calm. Have you been to the mountains before? Heard they're super chill.",
+        "content": "being in nature and pushing yourself to new heights. Clears your mind and brings a sense of calm. Have you been to the mountains before? Heard they're super chill.",
         "timestamp": "2:31 pm on 9 June, 2023",
         "session_id": "session_8"
       },
       {
         "turn_id": "D8:9",
         "speaker": "Calvin",
-        "content": "Haven't been to the mountains but I'm keen to go. Looking for a way to escape it all and de-stress. I want to go on a hike to a place similar to this. What's new and exciting happening for you, Dave?",
+        "content": "Haven't been to the mountains but I'm keen to go. Looking for a way to escape it all and de-stress. I want to go on a hike to a place similar to this.",
         "timestamp": "2:31 pm on 9 June, 2023",
         "session_id": "session_8"
       },
@@ -38347,7 +38347,7 @@
       {
         "turn_id": "D9:6",
         "speaker": "Dave",
-        "content": "Who are him?",
+        "content": "Glad it wasn't too expensive. Who are him?",
         "timestamp": "3:15 pm on 21 June, 2023",
         "session_id": "session_9"
       },
@@ -38382,7 +38382,7 @@
       {
         "turn_id": "D9:11",
         "speaker": "Calvin",
-        "content": "Excited to drive again. Look what a wonderful view from living room!",
+        "content": "Look what a wonderful view from living room!",
         "timestamp": "3:15 pm on 21 June, 2023",
         "session_id": "session_9"
       },
@@ -38466,14 +38466,14 @@
       {
         "turn_id": "D10:2",
         "speaker": "Calvin",
-        "content": "the car's fixed and going strong. Nothing better than cruising around - it's the best! Look at how my car looks right now.",
+        "content": "the car's fixed and going strong. Look at how my car looks right now.",
         "timestamp": "7:56 pm on 7 July, 2023",
         "session_id": "session_10"
       },
       {
         "turn_id": "D10:3",
         "speaker": "Dave",
-        "content": "I arranged with friends for regular walks together in the park.",
+        "content": "I've been good too. Just been hanging out with friends at parks lately. I arranged with friends for regular walks together in the park.",
         "timestamp": "7:56 pm on 7 July, 2023",
         "session_id": "session_10"
       },
@@ -38487,7 +38487,7 @@
       {
         "turn_id": "D10:5",
         "speaker": "Dave",
-        "content": "today we are going to that spot",
+        "content": "today we are going to that spot. Look at that lovely photo.",
         "timestamp": "7:56 pm on 7 July, 2023",
         "session_id": "session_10"
       },
@@ -38662,7 +38662,7 @@
       {
         "turn_id": "D11:13",
         "speaker": "Dave",
-        "content": "I'm your biggest fan.",
+        "content": "",
         "timestamp": "6:38 pm on 21 July, 2023",
         "session_id": "session_11"
       },
@@ -38725,7 +38725,7 @@
       {
         "turn_id": "D12:8",
         "speaker": "Dave",
-        "content": "Having something like that is motivating. It's like a reminder of what you can achieve.",
+        "content": "Your car looks great, Calvin! Having something like that is motivating. It's like a reminder of what you can achieve.",
         "timestamp": "1:12 pm on 3 August, 2023",
         "session_id": "session_12"
       },
@@ -38760,7 +38760,7 @@
       {
         "turn_id": "D12:13",
         "speaker": "Calvin",
-        "content": "I'm determined to make my dreams come true.",
+        "content": "Your support and encouragement mean a lot to me. I'm determined to make my dreams come true.",
         "timestamp": "1:12 pm on 3 August, 2023",
         "session_id": "session_12"
       },
@@ -38872,7 +38872,7 @@
       {
         "turn_id": "D13:12",
         "speaker": "Calvin",
-        "content": "customizing a masterpiece with those small details is what makes it unique and personalized.",
+        "content": "Customizing a masterpiece with those small details is what makes it unique and personalized.",
         "timestamp": "5:22 pm on 11 August, 2023",
         "session_id": "session_13"
       },
@@ -39026,14 +39026,14 @@
       {
         "turn_id": "D14:15",
         "speaker": "Dave",
-        "content": "",
+        "content": "Your support means a lot to me.",
         "timestamp": "12:35 am on 14 August, 2023",
         "session_id": "session_14"
       },
       {
         "turn_id": "D14:16",
         "speaker": "Calvin",
-        "content": "",
+        "content": "Seeing your enthusiasm is amazing. Keep growing, buddy. It'll be worth it.",
         "timestamp": "12:35 am on 14 August, 2023",
         "session_id": "session_14"
       },
@@ -39229,7 +39229,7 @@
       {
         "turn_id": "D16:13",
         "speaker": "Dave",
-        "content": "I'm here to lend a hand. It's great to fuel your ideas. Remember that photo you sent me once? Love how this guitar shows our different artistic styles.",
+        "content": "It's great to fuel your ideas. Remember that photo you sent me once? Love how this guitar shows our different artistic styles.",
         "timestamp": "2:55 pm on 31 August, 2023",
         "session_id": "session_16"
       },
@@ -39348,7 +39348,7 @@
       {
         "turn_id": "D17:5",
         "speaker": "Dave",
-        "content": "It feels really good to make a difference and see their relief when their car is fixed. Makes me proud!",
+        "content": "It feels really good to make a difference and see their relief when their car is fixed.",
         "timestamp": "9:19 am on 2 September, 2023",
         "session_id": "session_17"
       },
@@ -39383,7 +39383,7 @@
       {
         "turn_id": "D17:10",
         "speaker": "Calvin",
-        "content": "I will contact you when I arrive.",
+        "content": "Gotta stay safe on the trip. I will contact you when I arrive.",
         "timestamp": "9:19 am on 2 September, 2023",
         "session_id": "session_17"
       },
@@ -39432,7 +39432,7 @@
       {
         "turn_id": "D18:7",
         "speaker": "Calvin",
-        "content": "Next up, a tour. After that, I'm off to explore and grow my brand.",
+        "content": "Next up, a tour - so excited! After that, I'm off to explore and grow my brand. Can't wait to see what the future has in store!",
         "timestamp": "10:56 am on 13 September, 2023",
         "session_id": "session_18"
       },
@@ -39705,7 +39705,7 @@
       {
         "turn_id": "D21:1",
         "speaker": "Calvin",
-        "content": "Yesterday I met with some incredible artists in Boston and we talked about working together. It was such an inspiring and exciting experience - they all have individual styles and I'm stoked to collaborate with them on new music.",
+        "content": "Yesterday I met with some incredible artists in Boston and we talked about working together. They all have individual styles and I'm stoked to collaborate with them on new music.",
         "timestamp": "2:44 pm on 4 October, 2023",
         "session_id": "session_21"
       },
@@ -39866,7 +39866,7 @@
       {
         "turn_id": "D22:6",
         "speaker": "Calvin",
-        "content": "Bringing broken things back to life is so satisfying. Working on cars can be a real escape from reality. Doing what you love for a living, that's the ultimate goal, right?",
+        "content": "Bringing broken things back to life is so satisfying. Working on cars can be a real escape from reality. Doing what you love for a living, that's the ultimate goal.",
         "timestamp": "3:13 pm on 8 October, 2023",
         "session_id": "session_22"
       },
@@ -39929,7 +39929,7 @@
       {
         "turn_id": "D23:1",
         "speaker": "Dave",
-        "content": "A competing car maintenance shop snagged a deal we were trying to secure for months and it made me feel kinda bummed out. You know, I put in so much effort at work, but it feels like nothing. Am I wasting my time?",
+        "content": "A competing car maintenance shop snagged a deal we were trying to secure for months and it made me feel kinda bummed out. I put in so much effort at work, but it feels like nothing. Am I wasting my time?",
         "timestamp": "9:39 am on 15 October, 2023",
         "session_id": "session_23"
       },
@@ -39992,7 +39992,7 @@
       {
         "turn_id": "D23:10",
         "speaker": "Calvin",
-        "content": "I heard great things about The Fireworks! Performing with Frank Ocean recently has been really cool. Seeing them perform live must've been awesome - I bet the energy was electric! That's why I love my job so much - connecting with the crowd.",
+        "content": "I heard great things about The Fireworks! Performing with Frank Ocean recently has been really cool. That's why I love my job so much - connecting with the crowd.",
         "timestamp": "9:39 am on 15 October, 2023",
         "session_id": "session_23"
       },
@@ -40013,7 +40013,7 @@
       {
         "turn_id": "D23:13",
         "speaker": "Dave",
-        "content": "Your support really helps. It's great to have a friend who believes in me. I'll keep pushing.",
+        "content": "Your support really helps. I'll keep pushing.",
         "timestamp": "9:39 am on 15 October, 2023",
         "session_id": "session_23"
       },
@@ -40111,7 +40111,7 @@
       {
         "turn_id": "D24:9",
         "speaker": "Calvin",
-        "content": "The crowd energy is amazing! It always gets me so pumped. Look at that photo!",
+        "content": "the crowd energy is amazing! It always gets me so pumped. Look at that photo!",
         "timestamp": "10:11 am on 19 October, 2023",
         "session_id": "session_24"
       },
@@ -40251,7 +40251,7 @@
       {
         "turn_id": "D25:6",
         "speaker": "Calvin",
-        "content": "Having a strong support system is really helpful. My friends and team keep me on track.",
+        "content": "My friends and team keep me on track.",
         "timestamp": "2:17 pm on 23 October, 2023",
         "session_id": "session_25"
       },
@@ -40426,14 +40426,14 @@
       {
         "turn_id": "D25:31",
         "speaker": "Dave",
-        "content": "Must be a unique experience.",
+        "content": "Wishing you many more electrifying moments in the spotlight!",
         "timestamp": "2:17 pm on 23 October, 2023",
         "session_id": "session_25"
       },
       {
         "turn_id": "D26:1",
         "speaker": "Calvin",
-        "content": "I had a great time yesterday, and visited some sights in Boston with a high school friend.",
+        "content": "I had a great time yesterday, and visited some sights in Boston with a high school friend. It was really fun and eye-opening.",
         "timestamp": "8:25 pm on 25 October, 2023",
         "session_id": "session_26"
       },
@@ -40524,7 +40524,7 @@
       {
         "turn_id": "D26:14",
         "speaker": "Dave",
-        "content": "Keep pursuing your passion and keep dreaming.",
+        "content": "Keep pursuing your passion and keep dreaming. We got this!",
         "timestamp": "8:25 pm on 25 October, 2023",
         "session_id": "session_26"
       },
@@ -40545,7 +40545,7 @@
       {
         "turn_id": "D27:2",
         "speaker": "Dave",
-        "content": "That's cool that you've been networking with other artists. I've been getting into photography recently. I've seen some amazing places and taken some great shots. Would you like to see them?",
+        "content": "I've been getting into photography recently. I've seen some amazing places and taken some great shots. Would you like to see them?",
         "timestamp": "10:49 am on 29 October, 2023",
         "session_id": "session_27"
       },
@@ -40678,7 +40678,7 @@
       {
         "turn_id": "D28:8",
         "speaker": "Dave",
-        "content": "Do you have any tips on blogging for me?",
+        "content": "Calvin, imagining how your music affects others must be incredible! Keep up the great work! I recently started a blog on car mods. It's my way to share my passion with others. Do you have any tips on blogging for me?",
         "timestamp": "5:46 pm on 2 November, 2023",
         "session_id": "session_28"
       },
@@ -40825,7 +40825,7 @@
       {
         "turn_id": "D28:29",
         "speaker": "Calvin",
-        "content": "I only work in the studio. I have another room for relaxation with a TV, just take a look that room is cozy and relaxing.",
+        "content": "I only work in the studio. I have another room for relaxation with a TV, that room is cozy and relaxing. It's a great way to unwind and get inspired.",
         "timestamp": "5:46 pm on 2 November, 2023",
         "session_id": "session_28"
       },
@@ -40846,7 +40846,7 @@
       {
         "turn_id": "D28:32",
         "speaker": "Dave",
-        "content": "Take a look at the photo!",
+        "content": "Take a look at the photo.",
         "timestamp": "5:46 pm on 2 November, 2023",
         "session_id": "session_28"
       },
@@ -40888,7 +40888,7 @@
       {
         "turn_id": "D28:38",
         "speaker": "Dave",
-        "content": "Music really helps with car work. Keeps me focused and makes it feel great. Even though this player is a bit old, he still gets the job done. Check out its photo!",
+        "content": "Music really helps with car work. Keeps me focused and makes it feel great. Even though this player is a bit old, he still gets the job done.",
         "timestamp": "5:46 pm on 2 November, 2023",
         "session_id": "session_28"
       },
@@ -40965,7 +40965,7 @@
       {
         "turn_id": "D29:6",
         "speaker": "Dave",
-        "content": "It's great how someone's support and encouragement can really shape our lives! They give us the motivation to keep going and trust ourselves. Do you also find having supportive people around you important for your artist development?",
+        "content": "Someone's support and encouragement can really shape our lives. They give us the motivation to keep going and trust ourselves. Do you also find having supportive people around you important for your artist development?",
         "timestamp": "9:15 pm on 13 November, 2023",
         "session_id": "session_29"
       },
@@ -41000,7 +41000,7 @@
       {
         "turn_id": "D29:11",
         "speaker": "Calvin",
-        "content": "It's like a torch being passed to keep music alive! These young musicians are very ambitious, I think I will support them for a long time.",
+        "content": "These young musicians are very ambitious, I think I will support them for a long time.",
         "timestamp": "9:15 pm on 13 November, 2023",
         "session_id": "session_29"
       },
@@ -41119,7 +41119,7 @@
       {
         "turn_id": "D30:10",
         "speaker": "Calvin",
-        "content": "",
+        "content": "That shot looks great! Nature's so amazing!",
         "timestamp": "10:54 am on 17 November, 2023",
         "session_id": "session_30"
       },
@@ -41133,7 +41133,7 @@
       {
         "turn_id": "D30:12",
         "speaker": "Calvin",
-        "content": "Its beauty helps us appreciate life when it's tough.",
+        "content": "Nature really does the trick. Its beauty helps us appreciate life when it's tough. Like a breath of fresh air!",
         "timestamp": "10:54 am on 17 November, 2023",
         "session_id": "session_30"
       },

@@ -12,6 +12,13 @@ if AMEM_PATH not in sys.path:
 # A-Mem 내부 모듈 import
 from test_advanced_robust import RobustAdvancedMemAgent  # noqa: E402
 
+CATEGORY_MAP = {
+    "single_hop": 1,
+    "temporal": 2,
+    "open_domain": 3,
+    "multi_hop": 4,
+    "adversarial": 5,
+}
 
 class AMemBackend(BaseMemoryBackend):
     """
@@ -81,7 +88,7 @@ class AMemBackend(BaseMemoryBackend):
     def query(self, question: str, category: Optional[str] = None) -> str:
         """질문에 대한 답변을 반환."""
         # category가 없으면 기본값 1 사용
-        cat = int(category) if category is not None else 1
+        cat = CATEGORY_MAP.get(category, 1) if category is not None else 1
         prediction, _, _ = self.agent.answer_question(
             question=question,
             category=cat,
