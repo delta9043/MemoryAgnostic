@@ -10,8 +10,11 @@ Instead of modifying the internal algorithm of each memory backend, this project
 
 각 memory backend의 내부 알고리즘을 수정하는 대신, 본 프로젝트는 memory construction 이전에 입력 대화를 변환하는 방식에 집중합니다. 주요 목표는 입력 단위와 정보 보존 전략을 바꾸는 것만으로 memory 성능을 개선할 수 있는지 확인하는 것입니다.
 
+<br>
+<br>
 
-## Project Summary
+
+## 📌 Project Summary
 
 Personal AI Agents need long-term memory to store and retrieve user preferences, past conversations, plans, relationships, schedules, and task records. However, directly putting all previous conversations into the context window is inefficient and often ineffective.
 
@@ -35,31 +38,31 @@ Personal AI Agent는 사용자의 선호, 과거 대화, 계획, 관계, 일정,
 
 이를 확인하기 위해, 본 프로젝트는 기존 memory backend에 memory-agnostic input processing module을 적용하고, 그 결과 나타나는 성능과 비용 변화를 비교합니다.
 
+<br>
+<br>
 
-## Main Idea
+## 💡 Main Idea
 
 The project studies two types of preprocessing:
 
-### 1. LLM-based Filtering
+### 1. 🔎 LLM-based Filtering
 
 - Removes non-informative parts of each utterance.
 - Removes social filler, conversational routines, and redundant confirmations.
 - Preserves informative content without summarization or paraphrasing.
 - Goal: reduce noise before memory construction.
 
-### 2. Attention + Similarity-based Chunking
+### 2. 🧩 Attention + Similarity-based Chunking
 
 - Detects topic boundaries between dialogue turns.
 - Uses attention change and semantic similarity between adjacent turns.
 - Generates topic-level chunks before memory construction.
 - Goal: construct more meaningful memory input units.
 
-The key insight is:
+<br>
+<br>
 
-> Simply reducing information is not enough.  
-> It is more important to preserve information in the right semantic unit.
-
-## Repository Structure
+## 📁 Repository Structure
 
 ```text
 MemoryAgnostic/
@@ -86,16 +89,19 @@ MemoryAgnostic/
 └── main.py                  # Main experiment runner
 ```
 
-## Supported Modules
+<br>
+<br>
 
-### Filtering
+## 🧱 Supported Modules
+
+### 🔎 Filtering
 
 | Module | Description |
 |---|---|
 | `NoFilter` | Keeps the original dialogue unchanged. |
 | `LLMFilter` | Removes social filler, redundant confirmations, and non-informative utterance parts. |
 
-### Chunking
+### 🧩 Chunking
 
 | Module | Description |
 |---|---|
@@ -103,14 +109,17 @@ MemoryAgnostic/
 | `FixedSizeChunker` | Splits dialogue into fixed-size chunks. |
 | `AttentionSimilarityChunker` | Detects topic boundaries using attention change and semantic similarity. |
 
-### Memory Backends
+### 🗄️ Memory Backends
 
 | Backend | Description |
 |---|---|
 | `SimpleMemBackend` | Wrapper for SimpleMem-style memory construction and retrieval. |
 | `AMemBackend` | Wrapper for A-Mem-style memory construction and retrieval. |
 
-## Environment
+<br>
+<br>
+
+## ⚙️ Environment
 
 The experiments were conducted with the following environment:
 
@@ -134,7 +143,11 @@ SimpleMem: Qwen3-14B, GPT-4.1-mini
 A-Mem: GPT-4o-mini
 ```
 
-## Installation
+<br>
+<br>
+
+
+## 🚀 Installation
 
 Clone the repository:
 
@@ -151,9 +164,13 @@ conda activate memoryagnostic
 ```
 
 Install dependencies according to your local environment.
+
 > Note: dependency versions may depend on the local CUDA and model-serving environment.
 
-## Running Experiments
+<br>
+<br>
+
+## ▶️ Running Experiments
 
 The main experiment runner uses YAML configuration files.
 
@@ -181,7 +198,10 @@ python main.py --config configs/amem_default.yaml
 python main.py --config configs/amem_32bfilter.yaml
 ```
 
-## Running LLM-based Filtering
+<br>
+<br>
+
+## 🔎 Running LLM-based Filtering
 
 To generate filtered dialogue data:
 
@@ -210,7 +230,10 @@ Example output format:
 ]
 ```
 
-## Key Findings
+<br>
+<br>
+
+## 📊 Key Findings
 
 1. **Filtering alone was unstable**
    - It improved some categories but degraded Temporal QA.
@@ -223,14 +246,20 @@ Example output format:
 3. **Input unit design matters**
    - Memory performance depends not only on the memory backend, but also on how the input dialogue is segmented and preserved before memory construction.
 
-## Limitations
+<br>
+<br>
+
+## ⚠️ Limitations
 
 - Experiments were conducted on LoCoMo10, a small subset of the full benchmark.
 - LLM-based filtering may produce unstable outputs, which can cause memory entry generation failures.
 - Chunking can separate temporal expressions from their relevant context.
 - More experiments are needed with larger datasets and additional memory backends.
 
-## Future Work
+<br>
+<br>
+
+## 🔭 Future Work
 
 - Evaluate on the full LoCoMo benchmark.
 - Add temporal-aware chunking to preserve relative and absolute time information.
@@ -238,7 +267,10 @@ Example output format:
 - Analyze memory construction cost in terms of token usage and API calls.
 - Improve robustness of LLM-based filtering output parsing.
 
-## References
+<br>
+<br>
+
+## 📚 References
 
 - Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory
 - A-Mem: Agentic Memory for LLM Agents
@@ -247,7 +279,10 @@ Example output format:
 - Evaluating Very Long-Term Conversational Memory of LLM Agents
 - LLMLingua-2: Data Distillation for Efficient and Faithful Task-Agnostic Prompt Compression
 
-## Author
+<br>
+<br>
+
+## 👤 Author
 
 **Moon Sanghyeok**  
 Department of Applied Mathematics  
