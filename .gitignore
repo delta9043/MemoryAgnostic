@@ -10,3 +10,11 @@ logs/
 lance_db/
 lancedb_data/
 debug_output/
+
+# Experiment / precompute outputs
+results/
+data/chunked_data/
+data/filtered_data/
+
+# Claude
+CLAUDE.md

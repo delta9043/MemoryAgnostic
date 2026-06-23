@@ -66,6 +66,14 @@ def _build_module(module_cfg: dict):
         from core.chunker.no_chunker import NoChunker
         return NoChunker(**kwargs)
 
+    elif module_type == "LLMChunker":
+        from core.chunker.llm_chunker import LLMChunker
+        return LLMChunker(**kwargs)
+
+    elif module_type == "PrecomputedChunker":
+        from core.chunker.precomputed_chunker import PrecomputedChunker
+        return PrecomputedChunker(**kwargs)
+
     elif module_type == "SimpleMemBackend":
         from core.memory.simplemem_backend import SimpleMemBackend
         return SimpleMemBackend(**kwargs)
