@@ -342,7 +342,21 @@ class LLMChunker(BaseChunker):
         if not turns:
             return []
 
+        sessions = self._group_by_session(turns)
+        total = len(sessions)          # = 이 샘플의 세션 수(= LLM 호출 횟수). 보통 19~32.
+        bar_width = 20
+        # 진행바 라벨용 sample_id (loader가 turn metadata에 넣어줌). 없으면 "?".
+        sample_id = turns[0].metadata.get("sample_id", "?")
+
         chunks: List[Chunk] = []
-        for session_turns in self._group_by_session(turns):
+        for i, session_turns in enumerate(sessions):
+            # 세션 1개 = LLM 호출 1번(느린 부분). 그래서 진행바 단위도 '세션'으로 둔다.
             chunks.extend(self._chunk_one_session(session_turns, next_chunk_id=len(chunks)))
+
+            if (i + 1) % 2 == 0 or (i + 1) == total:
+                pct = (i + 1) / total
+                filled = int(bar_width * pct)
+                bar = "█" * filled + " " * (bar_width - filled)
+                print(f"[LLMChunker] {sample_id} {i+1:>3}/{total} sessions [{bar}] {pct*100:5.1f}%", flush=True)
+
         return chunks
