@@ -1,7 +1,7 @@
 import sys
 from typing import List, Optional
 
-from core.memory.base import BaseMemoryBackend
+from core.memory.base import BaseMemoryBackend, normalize_prediction
 from data.schema import Chunk
 
 # A-Mem repo를 import 가능하도록 sys.path에 추가
@@ -79,11 +79,18 @@ class AMemBackend(BaseMemoryBackend):
         )
 
     def build(self, chunks: List[Chunk]) -> None:
-        """chunk의 turn들을 A-Mem에 추가."""
+        """chunk 하나를 메모리 노트 하나로 추가."""
         for chunk in chunks:
-            for turn in chunk.turns:
-                content = f"Speaker {turn.speaker} says: {turn.content}"
-                self.agent.add_memory(content, time=turn.timestamp)
+            if not chunk.turns:
+                continue
+            # chunk 안의 turn들을 하나의 텍스트로 합쳐 노트 1개 생성
+            content = "\n".join(
+                f"Speaker {turn.speaker} says: {turn.content}"
+                for turn in chunk.turns
+            )
+            # 첫 번째 turn의 timestamp 사용
+            timestamp = chunk.turns[0].timestamp
+            self.agent.add_memory(content, time=timestamp)
 
     def query(self, question: str, category: Optional[str] = None) -> str:
         """질문에 대한 답변을 반환."""
@@ -94,7 +101,7 @@ class AMemBackend(BaseMemoryBackend):
             category=cat,
             answer="",  # 평가 시 정답 불필요
         )
-        return prediction
+        return normalize_prediction(prediction)
 
     def reset(self) -> None:
         """메모리 초기화. 다음 샘플 처리 전에 호출."""

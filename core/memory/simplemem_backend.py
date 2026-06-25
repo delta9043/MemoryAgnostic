@@ -2,7 +2,7 @@ import sys
 import importlib
 from typing import List, Optional
 
-from core.memory.base import BaseMemoryBackend
+from core.memory.base import BaseMemoryBackend, normalize_prediction
 from data.schema import Chunk
 
 # SimpleMem repo를 import 가능하도록 sys.path에 추가
@@ -120,7 +120,7 @@ class SimpleMemBackend(BaseMemoryBackend):
 
     def query(self, question: str, category: str = None) -> str:
         """질문에 대한 답변을 반환한다."""
-        return self.system.ask(question)
+        return normalize_prediction(self.system.ask(question))
 
     def reset(self) -> None:
         """

@@ -1,7 +1,40 @@
+import re
 from abc import ABC, abstractmethod
 from typing import List
 
 from data.schema import Chunk
+
+
+def strip_think(text: str) -> str:
+    """LLM 응답에서 Qwen3 등 reasoning 모델의 <think> 블록을 제거한다.
+
+    - 닫힌 <think>...</think> 블록 제거.
+    - 닫힘 태그 없이 열린 <think>(추론이 max_tokens에 잘린 경우)는 그 이후를 모두 제거.
+    """
+    if not text:
+        return text
+    text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
+    text = re.sub(r"<think>.*$", "", text, flags=re.DOTALL)
+    return text.strip()
+
+
+def strip_answer_prefix(text: str) -> str:
+    """프롬프트 꼬리("Short answer:" 등)를 모델이 에코한 prefix를 제거한다.
+
+    A-Mem robust 프롬프트가 "... Question: {q} Short answer:" 로 끝나 모델이
+    "Short answer: <답>" 형태로 답을 뱉으면, F1/BLEU 채점 시 불필요한 토큰이
+    섞여 점수가 깎인다. 원본 A-Mem은 JSON schema로 answer만 추출해 이 문제가
+    없었으나, robust 변형은 그 장치가 없어 wrapper에서 보정한다.
+    """
+    if not text:
+        return text
+    return re.sub(r"^\s*(?:short\s+answer|answer)\s*:\s*", "", text,
+                  flags=re.IGNORECASE).strip()
+
+
+def normalize_prediction(text: str) -> str:
+    """채점 전 예측 답변 정규화: <think> 제거 후 answer prefix 제거."""
+    return strip_answer_prefix(strip_think(text))
 
 
 class BaseMemoryBackend(ABC):
