@@ -30,8 +30,8 @@ CATEGORY_ORDER = [
 
 # (라벨, baseline 파일, llmchunk 파일)
 BACKENDS = [
-    ("A-Mem",     "amem_nochunker.json",      "amem_llmchunker.json"),
-    ("SimpleMem", "simplemem_nochunker.json", "simplemem_llmchunker.json"),
+    ("A-Mem",     "amem_default.json",      "amem_llmchunker.json"),
+    ("SimpleMem", "simplemem_default.json", "simplemem_llmchunker.json"),
 ]
 
 
