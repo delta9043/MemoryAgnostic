@@ -1,4 +1,3 @@
-import os
 import sys
 from typing import List, Optional
 
@@ -21,12 +20,6 @@ CATEGORY_MAP = {
     "adversarial": 5,
 }
 
-# ── 디버깅 토글 (환경변수로 제어; query()에서 사용) ──────────────────────────
-# AMEM_NO_THINK=0  → /no_think 비활성화(=thinking 켜짐). 빈 답 재현/비교용.
-# AMEM_DEBUG=1     → query마다 raw 출력/think 포함 여부/길이를 stdout에 찍음.
-_FALSEY = ("", "0", "false", "False")
-NO_THINK = os.environ.get("AMEM_NO_THINK", "1") not in _FALSEY
-DEBUG = os.environ.get("AMEM_DEBUG", "") not in _FALSEY
 
 class AMemBackend(BaseMemoryBackend):
     """
@@ -106,29 +99,15 @@ class AMemBackend(BaseMemoryBackend):
         # category가 없으면 기본값 1 사용
         cat = CATEGORY_MAP.get(category, 1) if category is not None else 1
         ans = answer if cat == 5 else ""
-        q = f"{question} /no_think" if NO_THINK else question
+        # Qwen3 thinking 비활성화: 서버의 enable_thinking 플래그가 무시되므로
+        # 프롬프트에 /no_think 소프트 스위치를 넣어 답변 단계의 thinking을 끈다.
+        q = f"{question} /no_think"
         prediction, _, _ = self.agent.answer_question(
             question=q,
             category=cat,
             answer=ans or "",
         )
-        pred = normalize_prediction(prediction)
-        if DEBUG:
-            has_think = "<think>" in prediction
-            closed = "</think>" in prediction
-            print(
-                f"[amem][debug] cat={cat} no_think={NO_THINK} "
-                f"think={has_think}/closed={closed} "
-                f"raw_len={len(prediction)} pred_len={len(pred)}\n"
-                f"  Q   : {question[:80]}\n"
-                f"  raw : {prediction[:300]!r}\n"
-                f"  pred: {pred[:200]!r}",
-                flush=True,
-            )
-        if not pred:
-            # /no_think 이후에도 빈 답이면 원인 추적용으로 raw를 남긴다.
-            print(f"[amem][empty] cat={cat} raw={prediction[:200]!r}", flush=True)
-        return pred
+        return normalize_prediction(prediction)
 
     def reset(self) -> None:
         """메모리 초기화. 다음 샘플 처리 전에 호출."""
