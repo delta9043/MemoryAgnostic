@@ -99,11 +99,13 @@ class AMemBackend(BaseMemoryBackend):
         cat = CATEGORY_MAP.get(category, 1) if category is not None else 1
         # adversarial(category 5)는 ['Not mentioned', answer] 2지선다 프롬프트를
         # 구성하므로 gold answer가 필요하다. answer=""면 선택지가 빈칸으로 붕괴해
-        # 모델이 항상 'Not mentioned'를 고른다. 그 외 카테고리는 answer를 안 쓴다.
+        # 모델이 항상 'Not mentioned'를 고른다. 그 외 카테고리(1~4)는 answer를
+        # 프롬프트에 쓰므로, gold가 새어들어가지 않도록 cat 5일 때만 넘긴다.
+        ans = answer if cat == 5 else ""
         prediction, _, _ = self.agent.answer_question(
             question=question,
             category=cat,
-            answer=answer or "",
+            answer=ans or "",
         )
         return normalize_prediction(prediction)
 
