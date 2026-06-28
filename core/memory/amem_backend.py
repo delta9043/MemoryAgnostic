@@ -105,19 +105,7 @@ class AMemBackend(BaseMemoryBackend):
         """질문에 대한 답변을 반환."""
         # category가 없으면 기본값 1 사용
         cat = CATEGORY_MAP.get(category, 1) if category is not None else 1
-        # adversarial(category 5)는 ['Not mentioned', answer] 2지선다 프롬프트를
-        # 구성하므로 gold answer가 필요하다. answer=""면 선택지가 빈칸으로 붕괴해
-        # 모델이 항상 'Not mentioned'를 고른다. 그 외 카테고리(1~4)는 answer를
-        # 프롬프트에 쓰므로, gold가 새어들어가지 않도록 cat 5일 때만 넘긴다.
         ans = answer if cat == 5 else ""
-        # Qwen3 thinking 비활성화: 서버의 --override-generation-config
-        # '{"enable_thinking": false}'는 generation_config가 아니라 chat-template
-        # 인자라 무시된다(빈 <think></think>가 안 붙는 걸로 확인). thinking이 켜진
-        # 채로 긴 프롬프트(특히 chunk 사용 시)에서 추론이 max_tokens를 다 먹고
-        # 잘리면, strip_think이 닫힘 없는 <think>를 통째로 지워 답이 빈칸이 된다.
-        # 프롬프트에 /no_think 소프트 스위치를 넣어 답변 생성 단계의 thinking을 끈다.
-        # (chat 호출에선 템플릿이 /no_think를 제거하지만, retrieve용 임베딩에는
-        #  접미사가 남아 약간의 노이즈가 됨 — 빈 답 손실 대비 허용 가능한 trade-off.)
         q = f"{question} /no_think" if NO_THINK else question
         prediction, _, _ = self.agent.answer_question(
             question=q,

@@ -1,3 +1,4 @@
+import os
 import sys
 import importlib
 from typing import List, Optional
@@ -8,16 +9,60 @@ from data.schema import Chunk
 # SimpleMem repo를 import 가능하도록 sys.path에 추가
 SIMPLEMEM_PATH = "/data/delta9043/repos/SimpleMem"
 
+# SimpleMem 메모리 윈도우 기본값(=원본 config.py 값)
+# NoChunker일 때 사용
+_NATIVE_WINDOW, _NATIVE_OVERLAP = 20, 5
+
+# Chunker 사용 시 해당 값으로 오버라이딩
+_CHUNKED_WINDOW, _CHUNKED_OVERLAP = 1, 0
+
+
+def _read_chunker_type():
+    """
+    실행 중인 config(main.py의 --config)의 pipeline.chunker.type을 읽는다.
+    못 읽으면 None 반환.
+    """
+    path = None
+    argv = sys.argv
+    for i, a in enumerate(argv):
+        if a == "--config" and i + 1 < len(argv):
+            path = argv[i + 1]
+            break
+        if a.startswith("--config="):
+            path = a.split("=", 1)[1]
+            break
+    if not path or not os.path.exists(path):
+        return None
+    try:
+        import yaml
+        with open(path, encoding="utf-8") as f:
+            cfg = yaml.safe_load(f) or {}
+        return cfg.get("pipeline", {}).get("chunker", {}).get("type")
+    except Exception:
+        return None
+
+
+def _resolve_window_overlap():
+    """SimpleMem WINDOW_SIZE/OVERLAP_SIZE 결정. (window, overlap, 출처) 반환.
+
+    우선순위:
+    1. 환경변수 SIMPLEMEM_WINDOW_SIZE/SIMPLEMEM_OVERLAP_SIZE (수동 강제).
+    2. config의 chunker 타입: NoChunker → 원본(20/5), 그 외 → 1/0.
+    """
+    if ("SIMPLEMEM_WINDOW_SIZE" in os.environ
+            or "SIMPLEMEM_OVERLAP_SIZE" in os.environ):
+        win = int(os.environ.get("SIMPLEMEM_WINDOW_SIZE", _NATIVE_WINDOW))
+        ovl = int(os.environ.get("SIMPLEMEM_OVERLAP_SIZE", _NATIVE_OVERLAP))
+        return win, ovl, "env"
+    chunker = _read_chunker_type()
+    if chunker and chunker != "NoChunker":
+        return _CHUNKED_WINDOW, _CHUNKED_OVERLAP, f"chunker={chunker}"
+    return _NATIVE_WINDOW, _NATIVE_OVERLAP, f"chunker={chunker or 'unknown'}"
+
 
 def _load_simplemem():
-    """SimpleMem 모듈을 MemoryAgnostic의 core와 충돌 없이 로드한다.
-
-    문제: MemoryAgnostic/core/ 가 sys.modules["core"]로 먼저 등록된 상태에서
-    SimpleMem/main.py 가 'from core.memory_builder import ...' 를 시도하면
-    MemoryAgnostic의 core를 보게 되어 ModuleNotFoundError 발생.
-
-    해결: sys.path에 SimpleMem을 추가한 뒤, sys.modules에서 'core'로 시작하는
-    항목을 임시로 제거하고 SimpleMem 모듈을 import한 후 복원한다.
+    """
+    SimpleMem 모듈을 로드한다.
     """
     if SIMPLEMEM_PATH not in sys.path:
         sys.path.insert(0, SIMPLEMEM_PATH)
@@ -29,6 +74,20 @@ def _load_simplemem():
         del sys.modules[k]
 
     try:
+        win, ovl, src = _resolve_window_overlap()
+        try:
+            cfg = importlib.import_module("config")
+            cfg.WINDOW_SIZE = win
+            cfg.OVERLAP_SIZE = ovl
+            print(f"[simplemem] config override: WINDOW_SIZE={win} "
+                  f"OVERLAP_SIZE={ovl} (src={src})", flush=True)
+        except Exception as e:
+            # config 모듈명이 다르면 덮어쓰기 실패 → 크래시 대신 경고만.
+            # 이 경우 SimpleMem config.py의 파일 값이 그대로 쓰이므로 확인 필요.
+            print(f"[simplemem][WARN] WINDOW_SIZE/OVERLAP_SIZE override 실패 "
+                  f"({type(e).__name__}: {e}). config.py 파일 값이 사용됨.",
+                  flush=True)
+
         SimpleMemSystem = importlib.import_module("main").SimpleMemSystem
         Dialogue = importlib.import_module("models.memory_entry").Dialogue
     finally:
