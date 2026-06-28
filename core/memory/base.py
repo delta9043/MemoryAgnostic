@@ -61,12 +61,15 @@ class BaseMemoryBackend(ABC):
         pass
 
     @abstractmethod
-    def query(self, question: str, category=None) -> str:
+    def query(self, question: str, category=None, answer=None) -> str:
         """
         질문에 대한 답변을 반환한다.
-s
+
         Args:
             question: str - 자연어 질문
+            category: str - 질문 카테고리 (옵션)
+            answer: str - gold answer (옵션). adversarial(category 5)의
+                2지선다 프롬프트 구성에만 사용된다. 그 외 카테고리는 무시.
 
         Returns:
             str - LLM이 생성한 답변

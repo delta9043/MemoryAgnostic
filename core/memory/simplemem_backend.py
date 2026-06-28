@@ -118,8 +118,12 @@ class SimpleMemBackend(BaseMemoryBackend):
         self.system.add_dialogues(dialogues)
         self.system.finalize()
 
-    def query(self, question: str, category: str = None) -> str:
-        """질문에 대한 답변을 반환한다."""
+    def query(self, question: str, category: str = None,
+              answer: str = None) -> str:
+        """질문에 대한 답변을 반환한다.
+
+        answer는 인터페이스 통일을 위해 받지만 SimpleMem.ask()는 사용하지 않는다.
+        """
         return normalize_prediction(self.system.ask(question))
 
     def reset(self) -> None:

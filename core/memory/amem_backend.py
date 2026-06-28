@@ -92,14 +92,18 @@ class AMemBackend(BaseMemoryBackend):
             timestamp = chunk.turns[0].timestamp
             self.agent.add_memory(content, time=timestamp)
 
-    def query(self, question: str, category: Optional[str] = None) -> str:
+    def query(self, question: str, category: Optional[str] = None,
+              answer: Optional[str] = None) -> str:
         """질문에 대한 답변을 반환."""
         # category가 없으면 기본값 1 사용
         cat = CATEGORY_MAP.get(category, 1) if category is not None else 1
+        # adversarial(category 5)는 ['Not mentioned', answer] 2지선다 프롬프트를
+        # 구성하므로 gold answer가 필요하다. answer=""면 선택지가 빈칸으로 붕괴해
+        # 모델이 항상 'Not mentioned'를 고른다. 그 외 카테고리는 answer를 안 쓴다.
         prediction, _, _ = self.agent.answer_question(
             question=question,
             category=cat,
-            answer="",  # 평가 시 정답 불필요
+            answer=answer or "",
         )
         return normalize_prediction(prediction)
 

@@ -84,7 +84,7 @@ def run(cfg: dict):
     for i, qa in enumerate(processed.qa):
         question = qa.question
         answer_gt = qa.answer
-        answer_pred = backend.query(question, qa.category)
+        answer_pred = backend.query(question, qa.category, answer_gt)
         results.append({
             "idx": i,
             "question": question,
