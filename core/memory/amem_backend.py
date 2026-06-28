@@ -1,3 +1,4 @@
+import os
 import sys
 from typing import List, Optional
 
@@ -19,6 +20,13 @@ CATEGORY_MAP = {
     "multi_hop": 4,
     "adversarial": 5,
 }
+
+# ── 디버깅 토글 (환경변수로 제어; query()에서 사용) ──────────────────────────
+# AMEM_NO_THINK=0  → /no_think 비활성화(=thinking 켜짐). 빈 답 재현/비교용.
+# AMEM_DEBUG=1     → query마다 raw 출력/think 포함 여부/길이를 stdout에 찍음.
+_FALSEY = ("", "0", "false", "False")
+NO_THINK = os.environ.get("AMEM_NO_THINK", "1") not in _FALSEY
+DEBUG = os.environ.get("AMEM_DEBUG", "") not in _FALSEY
 
 class AMemBackend(BaseMemoryBackend):
     """
@@ -102,12 +110,37 @@ class AMemBackend(BaseMemoryBackend):
         # 모델이 항상 'Not mentioned'를 고른다. 그 외 카테고리(1~4)는 answer를
         # 프롬프트에 쓰므로, gold가 새어들어가지 않도록 cat 5일 때만 넘긴다.
         ans = answer if cat == 5 else ""
+        # Qwen3 thinking 비활성화: 서버의 --override-generation-config
+        # '{"enable_thinking": false}'는 generation_config가 아니라 chat-template
+        # 인자라 무시된다(빈 <think></think>가 안 붙는 걸로 확인). thinking이 켜진
+        # 채로 긴 프롬프트(특히 chunk 사용 시)에서 추론이 max_tokens를 다 먹고
+        # 잘리면, strip_think이 닫힘 없는 <think>를 통째로 지워 답이 빈칸이 된다.
+        # 프롬프트에 /no_think 소프트 스위치를 넣어 답변 생성 단계의 thinking을 끈다.
+        # (chat 호출에선 템플릿이 /no_think를 제거하지만, retrieve용 임베딩에는
+        #  접미사가 남아 약간의 노이즈가 됨 — 빈 답 손실 대비 허용 가능한 trade-off.)
+        q = f"{question} /no_think" if NO_THINK else question
         prediction, _, _ = self.agent.answer_question(
-            question=question,
+            question=q,
             category=cat,
             answer=ans or "",
         )
-        return normalize_prediction(prediction)
+        pred = normalize_prediction(prediction)
+        if DEBUG:
+            has_think = "<think>" in prediction
+            closed = "</think>" in prediction
+            print(
+                f"[amem][debug] cat={cat} no_think={NO_THINK} "
+                f"think={has_think}/closed={closed} "
+                f"raw_len={len(prediction)} pred_len={len(pred)}\n"
+                f"  Q   : {question[:80]}\n"
+                f"  raw : {prediction[:300]!r}\n"
+                f"  pred: {pred[:200]!r}",
+                flush=True,
+            )
+        if not pred:
+            # /no_think 이후에도 빈 답이면 원인 추적용으로 raw를 남긴다.
+            print(f"[amem][empty] cat={cat} raw={prediction[:200]!r}", flush=True)
+        return pred
 
     def reset(self) -> None:
         """메모리 초기화. 다음 샘플 처리 전에 호출."""
