@@ -6,10 +6,7 @@
 #SBATCH -p batch_ce_ugrad
 #SBATCH -t 6-0
 #SBATCH -o /data/delta9043/repos/MemoryAgnostic/logs/slurm-%A.out
-#SBATCH --exclude=moana-r[1-5],moana-u[1-8]
-
-# SimpleMem + Qwen3-14B + LLMChunker(PrecomputedChunker). chunks.json 필요(먼저 청킹).
-# 독립 재실행 가능. chunks 파일이 없으면 PrecomputedChunker가 명확히 에러낸다.
+#SBATCH --exclude=moana-r[1-5],moana-u[1-8],moana-y6
 
 set -e
 
