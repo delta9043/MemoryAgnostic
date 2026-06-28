@@ -15,4 +15,4 @@ memory_backend:
   model: /data/delta9043/models/Qwen3-14B
 
 evaluation:
-  result_file: results/amem_default.json
+  result_file: results/amem/default/result.json

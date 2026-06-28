@@ -5,7 +5,7 @@
 #SBATCH --mem-per-gpu=32G
 #SBATCH -p batch_ce_ugrad
 #SBATCH -t 6-0
-#SBATCH -o /data/delta9043/repos/MemoryAgnostic/logs/slurm-%A.out
+#SBATCH -o /data/delta9043/repos/MemoryAgnostic/logs/simplemem/slurm/slurm-%A.out
 #SBATCH --exclude=moana-r[1-5],moana-u[1-8]
 
 set -e
@@ -26,7 +26,7 @@ VLLM_TP_SIZE=2
 EXPERIMENT_CONFIG="configs/test_simplemem.yaml"
 CONDA_ENV="simplemem"
 
-mkdir -p ${REPO}/logs ${REPO}/results
+mkdir -p ${REPO}/logs/simplemem/{slurm,vllm,output} ${REPO}/results
 
 echo "vLLM Port: $VLLM_PORT"
 
@@ -36,7 +36,7 @@ VLLM_MODEL_PATH="$MODEL_PATH" \
 VLLM_PORT="$VLLM_PORT" \
 VLLM_MAX_MODEL_LEN="$VLLM_MAX_MODEL_LEN" \
 VLLM_TP_SIZE="$VLLM_TP_SIZE" \
-    bash ${REPO}/scripts/start_vllm.sh > ${REPO}/logs/vllm-${SLURM_JOB_ID}.out 2>&1 &
+    bash ${REPO}/scripts/common/start_vllm.sh > ${REPO}/logs/simplemem/vllm/vllm-${SLURM_JOB_ID}.out 2>&1 &
 
 VLLM_PID=$!
 echo "vLLM PID: $VLLM_PID"
@@ -53,7 +53,8 @@ echo "Starting experiment..."
 CONDA_ENV="$CONDA_ENV" \
 EXPERIMENT_CONFIG="${REPO}/$EXPERIMENT_CONFIG" \
 VLLM_BASE_URL="http://localhost:$VLLM_PORT/v1" \
-    bash -x ${REPO}/scripts/run_experiment.sh
+LOG_DIR="${REPO}/logs/simplemem/output" \
+    bash -x ${REPO}/scripts/common/run_experiment.sh
 
 echo "Experiment finished: $(date)"
 exit 0

@@ -2,8 +2,11 @@
 __pycache__/
 *.pyc
 
-# Runtime logs
-logs/
+# Runtime logs — 디렉토리 스켈레톤(.gitkeep)만 추적, 로그 파일은 무시.
+# (SLURM -o는 출력 디렉토리가 미리 존재해야 하므로 스켈레톤을 커밋한다)
+logs/**
+!logs/**/
+!logs/**/.gitkeep
 *.out
 
 # Database / runtime outputs

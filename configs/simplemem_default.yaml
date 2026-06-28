@@ -17,4 +17,4 @@ memory_backend:
   clear_db_on_init: true
 
 evaluation:
-  result_file: results/simplemem_default.json
+  result_file: results/simplemem/default/result.json

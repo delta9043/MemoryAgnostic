@@ -5,7 +5,7 @@
 #SBATCH --mem-per-gpu=32G
 #SBATCH -p batch_ce_ugrad
 #SBATCH -t 6-0
-#SBATCH -o /data/delta9043/repos/MemoryAgnostic/logs/slurm-%A.out
+#SBATCH -o /data/delta9043/repos/MemoryAgnostic/logs/simplemem/slurm/slurm-%A.out
 #SBATCH --exclude=moana-r[1-5],moana-u[1-8]
 
 set -e
@@ -37,7 +37,7 @@ echo "Experiment GPU: $EXP_GPU"
 echo "vLLM Port: $VLLM_PORT"
 # =============================
 
-mkdir -p ${REPO}/logs ${REPO}/results
+mkdir -p ${REPO}/logs/simplemem/{slurm,vllm,output} ${REPO}/results
 
 # vLLM 서버 시작
 echo "Starting vLLM server with $VLLM_TP_SIZE GPUs..."
@@ -46,7 +46,7 @@ VLLM_PORT="$VLLM_PORT" \
 VLLM_MAX_MODEL_LEN="$VLLM_MAX_MODEL_LEN" \
 VLLM_TP_SIZE="$VLLM_TP_SIZE" \
 CUDA_VISIBLE_DEVICES="$VLLM_GPUS" \
-    bash ${REPO}/scripts/start_vllm.sh > ${REPO}/logs/vllm-${SLURM_JOB_ID}.out 2>&1 &
+    bash ${REPO}/scripts/common/start_vllm.sh > ${REPO}/logs/simplemem/vllm/vllm-${SLURM_JOB_ID}.out 2>&1 &
 
 VLLM_PID=$!
 echo "vLLM PID: $VLLM_PID"
@@ -68,7 +68,8 @@ CONDA_ENV="simplemem" \
 EXPERIMENT_CONFIG="${REPO}/configs/simplemem_8bfilter.yaml" \
 VLLM_BASE_URL="http://localhost:$VLLM_PORT/v1" \
 CUDA_VISIBLE_DEVICES="$EXP_GPU" \
-    bash ${REPO}/scripts/run_experiment.sh
+LOG_DIR="${REPO}/logs/simplemem/output" \
+    bash ${REPO}/scripts/common/run_experiment.sh
 
 echo "[done] simplemem_8bfilter.yaml: $(date)"
 echo ""

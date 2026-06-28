@@ -16,4 +16,4 @@ memory_backend:
   model: /data/delta9043/models/Qwen3-14B
 
 evaluation:
-  result_file: results/amem_32bfilter.json
+  result_file: results/amem/32bfilter/result.json
