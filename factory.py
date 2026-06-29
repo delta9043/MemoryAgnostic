@@ -82,6 +82,10 @@ def _build_module(module_cfg: dict):
         from core.memory.amem_backend import AMemBackend
         return AMemBackend(**kwargs)
 
+    elif module_type == "LightMemBackend":
+        from core.memory.lightmem_backend import LightMemBackend
+        return LightMemBackend(**kwargs)
+
     elif module_type == "LLMFilter":
         from core.filter.llm_filter import LLMFilter
         return LLMFilter(**kwargs)

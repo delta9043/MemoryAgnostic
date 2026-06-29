@@ -12,6 +12,7 @@ logs/**
 # Database / runtime outputs
 lance_db/
 lancedb_data/
+qdrant_data/
 debug_output/
 
 # Experiment / precompute outputs

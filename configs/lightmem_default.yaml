@@ -1,0 +1,24 @@
+dataset:
+  name: locomo10
+  path: /data/delta9043/datasets/locomo/locomo10.json
+
+pipeline:
+  pre_chunking:
+    - type: NoFilter
+    - type: NoCompressor
+  chunker:
+    type: NoChunker
+
+memory_backend:
+  type: LightMemBackend
+  base_url: http://localhost:8000/v1
+  model: /data/delta9043/models/Qwen3-14B
+  # native_chunking=true → LightMem 자체 segmenter(llmlingua-2 attention+similarity)
+  native_chunking: true
+  llmlingua_path: /data/delta9043/models/llmlingua-2-xlm-roberta-large-meetingbank
+  embedding_path: /data/delta9043/models/all-MiniLM-L6-v2
+  embedding_dims: 384
+  qdrant_path: ./qdrant_data/lightmem_default
+
+evaluation:
+  result_file: results/lightmem/default/result.json

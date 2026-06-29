@@ -1,0 +1,23 @@
+dataset:
+  name: locomo10
+  path: /data/delta9043/datasets/locomo/locomo10.json
+
+pipeline:
+  pre_chunking:
+    - type: NoFilter
+    - type: NoCompressor
+  chunker:
+    # Attention-Similarity chunker (LightMem 방식 B1∩B2). 인라인 실행 — 첫 chunk()에서
+    # LLMLingua-2(attention) + all-MiniLM(embedding)을 in-process 로드(샘플마다 재로드).
+    # chunker.type != NoChunker → SimpleMem WINDOW/OVERLAP 자동 1/0 (chunk 1개=메모리 1개).
+    type: AttentionSimilarityChunker
+    llmlingua_model_path: /data/delta9043/models/llmlingua-2-xlm-roberta-large-meetingbank
+    embedder_model_path: /data/delta9043/models/all-MiniLM-L6-v2
+
+memory_backend:
+  type: SimpleMemBackend
+  base_url: http://localhost:8000/v1
+  model: /data/delta9043/models/Qwen3-14B
+
+evaluation:
+  result_file: results/simplemem/aschunker/result.json
