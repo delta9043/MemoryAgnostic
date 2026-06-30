@@ -10,7 +10,7 @@ pipeline:
     # Attention-Similarity chunker (LightMem 방식 B1∩B2). 인라인 실행 — 첫 chunk()에서
     # LLMLingua-2(attention) + all-MiniLM(embedding)을 in-process 로드(샘플마다 재로드).
     type: AttentionSimilarityChunker
-    llmlingua_model_path: /data/delta9043/models/llmlingua-2-xlm-roberta-large-meetingbank
+    llmlingua_model_path: /data/delta9043/models/llmlingua-2
     embedder_model_path: /data/delta9043/models/all-MiniLM-L6-v2
 
 memory_backend:

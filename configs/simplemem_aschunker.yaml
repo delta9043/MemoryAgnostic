@@ -11,7 +11,7 @@ pipeline:
     # LLMLingua-2(attention) + all-MiniLM(embedding)을 in-process 로드(샘플마다 재로드).
     # chunker.type != NoChunker → SimpleMem WINDOW/OVERLAP 자동 1/0 (chunk 1개=메모리 1개).
     type: AttentionSimilarityChunker
-    llmlingua_model_path: /data/delta9043/models/llmlingua-2-xlm-roberta-large-meetingbank
+    llmlingua_model_path: /data/delta9043/models/llmlingua-2
     embedder_model_path: /data/delta9043/models/all-MiniLM-L6-v2
 
 memory_backend:
