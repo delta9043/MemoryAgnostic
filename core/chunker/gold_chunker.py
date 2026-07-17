@@ -121,7 +121,7 @@ class GoldChunker(BaseChunker):
 
     def __init__(
         self,
-        model: str = "gpt-5.6-sol",
+        model: str,
         api_key: Optional[str] = None,
         base_url: Optional[str] = None,
         temperature: Optional[float] = None,
@@ -132,7 +132,7 @@ class GoldChunker(BaseChunker):
     ):
         """
         Args:
-            model:               OpenAI 호환 모델명 (gold = gpt-5.6-sol).
+            model:               OpenAI 호환 모델명 (필수). runner가 .env의 GOLD_MODEL에서 읽어 전달. 예: gpt-5.6-sol.
             api_key/base_url:    미지정 시 OPENAI_API_KEY 환경변수 / OpenAI 기본 엔드포인트.
             temperature:         None이면 API 기본값(reasoning 모델은 미지원일 수 있음).
             window_turns:        W. 버퍼가 이 turn 수에 도달하면 LLM 호출.

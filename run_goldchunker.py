@@ -99,7 +99,8 @@ def main():
     parser = argparse.ArgumentParser(description="LLM stream gold chunking (upper-bound)")
     parser.add_argument("--data", type=str, default=LOCOMO_PATH,
                         help="locomo10.json 경로 (로컬 실행 시 로컬 경로 지정)")
-    parser.add_argument("--model", type=str, default="gpt-5.6-sol")
+    parser.add_argument("--model", type=str, default=os.environ.get("GOLD_MODEL"),
+                        help="LLM 모델명. 미지정 시 .env의 GOLD_MODEL 사용")
     parser.add_argument("--base_url", type=str, default=None)
     parser.add_argument("--temperature", type=float, default=None)
     parser.add_argument("--window_turns", type=int, default=100, help="W: 윈도우 트리거 turn 수")
@@ -107,6 +108,8 @@ def main():
     parser.add_argument("--limit", type=int, default=0, help="앞 N개 샘플만(스모크). 0=전체")
     parser.add_argument("--output", type=str, default="data/chunked_data/chunks_goldchunker.json")
     args = parser.parse_args()
+    if not args.model:
+        parser.error("모델명이 필요합니다. MemoryAgnostic/.env에 GOLD_MODEL=... 을 설정하거나 --model 로 전달하세요.")
     run(args)
 
 
