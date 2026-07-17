@@ -11,6 +11,9 @@ GPU/로컬 모델 의존성이 없으므로(OpenAI API만 사용) 서버가 아�
 API key는 OPENAI_API_KEY 환경변수에서 읽는다. 윈도우 응답은 디스크 캐시되어 재실행 시 재개.
 
 출력 형식은 run_chunker.py와 동일(PrecomputedChunker 호환).
+
+실행 코드 : python run_goldchunker.py --output data/chunked_data/chunks_gpt-5_6-sol.json
+
 """
 
 import argparse
