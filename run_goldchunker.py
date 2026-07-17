@@ -44,11 +44,11 @@ def _turn_to_dict(turn) -> dict:
 
 
 def run(args) -> None:
-    print(f"[run_goldchunker] 데이터 로드 중: {args.data}", flush=True)
+    print(f"[goldchunker] 데이터 로드 중: {args.data}", flush=True)
     samples = load_locomo10_all(args.data)
     if args.limit:
         samples = samples[: args.limit]
-    print(f"[run_goldchunker] {len(samples)}개 샘플", flush=True)
+    print(f"[goldchunker] {len(samples)}개 샘플", flush=True)
 
     chunker = GoldChunker(
         model=args.model,
@@ -62,7 +62,7 @@ def run(args) -> None:
     total = len(samples)
     n_cross = 0
     for idx, sample in enumerate(samples):
-        print(f"[run_goldchunker] Sample {idx+1}/{total} ({sample.sample_id}) | turns={len(sample.turns)}", flush=True)
+        print(f"[goldchunker] Sample {idx+1}/{total} ({sample.sample_id}) | turns={len(sample.turns)}", flush=True)
         chunks = chunker.chunk(sample.turns)
         n_cross += sum(1 for c in chunks if c.metadata.get("crosses_session"))
         results.append({
@@ -77,21 +77,21 @@ def run(args) -> None:
                 for c in chunks
             ],
         })
-        print(f"[run_goldchunker] {sample.sample_id} 완료 | chunks={len(chunks)}", flush=True)
+        print(f"[goldchunker] {sample.sample_id} 완료 | chunks={len(chunks)}", flush=True)
 
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
-    print(f"[run_goldchunker] 저장 완료: {args.output}", flush=True)
+    print(f"[goldchunker] 저장 완료: {args.output}", flush=True)
 
     # 통계: cross-session 청크 수가 '세션 공짜 이점 제거'의 관측 지표
     sizes = [len(c["turns"]) for r in results for c in r["chunks"]]
     report = chunker.get_report()
-    print(f"[run_goldchunker] 총 chunk: {len(sizes)} | cross-session chunk: {n_cross} | "
+    print(f"[goldchunker] 총 chunk: {len(sizes)} | cross-session chunk: {n_cross} | "
           f"평균 크기: {sum(sizes)/len(sizes):.1f} turns", flush=True)
-    print(f"[run_goldchunker] LLM 호출: {report['usage']['api_calls']} | 캐시 히트: {report['usage']['cache_hits']} | "
+    print(f"[goldchunker] LLM 호출: {report['usage']['api_calls']} | 캐시 히트: {report['usage']['cache_hits']} | "
           f"실패 윈도우: {report['failure_count']}", flush=True)
-    print(f"[run_goldchunker] 토큰: prompt={report['usage']['prompt_tokens']:,} "
+    print(f"[goldchunker] 토큰: prompt={report['usage']['prompt_tokens']:,} "
           f"completion={report['usage']['completion_tokens']:,}", flush=True)
 
 
