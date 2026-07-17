@@ -20,5 +20,8 @@ results/
 data/chunked_data/
 data/filtered_data/
 
+# API keys (gold chunker)
+.env
+
 # Claude
 CLAUDE.md
