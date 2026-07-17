@@ -12,8 +12,15 @@ API key는 OPENAI_API_KEY 환경변수에서 읽는다. 윈도우 응답은 디�
 
 출력 형식은 run_chunker.py와 동일(PrecomputedChunker 호환).
 
-실행 코드 : python run_goldchunker.py --output data/chunked_data/chunks_gpt-5_6-sol.json
+실행 코드 : python run_goldchunker.py \
+    --data /data/delta9043/datasets/locomo/locomo10.json \
+    --model gpt-5.6-sol \
+    --output data/chunked_data/chunks_gpt-5_6-sol.json
 
+    model은 .env에 기입되어 있으면 안 써도 됨.
+    data도 아래 코드 내 경로가 맞으면 상관 없음.
+    limit 1 도 원하면 제외 가능
+    
 """
 
 import argparse
