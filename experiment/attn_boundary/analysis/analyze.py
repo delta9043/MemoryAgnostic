@@ -17,7 +17,22 @@ extract_attn.py의 충분통계에서 turn별 어텐션 값들을 파생해, 경
 
 실행 (GPU 불필요):
   python experiment/attn_boundary/analysis/analyze.py \
-      --gold data/chunked_data/chunks_gpt-5_6-sol.json data/chunked_data/chunks_fable-5.json
+      --gold data/chunked_data/chunks_fable-5.json \
+      --layers 8,9,10,11 \
+      --map_layers 8,9,10,11 \
+      --tag upper-layers
+
+주요 옵션 (실행마다 output/타임스탬프[_tag]/ 하위에 격리 저장됨):
+  --layers L,L,...     대표층 — 프로파일/분포/분해/거리감쇠/summary 표에 사용.
+                       timeline·bias는 이 중 마지막 층. (기본 0,5,11)
+  --map_layers L,L,... 전체 attention 지도(attnmap_*)를 그릴 층.
+                       (기본: --layers의 마지막 층 1개. 8,9,10,11 = LightMem 상위층)
+  --tag NAME           산출물 디렉토리명 메모 (예: upper-layers, k10) — 실행 구분용
+  --out DIR            산출물 루트 변경 (기본: analysis/output)
+  --k N                경계 정렬 프로파일 반경 ±N turn (기본 5)
+  --gold A.json B.json 2개 주면 교집합(둘 다 동의한 경계)만 gold 라벨로 사용
+  * layer_evolution.png은 옵션과 무관하게 항상 전 층(0~11)을 보여줌 —
+    이걸 먼저 보고 갈라지는 층을 --layers/--map_layers에 넣어 재실행 추천.
 """
 
 import argparse
@@ -94,6 +109,20 @@ def derive(d):
     return Q, DIST
 
 
+def build_turn_matrix(d, layer):
+    """충분통계 → conv 전체 turn×turn pair-mean 행렬 (윈도우 밴드 밖은 NaN).
+    M[t, u] = turn t(query)가 turn u(key)에 주는 토큰쌍 평균 attention."""
+    N = len(d["scored"])
+    n_tokens = d["n_tokens"]
+    M = np.full((N, N), np.nan, np.float32)
+    owner, prev, nk = d["pair_owner"], d["pair_prev"], d["pair_nk"]
+    psum = d["pair_sum"][:, layer]
+    for p in range(len(owner)):
+        t, u = int(owner[p]), int(prev[p])
+        M[t, u] = psum[p] / (float(n_tokens[t]) * float(nk[p]))
+    return M
+
+
 def session_starts(session_ids):
     s = [str(x) for x in session_ids]
     return {i for i in range(1, len(s)) if s[i] != s[i - 1]}
@@ -142,6 +171,8 @@ def main():
     ap.add_argument("--tag", type=str, default="",
                     help="실행 디렉토리명에 붙일 메모 (예: layers-all, k10)")
     ap.add_argument("--layers", type=str, default="0,5,11", help="그림에 쓸 대표 층")
+    ap.add_argument("--map_layers", type=str, default="",
+                    help="전체 attention 지도(attnmap_*)를 그릴 층. 기본=--layers의 마지막")
     ap.add_argument("--k", type=int, default=5, help="경계 정렬 프로파일 반경(±k turn)")
     args = ap.parse_args()
 
@@ -224,9 +255,17 @@ def main():
         import matplotlib
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
+        from matplotlib.colors import LogNorm
     except ImportError:
         print("[analyze] matplotlib 없음 — 플롯 생략 (summary.md만 생성)", flush=True)
         return
+
+    def robust_lognorm(m):
+        """작은 attention 값들의 차이가 드러나도록 퍼센타일 클리핑 + 로그 스케일."""
+        pos = m[np.isfinite(m) & (m > 0)]
+        if not len(pos):
+            return None
+        return LogNorm(vmin=np.percentile(pos, 5), vmax=np.percentile(pos, 99.5))
 
     def aligned_profile(qname, layer, centers_key):
         """경계=0 정렬 평균 곡선. centers_key: 'sess' | 'gold_only'"""
@@ -386,6 +425,37 @@ def main():
         fig.savefig(out_dir / f"timeline_{sid}.png", dpi=150)
         plt.close(fig)
 
+    # 10) conv 전체 turn×turn attention 지도 + 경계 오버레이 (DHSA Fig.11b 스타일)
+    map_layers = ([int(x) for x in args.map_layers.split(",")]
+                  if args.map_layers else [show_layers[-1]])
+    for sid, c in conv.items():
+        d = stats[sid]
+        for l in map_layers:
+            M = build_turn_matrix(d, l)
+            norm = robust_lognorm(M)
+            if norm is None:
+                continue
+            N = M.shape[0]
+            fig, ax = plt.subplots(figsize=(11, 10))
+            Mm = np.ma.masked_invalid(M)
+            cmap = plt.cm.viridis.copy()
+            cmap.set_bad("#f0f0f0")                  # 윈도우 밴드 밖 = 연회색
+            im = ax.imshow(Mm, cmap=cmap, norm=norm, interpolation="nearest")
+            for b in c["sess"]:                      # 세션 경계 = 빨간 실선
+                ax.axhline(b - 0.5, color="red", lw=0.9, alpha=0.9)
+                ax.axvline(b - 0.5, color="red", lw=0.9, alpha=0.9)
+            for b in c["gold"] - c["sess"]:          # gold 전용 경계 = 빨간 점선
+                ax.axhline(b - 0.5, color="red", lw=0.7, ls="--", alpha=0.6)
+                ax.axvline(b - 0.5, color="red", lw=0.7, ls="--", alpha=0.6)
+            ax.set_xlabel("key turn u")
+            ax.set_ylabel("query turn t")
+            ax.set_title(f"{sid} L{l} turn-pair attention (log scale) | "
+                         f"solid red=session, dashed red=gold-only")
+            fig.colorbar(im, fraction=0.046)
+            fig.tight_layout()
+            fig.savefig(out_dir / f"attnmap_{sid}_L{l}.png", dpi=150)
+            plt.close(fig)
+
     # 3) 예시 raw map (turn 단위로 접은 히트맵, 층별)
     for mf in sorted(Path(args.stats_dir).glob("maps_*.npz")):
         md = np.load(mf)
@@ -408,7 +478,7 @@ def main():
                         ib = np.where(t2t == ub)[0]
                         fold[a, b2] = maps[j][np.ix_(ia, ib)].mean()
                 ax = axes[j] if maps.shape[0] > 1 else axes
-                im = ax.imshow(fold, cmap="viridis")
+                im = ax.imshow(fold, cmap="viridis", norm=robust_lognorm(fold))
                 lab = f"L{ex_layers[j]}" if j < len(ex_layers) else f"ex{j}"
                 ax.set_title(lab, fontsize=9)
                 fig.colorbar(im, ax=ax, fraction=0.046)
