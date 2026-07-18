@@ -316,6 +316,7 @@ class GoldChunker(BaseChunker):
         sample_id = turns[0].metadata.get("sample_id", "?")
         buffer: List[Turn] = []
         all_segments: List[List[Turn]] = []
+        window_idx = 0  # 이 샘플 내 윈도우 번호(1,2,3…). usage는 전역 누적이라 로그엔 안 씀.
         n_calls_expected = max(1, len(turns) // (self.window_turns - self.carryover_max_turns))
 
         for turn in turns:
@@ -324,8 +325,8 @@ class GoldChunker(BaseChunker):
                 segments = self._segment_buffer(buffer)
                 committed, buffer = self._split_commit_carryover(segments)
                 all_segments.extend(committed)
-                done = self.usage["api_calls"] + self.usage["cache_hits"]
-                print(f"[GoldChunker] {sample_id} window {done}/~{n_calls_expected} "
+                window_idx += 1
+                print(f"[GoldChunker] {sample_id} window {window_idx}/~{n_calls_expected} "
                       f"(committed {len(all_segments)} segs, carryover {len(buffer)} turns)", flush=True)
 
         # stream 끝: 남은 버퍼는 마지막 1회 분할 후 전부 commit (carryover 없음)
