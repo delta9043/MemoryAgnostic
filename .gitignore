@@ -19,6 +19,7 @@ debug_output/
 results/
 data/chunked_data/
 data/filtered_data/
+experiment/attn_boundary/data/
 
 # API keys (gold chunker)
 .env
