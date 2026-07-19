@@ -59,11 +59,18 @@ METRIC_DESC = {
     "mass_self": "자기 turn 내부에 쓴 예산 비율",
     "mass_cls": "CLS(싱크)로 흘린 예산 비율",
 }
-# extract_attn 재실행 후 추가되는 CLS 확장 필드 (npz에 있으면 자동 포함)
+# extract_attn 재실행 후 추가되는 [N, L] 필드 (npz에 있으면 지표로 자동 포함)
 OPTIONAL_METRICS = {
     "cls_first": "turn 첫 토큰이 CLS로 흘린 양",
     "cls_max": "CLS로 가장 많이 흘린 토큰의 양",
+    "sep_first": "turn 첫 토큰이 SEP로 흘린 양",
+    "sep_max": "SEP로 가장 많이 흘린 토큰의 양",
+    "attn_entropy": "토큰별 어텐션 분포 엔트로피 평균 (0=몰림, 1=균등)",
+    "first_ctx_mass": "첫 토큰이 과거 문맥 전체에 준 예산",
+    "first_prev_mass": "첫 토큰이 직전 turn에 준 예산",
 }
+# pair_meanmax(npz)에서 파생되는 지표 (npz에 있으면 자동 포함)
+MEANMAX_DESC = {"meanmax_prev": "각 토큰의 직전 turn 최강 연결 평균 (mean-of-max)"}
 # budget-split 구성 — 다섯 몫의 합 = 예산 전체(1.0)
 BUDGET_COMPS = ["mass_prev", "mass_far", "mass_self", "mass_cls", "mass_sep"]
 
@@ -109,6 +116,9 @@ def derive(d, metric_keys):
             Q[opt] = d[opt].astype(np.float32).copy()
     for q in ["mass_cls", "mass_sep"] + [o for o in OPTIONAL_METRICS if o in Q]:
         Q[q][~d["scored"]] = np.nan
+    has_mm = "pair_meanmax" in metric_keys
+    if has_mm:
+        Q["meanmax_prev"] = np.full((N, L), np.nan, np.float32)
 
     for t in np.where(d["scored"])[0]:
         idx = np.where(owner == t)[0]
@@ -128,6 +138,8 @@ def derive(d, metric_keys):
             with np.errstate(divide="ignore", invalid="ignore"):
                 Q["ratio_prev"][t] = np.where(ctx_total > 0, m_prev / ctx_total, np.nan)
             Q["mass_far"][t] = ctx_total - m_prev
+            if has_mm:
+                Q["meanmax_prev"][t] = d["pair_meanmax"][idx[pr[0]]]
     return Q
 
 
@@ -247,11 +259,13 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
     print(f"[analyze] 산출물 디렉토리: {out_dir}", flush=True)
 
-    # CLS 확장 필드는 모든 conv에 있을 때만 사용
+    # 확장 필드는 모든 conv에 있을 때만 사용
     first = next(iter(stats.values()))
     L = first["pair_sum"].shape[1] if len(first["pair_sum"]) else first["cls_mass"].shape[1]
     extra = [k for k in OPTIONAL_METRICS
              if all(k in d for d in stats.values())]
+    if all("pair_meanmax" in d for d in stats.values()):
+        extra.append("meanmax_prev")
     metrics = list(METRIC_DESC) + extra
 
     layer_specs = parse_layer_specs(args.layers, L)
@@ -416,7 +430,7 @@ def write_summary(out_dir, run_name, args, conv, P, is_b, n_tok, rel_pos,
     lines += ["## 4. 세부 통계\n",
               "| 지표 | 의미 |", "|---|---|"]
     for q in metrics:
-        desc = METRIC_DESC.get(q) or OPTIONAL_METRICS.get(q, "")
+        desc = METRIC_DESC.get(q) or OPTIONAL_METRICS.get(q) or MEANMAX_DESC.get(q, "")
         lines.append(f"| {q} | {desc} |")
     lines += ["| ratio_prev | 과거 turn에 할당한 어텐션 중 직전 turn에 할당한 비율 |",
               "",
@@ -696,10 +710,12 @@ def make_figures(out_dir, args, stats, conv, P, is_b, layer_specs, metrics, L,
     save(fig, "budget-split.png")
 
     # ── 6) layer-gap: 층별 그룹 평균 (층 선택 근거) ─────────────────
-    fig, axes = plt.subplots(1, len(metrics), figsize=(4.2 * len(metrics), 3.4),
+    ncols_g = min(4, len(metrics))                     # 지표가 늘면 여러 행으로
+    nrows_g = int(np.ceil(len(metrics) / ncols_g))
+    fig, axes = plt.subplots(nrows_g, ncols_g, figsize=(4.2 * ncols_g, 3.4 * nrows_g),
                              squeeze=False)
     for j, q in enumerate(metrics):
-        ax = axes[0][j]
+        ax = axes[j // ncols_g][j % ncols_g]
         ax.plot(range(L), [np.nanmean(P[q][:, l][is_b]) for l in range(L)],
                 marker="o", ms=4, color="red", label="gold boundary")
         ax.plot(range(L), [np.nanmean(P[q][:, l][~is_b]) for l in range(L)],
@@ -707,6 +723,8 @@ def make_figures(out_dir, args, stats, conv, P, is_b, layer_specs, metrics, L,
         ax.set_xlabel("layer"); ax.set_title(q, fontsize=10)
         if j == 0:
             ax.set_ylabel("mean"); ax.legend(fontsize=8)
+    for j in range(len(metrics), nrows_g * ncols_g):   # 남는 칸 숨김
+        axes[j // ncols_g][j % ncols_g].axis("off")
     save(fig, "layer-gap.png")
 
     print(f"[analyze] figure 저장 완료 → {out_dir}", flush=True)
