@@ -233,11 +233,13 @@ class LightMemBackend(BaseMemoryBackend):
         if not memories:
             memories = "No relevant memories found."
         prompt = LIGHTMEM_ANSWER_PROMPT.format(memories=memories, question=question)
-        # Qwen3 thinking off: 서버 enable_thinking 무시되므로 /no_think 소프트 스위치.
+        # Qwen3 thinking off: chat template 인자로 꺼야 실제로 꺼진다(서버 플래그와
+        # 최상위 enable_thinking은 vLLM이 무시). /no_think는 이중 방어로 유지.
         resp = self.client.chat.completions.create(
             model=self.model,
             temperature=0.0,
             messages=[{"role": "user", "content": prompt + " /no_think"}],
+            extra_body={"chat_template_kwargs": {"enable_thinking": False}},
         )
         return normalize_prediction(resp.choices[0].message.content)
 
