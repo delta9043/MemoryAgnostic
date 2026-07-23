@@ -32,8 +32,8 @@ extract_attn.py가 만든 stats_*.npz를 읽어, gold chunking 경계와 어텐�
   attnmap-band_{층}_{conv}.png           띠 펴기: x=turn, y=몇 턴 앞(1~8), 색=mass
   attnmap-band-corr_{층}_{conv}.png      거리 보정판 (같은 거리 평균 대비, 빨강=강함/파랑=약함)
   attnbar_{층}_{conv}.png                turn별 mass_prev 막대 (여러 줄 분할)
-  hist_{지표}_{층}.png                   경계 vs 비경계 값 분포
-  boundary-avg_{지표}_{층}.png           경계 정렬 ±k턴 평균 곡선 (오차밴드+기준선)
+  hist_{지표}.png                        경계 vs 비경계 값 분포 (층 = subplot)
+  boundary-avg_{지표}.png                경계 정렬 ±k턴 평균 곡선 (층 = subplot)
   budget-split.png                       경계/비경계 평균 예산 구성 (층별 subfigure)
   layer-gap.png                          층별 경계/비경계 평균 (층 선택 근거)
   summary.md                             ①실험 개요 ②figure 목록 ③핵심 결과 ④세부 통계 ⑤해석
@@ -73,6 +73,11 @@ OPTIONAL_METRICS = {
 MEANMAX_DESC = {"meanmax_prev": "각 토큰의 직전 turn 최강 연결 평균 (mean-of-max)"}
 # budget-split 구성 — 다섯 몫의 합 = 예산 전체(1.0)
 BUDGET_COMPS = ["mass_prev", "mass_far", "mass_self", "mass_cls", "mass_sep"]
+
+
+def metric_desc(q):
+    """지표 → 한글 설명 (summary 표 · figure suptitle 공용)"""
+    return METRIC_DESC.get(q) or OPTIONAL_METRICS.get(q) or MEANMAX_DESC.get(q, "")
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -335,16 +340,22 @@ attnmap-band-corr에서는 셀 색(빨강/파랑)과의 구분을 위해 초록 
 - 해석: 경계선 위치에서 막대가 주변보다 일관되게 낮거나 높으면 mass_prev를 경계
   탐지 신호로 사용할 가능성이 있다.
 
-### 2.4 hist_{metric}_{layer}.png — 경계·비경계 분포 비교
+### 2.4 hist_{metric}.png — 경계·비경계 분포 비교
 
-- 경계 turn과 비경계 turn의 지표 값 분포를 겹쳐 그린다.
+- 경계 turn과 비경계 turn의 지표 값 분포를 겹쳐 그린다. 한 그림의 각 패널이
+  --layers로 지정한 레이어 하나에 대응한다.
+- 레이어마다 값의 범위가 달라 x축은 패널별로 독립이다. 절대값이 아니라 두 분포가
+  겹치는 정도를 패널끼리 비교한다.
 - 해석: 두 분포의 겹침이 작을수록 해당 지표와 레이어가 경계 구분에 유리하다.
 
-### 2.5 boundary-avg_{metric}_{layer}.png — 경계 정렬 평균 곡선
+### 2.5 boundary-avg_{metric}.png — 경계 정렬 평균 곡선
 
 - 모든 gold 경계를 x=0에 정렬한 뒤, 경계 전후 ±«k» turns의 지표 값을 평균낸다.
+  한 그림의 각 패널이 --layers로 지정한 레이어 하나에 대응한다.
 - 실선(boundary mean): 상대 위치별 경계 turn 평균 / 음영: 95% 신뢰구간 /
   회색 수평 점선(non boundary mean): 전체 비경계 turn의 평균값.
+- x축은 패널 공통, y축은 패널별로 독립이다. 레이어 간 값의 크기 비교는
+  layer-gap.png가 담당하고 여기서는 경계 주변 곡선의 모양을 본다.
 - 해석: x=0에서 곡선이 기준선에서 크게 벗어나면 해당 지표에 경계 신호가 존재한다.
   벗어남이 유지되는 turns 범위로 경계 판정에 필요한 문맥 크기를 추정할 수 있다.
 
@@ -430,8 +441,7 @@ def write_summary(out_dir, run_name, args, conv, P, is_b, n_tok, rel_pos,
     lines += ["## 4. 세부 통계\n",
               "| 지표 | 의미 |", "|---|---|"]
     for q in metrics:
-        desc = METRIC_DESC.get(q) or OPTIONAL_METRICS.get(q) or MEANMAX_DESC.get(q, "")
-        lines.append(f"| {q} | {desc} |")
+        lines.append(f"| {q} | {metric_desc(q)} |")
     lines += ["| ratio_prev | 과거 turn에 할당한 어텐션 중 직전 turn에 할당한 비율 |",
               "",
               "길이 상관·위치 상관은 지표와 turn 길이(토큰 수)·대화 내 상대 위치 "
@@ -506,8 +516,8 @@ def make_figures(out_dir, args, stats, conv, P, is_b, layer_specs, metrics, L,
     BOUND = dict(color="red", lw=1.2)             # 경계 = 빨간 실선 (전 figure 공통)
     GRAY = "#f0f0f0"
 
-    def save(fig, name):
-        fig.tight_layout()
+    def save(fig, name, top=None):
+        fig.tight_layout(rect=(0, 0, 1, top) if top else None)  # top: suptitle 자리
         fig.savefig(out_dir / name, dpi=150)
         plt.close(fig)
 
@@ -639,26 +649,47 @@ def make_figures(out_dir, args, stats, conv, P, is_b, layer_specs, metrics, L,
             axes[-1][0].set_xlabel("turn t")
             save(fig, f"attnbar_{label}_{sid}.png")
 
-    # ── 3) hist: 경계 vs 비경계 분포 ───────────────────────────────
-    for label, idxs in layer_specs:
-        for q in metrics:
+    # 층별 패널 격자 (hist·boundary-avg 공용) — 지표 1개 = 그림 1장
+    ncols_l = min(len(layer_specs), 5)
+    nrows_l = int(np.ceil(len(layer_specs) / ncols_l))
+
+    def layer_panels(sharex=False):
+        fig, axes = plt.subplots(nrows_l, ncols_l, squeeze=False, sharex=sharex,
+                                 figsize=(4.4 * ncols_l, 3.4 * nrows_l))
+        return fig, [axes[j // ncols_l][j % ncols_l] for j in range(nrows_l * ncols_l)]
+
+    def finish_panels(fig, axes, q, name):
+        for ax in axes[len(layer_specs):]:          # 남는 칸 숨김
+            ax.axis("off")
+        axes[0].legend(fontsize=8, loc="upper right")
+        desc = metric_desc(q)
+        fig.suptitle(f"{q} — {desc}" if desc else q, fontsize=11)
+        save(fig, name, top=0.93)
+
+    # ── 3) hist: 경계 vs 비경계 분포 (층 = subplot) ─────────────────
+    for q in metrics:
+        fig, axes = layer_panels()
+        for j, (label, idxs) in enumerate(layer_specs):
+            ax = axes[j]
             x = reduce_layers(P[q], idxs)
             v = ~np.isnan(x)
-            fig, ax = plt.subplots(figsize=(5.5, 3.4))
             ax.hist(x[~is_b & v], bins=40, density=True, alpha=0.55,
                     color="steelblue", label="non boundary")
             ax.hist(x[is_b & v], bins=40, density=True, alpha=0.55,
                     color="red", label="gold boundary")
-            ax.set_xlabel(q); ax.set_ylabel("density")
-            ax.set_title(f"{q} {label}", fontsize=10)
-            ax.legend(fontsize=8)
-            save(fig, f"hist_{q}_{label}.png")
+            ax.set_xlabel(q)
+            ax.set_title(label, fontsize=10)
+            if j % ncols_l == 0:
+                ax.set_ylabel("density")
+        finish_panels(fig, axes, q, f"hist_{q}.png")
 
-    # ── 4) boundary-avg: 경계 정렬 ±k턴 평균 곡선 ──────────────────
+    # ── 4) boundary-avg: 경계 정렬 ±k턴 평균 곡선 (층 = subplot) ────
     k = args.k
     offsets = np.arange(-k, k + 1)
-    for label, idxs in layer_specs:
-        for q in metrics:
+    for q in metrics:
+        fig, axes = layer_panels(sharex=True)      # x는 공통, y는 층마다 독립
+        for j, (label, idxs) in enumerate(layer_specs):
+            ax = axes[j]
             cols = [[] for _ in offsets]          # offset별 값 수집
             for c in conv.values():
                 s = reduce_layers(c["Q"][q], idxs)
@@ -672,18 +703,17 @@ def make_figures(out_dir, args, stats, conv, P, is_b, layer_specs, metrics, L,
                            for v in cols])
             base = np.nanmean(reduce_layers(P[q], idxs)[~is_b])  # 비경계 평균 기준선
 
-            fig, ax = plt.subplots(figsize=(6, 3.6))
             ax.plot(offsets, mean, marker="o", ms=4, color="steelblue",
                     label="boundary mean")
             ax.fill_between(offsets, mean - ci, mean + ci, alpha=0.25,
                             color="steelblue", label="95% CI")
             ax.axhline(base, color="gray", ls="--", lw=1, label="non boundary mean")
             ax.axvline(0, **BOUND)
-            ax.set_xlabel("경계로부터의 상대 turn (0 = 경계 turn)")
-            ax.set_ylabel(q)
-            ax.set_title(f"{q} {label} — 경계 주변 평균", fontsize=10)
-            ax.legend(fontsize=8, loc="upper right")  # loc 고정 (그림마다 이동 방지)
-            save(fig, f"boundary-avg_{q}_{label}.png")
+            ax.set_xlabel("경계로부터의 상대 turn (0 = 경계)")
+            ax.set_title(label, fontsize=10)
+            if j % ncols_l == 0:
+                ax.set_ylabel(q)
+        finish_panels(fig, axes, q, f"boundary-avg_{q}.png")
 
     # ── 5) budget-split: 평균 예산 구성 (--layers와 무관하게 전 층) ─
     ncols = 6
