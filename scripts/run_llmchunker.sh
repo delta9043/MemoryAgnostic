@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-gpu=8
 #SBATCH --mem-per-gpu=32G
 #SBATCH --time=6-00:00:00
-#SBATCH --exclude=moana-r[1-5],moana-u[1-8]
+#SBATCH --exclude=moana-r[1-5],moana-u[1-4],moana-u6,moana-u8
 #SBATCH --output=/data/delta9043/repos/MemoryAgnostic/logs/precompute/slurm/slurm-%j.out
 
 MODEL_PATH="${1:-/data/delta9043/models/Qwen3-32B}"

@@ -6,7 +6,7 @@
 #SBATCH -p batch_ce_ugrad
 #SBATCH -t 6-0
 #SBATCH -o /data/delta9043/repos/MemoryAgnostic/logs/lightmem/slurm/slurm-%A.out
-#SBATCH --exclude=moana-r[1-5],moana-u[1-8]
+#SBATCH --exclude=moana-r[1-5],moana-u[1-4],moana-u6,moana-u8
 
 set -e
 
