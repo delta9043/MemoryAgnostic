@@ -120,8 +120,13 @@ class SimpleMemBackend(BaseMemoryBackend):
             n_groups += 1
             n_turns += len(dialogues)
 
+        # Tantivy FTS 인덱스는 증분이 아니다. 그룹마다 나눠 넣으므로 첫 그룹만
+        # 색인된 채로 남는다 → 전체 위에 한 번 다시 만든다. (원본은 add_dialogues로
+        # 한 번에 넣어 이 문제가 없었다.)
+        self.system.vector_store.rebuild_fts_index()
+
         print(f"[simplemem] build 완료: 추출 호출 {n_groups}회 / turn {n_turns}개 "
-              f"(내부 윈도잉 미사용)", flush=True)
+              f"(내부 윈도잉 미사용, FTS 인덱스 재생성)", flush=True)
 
     def query(self, question: str, category: str = None,
               answer: str = None) -> str:
