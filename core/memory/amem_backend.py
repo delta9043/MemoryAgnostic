@@ -38,7 +38,7 @@ class AMemBackend(BaseMemoryBackend):
         base_url: str,
         model: str,
         api_key: str = "dummy",
-        retrieve_k: int = 5,    # default : 10 (Qwen의 한정된 context 때문에 5로 줄임)
+        retrieve_k: int = 10,   # A-Mem native 기본값. 8192 컨텍스트 때문에 5로 줄였던 것 원복
         temperature_c5: float = 0.5,
     ):
         """
