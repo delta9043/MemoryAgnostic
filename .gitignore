@@ -19,7 +19,7 @@ debug_output/
 results/
 data/chunked_data/
 data/filtered_data/
-experiment/attn_boundary/data/
+experiment/attn_boundary/data*/
 experiment/attn_boundary/analysis/output/
 experiment/gold_chunking/cache/
 experiment/gold_chunking/html/
