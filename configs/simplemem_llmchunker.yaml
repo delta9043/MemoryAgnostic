@@ -8,7 +8,7 @@ pipeline:
     - type: NoCompressor
   chunker:
     type: PrecomputedChunker
-    chunks_path: data/chunked_data/chunks_gpt-5_6-sol.json
+    chunks_path: data/chunked_data/chunks_fable-5.json
 
 memory_backend:
   type: SimpleMemBackend
