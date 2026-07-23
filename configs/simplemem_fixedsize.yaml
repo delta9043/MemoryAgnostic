@@ -1,0 +1,24 @@
+dataset:
+  name: locomo10
+  path: /data/delta9043/datasets/locomo/locomo10.json
+
+pipeline:
+  pre_chunking:
+    - type: NoFilter
+    - type: NoCompressor
+  chunker:
+    # SimpleMem native 윈도잉(20턴/5겹침)을 청커 층에서 재현한 참고 조건.
+    # backend는 내부 윈도잉을 쓰지 않으므로 다른 조건과 코드 경로가 같다.
+    type: FixedSizeChunker
+    window: 20
+    overlap: 5
+
+memory_backend:
+  type: SimpleMemBackend
+  base_url: http://localhost:8000/v1
+  model: /data/delta9043/models/Qwen3-14B
+  db_path: ./lancedb_data/fixedsize
+  clear_db_on_init: true
+
+evaluation:
+  result_file: results/simplemem/fixedsize/result.json

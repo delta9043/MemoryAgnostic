@@ -1,4 +1,3 @@
-import os
 import sys
 import importlib
 from typing import List, Optional
@@ -8,56 +7,6 @@ from data.schema import Chunk
 
 # SimpleMem repo를 import 가능하도록 sys.path에 추가
 SIMPLEMEM_PATH = "/data/delta9043/repos/SimpleMem"
-
-# SimpleMem 메모리 윈도우 기본값(=원본 config.py 값)
-# NoChunker일 때 사용
-_NATIVE_WINDOW, _NATIVE_OVERLAP = 20, 5
-
-# Chunker 사용 시 해당 값으로 오버라이딩
-_CHUNKED_WINDOW, _CHUNKED_OVERLAP = 1, 0
-
-
-def _read_chunker_type():
-    """
-    실행 중인 config(main.py의 --config)의 pipeline.chunker.type을 읽는다.
-    못 읽으면 None 반환.
-    """
-    path = None
-    argv = sys.argv
-    for i, a in enumerate(argv):
-        if a == "--config" and i + 1 < len(argv):
-            path = argv[i + 1]
-            break
-        if a.startswith("--config="):
-            path = a.split("=", 1)[1]
-            break
-    if not path or not os.path.exists(path):
-        return None
-    try:
-        import yaml
-        with open(path, encoding="utf-8") as f:
-            cfg = yaml.safe_load(f) or {}
-        return cfg.get("pipeline", {}).get("chunker", {}).get("type")
-    except Exception:
-        return None
-
-
-def _resolve_window_overlap():
-    """SimpleMem WINDOW_SIZE/OVERLAP_SIZE 결정. (window, overlap, 출처) 반환.
-
-    우선순위:
-    1. 환경변수 SIMPLEMEM_WINDOW_SIZE/SIMPLEMEM_OVERLAP_SIZE (수동 강제).
-    2. config의 chunker 타입: NoChunker → 원본(20/5), 그 외 → 1/0.
-    """
-    if ("SIMPLEMEM_WINDOW_SIZE" in os.environ
-            or "SIMPLEMEM_OVERLAP_SIZE" in os.environ):
-        win = int(os.environ.get("SIMPLEMEM_WINDOW_SIZE", _NATIVE_WINDOW))
-        ovl = int(os.environ.get("SIMPLEMEM_OVERLAP_SIZE", _NATIVE_OVERLAP))
-        return win, ovl, "env"
-    chunker = _read_chunker_type()
-    if chunker and chunker != "NoChunker":
-        return _CHUNKED_WINDOW, _CHUNKED_OVERLAP, f"chunker={chunker}"
-    return _NATIVE_WINDOW, _NATIVE_OVERLAP, f"chunker={chunker or 'unknown'}"
 
 
 def _load_simplemem():
@@ -74,20 +23,6 @@ def _load_simplemem():
         del sys.modules[k]
 
     try:
-        win, ovl, src = _resolve_window_overlap()
-        try:
-            cfg = importlib.import_module("config")
-            cfg.WINDOW_SIZE = win
-            cfg.OVERLAP_SIZE = ovl
-            print(f"[simplemem] config override: WINDOW_SIZE={win} "
-                  f"OVERLAP_SIZE={ovl} (src={src})", flush=True)
-        except Exception as e:
-            # config 모듈명이 다르면 덮어쓰기 실패 → 크래시 대신 경고만.
-            # 이 경우 SimpleMem config.py의 파일 값이 그대로 쓰이므로 확인 필요.
-            print(f"[simplemem][WARN] WINDOW_SIZE/OVERLAP_SIZE override 실패 "
-                  f"({type(e).__name__}: {e}). config.py 파일 값이 사용됨.",
-                  flush=True)
-
         SimpleMemSystem = importlib.import_module("main").SimpleMemSystem
         Dialogue = importlib.import_module("models.memory_entry").Dialogue
     finally:
@@ -105,10 +40,15 @@ class SimpleMemBackend(BaseMemoryBackend):
     SimpleMem(https://github.com/aiming-lab/SimpleMem)을 wrapping하는 MemoryBackend.
 
     동작 방식:
-    1. build(chunks): 각 chunk의 turn들을 하나의 텍스트로 합쳐 Dialogue 하나로 변환.
-       window_size=1이므로 Dialogue 하나가 SimpleMem의 메모리 단위 하나가 된다.
+    1. build(chunks): turn 1개 = Dialogue 1개로 만들고, chunk 하나를 통째로
+       add_dialogue_group에 넘긴다 → chunk 1개 = 메모리 추출 1회.
+       SimpleMem 내부 슬라이딩 윈도우(dialogue_buffer/WINDOW_SIZE)는 거치지 않는다.
     2. query(question): system.ask(question)을 그대로 호출한다.
-    3. reset(): VectorStore를 비워 다음 샘플 처리에 대비한다.
+    3. reset(): VectorStore와 builder 상태를 비워 다음 샘플에 대비한다.
+
+    LLM 입력 양식은 SimpleMem이 만든다(Dialogue.__str__ + 추출 프롬프트). 우리가
+    문자열을 조립하지 않으므로 native와 동일한 양식이 유지되고, 청킹 조건 간에
+    달라지는 것은 '한 번에 몇 turn이 들어가는가'뿐이다.
 
     LLM은 외부 vLLM 서버(OpenAI 호환 API)에 요청하는 방식으로 호출된다.
     """
@@ -149,33 +89,39 @@ class SimpleMemBackend(BaseMemoryBackend):
             "base_url": self.base_url,
             "db_path": self.db_path,
             "clear_db": clear_db,
-            "enable_parallel_processing": True,
+            # build는 add_dialogue_group(순차)만 쓰므로 미사용. 실수로 add_dialogues가
+            # 불려도 병렬 경로(previous_entries 공유)로 새지 않도록 False.
+            "enable_parallel_processing": False,
         }
         if self.table_name is not None:
             kwargs["table_name"] = self.table_name
         return SimpleMemSystem(**kwargs)
 
     def build(self, chunks: List[Chunk]) -> None:
-        dialogues = []
+        """chunk 1개 = 메모리 추출 1회.
+
+        turn을 합치지 않고 Dialogue 1개씩 넘긴다. 합치면 speaker 자리에 "chunk"가
+        들어가고 turn별 시각이 사라져 native와 양식이 달라진다.
+        """
+        n_groups = n_turns = 0
         for chunk in chunks:
-            self._dialogue_id_counter += 1
-            # chunk 안의 turn들을 하나의 텍스트로 합침
-            content = "\n".join(
-                f"{turn.speaker}: {turn.content}" for turn in chunk.turns
-            )
-            # 첫 번째 turn의 timestamp 사용
-            timestamp = chunk.turns[0].timestamp if chunk.turns else None
+            if not chunk.turns:
+                continue
+            dialogues = []
+            for turn in chunk.turns:
+                self._dialogue_id_counter += 1
+                dialogues.append(Dialogue(
+                    dialogue_id=self._dialogue_id_counter,
+                    speaker=turn.speaker,
+                    content=turn.content,
+                    timestamp=turn.timestamp,
+                ))
+            self.system.add_dialogue_group(dialogues)
+            n_groups += 1
+            n_turns += len(dialogues)
 
-            dialogues.append(Dialogue(
-                dialogue_id=self._dialogue_id_counter,
-                speaker="chunk",
-                content=content,
-                timestamp=timestamp,
-            ))
-
-        # window_size=1이므로 Dialogue 하나 = 메모리 단위 하나
-        self.system.add_dialogues(dialogues)
-        self.system.finalize()
+        print(f"[simplemem] build 완료: 추출 호출 {n_groups}회 / turn {n_turns}개 "
+              f"(내부 윈도잉 미사용)", flush=True)
 
     def query(self, question: str, category: str = None,
               answer: str = None) -> str:
@@ -189,7 +135,13 @@ class SimpleMemBackend(BaseMemoryBackend):
         """
         메모리를 초기화한다. 다음 샘플 처리 전에 호출.
         - VectorStore를 비운다.
+        - MemoryBuilder 상태를 비운다. previous_entries가 남으면 다음 샘플의
+          첫 추출 프롬프트에 이전 샘플의 사실이 섞여 들어간다.
         - dialogue_id 카운터를 초기화한다.
         """
         self.system.vector_store.clear()
+        builder = self.system.memory_builder
+        builder.previous_entries = []
+        builder.dialogue_buffer = []
+        builder.processed_count = 0
         self._dialogue_id_counter = 0
