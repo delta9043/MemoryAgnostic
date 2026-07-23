@@ -21,7 +21,7 @@ source /data/delta9043/anaconda3/etc/profile.d/conda.sh
 REPO=/data/delta9043/repos/MemoryAgnostic
 MODEL_PATH="/data/delta9043/models/Qwen3-14B"
 VLLM_PORT=$((8000 + (SLURM_JOB_ID % 100) * 10))
-VLLM_MAX_MODEL_LEN=8192
+VLLM_MAX_MODEL_LEN=32768
 
 # GPU 분배: 마지막 1장은 실험 코드(임베딩 + LLMLingua), 나머지는 vLLM
 IFS=',' read -ra GPU_ARRAY <<< "$CUDA_VISIBLE_DEVICES"

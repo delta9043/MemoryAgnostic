@@ -21,7 +21,7 @@ source /data/delta9043/anaconda3/etc/profile.d/conda.sh
 REPO=/data/delta9043/repos/MemoryAgnostic
 MODEL_PATH="/data/delta9043/models/Qwen3-14B"
 VLLM_PORT=$((8000 + SLURM_JOB_ID % 1000))
-VLLM_MAX_MODEL_LEN=8192
+VLLM_MAX_MODEL_LEN=32768
 VLLM_TP_SIZE=2
 EXPERIMENT_CONFIG="configs/test_simplemem.yaml"
 CONDA_ENV="simplemem"
