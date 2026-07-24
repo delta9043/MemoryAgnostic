@@ -70,10 +70,6 @@ def _build_module(module_cfg: dict):
         from core.chunker.llm_chunker import LLMChunker
         return LLMChunker(**kwargs)
 
-    elif module_type == "GoldChunker":
-        from core.chunker.gold_chunker import GoldChunker
-        return GoldChunker(**kwargs)
-
     elif module_type == "PrecomputedChunker":
         from core.chunker.precomputed_chunker import PrecomputedChunker
         return PrecomputedChunker(**kwargs)

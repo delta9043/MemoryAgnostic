@@ -1,36 +1,55 @@
 """
-LLMChunker — 세션 단위 batch 방식의 LLM topic-boundary 청커.
+LLMChunker — 연속 turn 흐름 위에서 LLM이 경계를 찾는 carryover 방식 gold(upper-bound) 청커.
 
-설계 규칙
-  - loader가 각 Turn에 session_id와 그 세션의 날짜 timestamp를 붙여 둔다.
-  - 청킹 경계는 두 종류로 나뉜다:
-      1) 세션 경계  → 날짜가 바뀌므로 '무조건' 자른다 (LLM에게 묻지 않는다).
-      2) 세션 내부  → 한 세션 안에서 주제가 바뀌는 지점을 LLM이 찾는다.
+설계 (2026-07-17 결정)
+  - 모든 세션의 turn을 이어붙인 '하나의 연속 stream'을 W-turn 버퍼로 흘린다.
+    세션 경계에서 끊지 않고, session_id/timestamp를 경계 판단에 쓰지 않는다(내용만).
+    → 세션 파티션을 공짜로 받는 confound 제거. chunk가 세션을 넘을 수 있음(의도된 동작).
+  - 버퍼가 W turn에 도달하면 LLM(gpt-5.6-sol)이 버퍼 전체를 에피소드로 타일링한다.
+  - carryover: 마지막 경계는 윈도우 끝에 가까워 근거(미래 context)가 얇다. 그래서 '마지막
+    두 세그먼트'(마지막 완성 청크 + 꼬리)는 commit하지 않고 버퍼에 남겨, 다음 윈도우에서
+    백지 상태로 재판단한다(이전 판단 힌트는 주지 않음 — 앵커링 방지).
+    단, 진행 보장을 위해 carryover가 C turn 이상이면 강등: 마지막 한 세그먼트만 남기고,
+    그것도 C 이상이면 전부 commit. → 호출당 최소 W−C turn 진행 = 호출 수 ≤ N/(W−C).
+  - baseline(AttentionSimilarityChunker 등)은 수정하지 않는다: 이 청커는 논문 방법의 재현이
+    아니라 'LLM 청킹의 상한(upper bound)'을 재는 용도다.
 
-  이 방식은 EverMemOS의 contextual segmentation 아이디어(주제 전환 시 경계)를 따르되, batch 단위를 '세션'으로 두었다.
+출력 불변식
+  - 반환 Chunk들의 turns를 이으면 입력 turns와 정확히 동일(누락/중복/재정렬 없음).
+  - 원본 Turn 객체를 그대로 담는다 → timestamp/session_id 보존(다운스트림·관측용.
+    프롬프트에는 들어가지 않음).
 
-출력 불변식:
-  - 반환된 Chunk들의 turns를 순서대로 이으면 입력 turns와 정확히 동일하다(누락/중복/재정렬 없음).
-  - 어떤 Chunk도 세션 경계를 넘지 않는다(한 Chunk의 모든 turn은 같은 session_id).
-  - 원본 Turn 객체를 그대로 담는다 → timestamp 등 메타데이터가 경계에서 손실되지 않는다.
-
-모델은 transformers로 이 프로세스 안에 직접 로드해 generate한다.
-실패(생성 오류/JSON 파싱) 세션은 내부 분할 없이 '세션=한 청크'로 두고 실패 통계에 기록한다.
+실패(호출/파싱) 윈도우는 '분할 없음(한 세그먼트)'로 처리돼 통째로 commit + 통계 기록.
+윈도우 응답은 버퍼 내용 해시로 디스크 캐시 → 재실행 시 같은 윈도우 시퀀스가 결정적으로
+리플레이되어 중단 지점부터 무료로 재개된다.
 """
 
+import hashlib
 import json
+import os
+import random
 import re
+import time
+from pathlib import Path
 from typing import List, Optional
 
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from openai import (
+    APIConnectionError,
+    APIStatusError,
+    APITimeoutError,
+    OpenAI,
+    RateLimitError,
+)
 
 from core.chunker.base import BaseChunker
 from data.schema import Chunk, Turn
 
 
-# LLM에게 주는 시스템 프롬프트
-SYSTEM_PROMPT = """You are an episodic memory boundary detection expert. You are given the turns of a SINGLE conversation session (all messages share the same day). Your task is to find the natural "episode boundaries" within this session and split it into meaningful, independently memorable segments. Your core principle is **"default to merging, split cautiously"**.
+# 캐시 키에 포함됨. 프롬프트를 바꾸면 반드시 올려서 캐시를 무효화할 것.
+PROMPT_VERSION = "v1"
+
+# 세션/날짜 전제 없음: 한 윈도우가 여러 세션·여러 시점을 걸칠 수 있으므로 내용만으로 판단시킨다.
+SYSTEM_PROMPT = """You are an episodic memory boundary detection expert. You are given a window of consecutive conversation turns (they may span different topics, and possibly different occasions). Your task is to find the natural "episode boundaries" within this window and split it into meaningful, independently memorable segments. Your core principle is **"default to merging, split cautiously"**.
 
 ### When to split
 
@@ -47,32 +66,29 @@ Add a boundary (by turn number) only when a **clear signal** appears:
 - **Merge by default:** when in doubt, do not split; only split on clear signals.
 - **Content over form:** greetings and farewells belong to the episode they serve, not their own segment.
 - **Process continuity:** consecutive turns working toward the same goal (e.g., describe a problem → discuss a fix) form one episode.
-- The first turn of the session can never be a boundary (it already starts the first segment).
+- The first turn of the window can never be a boundary (it already starts the first segment).
 
 ### Examples
 (input format: "N. speaker: content"; a boundary is a turn number AFTER which to split)
 
 **Example 1 — one boundary:**
-[1] Alice: Can you help me debug the login issue?
-[2] Bob: Sure, let me check the logs.
-[3] Bob: Found it — a null pointer in AuthService.
-[4] Alice: Fixed, thanks!
-[5] Alice: By the way, are you free for lunch today?
-[6] Bob: Sure, 12:30?
+1. Alice: Can you help me debug the login issue?
+2. Bob: Sure, let me check the logs.
+3. Bob: Found it — a null pointer in AuthService.
+4. Alice: Fixed, thanks!
+5. Alice: By the way, are you free for lunch today?
+6. Bob: Sure, 12:30?
 Output:
 {"reasoning": "Turns 1-4 are a complete bug-fix episode; turn 5 opens an unrelated lunch topic.", "boundaries": [4]}
 
 **Example 2 — no boundary:**
-[1] Alice: What's the status of the Q2 roadmap?
-[2] Bob: About 60% done. Need to finalize the API specs.
-[3] Alice: OK, let's review the specs tomorrow.
+1. Alice: What's the status of the Q2 roadmap?
+2. Bob: About 60% done. Need to finalize the API specs.
+3. Alice: OK, let's review the specs tomorrow.
 Output:
 {"reasoning": "All turns are part of the same Q2 roadmap discussion with no topic change.", "boundaries": []}"""
 
-# 사용자 프롬프트 템플릿.
-# turns_block에는 "1. speaker: content" 형태로 1-based 번호를 붙여 넣는다.
-# 출력은 JSON 한 줄: '그 뒤에서 자를' turn 번호 리스트(after which to split).
-USER_PROMPT_TEMPLATE = """Here are the turns of one conversation session (date: {session_date}). Split it into topic-coherent episodes.
+USER_PROMPT_TEMPLATE = """Here is a window of consecutive conversation turns. Split it into topic-coherent episodes.
 
 {turns_block}
 
@@ -82,246 +98,248 @@ Return STRICT JSON only, no other text:
 - Numbers are 1-based and refer to the list above.
 - A number b means: split AFTER turn b — turns up to b end one episode, and turn b+1 starts the next.
 - Valid range is 1..{n_minus_1} (you cannot split after the last turn).
-- `"boundaries": []` means the whole session is a single episode (no split)."""
+- `"boundaries": []` means the whole window is a single episode (no split)."""
+
+# OpenAI Structured Outputs용 strict 스키마
+BOUNDARIES_SCHEMA = {
+    "name": "window_boundaries",
+    "strict": True,
+    "schema": {
+        "type": "object",
+        "properties": {
+            "reasoning": {"type": "string"},
+            "boundaries": {"type": "array", "items": {"type": "integer"}},
+        },
+        "required": ["reasoning", "boundaries"],
+        "additionalProperties": False,
+    },
+}
 
 
 class LLMChunker(BaseChunker):
-    """세션 단위 batch LLM 청커. 인터페이스는 BaseChunker.chunk(turns) -> List[Chunk]."""
+    """연속 stream + carryover 윈도우에서 LLM으로 경계를 찾는 청커. 인터페이스는 BaseChunker.chunk()."""
 
     def __init__(
         self,
-        model_path: str,
-        device_map: str = "auto",
-        torch_dtype: str = "auto",
-        temperature: float = 0.0,
-        seed: int = 42,
-        max_tokens: int = 512,
-        enable_thinking: bool = False,
+        model: str,
+        api_key: Optional[str] = None,
+        base_url: Optional[str] = None,
+        temperature: Optional[float] = None,
+        window_turns: int = 100,
+        carryover_max_turns: int = 50,
+        max_retries: int = 6,
+        cache_dir: Optional[str] = "data/chunked_data/.cache_goldchunker",
     ):
         """
         Args:
-            model_path:  로컬 모델 경로 또는 HF repo id (예: /data/delta9043/models/Qwen3-32B).
-            device_map:  transformers 디바이스 배치. "auto"면 가용 GPU에 자동 분산.
-            torch_dtype: 가중치 dtype. "auto"면 모델 config의 dtype 사용
-            temperature
-            seed:        재현성용 시드. greedy면 사실상 항상 같은 출력이지만 안전하게 고정한다.
-            max_tokens:  생성할 최대 새 토큰 수
-            enable_thinking: 기본 False
+            model:               OpenAI 호환 모델명 (필수). runner가 .env의 GOLD_MODEL에서 읽어 전달. 예: gpt-5.6-sol.
+            api_key/base_url:    미지정 시 OPENAI_API_KEY 환경변수 / OpenAI 기본 엔드포인트.
+            temperature:         None이면 API 기본값(reasoning 모델은 미지원일 수 있음).
+            window_turns:        W. 버퍼가 이 turn 수에 도달하면 LLM 호출.
+            carryover_max_turns: C. carryover 상한(진행 보장). W−C가 호출당 최소 진행량.
+            cache_dir:           윈도우 응답 디스크 캐시(재개용). None이면 캐시 안 함.
         """
-        self.model_path = model_path
+        if window_turns < 2:
+            raise ValueError(f"window_turns must be >= 2, got {window_turns}")
+        if not (0 < carryover_max_turns < window_turns):
+            raise ValueError(
+                f"carryover_max_turns must satisfy 0 < C < window_turns, "
+                f"got C={carryover_max_turns}, W={window_turns}"
+            )
+
+        self.model = model
         self.temperature = temperature
-        self.seed = seed
-        self.max_tokens = max_tokens
-        self.enable_thinking = enable_thinking
+        self.window_turns = window_turns
+        self.carryover_max_turns = carryover_max_turns
+        self.max_retries = max_retries
 
-        # 모델/토크나이저 로드
-        self.tokenizer = AutoTokenizer.from_pretrained(model_path)
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_path,
-            torch_dtype=torch_dtype,
-            device_map=device_map,
-        )
-        self.model.eval()
+        # 클라이언트는 lazy load (실행 없이 인스턴스만 만드는 경우 API key 불필요하게).
+        self._client = None
+        self._api_key = api_key
+        self._base_url = base_url
 
-        # greedy 재현성을 위해 시드 고정
-        torch.manual_seed(self.seed)
+        self.cache_dir = Path(cache_dir) if cache_dir else None
+        if self.cache_dir:
+            self.cache_dir.mkdir(parents=True, exist_ok=True)
 
-        # 실패 통계(관측용). 한 run 동안 누적된다. reset_failure_stats()로 초기화.
+        # 관측 통계. reset_stats()로 초기화.
+        self.usage = {"api_calls": 0, "cache_hits": 0, "prompt_tokens": 0, "completion_tokens": 0}
         self.failure_count: int = 0
-        self.failed_sessions: List[str] = []
 
-    def reset_failure_stats(self) -> None:
+    def _load(self):
+        if self._client is None:
+            self._client = OpenAI(
+                api_key=self._api_key or os.environ.get("OPENAI_API_KEY"),
+                base_url=self._base_url,
+            )
+
+    def reset_stats(self) -> None:
+        self.usage = {"api_calls": 0, "cache_hits": 0, "prompt_tokens": 0, "completion_tokens": 0}
         self.failure_count = 0
-        self.failed_sessions = []
 
-    def get_failure_report(self) -> dict:
-        return {
-            "failure_count": self.failure_count,
-            "failed_sessions": list(self.failed_sessions),
-        }
+    def get_report(self) -> dict:
+        return {"failure_count": self.failure_count, "usage": dict(self.usage)}
 
     # ──────────────────────────────────────────────────────────────────────
-    # 1) 세션 그룹핑 (turn을 세션별로 그룹을 만든다.)
+    # 1) LLM 호출 (캐시 + 재시도)
     # ──────────────────────────────────────────────────────────────────────
-    def _group_by_session(self, turns: List[Turn]) -> List[List[Turn]]:
-        """
-        turns를 '연속된 같은 session_id' 단위로 묶는다.
-
-        loader가 session_1, session_2 … 순서대로 flat하게 이어 붙이므로,
-        session_id가 바뀌는 지점이 곧 세션 경계다. 정렬을 다시 하지 않고
-        '연속 런(run)'으로 끊어 입력 순서를 그대로 보존한다.
-
-        """
-        groups: List[List[Turn]] = []
-        current: List[Turn] = []
-        current_sid = object()  # 첫 비교에서 반드시 다르도록 object()로 초기화
-
-        for t in turns:
-            if t.session_id != current_sid:
-                if current: # 새로운 그룹 등장 시 이전 그룹 처리 / 초기화
-                    groups.append(current)
-                current = [t]
-                current_sid = t.session_id
-            else: # 기존 그룹에 추가
-                current.append(t)
-        if current: # 마지막 그룹 처리
-            groups.append(current)
-        return groups
-
-    # ──────────────────────────────────────────────────────────────────────
-    # 2) 프롬프트 렌더링
-    # ──────────────────────────────────────────────────────────────────────
-    def _render_turn(self, n: int, turn: Turn) -> str:
-        # "n. speaker: content" 형식으로 렌더링
-        return f"{n}. {turn.speaker}: {turn.content or ''}"
-
-    def _build_messages(self, session_turns: List[Turn]) -> list: # system message + user message로 만든다.
-        turns_block = "\n".join(
-            self._render_turn(i + 1, t) for i, t in enumerate(session_turns)
+    def _cache_path(self, buffer_texts: List[str]) -> Optional[Path]:
+        if not self.cache_dir:
+            return None
+        key_src = json.dumps(
+            {"model": self.model, "prompt_version": PROMPT_VERSION, "texts": buffer_texts},
+            ensure_ascii=False, sort_keys=True,
         )
-        # 세션 내 turn들은 같은 날짜 timestamp를 공유하므로 날짜는 맥락용으로 1번만 보여준다.
-        session_date = session_turns[0].timestamp or "unknown"
-        # 경계는 'after which to split'이라 마지막 turn 뒤는 경계가 될 수 없다 
-        # → 유효 상한은 n-1.
-        user_prompt = USER_PROMPT_TEMPLATE.format(
-            session_date=session_date,
-            turns_block=turns_block,
-            n_minus_1=len(session_turns) - 1,
-        )
+        key = hashlib.sha256(key_src.encode("utf-8")).hexdigest()
+        return self.cache_dir / f"{key}.json"
+
+    def _build_messages(self, buffer_texts: List[str]) -> list:
+        turns_block = "\n".join(f"{i + 1}. {t}" for i, t in enumerate(buffer_texts))
+        user = USER_PROMPT_TEMPLATE.format(turns_block=turns_block, n_minus_1=len(buffer_texts) - 1)
         return [
             {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
+            {"role": "user", "content": user},
         ]
 
-    # ──────────────────────────────────────────────────────────────────────
-    # 3) LLM 호출
-    # ──────────────────────────────────────────────────────────────────────
     def _call_llm(self, messages: list) -> Optional[str]:
-        """
-        messages(system+user)를 chat template로 펴서 generate하고,
-        '새로 생성된 토큰'만 디코드해 문자열로 돌려준다. 실패 시 None(상위에서 fallback).
-
-        반환 문자열의 후처리(<think> 제거, JSON 추출)는 _parse_boundaries가 담당한다.
-        """
-        # 1) chat template 적용 → 모델 입력 문자열.
-        #    enable_thinking은 Qwen3 chat template에 그대로 전달(미검증: 비-Qwen 모델은 무시할 수 있음).
-        text = self.tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True,
-            enable_thinking=self.enable_thinking,
+        kwargs = dict(
+            model=self.model,
+            messages=messages,
+            response_format={"type": "json_schema", "json_schema": BOUNDARIES_SCHEMA},
         )
+        if self.temperature is not None:
+            kwargs["temperature"] = self.temperature
 
-        # 2) 토크나이즈 후 모델 디바이스로 이동
-        inputs = self.tokenizer(text, return_tensors="pt").to(self.model.device)
-        prompt_len = inputs["input_ids"].shape[1]
-
-        # 3) 생성
-        gen_kwargs = dict(
-            max_new_tokens=self.max_tokens,
-            pad_token_id=self.tokenizer.eos_token_id,
-        )
-        if self.temperature and self.temperature > 0:
-            gen_kwargs.update(do_sample=True, temperature=self.temperature)
-        else:
-            gen_kwargs.update(do_sample=False)
-
-        try:
-            with torch.no_grad():
-                generated = self.model.generate(**inputs, **gen_kwargs)
-        except Exception as e:
-            print(f"[LLMChunker] generate failed: {e}", flush=True)
-            return None
-
-        # 4) 입력 길이 이후의 '새로 생성된' 부분만 디코드(프롬프트 에코 제거)
-        new_tokens = generated[0][prompt_len:]
-        return self.tokenizer.decode(new_tokens, skip_special_tokens=True)
+        for attempt in range(self.max_retries):
+            try:
+                resp = self._client.chat.completions.create(**kwargs)
+                self.usage["api_calls"] += 1
+                if getattr(resp, "usage", None):
+                    self.usage["prompt_tokens"] += resp.usage.prompt_tokens
+                    self.usage["completion_tokens"] += resp.usage.completion_tokens
+                return resp.choices[0].message.content
+            except (RateLimitError, APIConnectionError, APITimeoutError):
+                pass  # 재시도
+            except APIStatusError as e:
+                if e.status_code < 500:
+                    raise  # 4xx는 설정 오류일 가능성 → 즉시 중단
+            time.sleep(min(2 ** attempt, 30) + random.random())
+        return None
 
     # ──────────────────────────────────────────────────────────────────────
-    # 4) 응답 파싱
+    # 2) 응답 파싱
     # ──────────────────────────────────────────────────────────────────────
     def _parse_boundaries(self, raw: Optional[str], n_turns: int) -> Optional[List[int]]:
-        """
-        LLM 응답에서 {"boundaries": [...]}를 robust하게 추출한다.
-
-        반환:
-          - 성공: 세션-로컬 1-based 경계 리스트(유효 범위 1..num_turns-1만, 정렬/중복제거).
-                  경계 b의 의미 = "turn b '뒤에서' 자른다(after which to split)".
-          - 실패(호출 실패/JSON 깨짐/형식 불일치): None  → 상위에서 '내부 분할 없음'으로 처리.
-
-        주의: 빈 리스트 []는 '성공했고 경계가 없음'을 뜻한다. None(실패)과 구분된다.
-        """
-        # 호출 실패 방어
+        """LLM 응답 → 1-based 'after which to split' 경계 리스트(유효 1..n-1, 정렬/중복제거).
+        실패(호출/JSON/형식) 시 None. 빈 [](= 경계 없음, 성공)과 구분된다."""
         if raw is None:
             return None
-
-        # Qwen3 thinking 블록과 코드펜스 마커 제거
         text = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL)
         text = re.sub(r"```(?:json)?", "", text)
-
-        # 가장 바깥 중괄호 한 쌍만 추출.
-        start = text.find("{")
-        end = text.rfind("}")
+        start, end = text.find("{"), text.rfind("}")
         if start == -1 or end == -1 or end <= start:
             return None
-        try: # JSON 파싱
+        try:
             parsed = json.loads(text[start : end + 1])
         except json.JSONDecodeError:
             return None
-
-        # 형식 검증
-        if not isinstance(parsed, dict) or "boundaries" not in parsed:
+        if not isinstance(parsed, dict) or not isinstance(parsed.get("boundaries"), list):
             return None
-        raw_bounds = parsed["boundaries"]
-        if not isinstance(raw_bounds, list):
-            return None
-
-        # 유효한 정수 경계만 채택: 1..n_turns-1. (마지막 turn의 뒤는 자를 수 없음.)
-        # bool은 사전에 배제
-        valid = []
-        for b in raw_bounds:
-            if isinstance(b, bool):
-                continue
-            if isinstance(b, int) and 1 <= b <= n_turns - 1:
-                valid.append(b)
+        valid = [
+            b for b in parsed["boundaries"]
+            if isinstance(b, int) and not isinstance(b, bool) and 1 <= b <= n_turns - 1
+        ]
         return sorted(set(valid))
 
     # ──────────────────────────────────────────────────────────────────────
-    # 5) 한 세션 → 청크들
+    # 3) 버퍼 1개 → 세그먼트 타일링
     # ──────────────────────────────────────────────────────────────────────
-    def _chunk_one_session(self, session_turns: List[Turn], next_chunk_id: int) -> List[Chunk]:
-        """
-        한 세션을 LLM 경계로 잘라 Chunk 리스트로 만든다.
-        next_chunk_id부터 chunk_id를 연속 부여한다.
-        """
-        n = len(session_turns)
+    def _segment_buffer(self, buffer: List[Turn]) -> List[List[Turn]]:
+        """버퍼를 LLM 경계로 타일링. 실패 시 [버퍼 전체 1세그먼트] + 통계."""
+        n = len(buffer)
+        if n < 2:
+            return [list(buffer)]
 
-        # 1-turn 세션이면 분할할 게 없다.
-        if n == 1:
-            local_bounds: Optional[List[int]] = []
+        buffer_texts = [f"{t.speaker}: {t.content}" for t in buffer]
+
+        cache_path = self._cache_path(buffer_texts)
+        if cache_path and cache_path.exists():
+            self.usage["cache_hits"] += 1
+            bounds = json.loads(cache_path.read_text(encoding="utf-8"))["boundaries"]
         else:
-            messages = self._build_messages(session_turns)
-            raw = self._call_llm(messages)
-            local_bounds = self._parse_boundaries(raw, n)
+            raw = self._call_llm(self._build_messages(buffer_texts))
+            bounds = self._parse_boundaries(raw, n)
+            if bounds is None:
+                self.failure_count += 1
+                bounds = []  # 실패 → 분할 없음(한 세그먼트로 통째 commit됨)
+            elif cache_path:
+                # 검증 통과한 응답만 캐시 (실패는 재실행 시 다시 시도)
+                cache_path.write_text(
+                    json.dumps({"model": self.model, "prompt_version": PROMPT_VERSION,
+                                "boundaries": bounds}, ensure_ascii=False),
+                    encoding="utf-8",
+                )
 
-        if local_bounds is None:
-            # 실패 → 내부 분할 없이 세션 전체를 한 청크로. 통계에 기록.
-            self.failure_count += 1
-            self.failed_sessions.append(session_turns[0].session_id or "?")
-            local_bounds = []
+        cut_points = [0] + bounds + [n]
+        return [buffer[a:b] for a, b in zip(cut_points[:-1], cut_points[1:]) if b > a]
 
-        # cut_points 예: 세션 6턴, boundaries=[4] 
-        #                → [0, 4, 6] → turns[0:4], turns[4:6]
-        cut_points = [0] + list(local_bounds) + [n]
+    # ──────────────────────────────────────────────────────────────────────
+    # 4) commit 규칙 (carryover)
+    # ──────────────────────────────────────────────────────────────────────
+    def _split_commit_carryover(self, segments: List[List[Turn]]):
+        """(commit할 세그먼트들, carryover turn들)로 분리.
 
-        chunks: List[Chunk] = []
-        for seg_idx, (a, b) in enumerate(zip(cut_points[:-1], cut_points[1:])):
-            seg_turns = session_turns[a:b]
-            if not seg_turns:
-                continue
+        마지막 경계는 윈도우 끝에 가까워 근거가 얇다 → 마지막 두 세그먼트를 잠정으로 남겨
+        다음 윈도우에서 재판단. 단 carryover가 C 이상이면 강등(진행 보장):
+        마지막 한 세그먼트만 → 그것도 C 이상이면 전부 commit.
+        """
+        C = self.carryover_max_turns
+
+        if len(segments) >= 2:
+            tail2 = segments[-2] + segments[-1]
+            if len(tail2) < C:
+                return segments[:-2], tail2
+            if len(segments[-1]) < C:
+                return segments[:-1], list(segments[-1])
+        # 세그먼트 1개(윈도우 전체 한 주제/실패)이거나 꼬리가 너무 큼 → 전부 commit
+        return segments, []
+
+    # ──────────────────────────────────────────────────────────────────────
+    # 5) 진입점
+    # ──────────────────────────────────────────────────────────────────────
+    def chunk(self, turns: List[Turn]) -> List[Chunk]:
+        if not turns:
+            return []
+
+        self._load()
+
+        sample_id = turns[0].metadata.get("sample_id", "?")
+        buffer: List[Turn] = []
+        all_segments: List[List[Turn]] = []
+        window_idx = 0  # 이 샘플 내 윈도우 번호(1,2,3…). usage는 전역 누적이라 로그엔 안 씀.
+        n_calls_expected = max(1, len(turns) // (self.window_turns - self.carryover_max_turns))
+
+        for turn in turns:
+            buffer.append(turn)
+            if len(buffer) >= self.window_turns:
+                segments = self._segment_buffer(buffer)
+                committed, buffer = self._split_commit_carryover(segments)
+                all_segments.extend(committed)
+                window_idx += 1
+                print(f"[LLMChunker] {sample_id} window {window_idx}/~{n_calls_expected} "
+                      f"(committed {len(all_segments)} segs, carryover {len(buffer)} turns)", flush=True)
+
+        # stream 끝: 남은 버퍼는 마지막 1회 분할 후 전부 commit (carryover 없음)
+        if buffer:
+            all_segments.extend(self._segment_buffer(buffer))
+
+        # 세그먼트 → Chunk. session_ids/crosses_session은 confound 제거 관측용 메타데이터.
+        chunks = []
+        for chunk_id, seg_turns in enumerate(all_segments):
             seg_text = "\n".join(f"{t.speaker}: {t.content}" for t in seg_turns)
+            session_ids = list(dict.fromkeys(t.session_id for t in seg_turns))
             chunks.append(Chunk(
-                chunk_id=next_chunk_id + len(chunks),
+                chunk_id=chunk_id,
                 turns=list(seg_turns),  # 원본 Turn 객체 보존 → timestamp 유지
                 text=seg_text,
                 metadata={
@@ -329,34 +347,9 @@ class LLMChunker(BaseChunker):
                     "end_turn_id": seg_turns[-1].turn_id,
                     "start_timestamp": seg_turns[0].timestamp,
                     "end_timestamp": seg_turns[-1].timestamp,
-                    "session_id": seg_turns[0].session_id,
+                    "session_ids": session_ids,
+                    "crosses_session": len(session_ids) > 1,
                     "chunker": "LLMChunker",
                 },
             ))
-        return chunks
-
-    # ──────────────────────────────────────────────────────────────────────
-    # 6) 진입점
-    # ──────────────────────────────────────────────────────────────────────
-    def chunk(self, turns: List[Turn]) -> List[Chunk]:
-        if not turns:
-            return []
-
-        sessions = self._group_by_session(turns)
-        total = len(sessions)          # = 이 샘플의 세션 수(= LLM 호출 횟수). 보통 19~32.
-        bar_width = 20
-        # 진행바 라벨용 sample_id (loader가 turn metadata에 넣어줌). 없으면 "?".
-        sample_id = turns[0].metadata.get("sample_id", "?")
-
-        chunks: List[Chunk] = []
-        for i, session_turns in enumerate(sessions):
-            # 세션 1개 = LLM 호출 1번(느린 부분). 그래서 진행바 단위도 '세션'으로 둔다.
-            chunks.extend(self._chunk_one_session(session_turns, next_chunk_id=len(chunks)))
-
-            if (i + 1) % 2 == 0 or (i + 1) == total:
-                pct = (i + 1) / total
-                filled = int(bar_width * pct)
-                bar = "█" * filled + " " * (bar_width - filled)
-                print(f"[LLMChunker] {sample_id} {i+1:>3}/{total} sessions [{bar}] {pct*100:5.1f}%", flush=True)
-
         return chunks

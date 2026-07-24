@@ -1,16 +1,16 @@
 """
-run_goldchunker.py — GoldChunker(연속 turn 흐름 + carryover + LLM 경계)를 전체 LoCoMo10에
+run_goldchunker.py — LLMChunker(연속 turn 흐름 + carryover + LLM 경계)를 전체 LoCoMo10에
 1회 적용해 chunk JSON으로 저장한다. PrecomputedChunker가 로드해 각 backend에서 공유한다.
 
-gold(upper-bound) 청킹: run_chunker.py(LLMChunker, 세션 경계 무조건 컷)와 달리 세션 파티션을
-쓰지 않고, gpt-5.6-sol이 내용만 보고 모든 경계를 판단한다. baseline은 수정하지 않는다.
+LLMChunker(연속 stream + carryover)는 세션 파티션을 공짜로 받지 않고, LLM이 내용만 보고
+모든 경계를 판단한다(gold=upper-bound). baseline(AttentionSimilarityChunker)은 수정하지 않는다.
 
 GPU/로컬 모델 의존성이 없으므로(OpenAI API만 사용) 서버가 아닌 로컬에서도 실행 가능:
     python run_goldchunker.py --data <로컬 locomo10.json> --limit 1     # 스모크
     python run_goldchunker.py                                           # 전체 (서버 기본 경로)
 API key는 OPENAI_API_KEY 환경변수에서 읽는다. 윈도우 응답은 디스크 캐시되어 재실행 시 재개.
 
-출력 형식은 run_chunker.py와 동일(PrecomputedChunker 호환).
+출력 형식은 PrecomputedChunker 호환(각 backend가 chunk JSON을 로드해 공유).
 
 실행 코드 : python run_goldchunker.py \
     --data /data/delta9043/datasets/locomo/locomo10.json \
@@ -36,7 +36,7 @@ except ImportError:
     pass
 
 from data.locomo_loader import load_locomo10_all
-from core.chunker.gold_chunker import GoldChunker
+from core.chunker.llm_chunker import LLMChunker
 
 
 LOCOMO_PATH = "/data/delta9043/datasets/locomo/locomo10.json"
@@ -60,7 +60,7 @@ def run(args) -> None:
         samples = samples[: args.limit]
     print(f"[goldchunker] {len(samples)}개 샘플", flush=True)
 
-    chunker = GoldChunker(
+    chunker = LLMChunker(
         model=args.model,
         base_url=args.base_url,
         temperature=args.temperature,
