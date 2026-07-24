@@ -17,6 +17,9 @@ echo "GPUs available: $CUDA_VISIBLE_DEVICES"
 
 source /data/delta9043/anaconda3/etc/profile.d/conda.sh
 
+# mem0 텔레메트리 off (오프라인 노드에서 posthog 네트워크 호출 hang 방지)
+export MEM0_TELEMETRY=False
+
 # ============ 설정 ============
 REPO=/data/delta9043/repos/MemoryAgnostic
 MODEL_PATH="/data/delta9043/models/Qwen3-14B"
