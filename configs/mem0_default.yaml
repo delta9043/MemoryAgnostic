@@ -1,0 +1,21 @@
+dataset:
+  name: locomo10
+  path: /data/delta9043/datasets/locomo/locomo10.json
+
+pipeline:
+  pre_chunking:
+    - type: NoFilter
+    - type: NoCompressor
+  chunker:
+    type: NoChunker
+
+memory_backend:
+  type: Mem0Backend
+  base_url: http://localhost:8000/v1
+  model: /data/delta9043/models/Qwen3-14B
+  embedding_path: /data/delta9043/models/all-MiniLM-L6-v2
+  embedding_dims: 384
+  qdrant_path: ./qdrant_data/mem0_default
+
+evaluation:
+  result_file: results/mem0/default/result.json
