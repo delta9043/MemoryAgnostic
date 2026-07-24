@@ -10,6 +10,10 @@ from data.schema import ProcessedSample
 from factory import build_chunker, build_pre_chunking_modules, build_memory_backend
 from eval.metrics import evaluate_results, print_metrics
 
+# category 5(adversarial) 채점 정답. 함정 질문은 대화에 없는 내용이라 "거부"가 정답
+# (native SimpleMem과 동일). adversarial_answer는 그럴듯한 오답이므로 GT로 쓰면 안 된다.
+CATEGORY5_GROUND_TRUTH = "Not mentioned in the conversation"
+
 
 def load_config(config_path: str) -> dict:
     with open(config_path, encoding="utf-8") as f:
@@ -83,8 +87,10 @@ def run(cfg: dict):
     qa_start = time.time()
     for i, qa in enumerate(processed.qa):
         question = qa.question
-        answer_gt = qa.answer
-        answer_pred = backend.query(question, qa.category, answer_gt)
+        # backend에는 qa.answer를 넘긴다(adversarial일 때 오답 후보로 쓰임).
+        answer_pred = backend.query(question, qa.category, qa.answer)
+        # 채점 정답: adversarial(cat5)만 "Not mentioned...", 그 외는 qa.answer.
+        answer_gt = CATEGORY5_GROUND_TRUTH if qa.category == "adversarial" else qa.answer
         results.append({
             "idx": i,
             "question": question,

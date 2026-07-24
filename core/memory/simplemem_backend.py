@@ -1,9 +1,13 @@
 import sys
 import importlib
+import random
 from typing import List, Optional
 
 from core.memory.base import BaseMemoryBackend, normalize_prediction
 from data.schema import Chunk
+
+# category 5(adversarial) 정답. native SimpleMem과 동일(대화에 없으면 이걸 골라야 정답).
+CATEGORY5_GROUND_TRUTH = "Not mentioned in the conversation"
 
 # SimpleMem repo를 import 가능하도록 sys.path에 추가
 SIMPLEMEM_PATH = "/data/delta9043/repos/SimpleMem"
@@ -132,9 +136,62 @@ class SimpleMemBackend(BaseMemoryBackend):
               answer: str = None) -> str:
         """질문에 대한 답변을 반환한다.
 
-        answer는 인터페이스 통일을 위해 받지만 SimpleMem.ask()는 사용하지 않는다.
+        category 5(adversarial)는 native SimpleMem처럼 특수 처리한다(reflection off +
+        "Not mentioned" vs adversarial_answer 2지선다). 그 외는 ask()로 자유형 생성.
+        answer는 adversarial일 때 오답 후보(adversarial_answer)로만 쓴다.
         """
+        if category == "adversarial":
+            return self._answer_category5(question, answer)
         return normalize_prediction(self.system.ask(question))
+
+    def _answer_category5(self, question: str, adversarial_answer: Optional[str]) -> str:
+        # native SimpleMem generate_category5_answer 재현: reflection 끄고 검색한 뒤
+        # "Not mentioned" vs 오답 후보 중 하나를 고르게 한다(위치 편향 방지로 순서 셔플).
+        contexts = self.system.hybrid_retriever.retrieve(question, enable_reflection=False)
+        adv = adversarial_answer or "Unknown answer"
+        options = [CATEGORY5_GROUND_TRUTH, adv]
+        if random.random() < 0.5:
+            options = [options[1], options[0]]
+
+        context_str = self.system.answer_generator._format_contexts(contexts)
+        prompt = f"""
+Based on the context below, answer the following question.
+
+Context:
+{context_str}
+
+Question: {question}
+
+Select the correct answer from the following two options. If the given answer is wrong or not answerable based on the context, you should choose "{CATEGORY5_GROUND_TRUTH}".
+
+Option A: {options[0]}
+Option B: {options[1]}
+
+Requirements:
+1. Choose the option that best matches the context
+2. If neither answer is supported by the context, or if the provided specific answer is incorrect, choose "{CATEGORY5_GROUND_TRUTH}"
+3. Return your response in JSON format
+
+Output Format:
+```json
+{{
+  "reasoning": "Brief explanation of your choice",
+  "answer": "Your selected answer (either '{options[0]}' or '{options[1]}')"
+}}
+```
+
+Return ONLY the JSON, no other text.
+"""
+        messages = [
+            {"role": "system", "content": "You are a professional Q&A assistant. You must output valid JSON format."},
+            {"role": "user", "content": prompt},
+        ]
+        try:
+            response = self.system.llm_client.chat_completion(messages, temperature=0.5, max_retries=3)
+            result = self.system.llm_client.extract_json(response)
+            return normalize_prediction(result.get("answer", response))
+        except Exception:
+            return CATEGORY5_GROUND_TRUTH  # 실패 시 안전한 기본값
 
     def reset(self) -> None:
         """

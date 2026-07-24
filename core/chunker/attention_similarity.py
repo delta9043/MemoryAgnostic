@@ -12,25 +12,30 @@ from data.schema import Chunk, Turn
 class AttentionSimilarityChunker(BaseChunker):
     """
     LightMem 방식의 topic-boundary chunker (B1 ∩ B2).
+    LightMem LoCoMo 재현 코드(experiments/locomo/chunk_locomo.py의
+    ChunkOnlyBufferManager, combined 모드)를 그대로 따른다.
 
-    토큰 수가 buffer_max_tokens를 초과하지 않도록 turn을 순차적으로 버퍼에 쌓고,
-    초과 직전에 현재 버퍼에 대해 B1+B2 계산 후 chunk를 생성한다.
-    이후 버퍼를 비우고 다음 turn들을 계속 처리한다 (LightMem SenMemBufferManager 방식).
+    turn을 순차로 버퍼에 쌓다가 토큰 상한을 넘기려 하면 현재 버퍼를 경계로 자른다.
+    자를 때 **마지막 경계까지만** 방출하고 그 뒤 tail은 버퍼에 남겨 다음 turn과 합친다
+    (cut_with_segmenter force_segment=False). 스트림 끝에서만 tail까지 전부 방출한다
+    (force_segment=True).
 
     B1 (Attention boundary):
         LLMLingua-2 BERT backbone의 sentence-level attention 행렬에서
-        인접 sentence 간 attention 값의 local maxima 위치를 boundary로 사용.
+        outer[i]=M[i,i-1](turn i가 직전 turn에 주는 attention)의 local maxima를 찾아,
+        peak turn '앞'(k+1)을 경계로 둔다(논문 App. C.1).
 
     B2 (Embedding boundary):
-        all-MiniLM-L6-v2로 각 turn을 임베딩한 뒤
-        인접 turn 간 cosine similarity < threshold 위치를 boundary로 사용.
-        threshold는 threshold_start부터 threshold_step씩 올려가며
-        boundary가 발견될 때까지 반복 (최대 threshold_end).
+        all-MiniLM-L6-v2로 각 turn 내용을 임베딩해 인접 cosine similarity < threshold를
+        경계로. threshold는 threshold_start부터 threshold_step씩 올려 경계가 나올 때까지
+        (최대 threshold_end).
 
-    최종 boundary:
-        B2 boundary 중 B1 boundary와 거리 boundary_match_distance 이내인 것만 채택.
-        매칭이 하나도 없으면 B2를 그대로 사용.
-        B1, B2 모두 boundary가 없으면 버퍼 전체를 하나의 chunk로.
+    결합(combined):
+        B1이 없으면 → 버퍼 전체 1청크. B2가 없으면 → 버퍼 전체 1청크.
+        둘 다 있으면 B2 중 B1과 거리 boundary_match_distance 이내인 것만 채택,
+        매칭이 없으면 B2 전체로 fallback.
+
+    경계 판단 입력은 turn.content만 쓴다(speaker 접두어 없음 — LightMem과 동일).
     """
 
     def __init__(
@@ -96,10 +101,8 @@ class AttentionSimilarityChunker(BaseChunker):
     def _compute_attention_boundaries(self, texts: List[str]) -> List[int]:
         """
         texts를 LLMLingua-2에 통과시켜 sentence-level attention 행렬을 추출하고,
-        인접 sentence 간 attention 값(outer)의 local maxima 위치를 boundary로 반환.
-
-        outer[i] = M[i, i-1]: i번째 sentence가 직전 sentence에 주는 attention 값.
-        outer[k-1] < outer[k] > outer[k+1] 인 k가 boundary.
+        outer[i]=M[i,i-1]의 local maxima peak k에 대해 그 '앞'(k+1)을 boundary로 반환.
+        (LightMem chunk_locomo._coarse_boundaries: 논문 App. C.1 — peak turn 앞에서 컷)
         """
         n = len(texts)
         if n < 3:
@@ -126,7 +129,7 @@ class AttentionSimilarityChunker(BaseChunker):
         seq_len = len(input_ids)
 
         # 모델 max position 초과 시 처리 불가 → boundary 없이 반환
-        # 호출 측(_process_buffer)에서 토큰 수를 제어하므로 일반적으로 발생하지 않음
+        # 호출 측(chunk)에서 토큰 수를 제어하므로 일반적으로 발생하지 않음
         max_pos = getattr(model.config, "max_position_embeddings", 512)
         if seq_len > max_pos:
             return []
@@ -178,10 +181,10 @@ class AttentionSimilarityChunker(BaseChunker):
                     row_vals /= s
                 M[i, :i] = row_vals
 
-        # local maxima 위치를 boundary로
+        # local maxima peak k → 경계는 그 앞(k+1)
         outer = [M[i, i - 1] for i in range(1, n)]
         return [
-            k_idx for k_idx in range(1, len(outer) - 1)
+            k_idx + 1 for k_idx in range(1, len(outer) - 1)
             if outer[k_idx - 1] < outer[k_idx] > outer[k_idx + 1]
         ]
 
@@ -189,7 +192,7 @@ class AttentionSimilarityChunker(BaseChunker):
 
     def _compute_embedding_boundaries(self, texts: List[str]) -> List[int]:
         """
-        all-MiniLM-L6-v2로 turn별 임베딩 후 인접 cosine similarity를 계산.
+        all-MiniLM-L6-v2로 turn 내용별 임베딩 후 인접 cosine similarity를 계산.
         threshold_start부터 threshold_step씩 올려가며 boundary가 발견될 때까지 반복.
         """
         n = len(texts)
@@ -217,54 +220,55 @@ class AttentionSimilarityChunker(BaseChunker):
 
         return []
 
-    # ========== Boundary 결합 ==========
+    # ========== Boundary 결합 (combined) ==========
 
     def _combine_boundaries(self, b1: List[int], b2: List[int]) -> List[int]:
         """
-        B2 boundary 중 B1 boundary와 거리 boundary_match_distance 이내인 것만 채택.
-        매칭이 하나도 없으면 B2를 그대로 사용 (LightMem 원본 로직).
+        B1(attention) 또는 B2(embedding) 중 하나라도 비면 분할하지 않는다
+        (버퍼 전체 1청크 = 빈 리스트 반환). 둘 다 있으면 B2 중 B1과 거리
+        boundary_match_distance 이내인 것만 채택, 매칭이 없으면 B2 전체로 fallback.
+        (LightMem chunk_locomo combined 로직과 동일)
         """
         if not b1:
-            return b2
+            return []
         if not b2:
             return []
-
         matched = [
             fb for fb in b2
             if any(abs(fb - cb) <= self.boundary_match_distance for cb in b1)
         ]
-        return sorted(set(matched)) if matched else b2
+        return sorted(set(matched)) if matched else sorted(set(b2))
 
     # ========== 버퍼 처리 ==========
 
-    def _count_tokens(self, text: str) -> int:
-        # 토큰 수 측정용 (special token 제외)
-        return len(self._llmlingua_tokenizer.encode(text, add_special_tokens=False))
+    def _count_tokens(self, content: str) -> int:
+        # LightMem과 동일: content만, special token 포함(default encode).
+        return len(self._llmlingua_tokenizer.encode(content))
 
-    def _process_buffer(self, buffer_turns: List[Turn], buffer_texts: List[str]) -> List[List[Turn]]:
+    def _cut_buffer(self, buffer: List[Turn], force: bool):
         """
-        버퍼에 쌓인 turns에 대해 B1+B2를 계산하고 boundary 기준으로 분할.
-        분할된 각 구간(List[Turn])의 리스트를 반환한다.
+        버퍼를 경계로 자른다. 반환: (방출할 세그먼트 리스트, 남길 버퍼).
+        force=False면 마지막 경계 뒤 tail은 남기고, force=True면 tail까지 방출한다.
         """
-        if not buffer_turns:
-            return []
+        contents = [t.content or "" for t in buffer]
+        b1 = self._compute_attention_boundaries(contents)
+        b2 = self._compute_embedding_boundaries(contents)
+        final = self._combine_boundaries(b1, b2)
 
-        b1 = self._compute_attention_boundaries(buffer_texts)
-        b2 = self._compute_embedding_boundaries(buffer_texts)
-        boundaries = self._combine_boundaries(b1, b2)
-
-        # boundary가 없으면 버퍼 전체를 하나의 segment로
-        if not boundaries:
-            return [list(buffer_turns)]
+        # 경계 없음 → 버퍼 전체를 하나의 세그먼트로, 버퍼 비움
+        if not final:
+            return [list(buffer)], []
 
         segments = []
         start = 0
-        for b in boundaries + [len(buffer_turns)]:
-            seg = buffer_turns[start:b]
-            if seg:
-                segments.append(seg)
+        for b in final:
+            segments.append(buffer[start:b])
             start = b
-        return segments
+
+        if force:
+            segments.append(buffer[start:])   # tail도 방출
+            return segments, []
+        return segments, list(buffer[start:])  # tail은 다음 버퍼로 이월
 
     # ========== chunk(): 최종 진입점 ==========
 
@@ -274,49 +278,33 @@ class AttentionSimilarityChunker(BaseChunker):
 
         self._load_models()
 
-        # CLS, SEP를 위한 여유분 (2개) 확보
-        max_content_tokens = self.buffer_max_tokens - 2
-
-        buffer_turns: List[Turn] = []
-        buffer_texts: List[str] = []
+        buffer: List[Turn] = []
         buffer_token_count = 0
         all_segments: List[List[Turn]] = []
 
         for turn in turns:
-            text = f"{turn.speaker}: {turn.content}"
-            turn_tokens = self._count_tokens(text)
+            turn_tokens = self._count_tokens(turn.content or "")
 
-            # 단일 turn이 max_content_tokens 초과하면 단독 segment로 처리
-            # (BERT 모델에 넣으면 truncation 됨)
-            if turn_tokens > max_content_tokens:
-                # 기존 버퍼를 먼저 flush
-                if buffer_turns:
-                    all_segments.extend(self._process_buffer(buffer_turns, buffer_texts))
-                    buffer_turns = []
-                    buffer_texts = []
-                    buffer_token_count = 0
-                # 이 turn은 단독으로 segment
-                all_segments.append([turn])
-                continue
+            # 버퍼에 추가 시 상한 초과하면 먼저 자른다(tail은 이월).
+            if buffer and buffer_token_count + turn_tokens > self.buffer_max_tokens:
+                segments, buffer = self._cut_buffer(buffer, force=False)
+                all_segments.extend(segments)
+                buffer_token_count = sum(self._count_tokens(t.content or "") for t in buffer)
 
-            # 버퍼에 추가 시 max_content_tokens 초과하면 먼저 flush
-            if buffer_token_count + turn_tokens > max_content_tokens:
-                all_segments.extend(self._process_buffer(buffer_turns, buffer_texts))
-                buffer_turns = []
-                buffer_texts = []
-                buffer_token_count = 0
-
-            buffer_turns.append(turn)
-            buffer_texts.append(text)
+            buffer.append(turn)
             buffer_token_count += turn_tokens
 
-        # 마지막 버퍼 처리
-        if buffer_turns:
-            all_segments.extend(self._process_buffer(buffer_turns, buffer_texts))
+        # 스트림 끝: 남은 버퍼는 tail까지 전부 방출
+        if buffer:
+            segments, _ = self._cut_buffer(buffer, force=True)
+            all_segments.extend(segments)
 
         # segments를 Chunk로 변환
         chunks = []
-        for chunk_id, seg_turns in enumerate(all_segments):
+        chunk_id = 0
+        for seg_turns in all_segments:
+            if not seg_turns:
+                continue
             seg_texts = [f"{t.speaker}: {t.content}" for t in seg_turns]
             chunks.append(Chunk(
                 chunk_id=chunk_id,
@@ -327,4 +315,5 @@ class AttentionSimilarityChunker(BaseChunker):
                     "end_turn_id": seg_turns[-1].turn_id,
                 },
             ))
+            chunk_id += 1
         return chunks

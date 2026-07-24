@@ -169,6 +169,7 @@ class LightMemBackend(BaseMemoryBackend):
         qdrant_path: str = "./qdrant_data/lightmem",
         retrieve_k: int = 30,
         api_key: str = "dummy",
+        clear_on_init: bool = True,
     ):
         if native_chunking and not llmlingua_path:
             raise ValueError("native_chunking=True이면 llmlingua_path가 필요합니다.")
@@ -186,6 +187,11 @@ class LightMemBackend(BaseMemoryBackend):
         self.lm = LightMemory.from_config(self._build_lm_config())
         # 답변 생성용 클라이언트(manager LLM과 동일 vLLM)
         self.client = OpenAI(base_url=base_url, api_key=api_key)
+
+        # on-disk Qdrant/모듈 전역이 재사용되므로, 직전 실행 잔여가 첫 샘플에 새지 않도록
+        # 시작 시 한 번 비운다(reset과 동일 로직).
+        if clear_on_init:
+            self.reset()
 
     def _build_lm_config(self) -> dict:
         # native면 llmlingua-2 segmenter(자체 모델 로드), 아니면 NoOpSegmenter.

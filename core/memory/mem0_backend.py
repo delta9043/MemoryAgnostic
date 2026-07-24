@@ -87,6 +87,7 @@ class Mem0Backend(BaseMemoryBackend):
         top_k: int = 10,               # native 기본값(evaluation/src/memzero/search.py)
         max_tokens: int = 2000,
         api_key: str = "dummy",
+        clear_on_init: bool = True,
     ):
         self.base_url = base_url
         self.model = model
@@ -100,6 +101,11 @@ class Mem0Backend(BaseMemoryBackend):
         self.mem = Memory.from_config(self._build_config())
         self._patch_thinking_off()
         self._speakers: List[str] = []   # build에서 채워짐(첫 등장 순 화자 2명)
+
+        # on-disk Qdrant는 고정 경로를 재사용하므로, 직전 실행이 reset 전에 죽으면
+        # 잔여 데이터가 첫 샘플에 샐 수 있다. 시작 시 한 번 비운다.
+        if clear_on_init:
+            self.mem.reset()
 
     def _build_config(self) -> dict:
         return {
@@ -147,30 +153,52 @@ class Mem0Backend(BaseMemoryBackend):
         self.mem.llm.generate_response = _wrapped
 
     def build(self, chunks: List[Chunk]) -> None:
-        """chunk마다 화자 2명의 뱅크에 role을 뒤집어 add()한다(뱅크당 1회씩)."""
+        """chunk를 timestamp(=세션) 연속 구간으로 나눠 구간마다 add()한다(뱅크당 1회씩).
+
+        mem0는 add() 1회에 timestamp를 1개만 받는다. cross-session 청크(gold/llmchunk)를
+        통째로 넣으면 후행 세션 사실이 첫 세션 날짜로 저장돼 temporal 답이 틀어진다.
+        한 세션 turn은 모두 같은 날짜라, 세션 안에서는 안 나뉘고 청킹 묶음이 유지된다.
+        """
         self._speakers = self._collect_speakers(chunks)
         n_add = 0
         for chunk in chunks:
-            if not chunk.turns:
-                continue
-            timestamp = chunk.turns[0].timestamp
-            for owner in self._speakers:
-                messages = [
-                    {
-                        "role": "user" if t.speaker == owner else "assistant",
-                        "content": f"{t.speaker}: {t.content}",   # native 형식 그대로
-                    }
-                    for t in chunk.turns
-                ]
-                self.mem.add(
-                    messages,
-                    user_id=owner,
-                    metadata={"timestamp": timestamp},
-                    infer=True,
-                )
-                n_add += 1
+            for group in self._split_by_timestamp(chunk.turns):
+                timestamp = group[0].timestamp
+                for owner in self._speakers:
+                    messages = [
+                        {
+                            "role": "user" if t.speaker == owner else "assistant",
+                            "content": f"{t.speaker}: {t.content}",   # native 형식 그대로
+                        }
+                        for t in group
+                    ]
+                    self.mem.add(
+                        messages,
+                        user_id=owner,
+                        metadata={"timestamp": timestamp},
+                        infer=True,
+                    )
+                    n_add += 1
         print(f"[mem0] build 완료: 화자 {len(self._speakers)}명 / add() 호출 {n_add}회 "
-              f"(chunk {len(chunks)}개 × 뱅크 {len(self._speakers)})", flush=True)
+              f"(chunk {len(chunks)}개, 세션 경계로 분할 저장)", flush=True)
+
+    @staticmethod
+    def _split_by_timestamp(turns: List) -> List[List]:
+        # 연속된 같은 timestamp(=세션)끼리 묶는다. cross-session 청크만 실제로 나뉜다.
+        groups: List[List] = []
+        cur: List = []
+        cur_ts = object()  # 첫 비교에서 반드시 다르도록
+        for t in turns:
+            if t.timestamp != cur_ts:
+                if cur:
+                    groups.append(cur)
+                cur = [t]
+                cur_ts = t.timestamp
+            else:
+                cur.append(t)
+        if cur:
+            groups.append(cur)
+        return groups
 
     @staticmethod
     def _collect_speakers(chunks: List[Chunk]) -> List[str]:
