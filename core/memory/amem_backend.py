@@ -99,8 +99,7 @@ class AMemBackend(BaseMemoryBackend):
         # category가 없으면 기본값 1 사용
         cat = CATEGORY_MAP.get(category, 1) if category is not None else 1
         ans = answer if cat == 5 else ""
-        # Qwen3 thinking 비활성화: 서버의 enable_thinking 플래그가 무시되므로
-        # 프롬프트에 /no_think 소프트 스위치를 넣어 답변 단계의 thinking을 끈다.
+        # /no_think 추가 (Qwen3 thinking off — 서버 flag는 무시되므로 프롬프트로 끈다)
         q = f"{question} /no_think"
         prediction, _, _ = self.agent.answer_question(
             question=q,

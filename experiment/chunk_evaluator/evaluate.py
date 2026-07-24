@@ -127,7 +127,8 @@ def per_file_report(name: str, F: dict, rng: random.Random) -> list:
     n_chunks = sum(len(d["sizes"]) for d in F.values())
     n_turns = sum(d["n"] for d in F.values())
     lines.append(f"\n### [{name}] 청크 결")
-    lines.append(f"총 청크 {n_chunks} | 평균 {n_turns / n_chunks:.1f} turn/청크 | "
+    avg = n_turns / n_chunks if n_chunks else 0.0
+    lines.append(f"총 청크 {n_chunks} | 평균 {avg:.1f} turn/청크 | "
                  f"샘플 {len(F)}개 | 총 turn {n_turns}")
     return lines
 

@@ -1,13 +1,8 @@
 """
 QA 평가 메트릭 계산 모듈.
 
-SimpleMem/A-Mem 원본 평가 코드와 동일한 라이브러리/메트릭 사용:
-- ROUGE (rouge_score)
-- BLEU (nltk)
-- BERTScore (bert_score)
-- METEOR (nltk)
-- Exact Match
-- F1 (token-level)
+- F1 / Exact Match: SimpleMem/A-Mem 원본과 동일 로직(set 기반 F1, simple_tokenize).
+- ROUGE(rouge_score) / BLEU(nltk) / METEOR(nltk) / BERTScore(bert_score): 표준 라이브러리.
 """
 
 from collections import defaultdict
@@ -80,24 +75,26 @@ def calculate_meteor(prediction: str, reference: str) -> float:
         return 0.0
 
 
+def simple_tokenize(text: str) -> List[str]:
+    # 원본 SimpleMem/A-Mem과 동일: 소문자화 + 구두점(. , ! ?)을 공백으로 치환 후 split.
+    text = str(text)
+    return text.lower().replace(".", " ").replace(",", " ").replace("!", " ").replace("?", " ").split()
+
+
 def calculate_f1(prediction: str, reference: str) -> float:
-    """
-    Token-level F1 (SQuAD-style).
-    """
-    pred_tokens = prediction.lower().split()
-    ref_tokens = reference.lower().split()
+    """Token-level F1. SimpleMem/A-Mem 원본과 동일하게 set 기반(중복 토큰 무시)."""
+    pred_tokens = set(simple_tokenize(prediction))
+    ref_tokens = set(simple_tokenize(reference))
 
     if not pred_tokens or not ref_tokens:
         return 0.0
 
-    common = set(pred_tokens) & set(ref_tokens)
-
+    common = pred_tokens & ref_tokens
     if not common:
         return 0.0
 
     precision = len(common) / len(pred_tokens)
     recall = len(common) / len(ref_tokens)
-
     return 2 * precision * recall / (precision + recall)
 
 

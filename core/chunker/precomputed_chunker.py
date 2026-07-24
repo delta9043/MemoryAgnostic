@@ -9,7 +9,7 @@ class PrecomputedChunker(BaseChunker):
     """
     미리 생성해 디스크에 저장한 chunk(JSON)를 로드해서 그대로 반환하는 chunker.
 
-    run_chunker.py로 한 번만 청킹해 JSON에 저장한 뒤, A-Mem/SimpleMem 두 backend가 동일한 청크 파일을 입력으로 쓰게 한다\.
+    run_chunker.py로 한 번만 청킹해 JSON에 저장한 뒤, A-Mem/SimpleMem 두 backend가 동일한 청크 파일을 입력으로 쓰게 한다.
 
     매칭 키 = sample_id:
         loader가 모든 Turn에 metadata={"source": ..., "sample_id": ...}를 붙인다.

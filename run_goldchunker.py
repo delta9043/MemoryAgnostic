@@ -89,7 +89,7 @@ def run(args) -> None:
         })
         print(f"[goldchunker] {sample.sample_id} 완료 | chunks={len(chunks)}", flush=True)
 
-    os.makedirs(os.path.dirname(args.output), exist_ok=True)
+    os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
     print(f"[goldchunker] 저장 완료: {args.output}", flush=True)

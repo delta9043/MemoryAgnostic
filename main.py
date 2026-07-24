@@ -147,7 +147,6 @@ def main():
         base_result_file = eval_cfg.get("result_file", "results/output.json")
 
         all_results = []
-        all_metrics_by_cat = {}
 
         for i in range(total):
             print(f"\n[main] ===== Sample {i+1}/{total} =====")
@@ -159,20 +158,11 @@ def main():
             result = run(sample_cfg)
             if result:
                 all_results.extend(result["results"])
-                for cat, m in result["metrics"].items():
-                    if cat not in all_metrics_by_cat:
-                        all_metrics_by_cat[cat] = []
-                    all_metrics_by_cat[cat].append(m)
 
-        # 전체 메트릭 평균
-        aggregated_metrics = {}
-        for cat, metric_list in all_metrics_by_cat.items():
-            keys = [k for k in metric_list[0].keys() if k != "count"]
-            aggregated_metrics[cat] = {
-                k: round(sum(m[k] for m in metric_list) / len(metric_list), 2)
-                for k in keys
-            }
-            aggregated_metrics[cat]["count"] = sum(m["count"] for m in metric_list)
+        # 전체 집계: 모든 샘플의 질문을 풀링해 질문 단위로 평균(micro-average).
+        # SimpleMem/A-Mem 원본(aggregate_metrics)과 동일 — 샘플 단순평균(macro)이 아니다.
+        use_bertscore = cfg.get("evaluation", {}).get("use_bertscore", True)
+        aggregated_metrics = evaluate_results(all_results, use_bertscore=use_bertscore)
 
         # 종합 결과 저장
         output = {
