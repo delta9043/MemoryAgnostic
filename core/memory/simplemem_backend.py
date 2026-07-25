@@ -64,6 +64,11 @@ class SimpleMemBackend(BaseMemoryBackend):
         db_path: str = "./lancedb_data",
         table_name: Optional[str] = None,
         clear_db_on_init: bool = True,
+        semantic_top_k: Optional[int] = None,
+        keyword_top_k: Optional[int] = None,
+        structured_top_k: Optional[int] = None,
+        enable_reflection: Optional[bool] = None,
+        max_reflection_rounds: Optional[int] = None,
     ):
         """
         Args:
@@ -72,6 +77,12 @@ class SimpleMemBackend(BaseMemoryBackend):
             api_key: API 키 (vLLM은 dummy 가능)
             db_path: LanceDB 저장 경로
             table_name: 메모리 테이블 이름. None이면 SimpleMem 기본값 사용.
+
+        검색 파라미터(전부 None이면 SimpleMem config.py 기본값 = native 동작):
+            semantic_top_k/keyword_top_k/structured_top_k: 검색 층별 entry 상한.
+            enable_reflection: 컨텍스트가 불충분하다고 판단되면 추가 검색을 반복하는 기능.
+            max_reflection_rounds: 그 반복 상한. 라운드마다 쿼리 1~3개 × semantic_top_k가
+                누적되므로(제거 없음) 답변 프롬프트 크기를 좌우한다.
         """
         self.base_url = base_url
         self.model = model
@@ -79,6 +90,11 @@ class SimpleMemBackend(BaseMemoryBackend):
         self.db_path = db_path
         self.table_name = table_name
         self.clear_db_on_init = clear_db_on_init
+        self.semantic_top_k = semantic_top_k
+        self.keyword_top_k = keyword_top_k
+        self.structured_top_k = structured_top_k
+        self.enable_reflection = enable_reflection
+        self.max_reflection_rounds = max_reflection_rounds
 
         # 누적 dialogue_id 카운터 (chunk 사이에서도 unique해야 함)
         self._dialogue_id_counter = 0
@@ -96,10 +112,21 @@ class SimpleMemBackend(BaseMemoryBackend):
             # build는 add_dialogue_group(순차)만 쓰므로 미사용. 실수로 add_dialogues가
             # 불려도 병렬 경로(previous_entries 공유)로 새지 않도록 False.
             "enable_parallel_processing": False,
+            # None이면 SimpleMem이 config.py 기본값을 쓴다(native 동작 유지).
+            "enable_reflection": self.enable_reflection,
+            "max_reflection_rounds": self.max_reflection_rounds,
         }
         if self.table_name is not None:
             kwargs["table_name"] = self.table_name
-        return SimpleMemSystem(**kwargs)
+        system = SimpleMemSystem(**kwargs)
+
+        # 층별 top_k는 HybridRetriever는 받지만 SimpleMemSystem이 전달하지 않는다
+        # → 생성 후 직접 설정. 호출 시점에 읽히는 속성이라 안전하다.
+        for attr in ("semantic_top_k", "keyword_top_k", "structured_top_k"):
+            value = getattr(self, attr)
+            if value is not None:
+                setattr(system.hybrid_retriever, attr, value)
+        return system
 
     def build(self, chunks: List[Chunk]) -> None:
         """chunk 1개 = 메모리 추출 1회.

@@ -15,6 +15,14 @@ memory_backend:
   model: /data/delta9043/models/Qwen3-14B
   db_path: ./lancedb_data/default  
   clear_db_on_init: true
+  # 검색 파라미터. 아래 값은 SimpleMem config.py 기본값(native)과 동일 —
+  # 조정하려면 여기서 바꾼다. reflection은 불충분 판정 시 쿼리 1~3개 ×
+  # semantic_top_k를 라운드마다 누적하므로 답변 컨텍스트 크기를 좌우한다.
+  semantic_top_k: 25
+  keyword_top_k: 5
+  structured_top_k: 5
+  enable_reflection: true
+  max_reflection_rounds: 2
 
 evaluation:
   result_file: results/simplemem/default/result.json
