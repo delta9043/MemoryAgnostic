@@ -91,4 +91,34 @@ class PrecomputedChunker(BaseChunker):
                 f"(precomputed={total_chunk_turns}, input={len(turns)}). "
                 f"청킹에 쓴 turn 시퀀스와 현재 입력이 다릅니다."
             )
-        return chunks
+
+        # 3) JSON에서 쓰는 것은 '경계'뿐 — turn 본문은 현재 입력에서 다시 가져온다.
+        #    JSON의 content는 청킹 시점 스냅샷이라, 로더가 바뀌면(예: 이미지 캡션 추가)
+        #    이 arm만 옛 본문을 쓰게 되고 turn 수는 같아 위 검사에 걸리지도 않는다.
+        return [
+            Chunk(
+                chunk_id=c.chunk_id,
+                turns=live,
+                text="\n".join(f"{t.speaker}: {t.content}" for t in live),
+                metadata=c.metadata,
+            )
+            for c, live in zip(chunks, self._rebind(sample_id, chunks, turns))
+        ]
+
+    @staticmethod
+    def _rebind(sample_id: str, chunks: List[Chunk], turns: List[Turn]) -> List[List[Turn]]:
+        # 청크 크기 순서대로 입력 turn을 잘라 붙인다(overlap 없는 파티션 가정 — 위 수 검사와 동일).
+        # turn_id로 정렬 일치를 확인해 청크 파일과 데이터가 어긋난 경우를 잡는다.
+        groups, pos = [], 0
+        for c in chunks:
+            live = turns[pos:pos + len(c.turns)]
+            for expected, actual in zip(c.turns, live):
+                if expected.turn_id != actual.turn_id:
+                    raise ValueError(
+                        f"PrecomputedChunker: turn_id mismatch for sample {sample_id!r} "
+                        f"at chunk {c.chunk_id} (precomputed={expected.turn_id!r}, "
+                        f"input={actual.turn_id!r}). 청크 파일과 현재 데이터의 turn 순서가 다릅니다."
+                    )
+            groups.append(live)
+            pos += len(live)
+        return groups

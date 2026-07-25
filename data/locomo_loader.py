@@ -23,6 +23,16 @@ def _get_session_keys(conversation: dict) -> List[str]:
     return [k for _, k in keys]
 
 
+def _turn_content(raw_turn: dict) -> str:
+    # 이미지 turn은 캡션을 본문 앞에 붙인다 (native SimpleMem test_locomo10.py:113-118,
+    # A-Mem load_dataset.py:65-66과 동일). 전체 turn의 15.5%가 이미지 turn이다.
+    text = raw_turn.get("text", "")
+    if "img_url" in raw_turn and "blip_caption" in raw_turn:
+        caption = f"[Image: {raw_turn['blip_caption']}]"
+        return f"{caption} {text}" if text else caption
+    return text
+
+
 def _parse_turns(sample_id: str, conversation: dict) -> List[Turn]:
     # session_1, session_2, ... 순서대로 flat한 Turn 리스트로 변환
     # 각 turn에 해당 session의 날짜(timestamp)와 session_id를 붙인다
@@ -33,7 +43,7 @@ def _parse_turns(sample_id: str, conversation: dict) -> List[Turn]:
             turns.append(Turn(
                 turn_id=raw_turn["dia_id"],
                 speaker=raw_turn["speaker"],
-                content=raw_turn["text"],
+                content=_turn_content(raw_turn),
                 timestamp=timestamp,
                 session_id=session_key,
                 metadata={"source": "locomo10", "sample_id": sample_id},
