@@ -13,6 +13,7 @@ memory_backend:
   type: AMemBackend
   base_url: http://localhost:8000/v1
   model: /data/delta9043/models/Qwen3-14B
+  retrieve_k: 5   # k=10이 기본값이나, context length 부족으로 k=5 설정
 
 evaluation:
   result_file: results/amem/default/result.json
