@@ -20,6 +20,17 @@ def load_config(config_path: str) -> dict:
         return yaml.safe_load(f)
 
 
+def _provenance(cfg: dict) -> dict:
+    """결과 파일에 남길 설정 스냅샷.
+
+    청커 파라미터(chunks_path, window/overlap)와 backend 파라미터(retrieve_k,
+    top_k, reflection)가 수치를 좌우하므로 어떤 설정에서 나온 값인지 함께 저장한다.
+    """
+    backend = {k: v for k, v in (cfg.get("memory_backend") or {}).items()
+               if k != "api_key"}
+    return {"pipeline": cfg["pipeline"], "memory_backend": backend}
+
+
 def run(cfg: dict):
     # 0. vLLM URL 환경변수 오버라이드
     base_url_override = os.environ.get("VLLM_BASE_URL")
@@ -116,6 +127,7 @@ def run(cfg: dict):
     output = {
         "sample_id": raw.sample_id,
         "pipeline": module_names,
+        "config": _provenance(cfg),
         "results": results,
         "metrics": metrics,
         "build_time": round(build_time, 1),
@@ -174,6 +186,7 @@ def main():
         output = {
             "total_samples": total,
             "pipeline": cfg["pipeline"],
+            "config": _provenance(cfg),
             "metrics": aggregated_metrics,
             "results": all_results,
         }
