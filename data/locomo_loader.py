@@ -6,11 +6,13 @@ from data.schema import QA, RawSample, Turn
 
 
 # LoCoMo10 category 숫자 → 문자열 매핑
+# 1과 4는 헷갈리기 쉽다. 1=multi_hop(evidence 2개 이상, 282문항), 4=single_hop(evidence 1개, 841문항).
+# LightMem 원본(src/lightmem/.../datasets/locomo.py:115,118)과 동일.
 LOCOMO_CATEGORY = {
-    1: "single_hop",
+    1: "multi_hop",
     2: "temporal",
     3: "open_domain",
-    4: "multi_hop",
+    4: "single_hop",
     5: "adversarial",
 }
 

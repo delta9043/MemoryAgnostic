@@ -188,10 +188,14 @@ def evaluate_results(
     # 카테고리별 + overall 집계
     by_category = defaultdict(list)
 
+    # adversarial(cat5)은 GT가 상수 문자열이고 예측도 2지선다라 모든 메트릭이 사실상 이진 정확도로
+    # 붙는다(전체의 22.5%, ~90점대). overall을 지배하므로 제외본을 함께 낸다.
     for item in per_item:
         category = item["category"]
         by_category[category].append(item)
         by_category["overall"].append(item)
+        if category != "adversarial":
+            by_category["overall_no_adv"].append(item)
 
     metric_keys = [key for key in per_item[0].keys() if key != "category"]
 
@@ -220,6 +224,7 @@ def print_metrics(metrics: dict) -> None:
         "multi_hop",
         "adversarial",
         "overall",
+        "overall_no_adv",
     ]
 
     keys = [

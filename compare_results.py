@@ -26,6 +26,7 @@ CATEGORY_ORDER = [
     "multi_hop",
     "adversarial",
     "overall",
+    "overall_no_adv",
 ]
 
 # (라벨, baseline 파일, llmchunk 파일) — results/{backend}/{variant}/result.json
