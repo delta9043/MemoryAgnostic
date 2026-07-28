@@ -2,7 +2,9 @@ import argparse
 import copy
 import json
 import os
+import sys
 import time
+import traceback
 import yaml
 
 from data.locomo_loader import load_locomo10, load_filtered_json
@@ -198,4 +200,14 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # mem0 조건에서 main()이 끝나도 인터프리터가 종료되지 않아 잡이 GPU를 문 채 남았다.
+    # 결과 파일은 이미 닫혔고 qdrant/sqlite는 매 실행 초기화라 종료 경로를 건너뛰어도 된다.
+    exit_code = 0
+    try:
+        main()
+    except BaseException:
+        traceback.print_exc()
+        exit_code = 1
+    sys.stdout.flush()
+    sys.stderr.flush()
+    os._exit(exit_code)
