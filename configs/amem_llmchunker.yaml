@@ -14,7 +14,10 @@ memory_backend:
   type: AMemBackend
   base_url: http://localhost:8000/v1
   model: /data/delta9043/models/Qwen3-14B
-  retrieve_k: 5   # k=10이 기본값이나, context length 부족으로 k=5 설정
+  # 논문 §4.2의 기본값. ⚠ 이 arm은 노트가 길어(평균 1773자) k×(1+이웃)이 32768을
+  # 넘긴 적이 있다(초과 1788건 / 빈 예측 447건). 전체 실행 전 1샘플 드라이런으로
+  # answerer 프롬프트 토큰을 확인하고, 넘치면 VLLM_MAX_MODEL_LEN을 올린다.
+  retrieve_k: 10
 
 evaluation:
   result_file: results/amem/llmchunker/result.json

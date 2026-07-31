@@ -12,9 +12,10 @@ from data.schema import ProcessedSample
 from factory import build_chunker, build_pre_chunking_modules, build_memory_backend
 from eval.metrics import evaluate_results, print_metrics
 
-# category 5(adversarial) 채점 정답. 함정 질문은 대화에 없는 내용이라 "거부"가 정답
-# (native SimpleMem과 동일). adversarial_answer는 그럴듯한 오답이므로 GT로 쓰면 안 된다.
-CATEGORY5_GROUND_TRUTH = "Not mentioned in the conversation"
+# category 5(adversarial)의 두 번째 채점 기준. "거부"를 정답으로 보는 SimpleMem 방식
+# (`SimpleMem/test_locomo10.py:871-874`). A-Mem 원본은 `adversarial_answer`(함정 오답
+# 후보)를 GT로 쓰므로(`A-mem/test_advanced_robust.py:261`) 두 기준을 모두 채점한다.
+CATEGORY5_GROUND_TRUTH_SIMPLEMEM = "Not mentioned in the conversation"
 
 
 def load_config(config_path: str) -> dict:
@@ -102,17 +103,19 @@ def run(cfg: dict):
         question = qa.question
         # backend에는 qa.answer를 넘긴다(adversarial일 때 오답 후보로 쓰임).
         answer_pred = backend.query(question, qa.category, qa.answer)
-        # 채점 정답: adversarial(cat5)만 "Not mentioned...", 그 외는 qa.answer.
-        answer_gt = CATEGORY5_GROUND_TRUTH if qa.category == "adversarial" else qa.answer
-        results.append({
+        # answer_gt = A-Mem 방식(cat5는 loader가 이미 adversarial_answer를 담아준다).
+        record = {
             "idx": i,
             "question": question,
-            "answer_gt": answer_gt,
+            "answer_gt": qa.answer,
             "answer_pred": answer_pred,
             "category": qa.category,
-        })
+        }
+        if qa.category == "adversarial":
+            record["answer_gt_simplemem"] = CATEGORY5_GROUND_TRUTH_SIMPLEMEM
+        results.append(record)
         print(f"[QA {i+1}/{total_qa}] ({qa.category}) Q: {question[:60]}")
-        print(f"  GT:   {answer_gt[:80]}")
+        print(f"  GT:   {qa.answer[:80]}")
         print(f"  PRED: {answer_pred[:80]}")
     qa_time = time.time() - qa_start
 
@@ -120,7 +123,8 @@ def run(cfg: dict):
     print(f"\n[eval] Computing metrics for {len(results)} QA results...")
     eval_start = time.time()
     use_bertscore = eval_cfg.get("use_bertscore", True)
-    metrics = evaluate_results(results, use_bertscore=use_bertscore)
+    use_sbert = eval_cfg.get("use_sbert", True)
+    metrics = evaluate_results(results, use_bertscore=use_bertscore, use_sbert=use_sbert)
     eval_time = time.time() - eval_start
     print_metrics(metrics)
     print(f"\n[eval] QA time: {qa_time:.1f}s, Metric time: {eval_time:.1f}s")
@@ -182,7 +186,10 @@ def main():
         # 전체 집계: 모든 샘플의 질문을 풀링해 질문 단위로 평균(micro-average).
         # SimpleMem/A-Mem 원본(aggregate_metrics)과 동일 — 샘플 단순평균(macro)이 아니다.
         use_bertscore = cfg.get("evaluation", {}).get("use_bertscore", True)
-        aggregated_metrics = evaluate_results(all_results, use_bertscore=use_bertscore)
+        use_sbert = cfg.get("evaluation", {}).get("use_sbert", True)
+        aggregated_metrics = evaluate_results(
+            all_results, use_bertscore=use_bertscore, use_sbert=use_sbert,
+        )
 
         # 종합 결과 저장
         output = {

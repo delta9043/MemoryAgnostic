@@ -1,0 +1,34 @@
+# A-Mem 논문 Table 1 (Qwen2.5 3b / A-MEM 행) 재현 대조용 arm.
+# 본 실험 arm(Qwen3-14B)과 섞지 말 것 — 모델도 k도 다르다.
+#
+# 논문 설정:
+#   §4.2      : Qwen 3B는 Ollama 배포 + LiteLLM structured output, k 기본 10
+#   Appx A.5  : Table 8 Qwen2.5-3b 행 = Multi 10 / Temporal 10 / Open 50 / Single 10 / Adv 10
+#
+# ⚠ 재현 불가로 남는 축: 논문의 `qwen2.5:3b`(Ollama 기본 태그)는 Q4_K_M 4bit 양자화다.
+#   여기서 가리키는 모델이 bf16이면 같은 3B라도 더 강하다 → single/multi-hop이 논문보다
+#   높게 나오는 것이 정상이다. 양자화까지 맞춘 대조는 A-mem의 test_advanced_paper.py로
+#   (--backend ollama --model qwen2.5:3b) 별도로 돌린다.
+
+dataset:
+  name: locomo10
+  path: /data/delta9043/datasets/locomo/locomo10.json
+
+pipeline:
+  pre_chunking:
+    - type: NoFilter
+    - type: NoCompressor
+  chunker:
+    type: NoChunker   # turn 1개 = 노트 1개 = 원본 add_memory 루프와 동일
+
+memory_backend:
+  type: AMemBackend
+  base_url: http://localhost:8000/v1
+  model: /data/delta9043/models/Qwen2.5-3B-Instruct
+  retrieve_k:
+    default: 10
+    open_domain: 50
+  structured_output: true
+
+evaluation:
+  result_file: results/amem/paper_qwen25_3b/result.json

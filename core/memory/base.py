@@ -21,10 +21,9 @@ def strip_think(text: str) -> str:
 def strip_answer_prefix(text: str) -> str:
     """프롬프트 꼬리("Short answer:" 등)를 모델이 에코한 prefix를 제거한다.
 
-    A-Mem robust 프롬프트가 "... Question: {q} Short answer:" 로 끝나 모델이
-    "Short answer: <답>" 형태로 답을 뱉으면, F1/BLEU 채점 시 불필요한 토큰이
-    섞여 점수가 깎인다. 원본 A-Mem은 JSON schema로 answer만 추출해 이 문제가
-    없었으나, robust 변형은 그 장치가 없어 wrapper에서 보정한다.
+    ⚠ A-Mem backend는 이걸 쓰지 않는다 — 원본에 없는 후처리라 F1을 위로 편향시키고,
+    structured output(json_schema)을 쓰면 애초에 잡토큰이 안 붙는다.
+    SimpleMem/LightMem/mem0 backend에서만 쓴다.
     """
     if not text:
         return text

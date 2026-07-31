@@ -1,12 +1,20 @@
 """
 QA 평가 메트릭 계산 모듈.
 
-- F1 / Exact Match: SimpleMem/A-Mem 원본과 동일 로직(set 기반 F1, simple_tokenize).
-- ROUGE(rouge_score) / BLEU(nltk) / METEOR(nltk) / BERTScore(bert_score): 표준 라이브러리.
+채점 로직은 A-Mem(`A-mem/utils.py:calculate_metrics`)과 SimpleMem
+(`SimpleMem/test_locomo10.py:calculate_metrics`)에 맞춘다. 두 원본은 채점 함수가
+서로 동일하므로(BLEU=word_tokenize, METEOR=소문자화 없음, 빈 예측이면 전 메트릭 0)
+하나의 구현으로 양쪽과 대조 가능하다.
+
+adversarial(cat5)만 두 원본의 **채점 정답이 다르다**:
+- A-Mem  : GT = `adversarial_answer`(함정 오답 후보)  — `test_advanced_robust.py:261`
+- SimpleMem: GT = "Not mentioned in the conversation" — `test_locomo10.py:871-874`
+어느 쪽으로 통일해도 한쪽 논문과 비교가 깨지므로 **둘 다** 낸다
+(`adversarial_amem` / `adversarial_simplemem`).
 """
 
 from collections import defaultdict
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 import nltk
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
@@ -26,6 +34,29 @@ except LookupError:
     nltk.download("wordnet", quiet=True)
 
 
+# 원본 두 곳과 동일한 BLEU weight 목록(0.33 반복도 원본 그대로)
+BLEU_WEIGHTS = [
+    (1, 0, 0, 0),
+    (0.5, 0.5, 0, 0),
+    (0.33, 0.33, 0.33, 0),
+    (0.25, 0.25, 0.25, 0.25),
+]
+
+# 전 메트릭 0 (예측 또는 정답이 빈 경우). 원본 `calculate_metrics` 앞부분과 동일.
+ZERO_METRICS = {
+    "exact_match": 0.0,
+    "f1": 0.0,
+    "rouge1_f": 0.0,
+    "rouge2_f": 0.0,
+    "rougeL_f": 0.0,
+    "bleu1": 0.0,
+    "bleu2": 0.0,
+    "bleu3": 0.0,
+    "bleu4": 0.0,
+    "meteor": 0.0,
+}
+
+
 def calculate_rouge(prediction: str, reference: str) -> Dict[str, float]:
     scorer = rouge_scorer.RougeScorer(
         ["rouge1", "rouge2", "rougeL"],
@@ -41,15 +72,15 @@ def calculate_rouge(prediction: str, reference: str) -> Dict[str, float]:
 
 
 def calculate_bleu(prediction: str, reference: str) -> Dict[str, float]:
-    pred_tokens = prediction.lower().split()
-    ref_tokens = [reference.lower().split()]
+    # 토크나이저는 반드시 word_tokenize. `.split()`이면 구두점이 토큰에 붙어
+    # ("2023." vs "2023") 원본보다 BLEU가 크게 낮게 나온다(temporal −9.7%p 실측).
+    pred_tokens = nltk.word_tokenize(prediction.lower())
+    ref_tokens = [nltk.word_tokenize(reference.lower())]
     smooth = SmoothingFunction().method1
 
     results = {}
 
-    for n in range(1, 5):
-        weights = tuple([1.0 / n] * n + [0.0] * (4 - n))
-
+    for n, weights in enumerate(BLEU_WEIGHTS, start=1):
         try:
             score = sentence_bleu(
                 ref_tokens,
@@ -66,11 +97,9 @@ def calculate_bleu(prediction: str, reference: str) -> Dict[str, float]:
 
 
 def calculate_meteor(prediction: str, reference: str) -> float:
+    # 원본은 소문자화하지 않는다(`utils.py:88`, `test_locomo10.py:320`).
     try:
-        return meteor_score(
-            [reference.lower().split()],
-            prediction.lower().split(),
-        )
+        return meteor_score([reference.split()], prediction.split())
     except Exception:
         return 0.0
 
@@ -102,6 +131,23 @@ def calculate_exact_match(prediction: str, reference: str) -> float:
     return 1.0 if prediction.strip().lower() == reference.strip().lower() else 0.0
 
 
+def calculate_pair_metrics(prediction: str, reference: str) -> Dict[str, float]:
+    """예측-정답 한 쌍의 메트릭. 원본 `calculate_metrics`와 같은 순서·같은 규칙."""
+    if not prediction or not reference:
+        return dict(ZERO_METRICS)
+
+    prediction = str(prediction).strip()
+    reference = str(reference).strip()
+
+    return {
+        "exact_match": calculate_exact_match(prediction, reference),
+        "f1": calculate_f1(prediction, reference),
+        **calculate_rouge(prediction, reference),
+        **calculate_bleu(prediction, reference),
+        "meteor": calculate_meteor(prediction, reference),
+    }
+
+
 def calculate_bert_score(
     predictions: List[str],
     references: List[str],
@@ -121,9 +167,62 @@ def calculate_bert_score(
     return f1.tolist()
 
 
+def calculate_sbert_similarity(
+    predictions: List[str],
+    references: List[str],
+) -> List[float]:
+    """SBERT 코사인 유사도(논문 Appendix A.3 지표). 원본과 같은 all-MiniLM-L6-v2."""
+    from sentence_transformers import SentenceTransformer
+    from sentence_transformers.util import pytorch_cos_sim
+
+    model = SentenceTransformer("all-MiniLM-L6-v2")
+    pred_emb = model.encode(predictions, convert_to_tensor=True)
+    ref_emb = model.encode(references, convert_to_tensor=True)
+
+    return [
+        float(pytorch_cos_sim(pred_emb[i], ref_emb[i]).item())
+        for i in range(len(predictions))
+    ]
+
+
+# adversarial 채점 기준별 카테고리 라벨
+ADV_LABEL_AMEM = "adversarial_amem"
+ADV_LABEL_SIMPLEMEM = "adversarial_simplemem"
+
+
+def _scoring_units(results: List[dict]) -> List[dict]:
+    """결과 항목을 '채점 단위'로 펼친다.
+
+    adversarial은 기준이 두 개라 한 예측이 두 단위가 된다(라벨이 다름).
+    나머지 카테고리는 1:1.
+    """
+    units = []
+
+    for result in results:
+        prediction = result.get("answer_pred") or ""
+        category = result.get("category", "unknown")
+        reference = result.get("answer_gt") or ""
+
+        if category == "adversarial":
+            gt_simplemem = result.get("answer_gt_simplemem")
+
+            units.append({"label": ADV_LABEL_AMEM, "pred": prediction, "ref": reference})
+            if gt_simplemem is not None:
+                units.append({
+                    "label": ADV_LABEL_SIMPLEMEM,
+                    "pred": prediction,
+                    "ref": gt_simplemem,
+                })
+        else:
+            units.append({"label": category, "pred": prediction, "ref": reference})
+
+    return units
+
+
 def evaluate_results(
     results: List[dict],
     use_bertscore: bool = True,
+    use_sbert: bool = True,
 ) -> dict:
     """
     Args:
@@ -131,73 +230,93 @@ def evaluate_results(
             [
                 {
                     "answer_pred": "...",
-                    "answer_gt": "...",
+                    "answer_gt": "...",             # A-Mem 방식 GT (cat5 = adversarial_answer)
+                    "answer_gt_simplemem": "...",   # adversarial만. 없으면 해당 라벨 생략
                     "category": "..."
                 },
                 ...
             ]
 
-        use_bertscore:
-            BERTScore 계산 여부.
+        use_bertscore / use_sbert:
+            무거운 임베딩 지표 계산 여부.
 
     Returns:
-        카테고리별 + overall 메트릭 dict.
+        카테고리별 + overall 메트릭 dict. 값은 ×100.
+
+        카테고리 라벨:
+        - single_hop / multi_hop / temporal / open_domain
+        - adversarial_amem      : GT = adversarial_answer (A-Mem·LoCoMo 방식)
+        - adversarial_simplemem : GT = "Not mentioned in the conversation" (SimpleMem 방식)
+        - overall               : 비-adversarial + adversarial_amem
+        - overall_simplemem     : 비-adversarial + adversarial_simplemem
+        - overall_no_adv        : 비-adversarial만
     """
 
     if not results:
         return {}
 
-    # BERTScore는 배치 계산
+    units = _scoring_units(results)
+
+    # 임베딩 지표는 전 단위를 한 번에 배치 계산
     bert_f1_list = None
+    sbert_list = None
 
     if use_bertscore:
-        predictions = [r["answer_pred"] for r in results]
-        references = [r["answer_gt"] for r in results]
-
         try:
-            bert_f1_list = calculate_bert_score(predictions, references)
+            bert_f1_list = calculate_bert_score(
+                [u["pred"] for u in units],
+                [u["ref"] for u in units],
+            )
         except Exception as e:
             print(f"[metrics] BERTScore failed: {e}")
-            bert_f1_list = [0.0] * len(results)
+            bert_f1_list = [0.0] * len(units)
 
-    # 개별 메트릭 계산
-    per_item = []
+    if use_sbert:
+        try:
+            sbert_list = calculate_sbert_similarity(
+                [u["pred"] for u in units],
+                [u["ref"] for u in units],
+            )
+        except Exception as e:
+            print(f"[metrics] SBERT similarity failed: {e}")
+            sbert_list = [0.0] * len(units)
 
-    for i, result in enumerate(results):
-        prediction = result["answer_pred"]
-        ground_truth = result["answer_gt"]
+    per_unit = []
 
-        item = {
-            "exact_match": calculate_exact_match(prediction, ground_truth),
-            "f1": calculate_f1(prediction, ground_truth),
-            "meteor": calculate_meteor(prediction, ground_truth),
-            **calculate_rouge(prediction, ground_truth),
-            **calculate_bleu(prediction, ground_truth),
-        }
+    for i, unit in enumerate(units):
+        item = calculate_pair_metrics(unit["pred"], unit["ref"])
+
+        # 빈 예측/정답이면 임베딩 지표도 0 (원본과 동일)
+        empty = not unit["pred"] or not unit["ref"]
 
         if bert_f1_list is not None:
-            item["bert_f1"] = bert_f1_list[i]
+            item["bert_f1"] = 0.0 if empty else bert_f1_list[i]
+        if sbert_list is not None:
+            item["sbert_similarity"] = 0.0 if empty else sbert_list[i]
 
-        per_item.append(
-            {
-                "category": result.get("category", "unknown"),
-                **item,
-            }
-        )
+        per_unit.append({"label": unit["label"], **item})
 
-    # 카테고리별 + overall 집계
+    # 카테고리별 + overall 집계 (질문 단위 micro-average)
     by_category = defaultdict(list)
 
-    # adversarial(cat5)은 GT가 상수 문자열이고 예측도 2지선다라 모든 메트릭이 사실상 이진 정확도로
-    # 붙는다(전체의 22.5%, ~90점대). overall을 지배하므로 제외본을 함께 낸다.
-    for item in per_item:
-        category = item["category"]
-        by_category[category].append(item)
-        by_category["overall"].append(item)
-        if category != "adversarial":
+    for item in per_unit:
+        label = item["label"]
+        by_category[label].append(item)
+
+        if label == ADV_LABEL_AMEM:
+            by_category["overall"].append(item)
+        elif label == ADV_LABEL_SIMPLEMEM:
+            by_category["overall_simplemem"].append(item)
+        else:
+            by_category["overall"].append(item)
+            by_category["overall_simplemem"].append(item)
             by_category["overall_no_adv"].append(item)
 
-    metric_keys = [key for key in per_item[0].keys() if key != "category"]
+    # adversarial_simplemem이 없는 결과(구 파일)면 overall_simplemem은 의미가 없다
+    if ADV_LABEL_SIMPLEMEM not in by_category:
+        by_category.pop("overall_simplemem", None)
+
+    metric_keys = [key for key in per_unit[0].keys() if key != "label"]
 
     aggregated = {}
 
@@ -213,20 +332,23 @@ def evaluate_results(
     return aggregated
 
 
+CATEGORY_ORDER = [
+    "single_hop",
+    "temporal",
+    "open_domain",
+    "multi_hop",
+    ADV_LABEL_AMEM,
+    ADV_LABEL_SIMPLEMEM,
+    "overall",
+    "overall_simplemem",
+    "overall_no_adv",
+]
+
+
 def print_metrics(metrics: dict) -> None:
     """
     metrics를 보기 좋게 출력.
     """
-    category_order = [
-        "single_hop",
-        "temporal",
-        "open_domain",
-        "multi_hop",
-        "adversarial",
-        "overall",
-        "overall_no_adv",
-    ]
-
     keys = [
         "exact_match",
         "f1",
@@ -236,14 +358,15 @@ def print_metrics(metrics: dict) -> None:
         "bleu4",
         "meteor",
         "bert_f1",
+        "sbert_similarity",
     ]
 
-    print("\n" + "=" * 100)
+    print("\n" + "=" * 120)
     print("[metrics] Evaluation Results")
-    print("=" * 100)
+    print("=" * 120)
 
     header = (
-        f"{'category':<15} "
+        f"{'category':<22} "
         + " ".join(f"{key:>10}" for key in keys)
         + f"  {'count':>6}"
     )
@@ -251,18 +374,20 @@ def print_metrics(metrics: dict) -> None:
     print(header)
     print("-" * len(header))
 
-    for category in category_order:
+    for category in CATEGORY_ORDER:
         if category not in metrics:
             continue
 
         metric = metrics[category]
 
         row = (
-            f"{category:<15} "
+            f"{category:<22} "
             + " ".join(f"{metric.get(key, 0):>10.2f}" for key in keys)
             + f"  {metric['count']:>6}"
         )
 
         print(row)
 
-    print("=" * 100)
+    print("=" * 120)
+    print("adversarial_amem      = GT: adversarial_answer (A-Mem/LoCoMo 방식)")
+    print("adversarial_simplemem = GT: \"Not mentioned in the conversation\" (SimpleMem 방식)")

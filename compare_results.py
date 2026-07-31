@@ -19,13 +19,17 @@ import argparse
 import json
 import os
 
+# eval/metrics.py의 CATEGORY_ORDER와 같은 순서. 여기서 import하면 표 출력만 하는
+# 스크립트가 nltk/rouge_score를 끌고 오므로 복사해 둔다.
 CATEGORY_ORDER = [
     "single_hop",
     "temporal",
     "open_domain",
     "multi_hop",
-    "adversarial",
+    "adversarial_amem",
+    "adversarial_simplemem",
     "overall",
+    "overall_simplemem",
     "overall_no_adv",
 ]
 
