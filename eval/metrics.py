@@ -1,16 +1,15 @@
 """
 QA 평가 메트릭 계산 모듈.
 
-채점 로직은 A-Mem(`A-mem/utils.py:calculate_metrics`)과 SimpleMem
-(`SimpleMem/test_locomo10.py:calculate_metrics`)에 맞춘다. 두 원본은 채점 함수가
-서로 동일하므로(BLEU=word_tokenize, METEOR=소문자화 없음, 빈 예측이면 전 메트릭 0)
-하나의 구현으로 양쪽과 대조 가능하다.
+채점 로직은 
+A-Mem(`A-mem/utils.py:calculate_metrics`)과 
+SimpleMem(`SimpleMem/test_locomo10.py:calculate_metrics`) 방식 차용
+-> category 1/2/3/4는 채점 방식 동일
 
-adversarial(cat5)만 두 원본의 **채점 정답이 다르다**:
-- A-Mem  : GT = `adversarial_answer`(함정 오답 후보)  — `test_advanced_robust.py:261`
-- SimpleMem: GT = "Not mentioned in the conversation" — `test_locomo10.py:871-874`
-어느 쪽으로 통일해도 한쪽 논문과 비교가 깨지므로 **둘 다** 낸다
-(`adversarial_amem` / `adversarial_simplemem`).
+category5 (adversarial) 채점 방식
+- A-Mem  : GT = `adversarial_answer`(함정 오답 후보)     | ref: `test_advanced_robust.py:261`
+- SimpleMem: GT = "Not mentioned in the conversation"  | ref: `test_locomo10.py:871-874`
+두 채점 방식 전부 산출 : adversarial_amem / adversarial_simplemem
 """
 
 from collections import defaultdict
@@ -34,7 +33,7 @@ except LookupError:
     nltk.download("wordnet", quiet=True)
 
 
-# 원본 두 곳과 동일한 BLEU weight 목록(0.33 반복도 원본 그대로)
+# BLEU weight 목록 (A-Mem utils.py:55 | SimpleMem test_locomo10.py:287)
 BLEU_WEIGHTS = [
     (1, 0, 0, 0),
     (0.5, 0.5, 0, 0),
@@ -42,7 +41,7 @@ BLEU_WEIGHTS = [
     (0.25, 0.25, 0.25, 0.25),
 ]
 
-# 전 메트릭 0 (예측 또는 정답이 빈 경우). 원본 `calculate_metrics` 앞부분과 동일.
+# 전 메트릭 0 설정 (A-Mem utils.py:112-127 | SimpleMem test_locomo10.py:502-518)
 ZERO_METRICS = {
     "exact_match": 0.0,
     "f1": 0.0,
@@ -72,8 +71,6 @@ def calculate_rouge(prediction: str, reference: str) -> Dict[str, float]:
 
 
 def calculate_bleu(prediction: str, reference: str) -> Dict[str, float]:
-    # 토크나이저는 반드시 word_tokenize. `.split()`이면 구두점이 토큰에 붙어
-    # ("2023." vs "2023") 원본보다 BLEU가 크게 낮게 나온다(temporal −9.7%p 실측).
     pred_tokens = nltk.word_tokenize(prediction.lower())
     ref_tokens = [nltk.word_tokenize(reference.lower())]
     smooth = SmoothingFunction().method1
@@ -97,7 +94,6 @@ def calculate_bleu(prediction: str, reference: str) -> Dict[str, float]:
 
 
 def calculate_meteor(prediction: str, reference: str) -> float:
-    # 원본은 소문자화하지 않는다(`utils.py:88`, `test_locomo10.py:320`).
     try:
         return meteor_score([reference.split()], prediction.split())
     except Exception:
@@ -105,7 +101,7 @@ def calculate_meteor(prediction: str, reference: str) -> float:
 
 
 def simple_tokenize(text: str) -> List[str]:
-    # 원본 SimpleMem/A-Mem과 동일: 소문자화 + 구두점(. , ! ?)을 공백으로 치환 후 split.
+    # Convert to string if not already
     text = str(text)
     return text.lower().replace(".", " ").replace(",", " ").replace("!", " ").replace("?", " ").split()
 
@@ -114,17 +110,15 @@ def calculate_f1(prediction: str, reference: str) -> float:
     """Token-level F1. SimpleMem/A-Mem 원본과 동일하게 set 기반(중복 토큰 무시)."""
     pred_tokens = set(simple_tokenize(prediction))
     ref_tokens = set(simple_tokenize(reference))
+    common_tokens = pred_tokens & ref_tokens
 
     if not pred_tokens or not ref_tokens:
         return 0.0
-
-    common = pred_tokens & ref_tokens
-    if not common:
-        return 0.0
-
-    precision = len(common) / len(pred_tokens)
-    recall = len(common) / len(ref_tokens)
-    return 2 * precision * recall / (precision + recall)
+    else:
+        precision = len(common_tokens) / len(pred_tokens)
+        recall = len(common_tokens) / len(ref_tokens)
+        f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0.0
+        return f1
 
 
 def calculate_exact_match(prediction: str, reference: str) -> float:
@@ -132,7 +126,7 @@ def calculate_exact_match(prediction: str, reference: str) -> float:
 
 
 def calculate_pair_metrics(prediction: str, reference: str) -> Dict[str, float]:
-    """예측-정답 한 쌍의 메트릭. 원본 `calculate_metrics`와 같은 순서·같은 규칙."""
+    """예측-정답 한 쌍의 메트릭 계산"""
     if not prediction or not reference:
         return dict(ZERO_METRICS)
 
@@ -148,41 +142,64 @@ def calculate_pair_metrics(prediction: str, reference: str) -> Dict[str, float]:
     }
 
 
-def calculate_bert_score(
-    predictions: List[str],
-    references: List[str],
-) -> List[float]:
-    """
-    BERTScore는 배치로 계산하는 것이 효율적이라 별도 함수.
-    """
-    from bert_score import score as bert_score_fn
+def calculate_bert_score(prediction: str, reference: str) -> Dict[str, float]:
+    """BERTScore"""
+    try:
+        from bert_score import score as bert_score
 
-    _, _, f1 = bert_score_fn(
-        predictions,
-        references,
-        lang="en",
-        verbose=False,
-    )
+        P, R, F1 = bert_score([prediction], [reference], lang="en", verbose=False)
+        return {
+            "bert_precision": P.item(),
+            "bert_recall": R.item(),
+            "bert_f1": F1.item(),
+        }
+    except Exception as e:
+        print(f"Error calculating BERTScore: {e}")
+        return {
+            "bert_precision": 0.0,
+            "bert_recall": 0.0,
+            "bert_f1": 0.0,
+        }
 
-    return f1.tolist()
+
+_sentence_model = None # Model
+_sentence_model_loaded = False # Flag
 
 
-def calculate_sbert_similarity(
-    predictions: List[str],
-    references: List[str],
-) -> List[float]:
-    """SBERT 코사인 유사도(논문 Appendix A.3 지표). 원본과 같은 all-MiniLM-L6-v2."""
-    from sentence_transformers import SentenceTransformer
-    from sentence_transformers.util import pytorch_cos_sim
+def _get_sentence_model():
+    """all-MiniLM-L6-v2를 로드 (원본은 import 시에 생성)"""
+    global _sentence_model, _sentence_model_loaded
 
-    model = SentenceTransformer("all-MiniLM-L6-v2")
-    pred_emb = model.encode(predictions, convert_to_tensor=True)
-    ref_emb = model.encode(references, convert_to_tensor=True)
+    if not _sentence_model_loaded:
+        _sentence_model_loaded = True
+        try:
+            from sentence_transformers import SentenceTransformer
 
-    return [
-        float(pytorch_cos_sim(pred_emb[i], ref_emb[i]).item())
-        for i in range(len(predictions))
-    ]
+            _sentence_model = SentenceTransformer("all-MiniLM-L6-v2")
+        except Exception as e:
+            print(f"Warning: Could not load SentenceTransformer model: {e}")
+            _sentence_model = None
+
+    return _sentence_model
+
+
+def calculate_sbert_similarity(prediction: str, reference: str) -> float:
+    """SBERT 코사인 유사도"""
+    model = _get_sentence_model()
+    if model is None:
+        return 0.0
+
+    try:
+        from sentence_transformers.util import pytorch_cos_sim
+
+        embedding1 = model.encode([prediction], convert_to_tensor=True)
+        embedding2 = model.encode([reference], convert_to_tensor=True)
+
+        similarity = pytorch_cos_sim(embedding1, embedding2).item()
+        return float(similarity)
+    except Exception as e:
+        print(f"Error calculating sentence similarity: {e}")
+        return 0.0
 
 
 # adversarial 채점 기준별 카테고리 라벨
@@ -257,42 +274,25 @@ def evaluate_results(
 
     units = _scoring_units(results)
 
-    # 임베딩 지표는 전 단위를 한 번에 배치 계산
-    bert_f1_list = None
-    sbert_list = None
-
-    if use_bertscore:
-        try:
-            bert_f1_list = calculate_bert_score(
-                [u["pred"] for u in units],
-                [u["ref"] for u in units],
-            )
-        except Exception as e:
-            print(f"[metrics] BERTScore failed: {e}")
-            bert_f1_list = [0.0] * len(units)
-
-    if use_sbert:
-        try:
-            sbert_list = calculate_sbert_similarity(
-                [u["pred"] for u in units],
-                [u["ref"] for u in units],
-            )
-        except Exception as e:
-            print(f"[metrics] SBERT similarity failed: {e}")
-            sbert_list = [0.0] * len(units)
-
     per_unit = []
 
-    for i, unit in enumerate(units):
+    for unit in units:
         item = calculate_pair_metrics(unit["pred"], unit["ref"])
 
         # 빈 예측/정답이면 임베딩 지표도 0 (원본과 동일)
         empty = not unit["pred"] or not unit["ref"]
 
-        if bert_f1_list is not None:
-            item["bert_f1"] = 0.0 if empty else bert_f1_list[i]
-        if sbert_list is not None:
-            item["sbert_similarity"] = 0.0 if empty else sbert_list[i]
+        # 임베딩 지표도 원본과 같이 pair 단위로 계산한다
+        if use_bertscore:
+            item["bert_f1"] = (
+                0.0 if empty
+                else calculate_bert_score(unit["pred"], unit["ref"])["bert_f1"]
+            )
+        if use_sbert:
+            item["sbert_similarity"] = (
+                0.0 if empty
+                else calculate_sbert_similarity(unit["pred"], unit["ref"])
+            )
 
         per_unit.append({"label": unit["label"], **item})
 

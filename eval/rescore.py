@@ -1,14 +1,6 @@
 """
 rescore.py — 저장된 result.json을 LLM 재실행 없이 다시 채점한다.
 
-왜 필요한가: 채점 코드(BLEU 토크나이저, adversarial GT)가 바뀌면 이미 뽑아 둔 예측의
-점수도 바뀐다. 하지만 예측 자체는 그대로이므로 GPU를 다시 쓸 이유가 없다. 이 스크립트로
-"채점이 만든 차이"와 "파이프라인·모델이 만든 차이"를 분리할 수 있다.
-
-adversarial(cat5)의 A-Mem 방식 GT(`adversarial_answer`)는 구 결과 파일에 남아있지 않을 수
-있어(예전엔 "Not mentioned..."만 저장했다) 원본 데이터셋에서 question으로 조인해 복원한다.
-LoCoMo10의 cat5 질문 446개는 전부 유일하므로 조인이 모호하지 않다(실측).
-
 사용법:
     python eval/rescore.py results/amem_default_sample0.json --no-bertscore --no-sbert
     python eval/rescore.py "results/**/result.json" --dataset data/locomo10.json
@@ -65,7 +57,10 @@ def load_adversarial_answers(dataset_path: str) -> dict:
 
 
 def normalize_rows(results: list, adv_answers: dict) -> int:
-    """result 행에 두 기준의 GT를 채운다. 반환값 = 복원 실패한 cat5 행 수."""
+    """
+    result 행에 두 기준의 GT를 채운다. 
+    반환값 = 복원 실패한 cat5 행 수.
+    """
     missing = 0
 
     for row in results:
@@ -84,7 +79,10 @@ def normalize_rows(results: list, adv_answers: dict) -> int:
 
 
 def print_delta(old: dict, new: dict, keys=("f1", "bleu1")) -> None:
-    """구 metrics 대비 Δ. 라벨이 바뀐 adversarial은 구 'adversarial'과 나란히 보여준다."""
+    """
+    구 metrics 대비 Δ. 
+    라벨이 바뀐 adversarial은 구 'adversarial'과 나란히 보여준다.
+    """
     print("\n" + "-" * 78)
     print("[rescore] 구 metrics 대비 변화")
     print("-" * 78)
