@@ -109,10 +109,12 @@ class SimpleMemBackend(BaseMemoryBackend):
             "base_url": self.base_url,
             "db_path": self.db_path,
             "clear_db": clear_db,
-            # build는 add_dialogue_group(순차)만 쓰므로 미사용. 실수로 add_dialogues가
-            # 불려도 병렬 경로(previous_entries 공유)로 새지 않도록 False.
+
+            # build는 add_dialogue_group(순차)만 쓰므로 실제로는 미사용.
+            # 병렬 처리 Flag
             "enable_parallel_processing": False,
-            # None이면 SimpleMem이 config.py 기본값을 쓴다(native 동작 유지).
+
+            # None이면 SimpleMem이 config.py 기본값을 사용.
             "enable_reflection": self.enable_reflection,
             "max_reflection_rounds": self.max_reflection_rounds,
         }
@@ -120,8 +122,7 @@ class SimpleMemBackend(BaseMemoryBackend):
             kwargs["table_name"] = self.table_name
         system = SimpleMemSystem(**kwargs)
 
-        # 층별 top_k는 HybridRetriever는 받지만 SimpleMemSystem이 전달하지 않는다
-        # → 생성 후 직접 설정. 호출 시점에 읽히는 속성이라 안전하다.
+        # 층top_k는 k값 설정 코드 (자동 전달이 불가능하여 추가 작업 필요)
         for attr in ("semantic_top_k", "keyword_top_k", "structured_top_k"):
             value = getattr(self, attr)
             if value is not None:
@@ -129,11 +130,14 @@ class SimpleMemBackend(BaseMemoryBackend):
         return system
 
     def build(self, chunks: List[Chunk]) -> None:
-        """chunk 1개 = 메모리 추출 1회.
-
-        turn을 합치지 않고 Dialogue 1개씩 넘긴다. 합치면 speaker 자리에 "chunk"가
-        들어가고 turn별 시각이 사라져 native와 양식이 달라진다.
         """
+        chunk 1개 = 메모리 추출 1회.
+        turn마다 Dialogue 객체로 만들고, chunk마다 dialogues를 넘겨서 LLM을 호출하여 처리한다. 
+        """
+        # n_groups : 이번 build에서 추출 호출 수 (= chunk 수)
+        # n_turns : 이번 build에서 처리한 turn 수
+        # _dialogue_id_counter : turn마다의 일련번호
+
         n_groups = n_turns = 0
         for chunk in chunks:
             if not chunk.turns:
@@ -151,20 +155,18 @@ class SimpleMemBackend(BaseMemoryBackend):
             n_groups += 1
             n_turns += len(dialogues)
 
-        # Tantivy FTS 인덱스는 증분이 아니다. 그룹마다 나눠 넣으므로 첫 그룹만
-        # 색인된 채로 남는다 → 전체 위에 한 번 다시 만든다. (원본은 add_dialogues로
-        # 한 번에 넣어 이 문제가 없었다.)
+        # Tantivy FTS 인덱스 재생성
         self.system.vector_store.rebuild_fts_index()
 
         print(f"[simplemem] build 완료: 추출 호출 {n_groups}회 / turn {n_turns}개 "
-              f"(내부 윈도잉 미사용, FTS 인덱스 재생성)", flush=True)
+              f"FTS 인덱스 생성 완료", flush=True)
 
     def query(self, question: str, category: str = None,
               answer: str = None) -> str:
-        """질문에 대한 답변을 반환한다.
+        """
+        질문에 대한 답변을 반환한다.
 
-        category 5(adversarial)는 native SimpleMem처럼 특수 처리한다(reflection off +
-        "Not mentioned" vs adversarial_answer 2지선다). 그 외는 ask()로 자유형 생성.
+        category 5(adversarial)는 native SimpleMem처럼 특수 처리한다(2지 선다 처리). 그 외는 ask()로 자유형 생성.
         answer는 adversarial일 때 오답 후보(adversarial_answer)로만 쓴다.
         """
         if category == "adversarial":
@@ -172,8 +174,9 @@ class SimpleMemBackend(BaseMemoryBackend):
         return normalize_prediction(self.system.ask(question))
 
     def _answer_category5(self, question: str, adversarial_answer: Optional[str]) -> str:
-        # native SimpleMem generate_category5_answer 재현: reflection 끄고 검색한 뒤
-        # "Not mentioned" vs 오답 후보 중 하나를 고르게 한다(위치 편향 방지로 순서 셔플).
+        # native SimpleMem generate_category5_answer 재현
+        # "Not mentioned" vs 오답 후보 중 하나를 선택하도록 한다. (순서 셔플)
+
         contexts = self.system.hybrid_retriever.retrieve(question, enable_reflection=False)
         adv = adversarial_answer or "Unknown answer"
         options = [CATEGORY5_GROUND_TRUTH, adv]
@@ -181,6 +184,8 @@ class SimpleMemBackend(BaseMemoryBackend):
             options = [options[1], options[0]]
 
         context_str = self.system.answer_generator._format_contexts(contexts)
+
+        # Build special prompt for category 5
         prompt = f"""
 Based on the context below, answer the following question.
 
@@ -231,6 +236,6 @@ Return ONLY the JSON, no other text.
         self.system.vector_store.clear()
         builder = self.system.memory_builder
         builder.previous_entries = []
-        builder.dialogue_buffer = []
+        builder.dialogue_buffer = []    # 실제 사용 X
         builder.processed_count = 0
         self._dialogue_id_counter = 0

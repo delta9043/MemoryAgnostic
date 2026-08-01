@@ -12,9 +12,7 @@ from data.schema import ProcessedSample
 from factory import build_chunker, build_pre_chunking_modules, build_memory_backend
 from eval.metrics import evaluate_results, print_metrics
 
-# category 5(adversarial)의 두 번째 채점 기준. "거부"를 정답으로 보는 SimpleMem 방식
-# (`SimpleMem/test_locomo10.py:871-874`). A-Mem 원본은 `adversarial_answer`(함정 오답
-# 후보)를 GT로 쓰므로(`A-mem/test_advanced_robust.py:261`) 두 기준을 모두 채점한다.
+# SimpleMem에서 활용할 GT
 CATEGORY5_GROUND_TRUTH_SIMPLEMEM = "Not mentioned in the conversation"
 
 
@@ -207,8 +205,6 @@ def main():
 
 
 if __name__ == "__main__":
-    # mem0 조건에서 main()이 끝나도 인터프리터가 종료되지 않아 잡이 GPU를 문 채 남았다.
-    # 결과 파일은 이미 닫혔고 qdrant/sqlite는 매 실행 초기화라 종료 경로를 건너뛰어도 된다.
     exit_code = 0
     try:
         main()

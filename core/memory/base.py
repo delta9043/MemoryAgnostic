@@ -19,11 +19,10 @@ def strip_think(text: str) -> str:
 
 
 def strip_answer_prefix(text: str) -> str:
-    """프롬프트 꼬리("Short answer:" 등)를 모델이 에코한 prefix를 제거한다.
+    """
+    프롬프트 꼬리("Short answer:" 등)를 모델이 에코한 prefix를 제거한다.
 
-    ⚠ A-Mem backend는 이걸 쓰지 않는다 — 원본에 없는 후처리라 F1을 위로 편향시키고,
-    structured output(json_schema)을 쓰면 애초에 잡토큰이 안 붙는다.
-    SimpleMem/LightMem/mem0 backend에서만 쓴다.
+    SimpleMem/LightMem/mem0 backend에서만 사용.
     """
     if not text:
         return text
