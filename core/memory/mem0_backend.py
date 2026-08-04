@@ -1,3 +1,4 @@
+import json
 import sys
 from typing import List, Optional
 
@@ -15,7 +16,6 @@ from mem0 import Memory  # noqa: E402  (OSS 무료 경로. MemoryClient=유료 �
 
 
 # mem0 공식 LoCoMo 평가 프롬프트(evaluation/prompts.py의 non-graph ANSWER_PROMPT와 동일).
-# evaluation/는 패키지가 아니라 import 불가 → 상수로 복사(LightMem 백엔드와 동일 방식).
 ANSWER_PROMPT = """
     You are an intelligent memory assistant tasked with retrieving accurate information from conversation memories.
 
@@ -63,18 +63,16 @@ ANSWER_PROMPT = """
 
 class Mem0Backend(BaseMemoryBackend):
     """
-    Mem0(OSS `Memory.from_config`)를 wrapping하는 MemoryBackend.
+    Mem0를 wrapping하는 MemoryBackend.
 
-    native mem0 LoCoMo 평가(evaluation/src/memzero)를 그대로 재현하되, 저장 단위(청킹
-    경계)만 우리 chunk로 교체한다:
-    1. build(chunks): 화자 2명 각각의 메모리 뱅크를 만든다. 한 chunk를 화자별로
-       role을 뒤집어(뱅크 주인=user, 상대=assistant) mem.add() 1회씩 호출한다.
-       → chunk 1개 = add() 2회(뱅크당 1회). native의 batch_size=2 묶음만 chunk로 바뀜.
+    native mem0 LoCoMo 평가(evaluation/src/memzero)를 그대로 재현
+    1. build(chunks): 화자 2명 각각의 메모리 뱅크를 만든다. 
+                      한 chunk를 화자별로 role을 뒤집어(뱅크 주인=user, 상대=assistant) mem.add() 1회씩 호출한다.
+                      → chunk 1개 = add() 2회
     2. query(question): 두 뱅크를 각각 search(top_k) → 공식 ANSWER_PROMPT로 답변 생성.
-    3. reset(): 벡터스토어 컬렉션을 drop+recreate(mem.reset())한다.
+    3. reset(): 벡터스토어 컬렉션을 mem.reset()
 
-    LLM은 외부 vLLM(OpenAI 호환 API), 임베더는 HuggingFace(in-process), 벡터스토어는
-    로컬 Qdrant(path 모드)를 쓴다 — 전부 무료 경로.
+    LLM은 외부 vLLM(OpenAI 호환 API), 임베더는 HuggingFace, 벡터스토어는 로컬 Qdrant를 쓴다.
     """
 
     def __init__(
@@ -84,8 +82,8 @@ class Mem0Backend(BaseMemoryBackend):
         embedding_path: str,
         embedding_dims: int = 384,
         qdrant_path: str = "./qdrant_data/mem0",
-        top_k: int = 10,               # native 기본값(evaluation/src/memzero/search.py)
-        max_tokens: int = 2000,
+        top_k: int = 10,               # native 기본값 10 (evaluation/src/memzero/search.py)
+        max_tokens: int = 8192,
         api_key: str = "dummy",
         clear_on_init: bool = True,
     ):
@@ -102,8 +100,7 @@ class Mem0Backend(BaseMemoryBackend):
         self._patch_thinking_off()
         self._speakers: List[str] = []   # build에서 채워짐(첫 등장 순 화자 2명)
 
-        # on-disk Qdrant는 고정 경로를 재사용하므로, 직전 실행이 reset 전에 죽으면
-        # 잔여 데이터가 첫 샘플에 샐 수 있다. 시작 시 한 번 비운다.
+        # Intialization
         if clear_on_init:
             self.mem.reset()
 
@@ -139,11 +136,7 @@ class Mem0Backend(BaseMemoryBackend):
         }
 
     def _patch_thinking_off(self) -> None:
-        # Qwen3 thinking off. enable_thinking은 chat template 인자라 최상위 필드/서버
-        # 플래그로는 안 꺼진다(vLLM이 무시). mem0의 generate_response 경로엔 extra_body
-        # 통로가 없어, LLM의 generate_response를 감싸 fact 추출/업데이트/답변 모든 호출에
-        # chat_template_kwargs를 주입한다. 안 하면 <think>로 JSON 파싱이 깨져 메모리가
-        # 아예 안 쌓인다. (Qwen3-14B는 mem0의 _is_reasoning_model에 안 걸려 extra_body 보존)
+        # Qwen3 thinking off
         _orig = self.mem.llm.generate_response
 
         def _wrapped(**kwargs):
@@ -153,16 +146,15 @@ class Mem0Backend(BaseMemoryBackend):
         self.mem.llm.generate_response = _wrapped
 
     def build(self, chunks: List[Chunk]) -> None:
-        """chunk를 timestamp(=세션) 연속 구간으로 나눠 구간마다 add()한다(뱅크당 1회씩).
+        """chunk를 timestamp(=세션) 연속 구간으로 나눠 구간마다 add()한다 (뱅크당 1회씩).
 
-        mem0는 add() 1회에 timestamp를 1개만 받는다. cross-session 청크(gold/llmchunk)를
-        통째로 넣으면 후행 세션 사실이 첫 세션 날짜로 저장돼 temporal 답이 틀어진다.
-        한 세션 turn은 모두 같은 날짜라, 세션 안에서는 안 나뉘고 청킹 묶음이 유지된다.
+        mem0는 add() 1회에 timestamp를 1개만 받는다. 
+        cross-session 청크(gold/llmchunk)를 통째로 넣으면 후행 세션 사실이 첫 세션 날짜로 저장돼 temporal 답이 틀어진다.
         """
-        self._speakers = self._collect_speakers(chunks)
+        self._speakers = self._collect_speakers(chunks) # 현재 대화 세션의 화자 추출
         n_add = 0
         for chunk in chunks:
-            for group in self._split_by_timestamp(chunk.turns):
+            for group in self._split_by_timestamp(chunk.turns): # Mem0는 timestamp가 달라지는 메모리를 못 만들기에 이를 분할
                 timestamp = group[0].timestamp
                 for owner in self._speakers:
                     messages = [
@@ -170,7 +162,7 @@ class Mem0Backend(BaseMemoryBackend):
                             "role": "user" if t.speaker == owner else "assistant",
                             "content": f"{t.speaker}: {t.content}",   # native 형식 그대로
                         }
-                        for t in group
+                        for t in group # group 안의 turn들을 t라는 이름으로 하나씩 호출
                     ]
                     self.mem.add(
                         messages,
@@ -202,7 +194,7 @@ class Mem0Backend(BaseMemoryBackend):
 
     @staticmethod
     def _collect_speakers(chunks: List[Chunk]) -> List[str]:
-        # 첫 등장 순으로 고유 화자를 모은다(뱅크·답변 프롬프트의 speaker_1/2 순서 고정).
+        # 첫 등장 순으로 고유 화자를 모은다.
         seen: List[str] = []
         for chunk in chunks:
             for t in chunk.turns:
@@ -240,12 +232,13 @@ class Mem0Backend(BaseMemoryBackend):
 
     @staticmethod
     def _format_memories(memories: List[dict]) -> str:
-        # native와 동일: "{timestamp}: {memory}" 줄 목록.
+        # native와 동일: "{timestamp}: {memory}" 리스트를 JSON으로 변환 (search.py:106-107).
+        # 빈 memory의 경우 "[]"
         lines = [
             f"{m.get('metadata', {}).get('timestamp', '')}: {m.get('memory', '')}"
             for m in memories
         ]
-        return "\n".join(lines) if lines else "No relevant memories found."
+        return json.dumps(lines, indent=4)
 
     def reset(self) -> None:
         """다음 샘플 전 초기화: 벡터스토어 컬렉션 drop+recreate."""
