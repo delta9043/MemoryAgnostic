@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J am_paper3b
+#SBATCH -J am_paper1.5b
 #SBATCH --gres=gpu:2
 #SBATCH --cpus-per-gpu=8
 #SBATCH --mem-per-gpu=32G
@@ -19,8 +19,8 @@ source /data/delta9043/anaconda3/etc/profile.d/conda.sh
 
 # ============ 설정 ============
 REPO=/data/delta9043/repos/MemoryAgnostic
-MODEL_PATH="/data/delta9043/models/Qwen2.5-3B-Instruct-GGUF/qwen2.5-3b-instruct-q4_k_m.gguf"
-TOKENIZER_PATH="/data/delta9043/models/Qwen2.5-3B-Instruct"
+MODEL_PATH="/data/delta9043/models/Qwen2.5-1.5B-Instruct-GGUF/qwen2.5-1.5b-instruct-q4_k_m.gguf"
+TOKENIZER_PATH="/data/delta9043/models/Qwen2.5-1.5B-Instruct"
 VLLM_PORT=$((8000 + (SLURM_JOB_ID % 100) * 10))
 VLLM_MAX_MODEL_LEN=32768
 
@@ -63,17 +63,17 @@ trap cleanup EXIT
 # 실험 실행
 echo ""
 echo "========================================"
-echo "Running: env=a-mem config=amem_paper_qwen25_3b-GGUF.yaml"
+echo "Running: env=a-mem config=amem_paper_qwen25_15b.yaml"
 echo "========================================"
 
 CONDA_ENV="a-mem" \
-EXPERIMENT_CONFIG="${REPO}/configs/amem_paper_qwen25_3b.yaml" \
+EXPERIMENT_CONFIG="${REPO}/configs/amem_paper_qwen25_15b.yaml" \
 VLLM_BASE_URL="http://localhost:$VLLM_PORT/v1" \
 CUDA_VISIBLE_DEVICES="$EXP_GPU" \
 LOG_DIR="${REPO}/logs/amem/output" \
     bash ${REPO}/scripts/common/run_experiment.sh
 
-echo "[done] amem_paper_qwen25_3b.yaml: $(date)"
+echo "[done] amem_paper_qwen25_15b.yaml: $(date)"
 echo ""
 echo "All experiments finished: $(date)"
 exit 0

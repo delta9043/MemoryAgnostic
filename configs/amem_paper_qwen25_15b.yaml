@@ -12,11 +12,9 @@ pipeline:
 memory_backend:
   type: AMemBackend
   base_url: http://localhost:8000/v1
-  model: /data/delta9043/models/Qwen2.5-3B-Instruct-GGUF/qwen2.5-3b-instruct-q4_k_m.gguf
-  retrieve_k:
-    default: 10
-    open_domain: 50
+  model: /data/delta9043/models/Qwen2.5-1.5B-Instruct-GGUF/qwen2.5-1.5b-instruct-q4_k_m.gguf
+  retrieve_k: 10
   structured_output: true
 
 evaluation:
-  result_file: results/amem/paper_qwen25_3b/result.json
+  result_file: results/amem/paper_qwen25_15b/result.json
