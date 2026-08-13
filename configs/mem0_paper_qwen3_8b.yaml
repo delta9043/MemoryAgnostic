@@ -1,0 +1,39 @@
+# SimpleMem 논문 Table 3 (Qwen3-8b / Mem0 행 = Average F1 25.80) 재현 대조용 arm.
+# 본 실험 arm(Qwen3-14B)과 섞지 말 것.
+#
+# 왜 mem0 자체 논문이 아니라 SimpleMem 논문의 Mem0 행인가:
+#   mem0 논문(arXiv 2504.19413)의 하베스트는 유료 `MemoryClient` + gpt-4o-mini +
+#   LLM-as-a-judge 채점이라 우리 OSS `Memory.from_config` 경로와 다른 시스템이다.
+#   반면 SimpleMem 논문의 Mem0 행은 백본이 Qwen 소형 모델이라(플랫폼은 백본 교체 불가)
+#   OSS 경로였을 가능성이 높고, 척도도 F1/BLEU로 우리와 같다.
+#
+# ⚠ 재현 불가로 남는 축 (주장할 때 밝힐 각주):
+#   - 묶음 단위: mem0 자체 하베스트의 `batch_size=2`(evaluation/src/memzero/add.py)를 따랐다.
+#     SimpleMem 저자가 Mem0를 어떤 단위로 돌렸는지는 논문에 없다.
+#   - 임베딩: 우리는 all-MiniLM(LightMem과 공유). SimpleMem 논문은 Mem0의 임베딩을 명시 안 함.
+#   - `custom_instructions`(mem0 하베스트의 추출 지침)는 넣지 않았다.
+
+dataset:
+  name: locomo10
+  path: /data/delta9043/datasets/locomo/locomo10.json
+
+pipeline:
+  pre_chunking:
+    - type: NoFilter
+    - type: NoCompressor
+  chunker:
+    # native `batch_size=2`를 청커 층에서 재현. chunk 1개 = add() 2회(뱅크당 1회).
+    type: FixedSizeChunker
+    window: 2
+    overlap: 0
+
+memory_backend:
+  type: Mem0Backend
+  base_url: http://localhost:8000/v1
+  model: /data/delta9043/models/Qwen3-8B
+  embedding_path: /data/delta9043/models/all-MiniLM-L6-v2
+  embedding_dims: 384
+  qdrant_path: ./qdrant_data/mem0_paper_qwen3_8b
+
+evaluation:
+  result_file: results/mem0/paper_qwen3_8b/result.json

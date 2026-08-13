@@ -206,6 +206,16 @@ def calculate_sbert_similarity(prediction: str, reference: str) -> float:
 ADV_LABEL_AMEM = "adversarial_amem"
 ADV_LABEL_SIMPLEMEM = "adversarial_simplemem"
 
+# 집계 라벨 = {합치는 방법}_{adversarial 처리}
+# wmean = 문항 수로 가중한 평균(micro) / mean = 카테고리 균등 평균(macro)
+WMEAN_ADV_AMEM = "wmean_adv-amem"
+WMEAN_ADV_SIMPLEMEM = "wmean_adv-simplemem"
+WMEAN_NO_ADV = "wmean_no-adv"
+MEAN_NO_ADV = "mean_no-adv"
+
+# mean_no-adv 대상 — SimpleMem 논문 Table 1/3의 Average와 같은 4개
+MEAN_CATEGORIES = ["single_hop", "temporal", "open_domain", "multi_hop"]
+
 
 def _scoring_units(results: List[dict]) -> List[dict]:
     """결과 항목을 '채점 단위'로 펼친다.
@@ -258,15 +268,19 @@ def evaluate_results(
             무거운 임베딩 지표 계산 여부.
 
     Returns:
-        카테고리별 + overall 메트릭 dict. 값은 ×100.
+        카테고리별 + 집계 메트릭 dict. 값은 ×100.
 
         카테고리 라벨:
         - single_hop / multi_hop / temporal / open_domain
         - adversarial_amem      : GT = adversarial_answer (A-Mem·LoCoMo 방식)
         - adversarial_simplemem : GT = "Not mentioned in the conversation" (SimpleMem 방식)
-        - overall               : 비-adversarial + adversarial_amem
-        - overall_simplemem     : 비-adversarial + adversarial_simplemem
-        - overall_no_adv        : 비-adversarial만
+
+        집계 라벨 = {합치는 방법}_{adversarial 처리}:
+        - wmean_adv-amem        : 비-adversarial + adversarial_amem, 문항 가중
+        - wmean_adv-simplemem   : 비-adversarial + adversarial_simplemem, 문항 가중
+        - wmean_no-adv          : 비-adversarial만, 문항 가중
+        - mean_no-adv           : 비-adversarial만, 카테고리 균등
+                                  (SimpleMem 논문 Table 1/3의 Average와 같은 방식)
     """
 
     if not results:
@@ -296,7 +310,7 @@ def evaluate_results(
 
         per_unit.append({"label": unit["label"], **item})
 
-    # 카테고리별 + overall 집계 (질문 단위 micro-average)
+    # 카테고리별 + wmean 집계 (문항 가중 평균)
     by_category = defaultdict(list)
 
     for item in per_unit:
@@ -304,17 +318,17 @@ def evaluate_results(
         by_category[label].append(item)
 
         if label == ADV_LABEL_AMEM:
-            by_category["overall"].append(item)
+            by_category[WMEAN_ADV_AMEM].append(item)
         elif label == ADV_LABEL_SIMPLEMEM:
-            by_category["overall_simplemem"].append(item)
+            by_category[WMEAN_ADV_SIMPLEMEM].append(item)
         else:
-            by_category["overall"].append(item)
-            by_category["overall_simplemem"].append(item)
-            by_category["overall_no_adv"].append(item)
+            by_category[WMEAN_ADV_AMEM].append(item)
+            by_category[WMEAN_ADV_SIMPLEMEM].append(item)
+            by_category[WMEAN_NO_ADV].append(item)
 
-    # adversarial_simplemem이 없는 결과(구 파일)면 overall_simplemem은 의미가 없다
+    # adversarial_simplemem이 없는 결과(구 파일)면 wmean_adv-simplemem은 의미가 없다
     if ADV_LABEL_SIMPLEMEM not in by_category:
-        by_category.pop("overall_simplemem", None)
+        by_category.pop(WMEAN_ADV_SIMPLEMEM, None)
 
     metric_keys = [key for key in per_unit[0].keys() if key != "label"]
 
@@ -329,6 +343,18 @@ def evaluate_results(
             avg = sum(item[key] for item in items) / len(items)
             aggregated[category][key] = round(avg * 100, 2)
 
+    # mean_no-adv = 카테고리 4개 점수의 균등 평균. 논문이 표에 찍힌 값을 평균했으므로
+    # 원시값이 아니라 이미 반올림된 카테고리 값을 평균해야 산술이 일치한다.
+    # 4개가 다 있을 때만 만든다 — 3개짜리 평균이 논문의 4개짜리와 비교되면 조용히 틀린다.
+    if all(category in aggregated for category in MEAN_CATEGORIES):
+        rows = [aggregated[category] for category in MEAN_CATEGORIES]
+        aggregated[MEAN_NO_ADV] = {"count": sum(row["count"] for row in rows)}
+
+        for key in metric_keys:
+            aggregated[MEAN_NO_ADV][key] = round(
+                sum(row[key] for row in rows) / len(rows), 2
+            )
+
     return aggregated
 
 
@@ -339,9 +365,10 @@ CATEGORY_ORDER = [
     "multi_hop",
     ADV_LABEL_AMEM,
     ADV_LABEL_SIMPLEMEM,
-    "overall",
-    "overall_simplemem",
-    "overall_no_adv",
+    WMEAN_ADV_AMEM,
+    WMEAN_ADV_SIMPLEMEM,
+    WMEAN_NO_ADV,
+    MEAN_NO_ADV,
 ]
 
 
@@ -391,3 +418,4 @@ def print_metrics(metrics: dict) -> None:
     print("=" * 120)
     print("adversarial_amem      = GT: adversarial_answer (A-Mem/LoCoMo 방식)")
     print("adversarial_simplemem = GT: \"Not mentioned in the conversation\" (SimpleMem 방식)")
+    print("wmean_* = 문항 가중 평균 | mean_* = 카테고리 균등 평균(논문 Average 방식)")

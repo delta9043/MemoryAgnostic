@@ -28,9 +28,10 @@ CATEGORY_ORDER = [
     "multi_hop",
     "adversarial_amem",
     "adversarial_simplemem",
-    "overall",
-    "overall_simplemem",
-    "overall_no_adv",
+    "wmean_adv-amem",
+    "wmean_adv-simplemem",
+    "wmean_no-adv",
+    "mean_no-adv",
 ]
 
 # (라벨, baseline 파일, llmchunk 파일) — results/{backend}/{variant}/result.json
@@ -72,7 +73,7 @@ def print_backend_table(label, base_metrics, llm_metrics):
     print("=" * 92)
 
     header = (
-        f"{'category':<14}"
+        f"{'category':<22}"
         f"{'F1_base':>9}{'F1_llm':>9}{'ΔF1(%p)':>10}   "
         f"{'BLEU1_base':>11}{'BLEU1_llm':>11}{'ΔBLEU1(%p)':>12}"
     )
@@ -87,7 +88,7 @@ def print_backend_table(label, base_metrics, llm_metrics):
         if all(v is None for v in (f1_b, f1_l, bl_b, bl_l)):
             continue
         row = (
-            f"{cat:<14}"
+            f"{cat:<22}"
             f"{_fmt(f1_b):>9}{_fmt(f1_l):>9}{_fmt_delta(f1_b, f1_l):>10}   "
             f"{_fmt(bl_b):>11}{_fmt(bl_l):>11}{_fmt_delta(bl_b, bl_l):>12}"
         )

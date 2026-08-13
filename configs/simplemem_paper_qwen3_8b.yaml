@@ -1,0 +1,49 @@
+# SimpleMem 논문 Table 3 (Qwen3-8b / SimpleMem 행 = Average F1 33.45) 재현 대조용 arm.
+# 본 실험 arm(Qwen3-14B)과 섞지 말 것 — 모델도 청킹 조건도 다르다.
+#
+# 논문 설정:
+#   §3.1 Table 3 : 백본 Qwen3-8b, 지표 F1/BLEU-1, Average = 4개 카테고리 균등 평균
+#                  (adversarial 열 없음 → 우리 `mean_no-adv`와 대조한다)
+#   Table 7      : 임베딩 Qwen3-embedding-0.6b(1024), 벡터DB LanceDB
+#
+# ⚠ 논문과 저자 코드가 어긋나는 축이 있다. 1차는 **저자 코드 기본값**으로 맞춘다 —
+#   표를 만든 것은 코드이고, 논문 쪽 값 중 일부는 코드에 구현 자체가 없다.
+#     | 항목    | 논문 Table 7        | 코드(config_original.py) | 여기서 쓴 값 |
+#     | 윈도우  | W=20, 25% overlap   | 40 / 2                   | 40 / 2      |
+#     | 검색    | adaptive k [3,20]   | 고정 25/5/5              | 25/5/5      |
+#     | JSON    | strict JSON schema  | USE_JSON_FORMAT=False    | False       |
+#   adaptive 검색은 코드에 없다 — `_analyze_information_requirements`가 정하는 것은
+#   검색 깊이가 아니라 쿼리 개수(`minimal_queries_needed`)이고 top_k는 고정이다.
+#   갭이 남으면 그때 논문 쪽 값을 하나씩 옮겨본다.
+
+dataset:
+  name: locomo10
+  path: /data/delta9043/datasets/locomo/locomo10.json
+
+pipeline:
+  pre_chunking:
+    - type: NoFilter
+    - type: NoCompressor
+  chunker:
+    # native 내부 윈도잉(config_original.py:68-71 = 40턴 / 2겹침)을 청커 층에서 재현.
+    # backend가 내부 윈도잉을 쓰지 않으므로 여기서 주는 묶음이 곧 추출 단위다.
+    # 슬라이싱 의미는 SimpleMem `process_window`(memory_builder.py:141-143)와 동일하다.
+    type: FixedSizeChunker
+    window: 40
+    overlap: 2
+
+memory_backend:
+  type: SimpleMemBackend
+  base_url: http://localhost:8000/v1
+  model: /data/delta9043/models/Qwen3-8B
+  db_path: ./lancedb_data/paper_qwen3_8b
+  clear_db_on_init: true
+  # 전부 SimpleMem config.py 기본값(native)과 동일 — 재현 arm이므로 건드리지 않는다.
+  semantic_top_k: 25
+  keyword_top_k: 5
+  structured_top_k: 5
+  enable_reflection: true
+  max_reflection_rounds: 2
+
+evaluation:
+  result_file: results/simplemem/paper_qwen3_8b/result.json
