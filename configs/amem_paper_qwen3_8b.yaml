@@ -1,0 +1,20 @@
+dataset:
+  name: locomo10
+  path: /data/delta9043/datasets/locomo/locomo10.json
+
+pipeline:
+  pre_chunking:
+    - type: NoFilter
+    - type: NoCompressor
+  chunker:
+    type: NoChunker   # turn 1개 = 노트 1개 = 원본 add_memory 루프와 동일
+
+memory_backend:
+  type: AMemBackend
+  base_url: http://localhost:8000/v1
+  model: /data/delta9043/models/Qwen3-8B
+  retrieve_k: 10
+  structured_output: true
+
+evaluation:
+  result_file: results/amem/paper_qwen3_8b/result.json
