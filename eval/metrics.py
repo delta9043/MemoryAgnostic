@@ -21,16 +21,30 @@ from nltk.translate.meteor_score import meteor_score
 from rouge_score import rouge_scorer
 
 
-# NLTK 데이터 다운로드 (한 번만)
-try:
-    nltk.data.find("tokenizers/punkt")
-except LookupError:
-    nltk.download("punkt", quiet=True)
+# NLTK 데이터 확인. 리소스 이름을 대조하는 대신 실제로 쓰는 함수를 불러 본다
+# (word_tokenize는 punkt가 아니라 punkt_tab, meteor는 omw까지 필요할 수 있다).
+# 채점은 QA를 다 돈 뒤에 오므로 여기서 안 죽이면 몇 시간을 날린 뒤에 터진다.
+def _check_nltk_data() -> None:
+    def probe():
+        nltk.word_tokenize("the quick brown fox")
+        meteor_score([["the", "quick"]], ["the", "quick"])
 
-try:
-    nltk.data.find("corpora/wordnet")
-except LookupError:
-    nltk.download("wordnet", quiet=True)
+    try:
+        probe()
+    except LookupError as first:
+        for package in ("punkt_tab", "wordnet", "omw-1.4"):
+            nltk.download(package, quiet=True)
+        try:
+            probe()
+        except LookupError:
+            raise RuntimeError(
+                "NLTK 데이터 없음 — 오프라인 노드면 다운로드도 실패한다. "
+                "NLTK_DATA를 데이터가 있는 경로로 지정할 것.\n"
+                f"검색 경로: {nltk.data.path}"
+            ) from first
+
+
+_check_nltk_data()
 
 
 # BLEU weight 목록 (A-Mem utils.py:55 | SimpleMem test_locomo10.py:287)

@@ -9,6 +9,9 @@ BASE_URL="${VLLM_BASE_URL:-http://localhost:8000/v1}"
 # output 로그 디렉토리. 호출 스크립트가 backend별 경로(.../logs/{backend}/output)를
 # 넘겨주면 그걸 쓰고, 없으면 기존 평면 logs/로 폴백한다.
 LOG_DIR="${LOG_DIR:-${REPO:-/data/delta9043/repos/MemoryAgnostic}/logs}"
+# 채점용 nltk 데이터(punkt_tab/wordnet/omw-1.4) 위치. 셸 환경에 의존하면
+# 제출 세션이 바뀔 때 조용히 사라진다(2026-08-13 실측).
+export NLTK_DATA="${NLTK_DATA:-/data/delta9043/nltk_data}"
 
 conda activate "$CONDA_ENV"
 mkdir -p "$LOG_DIR"
