@@ -1,0 +1,25 @@
+dataset:
+  name: locomo10
+  path: /data/delta9043/datasets/locomo/locomo10.json
+
+pipeline:
+  pre_chunking:
+    - type: NoFilter
+    - type: NoCompressor
+  chunker:
+    # 어텐션 골짜기 청커(우리 방법). 인라인 실행 — 첫 push()에서 LLMLingua-2를
+    # in-process 로드(샘플마다 재로드). turn마다 forward 1회, 결정 지연 1턴.
+    type: AttnChunker
+    model_path: /data/delta9043/models/llmlingua-2
+    tau: 0.00234   # v2 gold 스윕 최적. 더 잘게 자르려면 올린다(0.0024 ≈ 평균 12.2턴)
+
+memory_backend:
+  type: Mem0Backend
+  base_url: http://localhost:8000/v1
+  model: /data/delta9043/models/Qwen3-14B
+  embedding_path: /data/delta9043/models/all-MiniLM-L6-v2
+  embedding_dims: 384
+  qdrant_path: ./qdrant_data/mem0_attnchunk
+
+evaluation:
+  result_file: results/mem0/attnchunk/result.json

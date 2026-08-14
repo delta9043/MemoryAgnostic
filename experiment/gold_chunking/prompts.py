@@ -1,7 +1,7 @@
 """Gold chunking 프롬프트 — 공통 시스템 프롬프트 + 데이터셋별 few-shot."""
 
 # 캐시 키에 포함됨. 프롬프트를 바꾸면 반드시 올려서 캐시를 무효화할 것.
-PROMPT_VERSION = "v1"
+PROMPT_VERSION = "v2"
 
 SYSTEM_PROMPT_BASE = """You are an expert at episodic memory segmentation for conversational data.
 
@@ -30,6 +30,59 @@ Start a new segment only when a CLEAR signal appears:
 
 ### Decision principles
 - Merge by default: when in doubt, do not split.
+- Content over form: greetings and farewells belong to the episode they serve,
+  never to their own segment.
+- Process continuity: consecutive turns working toward the same goal (e.g.,
+  describe a problem → discuss a fix → confirm the fix) form one episode.
+- A segment should make sense read in isolation: if a segment's topic cannot be
+  named without referring to the previous segment, it should not be separate.
+
+### Output format
+
+Return a JSON object:
+{
+  "reasoning": "<one or two sentences explaining every boundary decision>",
+  "segments": [
+    {"start": <first turn number>, "end": <last turn number>,
+     "topic": "<3-7 word label naming what this segment is about>"}
+  ]
+}
+
+Hard rules for segments:
+- Turn numbers are 1-based and refer to the numbered list in the input.
+- Segments must tile the session exactly: the first segment starts at 1, the
+  last segment ends at N (the final turn), each segment's start is the previous
+  segment's end + 1. No gaps, no overlaps, no reordering.
+- start <= end for every segment. A single segment {"start": 1, "end": N} means
+  the whole session is one episode.
+- The topic label must describe the segment's content, not its position
+  ("opening chat" is a bad label; "planning a camping trip" is a good label)."""
+
+SYSTEM_PROMPT_BASE_V2 = """You are an expert at episodic memory segmentation for conversational data.
+
+You are given the turns of a SINGLE conversation session (all messages occur on
+the same day). Your task is to split the session into topic-coherent episodes —
+segments that are meaningful and independently memorable.
+
+### When to split
+
+Start a new segment only when a CLEAR signal appears:
+- Substantive topic change: the conversation shifts from one concrete topic to a
+  completely unrelated one (e.g., a health concern → weekend travel plans).
+- Task/thread completion + new topic: a closing turn ("sounds good, thanks!")
+  belongs to its current episode; split only when the NEXT turn opens a genuinely
+  unrelated topic.
+
+### Do NOT split for
+- Greetings or farewells ("hi", "bye", "thanks") — keep them with the episode
+  they serve.
+- Transition phrases ("by the way", "oh also", "speaking of") — these usually
+  CONTINUE the current episode unless they introduce a major, unrelated topic.
+- Follow-up questions, clarifications, or brief reactions on the same topic.
+- A shift in aspect within the same topic (e.g., discussing a trip's schedule →
+  the same trip's budget stays ONE episode).
+
+### Decision principles
 - Content over form: greetings and farewells belong to the episode they serve,
   never to their own segment.
 - Process continuity: consecutive turns working toward the same goal (e.g.,
@@ -205,7 +258,7 @@ def build_messages(dataset: str, session_date: str, turns: list) -> list:
     turns_block = "\n".join(
         f"[{i + 1}] {t['speaker']}: {t['content'] or ''}" for i, t in enumerate(turns)
     )
-    system = SYSTEM_PROMPT_BASE + "\n\n" + FEWSHOT[dataset]
+    system = SYSTEM_PROMPT_BASE_V2 + "\n\n" + FEWSHOT[dataset]
     user = USER_PROMPT_TEMPLATE.format(
         session_date=session_date or "unknown",
         turns_block=turns_block,

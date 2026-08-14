@@ -62,6 +62,10 @@ def _build_module(module_cfg: dict):
         from core.chunker.attention_similarity import AttentionSimilarityChunker
         return AttentionSimilarityChunker(**kwargs)
 
+    elif module_type == "AttnChunker":
+        from core.chunker.attn_chunker import AttnChunker
+        return AttnChunker(**kwargs)
+
     elif module_type == "NoChunker":
         from core.chunker.no_chunker import NoChunker
         return NoChunker(**kwargs)
