@@ -1,0 +1,30 @@
+dataset:
+  name: locomo10
+  path: /data/delta9043/datasets/locomo/locomo10.json
+
+pipeline:
+  pre_chunking:
+    - type: NoFilter
+    - type: NoCompressor
+  chunker:
+    # 어텐션 골짜기 청커(우리 방법). 인라인 실행 — 첫 push()에서 LLMLingua-2를
+    # in-process 로드(샘플마다 재로드). turn마다 forward 1회, 결정 지연 1턴.
+    type: AttnChunker
+    model_path: /data/delta9043/models/llmlingua-2
+    tau: 0.00234   # v2 gold 스윕 최적. 더 잘게 자르려면 올린다(0.0024 ≈ 평균 12.2턴)
+
+memory_backend:
+  type: SimpleMemBackend
+  base_url: http://localhost:8000/v1
+  model: /data/delta9043/models/Qwen3-14B
+  # 검색 파라미터. 아래 값은 SimpleMem config.py 기본값(native)과 동일 —
+  # 조정하려면 여기서 바꾼다. reflection은 불충분 판정 시 쿼리 1~3개 ×
+  # semantic_top_k를 라운드마다 누적하므로 답변 컨텍스트 크기를 좌우한다.
+  semantic_top_k: 25
+  keyword_top_k: 5
+  structured_top_k: 5
+  enable_reflection: true
+  max_reflection_rounds: 2
+
+evaluation:
+  result_file: results/simplemem/attnchunk/result.json
