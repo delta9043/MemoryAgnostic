@@ -82,7 +82,7 @@ class Mem0Backend(BaseMemoryBackend):
         embedding_path: str,
         embedding_dims: int = 384,
         qdrant_path: str = "./qdrant_data/mem0",
-        top_k: int = 10,               # native 기본값 10 (evaluation/src/memzero/search.py)
+        top_k: int = 30,               # native 기본값 30 (evaluation/src/memzero/search.py)
         max_tokens: int = 8192,
         api_key: str = "dummy",
         clear_on_init: bool = True,
