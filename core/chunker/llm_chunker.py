@@ -46,10 +46,10 @@ from data.schema import Chunk, Turn
 
 
 # 캐시 키에 포함됨. 프롬프트를 바꾸면 반드시 올려서 캐시를 무효화할 것.
-PROMPT_VERSION = "v1"
+PROMPT_VERSION = "v2"
 
 # 세션/날짜 전제 없음: 한 윈도우가 여러 세션·여러 시점을 걸칠 수 있으므로 내용만으로 판단시킨다.
-SYSTEM_PROMPT = """You are an episodic memory boundary detection expert. You are given a window of consecutive conversation turns (they may span different topics, and possibly different occasions). Your task is to find the natural "episode boundaries" within this window and split it into meaningful, independently memorable segments. Your core principle is **"default to merging, split cautiously"**.
+SYSTEM_PROMPT = """You are an episodic memory boundary detection expert. You are given a window of consecutive conversation turns (they may span different topics, and possibly different occasions). Your task is to find the natural "episode boundaries" within this window and split it into meaningful, independently memorable segments.
 
 ### When to split
 
@@ -63,7 +63,6 @@ Add a boundary (by turn number) only when a **clear signal** appears:
 - Follow-up questions, clarifications, or brief reactions on the same topic.
 
 ### Decision Principles
-- **Merge by default:** when in doubt, do not split; only split on clear signals.
 - **Content over form:** greetings and farewells belong to the episode they serve, not their own segment.
 - **Process continuity:** consecutive turns working toward the same goal (e.g., describe a problem → discuss a fix) form one episode.
 - The first turn of the window can never be a boundary (it already starts the first segment).
