@@ -18,6 +18,7 @@ memory_backend:
   embedding_path: /data/delta9043/models/all-MiniLM-L6-v2
   embedding_dims: 384
   qdrant_path: ./qdrant_data/mem0_paper_qwen3_8b
+  top_k: 30
 
 evaluation:
   result_file: results/mem0/paper_qwen3_8b/result.json
