@@ -14,10 +14,8 @@ memory_backend:
   type: AMemBackend
   base_url: http://localhost:8000/v1
   model: /data/delta9043/models/Qwen3-14B
-  # 논문 §4.2의 기본값. ⚠ 이 arm은 노트가 길어(평균 1773자) k×(1+이웃)이 32768을
-  # 넘긴 적이 있다(초과 1788건 / 빈 예측 447건). 전체 실행 전 1샘플 드라이런으로
-  # answerer 프롬프트 토큰을 확인하고, 넘치면 VLLM_MAX_MODEL_LEN을 올린다.
-  retrieve_k: 10
+  # 청킹 비교 arm 공통 k=5 (k=10은 컨텍스트 초과; 재현 arm만 논문값 10)
+  retrieve_k: 5
 
 evaluation:
   result_file: results/amem/llmchunker/result.json

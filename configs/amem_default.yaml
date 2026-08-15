@@ -13,7 +13,8 @@ memory_backend:
   type: AMemBackend
   base_url: http://localhost:8000/v1
   model: /data/delta9043/models/Qwen3-14B
-  retrieve_k: 10   # dictionary 형태 가능
+  # 청킹 비교 arm 공통 k=5 (k=10은 컨텍스트 초과; 재현 arm만 논문값 10)
+  retrieve_k: 5   # dictionary 형태 가능
     # default: 10
     # open_domain: 50
 
