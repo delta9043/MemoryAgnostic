@@ -18,4 +18,4 @@ memory_backend:
   retrieve_k: 5
 
 evaluation:
-  result_file: results/amem/llmchunker/result.json
+  results_dir: results/amem/llmchunker

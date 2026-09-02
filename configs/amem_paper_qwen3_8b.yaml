@@ -17,5 +17,5 @@ memory_backend:
   structured_output: false
 
 evaluation:
-  result_file: results/amem/structout_off_sample0/result.json
+  results_dir: results/amem/structout_off_sample0
   # result_file: results/amem/paper_qwen3_8b/result.json

@@ -19,4 +19,4 @@ memory_backend:
   qdrant_path: ./qdrant_data/mem0_llmchunker
 
 evaluation:
-  result_file: results/mem0/llmchunker/result.json
+  results_dir: results/mem0/llmchunker

@@ -21,4 +21,4 @@ memory_backend:
   top_k: 30
 
 evaluation:
-  result_file: results/mem0/paper_qwen3_8b/result.json
+  results_dir: results/mem0/paper_qwen3_8b

@@ -24,4 +24,4 @@ memory_backend:
   qdrant_path: ./qdrant_data/lightmem_attnchunk
 
 evaluation:
-  result_file: results/lightmem/attnchunk/result.json
+  results_dir: results/lightmem/attnchunk

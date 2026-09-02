@@ -11,8 +11,8 @@ metrics는 category -> {f1, bleu1, ...} 이며 값은 0~100 스케일이다.
 4조건 실행이 모두 끝난 뒤 별도로 한 번 실행한다(개별 실행 스크립트와 분리).
 
 사용법:
-    python compare_results.py
-    python compare_results.py --results_dir results
+    python eval/compare_results.py
+    python eval/compare_results.py --results_dir results
 """
 
 import argparse

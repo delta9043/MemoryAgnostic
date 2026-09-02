@@ -21,4 +21,4 @@ memory_backend:
   qdrant_path: ./qdrant_data/lightmem_default
 
 evaluation:
-  result_file: results/lightmem/default/result.json
+  results_dir: results/lightmem/default

@@ -92,10 +92,10 @@ LoCoMo10 원본 turns
 
 ```bash
 # LLM 청킹 (연속 stream, OpenAI 호환 API 모델). 결과 JSON을 PrecomputedChunker가 로드.
-python run_goldchunker.py --model <model> --output data/chunked_data/chunks_<model>.json
+python precompute/run_goldchunker.py --model <model> --output data/chunked_data/chunks_<model>.json
 
 # LLM 필터링 (Qwen3-32B). filtered_data JSON 생성.
-python run_filter.py ...
+python precompute/run_filter.py ...
 ```
 
 ### 2) 조건별 실험 실행
@@ -127,8 +127,10 @@ config 이름 규칙: **`{backend}_{variant}.yaml`** — variant = `default`(무
 - `main.py`가 QA를 돌려 예측을 만들고 `eval/metrics.py`로 채점합니다.
 - 전체 집계는 **질문 단위 micro-average**(모든 샘플 질문 풀링) — 원본 SimpleMem·A-Mem과 동일.
 - adversarial(cat5) 정답은 `"Not mentioned in the conversation"`(오답 후보를 GT로 쓰지 않음).
-- 결과: `results/{backend}/{variant}/result.json` (+ `_sample{N}.json`). *`results/`는 gitignore.*
-- 조건 취합 비교: `python compare_results.py`.
+- 결과 위치는 config의 `evaluation.results_dir`가 정합니다. 그 아래로
+  `result_sample{N}.json`(샘플 1개) / `result.json`(10샘플 집계)이 떨어집니다.
+  **1샘플 실행은 집계 파일명을 쓰지 않습니다.** *`results/`는 gitignore.*
+- 조건 취합 비교: `python eval/compare_results.py`.
 
 ---
 
@@ -137,9 +139,10 @@ config 이름 규칙: **`{backend}_{variant}.yaml`** — variant = `default`(무
 ```
 main.py                 # 파이프라인 진입점 (config 1개 실행)
 factory.py              # type 문자열 → 모듈 인스턴스 디스패처
-run_filter.py           # 필터 precompute
-run_goldchunker.py      # LLM 청킹 precompute (LLMChunker)
-compare_results.py      # 조건 비교표
+
+precompute/             # main.py 이전에 도는 입력 생성기
+  run_filter.py         # 필터 precompute        → data/filtered_data/
+  run_goldchunker.py    # LLM 청킹 precompute    → data/chunked_data/
 
 core/
   filter/               # NoFilter, LLMFilter
@@ -150,8 +153,11 @@ data/
   schema.py             # Turn / Chunk / QA / RawSample / ProcessedSample
   locomo_loader.py      # LoCoMo10 로더
   chunked_data/, filtered_data/   # precompute 산출물 (gitignore)
-eval/metrics.py         # 통일 채점 (F1/EM/ROUGE/BLEU/METEOR/BERTScore)
-configs/                # {backend}_{variant}.yaml
+eval/
+  metrics.py            # 통일 채점 (F1/EM/ROUGE/BLEU/METEOR/BERTScore)
+  rescore.py            # LLM 재실행 없는 오프라인 재채점
+  compare_results.py    # 조건 비교표
+configs/                # _base.yaml(원본) + {backend}_{variant}.yaml
 scripts/                # SLURM 실행 스크립트 (+ common/{start_vllm,run_experiment}.sh)
 experiment/             # 메인 파이프라인과 분리된 연구용 코드 (별도 브랜치 위주)
 ```

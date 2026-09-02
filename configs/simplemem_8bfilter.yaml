@@ -27,4 +27,4 @@ memory_backend:
   max_reflection_rounds: 2
 
 evaluation:
-  result_file: results/simplemem/8bfilter/result.json
+  results_dir: results/simplemem/8bfilter

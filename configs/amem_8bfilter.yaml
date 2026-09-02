@@ -18,4 +18,4 @@ memory_backend:
   retrieve_k: 10   # 논문 §4.2 기본값
 
 evaluation:
-  result_file: results/amem/8bfilter/result.json
+  results_dir: results/amem/8bfilter

@@ -18,4 +18,4 @@ memory_backend:
   qdrant_path: ./qdrant_data/mem0_default
 
 evaluation:
-  result_file: results/mem0/default/result.json
+  results_dir: results/mem0/default

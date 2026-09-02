@@ -1,0 +1,75 @@
+# _base.yaml — 새 arm config의 원본. 복사해서 값만 바꾼다.
+#     cp configs/_base.yaml configs/{memory}_{변환}.yaml
+#
+# 명명: {memory}_{변환}.yaml. 무변환 기준선의 이름은 `nochunker`가 아니라 `default`
+#       (`nochunker`는 "필터는 했는지"가 안 드러나 모호하다).
+# ⚠ factory는 모르는 키를 backend 생성자에 그대로 넘긴다 → 오타는 TypeError로 뒤늦게 터진다.
+
+dataset:
+  name: locomo10                                       # 라벨 전용 — 코드가 읽지 않는다
+  path: /data/delta9043/datasets/locomo/locomo10.json
+  # filter arm만: path = 필터 결과, original_path = QA/타임스탬프를 가져올 원본
+  # original_path: /data/delta9043/datasets/locomo/locomo10.json
+  # sample_idx: 0        # 지정하면 그 샘플 1개만 돈다. 빼면 10샘플 전체 + 집계
+
+pipeline:
+  pre_chunking:          # 순서대로 적용. Filter/Compressor 구현체만 허용
+    - type: NoFilter
+    - type: NoCompressor
+
+  chunker:
+    type: NoChunker      # 무변환 기준선 = turn 1개가 chunk 1개 (추출 호출 5,882회)
+
+    # --- 교체 후보 (하나만 남긴다) ---
+    # type: PrecomputedChunker          # 경계만 로드, 본문은 로더가 재바인딩
+    # chunks_path: data/chunked_data/chunks_fable-5.json
+    #
+    # type: FixedSizeChunker            # SimpleMem native = 40/2, mem0 native = 2/0
+    # window: 40
+    # overlap: 2
+    #
+    # type: AttnChunker                 # 우리 방법 — 어텐션 골짜기
+    # model_path: /data/delta9043/models/llmlingua-2
+    # tau: 0.00234                      # ⚠ 절대 어텐션 값. 추출 조건이 바뀌면 무효(§2.3)
+    #
+    # type: AttentionSimilarityChunker  # LightMem native 방식 재현
+    # llmlingua_model_path: /data/delta9043/models/llmlingua-2
+    # embedder_model_path: /data/delta9043/models/all-MiniLM-L6-v2
+
+memory_backend:
+  type: AMemBackend
+  base_url: http://localhost:8000/v1        # VLLM_BASE_URL 환경변수가 이 값을 덮는다
+  model: /data/delta9043/models/Qwen3-14B   # start_vllm.sh가 경로를 served-model-name으로 쓴다
+
+  # --- AMemBackend ---
+  retrieve_k: 5          # 비교 arm 공통 5. 재현 arm만 논문값 10.
+                         # 실제 검색량은 k×(1+이웃)이라 k=10이면 120개 → 컨텍스트 초과
+                         # dict도 가능: {default: 10, open_domain: 50}
+  # structured_output: true   # 답변·키워드를 json_schema로 받는다(논문 설정)
+
+  # --- SimpleMemBackend ---
+  # db_path: ./lancedb_data/<variant>   # ⚠ 반드시 arm마다 다르게. 기본값 공유 시
+  #                                     #   clear_db_on_init이 서로의 DB를 지운다
+  # clear_db_on_init: true
+  # semantic_top_k: 25      # 아래 5개는 SimpleMem native 기본값 — 바꾸면 동작이 달라진다
+  # keyword_top_k: 5
+  # structured_top_k: 5
+  # enable_reflection: true
+  # max_reflection_rounds: 2
+
+  # --- Mem0Backend / LightMemBackend ---
+  # embedding_path: /data/delta9043/models/all-MiniLM-L6-v2
+  # embedding_dims: 384                    # 실제 모델 차원과 다르면 Qdrant가 죽는다
+  # qdrant_path: ./qdrant_data/<variant>   # ⚠ arm마다 다르게
+  # top_k: 30                              # mem0만
+  # native_chunking: false                 # LightMem만. true = LightMem 자체 segmenter,
+  #                                        # false = NoOpSegmenter로 무력화하고 우리 경계 사용
+  # llmlingua_path: /data/delta9043/models/llmlingua-2   # LightMem native_chunking=true일 때만
+
+evaluation:
+  # 이 디렉토리 아래로 결과가 떨어진다:
+  #   result_sample{N}.json  샘플 1개 결과 (= 그 샘플을 끝냈다는 표시)
+  #   result.json            10샘플 집계 (샘플 전체를 돌렸을 때만 생성)
+  results_dir: results/<backend>/<variant>
+  # use_bertscore: true   # 채점에서 roberta-large를 올린다 — GPU를 vLLM과 공유하면 끈다
+  # use_sbert: true

@@ -21,4 +21,4 @@ memory_backend:
   retrieve_k: 5
 
 evaluation:
-  result_file: results/amem/attnchunk/result.json
+  results_dir: results/amem/attnchunk

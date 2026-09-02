@@ -25,4 +25,4 @@ memory_backend:
   max_reflection_rounds: 2
 
 evaluation:
-  result_file: results/simplemem/default/result.json
+  results_dir: results/simplemem/default

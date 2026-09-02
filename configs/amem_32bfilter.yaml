@@ -17,4 +17,4 @@ memory_backend:
   retrieve_k: 5   # 전처리 비교 arm 공통 k (default/llmchunker와 동일)
 
 evaluation:
-  result_file: results/amem/32bfilter/result.json
+  results_dir: results/amem/32bfilter

@@ -20,7 +20,7 @@ mkdir -p logs/precompute/slurm data/filtered_data
 source /data/delta9043/anaconda3/etc/profile.d/conda.sh
 conda activate magno
 
-python run_filter.py \
+python precompute/run_filter.py \
     --model_path /data/delta9043/models/Qwen3-32B \
     --output data/filtered_data/filtered_32b.json
 

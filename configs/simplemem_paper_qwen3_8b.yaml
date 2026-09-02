@@ -24,4 +24,4 @@ memory_backend:
   max_reflection_rounds: 2
 
 evaluation:
-  result_file: results/simplemem/paper_qwen3_8b/result.json
+  results_dir: results/simplemem/paper_qwen3_8b

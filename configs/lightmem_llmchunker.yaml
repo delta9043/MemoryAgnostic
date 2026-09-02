@@ -21,4 +21,4 @@ memory_backend:
   qdrant_path: ./qdrant_data/lightmem_llmchunker
 
 evaluation:
-  result_file: results/lightmem/llmchunker/result.json
+  results_dir: results/lightmem/llmchunker

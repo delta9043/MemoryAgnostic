@@ -32,6 +32,16 @@ def _provenance(cfg: dict) -> dict:
     return {"pipeline": cfg["pipeline"], "memory_backend": backend}
 
 
+def _result_path(cfg: dict, sample_idx=None) -> str:
+    """결과 파일 경로. 샘플 단위는 result_sample{N}.json, 10샘플 집계만 result.json.
+
+    1샘플 스모크가 집계와 같은 파일명을 쓰면 compare_results가 10샘플로 오인해 읽는다.
+    """
+    results_dir = cfg.get("evaluation", {}).get("results_dir", "results/output")
+    name = "result.json" if sample_idx is None else f"result_sample{sample_idx}.json"
+    return os.path.join(results_dir, name)
+
+
 def run(cfg: dict):
     # 0. vLLM URL 환경변수 오버라이드
     base_url_override = os.environ.get("VLLM_BASE_URL")
@@ -92,7 +102,7 @@ def run(cfg: dict):
 
     # 4. QA 수행
     eval_cfg = cfg.get("evaluation", {})
-    result_file = eval_cfg.get("result_file", "results/output.json")
+    result_file = _result_path(cfg, sample_idx)
     total_qa = len(processed.qa)
 
     results = []
@@ -165,8 +175,7 @@ def main():
             total = len(json.load(f))
         print(f"[main] Total samples: {total}")
 
-        eval_cfg = cfg.get("evaluation", {})
-        base_result_file = eval_cfg.get("result_file", "results/output.json")
+        base_result_file = _result_path(cfg)
 
         all_results = []
 
@@ -174,8 +183,6 @@ def main():
             print(f"\n[main] ===== Sample {i+1}/{total} =====")
             sample_cfg = copy.deepcopy(cfg)
             sample_cfg["dataset"]["sample_idx"] = i
-            stem = base_result_file.replace(".json", "")
-            sample_cfg["evaluation"]["result_file"] = f"{stem}_sample{i}.json"
 
             result = run(sample_cfg)
             if result:

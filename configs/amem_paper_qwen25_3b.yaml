@@ -19,4 +19,4 @@ memory_backend:
   structured_output: true
 
 evaluation:
-  result_file: results/amem/paper_qwen25_3b/result.json
+  results_dir: results/amem/paper_qwen25_3b

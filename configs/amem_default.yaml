@@ -19,4 +19,4 @@ memory_backend:
     # open_domain: 50
 
 evaluation:
-  result_file: results/amem/default/result.json
+  results_dir: results/amem/default

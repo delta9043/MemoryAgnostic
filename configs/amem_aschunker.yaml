@@ -20,4 +20,4 @@ memory_backend:
   retrieve_k: 10   # 논문 §4.2 기본값
 
 evaluation:
-  result_file: results/amem/aschunker/result.json
+  results_dir: results/amem/aschunker

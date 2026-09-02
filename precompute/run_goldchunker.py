@@ -6,13 +6,13 @@ LLMChunker(연속 stream + carryover)는 세션 파티션을 공짜로 받지 �
 모든 경계를 판단한다(gold=upper-bound). baseline(AttentionSimilarityChunker)은 수정하지 않는다.
 
 GPU/로컬 모델 의존성이 없으므로(OpenAI API만 사용) 서버가 아닌 로컬에서도 실행 가능:
-    python run_goldchunker.py --data <로컬 locomo10.json> --limit 1     # 스모크
-    python run_goldchunker.py                                           # 전체 (서버 기본 경로)
+    python precompute/run_goldchunker.py --data <로컬 locomo10.json> --limit 1     # 스모크
+    python precompute/run_goldchunker.py                                # 전체 (서버 기본 경로)
 API key는 OPENAI_API_KEY 환경변수에서 읽는다. 윈도우 응답은 디스크 캐시되어 재실행 시 재개.
 
 출력 형식은 PrecomputedChunker 호환(각 backend가 chunk JSON을 로드해 공유).
 
-실행 코드 : python run_goldchunker.py \
+실행 코드 : python precompute/run_goldchunker.py \
     --data /data/delta9043/datasets/locomo/locomo10.json \
     --model gpt-5.6-sol \
     --output data/chunked_data/chunks_gpt-5_6-sol.json
@@ -26,17 +26,21 @@ API key는 OPENAI_API_KEY 환경변수에서 읽는다. 윈도우 응답은 디�
 import argparse
 import json
 import os
+import sys
 from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
 
 # MemoryAgnostic/.env 로드 (OPENAI_API_KEY). dotenv 미설치 환경이면 OS 환경변수만 사용.
 try:
     from dotenv import load_dotenv
-    load_dotenv(Path(__file__).parent / ".env")
+    load_dotenv(REPO_ROOT / ".env")
 except ImportError:
     pass
 
-from data.locomo_loader import load_locomo10_all
-from core.chunker.llm_chunker import LLMChunker
+from data.locomo_loader import load_locomo10_all  # noqa: E402
+from core.chunker.llm_chunker import LLMChunker  # noqa: E402
 
 
 LOCOMO_PATH = "/data/delta9043/datasets/locomo/locomo10.json"

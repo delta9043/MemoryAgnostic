@@ -2,7 +2,7 @@
 run_filter.py — LLMFilter를 전체 LoCoMo10 샘플에 적용하고 결과를 JSON으로 저장.
 
 사용법:
-    python run_filter.py \
+    python precompute/run_filter.py \
         --model_path /data/delta9043/models/Qwen3-32B \
         --output data/filtered_data/filtered_32b.json
 
@@ -22,9 +22,12 @@ run_filter.py — LLMFilter를 전체 LoCoMo10 샘플에 적용하고 결과를 
 import argparse
 import json
 import os
+import sys
 
-from data.locomo_loader import load_locomo10_all
-from core.filter.llm_filter import LLMFilter
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from data.locomo_loader import load_locomo10_all  # noqa: E402
+from core.filter.llm_filter import LLMFilter  # noqa: E402
 
 
 LOCOMO_PATH = "/data/delta9043/datasets/locomo/locomo10.json"
